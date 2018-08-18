@@ -1,0 +1,5 @@
+<%= form_for current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
+  <%= render 'cards/fields', form: f %>
+  <%= f.hidden_field :plan, value: params.fetch('plan', 'default') %>
+  <%= f.button 'Go Charge Yourself' %>
+<% end %>

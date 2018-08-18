@@ -1,0 +1,27 @@
+<% if current_user.subscription.on_grace_period? %>
+  Your subscription ends: <%= current_user.subscription.ends_at %>
+
+  <%= form_for current_user, url: resume_subscription_url, method: :patch do |f| %>
+    <%= f.button 'Resume Subscription' %>
+  <% end %>
+<% else %>
+  <%= form_for current_user, url: subscription_url do |f| %>
+    <div>
+      <label>
+        <%= f.radio_button :plan, 'big', checked: current_user.subscribed?(processor_plan: 'big') %>
+        $20
+      </label>
+    </div>
+    <div>
+      <label>
+        <%= f.radio_button :plan, 'default', checked: current_user.subscribed?(processor_plan: 'default') %>
+        $10
+      </label>
+    </div>
+    <%= f.button 'Update Yourself' %>
+  <% end %>
+
+  <%= form_for current_user, url: subscription_url, method: :delete do |f| %>
+    <%= f.button 'Cancel Subscription' %>
+  <% end %>
+<% end %>

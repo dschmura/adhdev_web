@@ -1,0 +1,5 @@
+<%= form_for current_user, url: card_url, html: { id: 'payment_form' } do |f| %>
+  <p>Current Card: <%= current_user.card_brand %> <%= current_user.card_last4 %></p>
+  <%= render 'cards/fields', form: f %>
+  <%= f.button 'Update Card' %>
+<% end %>

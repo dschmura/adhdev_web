@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   devise_for :users,
              controllers: { omniauth_callbacks: 'jumpstart/omniauth_callbacks' }
 
+  resource :card
+  resource :subscription do
+    patch :resume
+  end
+
   scope controller: :static do
     get :about
     get :terms
