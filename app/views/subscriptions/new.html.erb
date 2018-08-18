@@ -1,5 +1,10 @@
 <%= form_for current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
-  <%= render 'cards/fields', form: f %>
+  <% if Jumpstart.config.stripe? %>
+    <%= render 'cards/fields/stripe' %>
+  <% end %>
+  <% if Jumpstart.config.braintree? %>
+    <%= render 'cards/fields/braintree' %>
+  <% end %>
   <%= f.hidden_field :plan, value: params.fetch('plan', 'default') %>
-  <%= f.button 'Go Charge Yourself' %>
+  <%= f.button 'Go Charge Yourself', id: 'submit-button' %>
 <% end %>
