@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
-    <title>JumpstartApp</title>
+    <title>Jumpstart</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="font-source-sans font-normal text-black leading-normal flex flex-col h-full">
+    <%= render partial: "shared/navbar" %>
+
+    <div class="container mx-auto flex-1">
+      <%= yield %>
+    </div>
+
+    <%= render partial: "shared/footer" %>
   </body>
 </html>
