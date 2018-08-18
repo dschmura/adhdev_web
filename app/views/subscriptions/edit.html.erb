@@ -4,7 +4,7 @@
   <%= form_for current_user, url: resume_subscription_url, method: :patch do |f| %>
     <%= f.button 'Resume Subscription' %>
   <% end %>
-<% else %>
+<% elsif current_user.subscription.active? %>
   <%= form_for current_user, url: subscription_url do |f| %>
     <div>
       <label>
@@ -16,6 +16,13 @@
       <label>
         <%= f.radio_button :plan, 'default', checked: current_user.subscribed?(processor_plan: 'default') %>
         $10
+      </label>
+    </div>
+
+    <div>
+      <label>
+        <%= f.radio_button :plan, 'yearly-big', checked: current_user.subscribed?(processor_plan: 'yearly-big') %>
+        $100
       </label>
     </div>
     <%= f.button 'Update Yourself' %>

@@ -10,8 +10,17 @@ PATH
       omniauth-microsoft_graph
       omniauth-pinterest
       omniauth-twitter
-      pay
       rails (~> 5.2.1)
+
+PATH
+  remote: ../pay
+  specs:
+    pay (0.0.3)
+      braintree (~> 2.80)
+      rails (>= 4.2)
+      rails-html-sanitizer (~> 1.0.4)
+      stripe (~> 3.22)
+      stripe_event (~> 2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -174,12 +183,6 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
-    pay (0.0.2)
-      braintree (~> 2.80)
-      rails (>= 4.2)
-      rails-html-sanitizer (~> 1.0.4)
-      stripe (~> 3.22)
-      stripe_event (~> 2.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -297,6 +300,7 @@ DEPENDENCIES
   jumpstart-rails!
   listen (>= 3.0.5, < 3.2)
   omniauth
+  pay!
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.1)
