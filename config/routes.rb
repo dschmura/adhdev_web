@@ -3,6 +3,9 @@
 Rails.application.routes.draw do
   mount Jumpstart::Engine, at: "/jumpstart"
 
+  devise_for :users,
+             controllers: { omniauth_callbacks: 'jumpstart/omniauth_callbacks' }
+
   scope controller: :static do
     get :about
     get :terms
@@ -10,4 +13,5 @@ Rails.application.routes.draw do
   end
 
   root to: "static#index"
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
