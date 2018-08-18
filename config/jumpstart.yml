@@ -1,0 +1,5 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: My New App
+omniauth_providers:
+- :facebook
+- :github

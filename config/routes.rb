@@ -3,7 +3,8 @@
 Rails.application.routes.draw do
   mount Jumpstart::Engine, at: "/jumpstart"
 
-  devise_for :users
+  devise_for :users,
+             controllers: { omniauth_callbacks: 'jumpstart/omniauth_callbacks' }
 
   scope controller: :static do
     get :about
