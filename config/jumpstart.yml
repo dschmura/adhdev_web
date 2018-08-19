@@ -1,13 +1,9 @@
-!ruby/object:Jumpstart::Configuration
+--- !ruby/object:Jumpstart::Configuration
 application_name: My New App
+email_provider: sendgrid
 omniauth_providers:
-  - :facebook
-  - :github
-payment_processor:
-  stripe: false
-  braintree: true
-plans:
-  - id: default
-    name: Default
-    price: 1000
-    stripe_id: default
+- :facebook
+- :github
+payment_processors:
+- :stripe
+- :paypal
