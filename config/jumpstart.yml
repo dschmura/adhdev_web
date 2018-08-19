@@ -1,5 +1,7 @@
 --- !ruby/object:Jumpstart::Configuration
 application_name: My New App
+background_job_processor: delayed_job
+cancel_immediately: '1'
 email_provider: sendgrid
 omniauth_providers:
 - :facebook
@@ -7,4 +9,3 @@ omniauth_providers:
 payment_processors:
 - :stripe
 - :paypal
-cancel_immediately: '1'
