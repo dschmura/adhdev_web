@@ -26,7 +26,12 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    current_user.subscription.cancel
+    if Jumpstart.config.cancel_immediately?
+      current_user.subscription.cancel_now!
+    else
+      current_user.subscription.cancel
+    end
+
     redirect_to edit_subscription_path
   end
 

@@ -7,3 +7,4 @@ omniauth_providers:
 payment_processors:
 - :stripe
 - :paypal
+cancel_immediately: '1'
