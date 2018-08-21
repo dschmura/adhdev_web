@@ -22,6 +22,10 @@
     </div>
     <div>
       <% if user_signed_in? %>
+        <%= link_to "#", class: "no-underline" do %>
+          <%= image_tag avatar_url_for(current_user), class: "rounded-full h-8 w-8 align-middle" %>
+        <% end %>
+
         <%= link_to 'Account', edit_user_registration_path, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
       <% else %>

@@ -8,4 +8,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :invitable, :masqueradable,
          :omniauthable
+
+  has_one_attached :avatar
 end

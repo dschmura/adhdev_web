@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protected
 
     def browser_time_zone
-      p cookies[:browser_time_zone]
       browser_tz = ActiveSupport::TimeZone.find_tzinfo(cookies[:browser_time_zone])
       ActiveSupport::TimeZone.all.find { |zone| zone.tzinfo == browser_tz } || Time.zone
     rescue TZInfo::UnknownTimezone, TZInfo::InvalidTimezoneIdentifier
@@ -14,7 +13,7 @@ class ApplicationController < ActionController::Base
     helper_method :browser_time_zone
 
     def configure_permitted_parameters
-      extra_keys = [:time_zone]
+      extra_keys = [:avatar, :time_zone]
       devise_parameter_sanitizer.permit(:sign_up,           keys: extra_keys)
       devise_parameter_sanitizer.permit(:account_update,    keys: extra_keys)
       devise_parameter_sanitizer.permit(:accept_invitation, keys: extra_keys)
