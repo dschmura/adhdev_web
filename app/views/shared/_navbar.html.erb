@@ -22,10 +22,11 @@
     </div>
     <div>
       <% if user_signed_in? %>
+        <%= link_to 'Account', edit_user_registration_path, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
       <% else %>
-        <%= link_to 'Sign In', new_user_session_path, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
-        <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded no-underline text-grey border-grey hover:border-grey-darker hover:text-white hover:bg-grey-darker mt-4 lg:mt-0">Sign Up</a>
+        <%= link_to 'Log In', new_user_session_path, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'inline-block text-sm px-4 py-2 leading-none border rounded no-underline text-grey border-grey hover:border-grey-darker hover:text-white hover:bg-grey-darker mt-4 lg:mt-0' %>
       <% end %>
     </div>
   </div>

@@ -3,9 +3,19 @@
 Rails.application.routes.draw do
   mount Jumpstart::Engine, at: '/jumpstart'
 
+  # User account
   devise_for :users,
-             controllers: { omniauth_callbacks: 'jumpstart/omniauth_callbacks' }
+             controllers: {
+               masquerades: 'jumpstart/masquerades',
+               omniauth_callbacks: 'jumpstart/omniauth_callbacks',
+               registrations: 'users/registrations',
+             }
 
+  scope module: :users do
+    resource :password
+  end
+
+  # Payments
   resource :card
   resource :subscription do
     patch :resume

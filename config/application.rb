@@ -8,8 +8,6 @@ Bundler.require(*Rails.groups)
 
 module JumpstartApp
   class Application < Rails::Application
-    config.railties_order = [Jumpstart::Engine, Devise::Engine, :main_app, :all]
-
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 

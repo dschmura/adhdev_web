@@ -19,8 +19,8 @@
     <%= render partial: "shared/navbar" %>
 
     <div class="container mx-auto flex-1">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render partial: "shared/flash" %>
+
       <%= yield %>
     </div>
 

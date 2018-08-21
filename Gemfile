@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Devise for authentication
 gem 'devise', '~> 4.5.0'
+gem 'devise_invitable', '~> 1.7', '>= 1.7.4'
+gem 'devise_masquerade', '~> 0.6.4'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -1,0 +1,36 @@
+<h2>Update Password</h2>
+<%= form_with(url: password_path, local: true, html: { method: :put }) do |f| %>
+  <% if current_user.errors.any? %>
+    <div class="bg-red-lightest border-t border-b border-red text-red-dark px-4 py-3 mb-4" role="alert">
+      <p class="font-bold">Oops, please fix the errors below.</p>
+      <ul>
+        <% current_user.errors.full_messages.each do |message| %>
+          <li class="text-sm"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Current password", class: "form-control" %>
+    <p class="hint mt-3">We need your current password to confirm your changes</p>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, "New password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "New password", class: "form-control" %>
+    <% if @minimum_password_length %>
+      <p class="hint mt-3"><%= @minimum_password_length %> characters minimum</p>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Confirm new password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

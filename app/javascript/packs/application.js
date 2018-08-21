@@ -8,6 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import "stylesheets/application";
+import "timezone";
 
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
