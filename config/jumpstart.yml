@@ -1,11 +1,12 @@
 --- !ruby/object:Jumpstart::Configuration
 application_name: My New App
-background_job_processor: delayed_job
+background_job_processor: sidekiq
 cancel_immediately: '1'
 email_provider: sendgrid
 omniauth_providers:
 - :facebook
 - :github
+- :twitter
 payment_processors:
 - :stripe
 - :paypal
