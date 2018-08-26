@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
 
       resources :users
+      resources :subscriptions
+      resources :charges
 
       root to: "users#index"
     end

@@ -1,3 +1,10 @@
+<% if user_masquerade? %>
+  <div class="bg-orange-lightest text-orange-dark text-sm text-center font-bold px-4 py-3" role="alert">
+    You're logged in as <b>User #<%= current_user.id %></b> (<%= current_user.email %>)</b>
+    <%= link_to back_masquerade_path(current_user) do %>Logout<% end %>
+  </div>
+<% end %>
+
 <header class="flex items-center justify-between flex-wrap bg-white border-b border-grey-lighter h-16 p-6">
   <%= link_to root_path, class: "flex items-center flex-no-shrink mr-6 text-black no-underline" do %>
     <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>

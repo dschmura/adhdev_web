@@ -10,4 +10,8 @@ class User < ApplicationRecord
          :omniauthable
 
   has_one_attached :avatar
+
+  # We don't need users to confirm their email address on create,
+  # just when they change it
+  before_create :skip_confirmation!
 end

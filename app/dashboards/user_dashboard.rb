@@ -10,8 +10,8 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
-    password: Field::String,
-    password_confirmation: Field::String,
+    password: Field::Password,
+    password_confirmation: Field::Password,
     charges: Field::HasMany,
     subscriptions: Field::HasMany,
     invited_by: Field::Polymorphic,
@@ -62,14 +62,14 @@ class UserDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :id,
+    :email,
     :charges,
     :subscriptions,
+    :time_zone,
     :invited_by,
     :avatar_attachment,
     :avatar_blob,
-    :id,
-    :email,
-    :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,
     :remember_created_at,
@@ -78,7 +78,6 @@ class UserDashboard < Administrate::BaseDashboard
     :confirmation_sent_at,
     :unconfirmed_email,
     :admin,
-    :time_zone,
     :provider,
     :uid,
     :created_at,
@@ -108,13 +107,6 @@ class UserDashboard < Administrate::BaseDashboard
     :password,
     :password_confirmation,
     :admin,
-    :time_zone,
-    :processor,
-    :processor_id,
-    :card_brand,
-    :card_last4,
-    :card_exp_month,
-    :card_exp_year,
   ].freeze
 
   # Overwrite this method to customize how users are displayed
