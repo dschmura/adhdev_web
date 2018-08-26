@@ -71,8 +71,10 @@ ActiveRecord::Schema.define(version: 2018_08_20_210659) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.boolean "admin"
+    t.datetime "accepted_terms_at"
+    t.datetime "accepted_privacy_at"
     t.string "time_zone"
+    t.boolean "admin"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false

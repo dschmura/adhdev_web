@@ -26,6 +26,13 @@
   </div>
 
   <div class="form-group">
+    <label>
+      <%= f.check_box :terms_of_service %>
+      I accept the <%= link_to "terms of service", terms_path, target: "_blank" %> &amp; <%= link_to "privacy policy", privacy_path, target: "_blank" %>
+    </label>
+  </div>
+
+  <div class="form-group">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
