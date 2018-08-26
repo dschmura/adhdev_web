@@ -1,7 +1,15 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
+  # Jumpstart views
   mount Jumpstart::Engine, at: '/jumpstart'
+
+  # Administrate
+  namespace :admin do
+    resources :users
+
+    root to: "users#index"
+  end
 
   # User account
   devise_for :users,
