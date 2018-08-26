@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   mount Jumpstart::Engine, at: '/jumpstart'
 
   # Administrate
-  namespace :admin do
-    authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, lambda { |u| u.admin? } do
+    namespace :admin do
       mount Sidekiq::Web => '/sidekiq'
+
+      resources :users
+
+      root to: "users#index"
     end
-
-    resources :users
-
-    root to: "users#index"
   end
 
   # User account
