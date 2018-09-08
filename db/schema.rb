@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 2018_08_21_214212) do
+=======
+ActiveRecord::Schema.define(version: 2018_08_26_231644) do
+>>>>>>> Stashed changes
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.datetime "updated_at"
   end
 
+<<<<<<< Updated upstream
   create_table "user_connected_accounts", force: :cascade do |t|
     t.integer "user_id"
     t.string "provider"
@@ -72,6 +77,12 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_connected_accounts_on_user_id"
+=======
+  create_table "tweets", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> Stashed changes
   end
 
   create_table "users", force: :cascade do |t|

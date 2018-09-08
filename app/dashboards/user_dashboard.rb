@@ -10,8 +10,8 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
-    password: Field::Password,
-    password_confirmation: Field::Password,
+    password: Field::Password.with_options(searchable: false),
+    password_confirmation: Field::Password.with_options(searchable: false),
     charges: Field::HasMany,
     subscriptions: Field::HasMany,
     invited_by: Field::Polymorphic,
@@ -42,9 +42,6 @@ class UserDashboard < Administrate::BaseDashboard
     invitation_accepted_at: Field::DateTime,
     invitation_limit: Field::Number,
     invitations_count: Field::Number,
-    plan: Field::String,
-    quantity: Field::Number,
-    card_token: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -94,9 +91,6 @@ class UserDashboard < Administrate::BaseDashboard
     :invitation_accepted_at,
     :invitation_limit,
     :invitations_count,
-    :plan,
-    :quantity,
-    :card_token,
   ].freeze
 
   # FORM_ATTRIBUTES
