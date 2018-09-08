@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_214212) do
+ActiveRecord::Schema.define(version: 2018_08_26_231644) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,14 +61,20 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.datetime "updated_at"
   end
 
+  create_table "tweets", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_connected_accounts", force: :cascade do |t|
     t.integer "user_id"
     t.string "provider"
+    t.string "uid"
     t.string "access_token"
     t.string "refresh_token"
     t.datetime "expires_at"
     t.string "auth"
-    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_connected_accounts_on_user_id"
@@ -85,9 +91,9 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "admin"
+    t.string "first_name"
+    t.string "last_name"
     t.string "time_zone"
-    t.string "provider"
-    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "processor"

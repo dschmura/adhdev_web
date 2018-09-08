@@ -33,11 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.boolean :admin
+      t.string :first_name
+      t.string :last_name
       t.string :time_zone
-
-      ## Omniauthable
-      t.string :provider
-      t.string :uid
 
       t.timestamps null: false
     end

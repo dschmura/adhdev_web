@@ -9,9 +9,13 @@ class User < ApplicationRecord
          :confirmable, :invitable, :masqueradable,
          :omniauthable
 
+  has_person_name
+
   # ActiveStorage Associations
   has_one_attached :avatar
 
   # Associations
   has_many :connected_accounts, dependent: :destroy
+
+  validates :name, presence: true
 end

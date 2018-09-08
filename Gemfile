@@ -74,3 +74,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'webpacker', '>= 4.0.x'
 
 gem 'mini_magick', '~> 4.8'
+gem 'name_of_person', '~> 1.0'

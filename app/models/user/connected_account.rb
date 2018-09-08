@@ -1,8 +1,10 @@
 class User::ConnectedAccount < ApplicationRecord
-  extend Jumpstart::ConnectedAccount::Omniauthable
-
   # Associations
   belongs_to :user
+
+  def self.for_auth(auth)
+    where(provider: auth.provider, uid: auth.uid).first
+  end
 
   def token
     if expires_at? && expires_at <= Time.zone.now
