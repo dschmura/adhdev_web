@@ -1,7 +1,14 @@
+<% if user_masquerade? %>
+  <div class="bg-orange-lightest text-orange-dark text-sm text-center font-bold px-4 py-3" role="alert">
+    You're logged in as <b>User #<%= current_user.id %></b> (<%= current_user.email %>)</b>
+    <%= link_to back_masquerade_path(current_user) do %>Logout<% end %>
+  </div>
+<% end %>
+
 <header class="flex items-center justify-between flex-wrap bg-white border-b border-grey-lighter h-16 p-6">
   <%= link_to root_path, class: "flex items-center flex-no-shrink mr-6 text-black no-underline" do %>
     <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-    <span class="font-semibold text-xl tracking-tight">Jumpstart</span>
+    <span class="font-semibold text-xl tracking-tight"><%= Jumpstart.config.application_name %></span>
   <% end %>
   <div class="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-grey-lighter border-grey-light hover:text-white hover:border-white">
@@ -16,22 +23,39 @@
       <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4">
         Examples
       </a>
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline">
-        Blog
-      </a>
-    </div>
-    <div>
-      <% if user_signed_in? %>
-        <%= link_to "#", class: "no-underline" do %>
-          <%= image_tag avatar_url_for(current_user), class: "rounded-full h-8 w-8 align-middle" %>
-        <% end %>
 
-        <%= link_to 'Account', edit_user_registration_path, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
-      <% else %>
-        <%= link_to 'Log In', new_user_session_path, class: 'inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'inline-block text-sm px-4 py-2 leading-none border rounded no-underline text-grey border-grey hover:border-grey-darker hover:text-white hover:bg-grey-darker mt-4 lg:mt-0' %>
+      <% Jumpstart.config.nav_resources.each do |title, controller| %>
+        <%= link_to title, url_for(action: :index, controller: controller), class: "block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4" %>
       <% end %>
     </div>
+
+    <div>
+      <% if user_signed_in? %>
+        <div class="inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0">
+          <div class="relative" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle" role="button" class="inline-block select-none">
+              <span class="appearance-none flex items-center inline-block text-grey-dark">
+                <% if current_user %>
+                <%= image_tag avatar_url_for(current_user), class: "rounded-full h-8 w-8 align-middle" %>
+                <% end %>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+              </span>
+            </div>
+            <div data-target="dropdown.menu" class="absolute pin-r mt-2 hidden">
+              <div class="bg-white shadow rounded border overflow-hidden">
+                  <%= link_to 'Account',  edit_user_registration_path, class: 'no-underline block px-4 py-3 border-b text-grey-darkest bg-white hover:text-white hover:bg-blue whitespace-no-wrap' %>
+                  <%= link_to 'Admin',    admin_root_path, class: 'no-underline block px-4 py-3 border-b text-grey-darkest bg-white hover:text-white hover:bg-blue whitespace-no-wrap', data: { turbolinks: false } if current_user.admin? %>
+                  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-4 py-3 border-b text-grey-darkest bg-white hover:text-white hover:bg-blue whitespace-no-wrap' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+        <%= link_to 'Log In', new_user_session_path, class: 'inline-block text-sm px-4 py-3 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'inline-block font-bold text-sm px-4 py-2 leading-none border rounded no-underline text-white bg-green hover:bg-green-dark mt-4 lg:mt-0' %>
+      <% end %>
+    </div>
+
   </div>
 </header>

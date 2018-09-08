@@ -1,7 +1,24 @@
+require 'sidekiq/web'
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
+  resources :tweets
+
+  # Jumpstart views
   mount Jumpstart::Engine, at: '/jumpstart'
+
+  # Administrate
+  authenticate :user, lambda { |u| u.admin? } do
+    namespace :admin do
+      mount Sidekiq::Web => '/sidekiq'
+
+      resources :users
+      resources :subscriptions
+      resources :charges
+
+      root to: "users#index"
+    end
+  end
 
   # User account
   devise_for :users,

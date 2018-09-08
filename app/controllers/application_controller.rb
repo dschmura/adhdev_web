@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
     helper_method :browser_time_zone
 
     def configure_permitted_parameters
-      extra_keys = [:avatar, :name, :time_zone]
-      devise_parameter_sanitizer.permit(:sign_up,           keys: extra_keys)
+      extra_keys  = [:avatar, :name, :time_zone]
+      signup_keys = extra_keys + [:terms_of_service]
+      devise_parameter_sanitizer.permit(:sign_up,           keys: signup_keys)
       devise_parameter_sanitizer.permit(:account_update,    keys: extra_keys)
       devise_parameter_sanitizer.permit(:accept_invitation, keys: extra_keys)
     end
