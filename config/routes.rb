@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   devise_for :users,
              controllers: {
                masquerades: 'jumpstart/masquerades',
-               omniauth_callbacks: 'jumpstart/omniauth_callbacks',
+               omniauth_callbacks: 'users/omniauth_callbacks',
                registrations: 'users/registrations',
              }
 
@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   resource :card
   resource :subscription do
     patch :resume
+  end
+
+  namespace :user, module: :users do
+    resources :connected_accounts
   end
 
   scope controller: :static do

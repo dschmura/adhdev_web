@@ -1,0 +1,30 @@
+<div class="flex">
+  <div class="w-1/4 p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="w-3/4 p-4">
+    <h1>Connected Accounts</h1>
+
+    <% Jumpstart.config.omniauth_providers.map(&:to_s).each do |provider| %>
+      <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider } %>
+      <hr class="border-b" />
+
+      <div class="my-4">
+        <h4><%= provider.titleize %></h4>
+
+        <% if connected_accounts.any? %>
+          <div>
+            <% connected_accounts.each do |connected_account| %>
+              <%= connected_account.auth["info"]["nickname"] %> Connected
+              <%= link_to "Disconnect", connected_account, method: :delete, data: { disable_with: "Are you sure?" } %>
+            <% end %>
+          </div>
+
+        <% else %>
+          <%= link_to "Connect", omniauth_authorize_path(:user, provider), data: { disable_with: "Redirecting..." } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

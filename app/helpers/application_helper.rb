@@ -13,4 +13,15 @@ module ApplicationHelper
       "https://secure.gravatar.com/avatar/#{hash}.png?height=#{size}&width=#{size}"
     end
   end
+
+  def nav_link_to(title, path, options={})
+    options[:class] = Array.wrap(options[:class])
+    active_class    = options.delete(:active_class) || "active"
+    inactive_class  = options.delete(:inactive_class) || ""
+
+    classes         = (request.path == path) ? active_class : inactive_class
+    options[:class] << classes
+
+    link_to title, path, options
+  end
 end

@@ -1,4 +1,6 @@
 class User::ConnectedAccount < ApplicationRecord
+  serialize :auth
+
   # Associations
   belongs_to :user
 
