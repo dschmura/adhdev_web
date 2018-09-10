@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :users
       resources :subscriptions
       resources :charges
+      resources :connected_accounts
 
       root to: "users#index"
     end
