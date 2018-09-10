@@ -16,7 +16,7 @@ class UserDashboard < Administrate::BaseDashboard
     password_confirmation: Field::Password.with_options(searchable: false),
     charges: Field::HasMany,
     subscriptions: Field::HasMany,
-    connected_accounts: Fields::HasMany,
+    connected_accounts: Field::HasMany,
     invited_by: Field::Polymorphic,
     avatar_attachment: Field::HasOne,
     avatar_blob: Field::HasOne,
