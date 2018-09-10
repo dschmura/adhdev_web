@@ -16,7 +16,7 @@ class UserDashboard < Administrate::BaseDashboard
     password_confirmation: Field::Password.with_options(searchable: false),
     charges: Field::HasMany,
     subscriptions: Field::HasMany,
-    connected_accounts: Field::HasMany,
+    connected_accounts: Field::HasMany.with_options(class_name: "User::ConnectedAccount"),
     invited_by: Field::Polymorphic,
     avatar_attachment: Field::HasOne,
     avatar_blob: Field::HasOne,
@@ -53,8 +53,9 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :email,
-    :charges,
     :subscriptions,
+    :charges,
+    :connected_accounts,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -64,6 +65,7 @@ class UserDashboard < Administrate::BaseDashboard
     :email,
     :charges,
     :subscriptions,
+    :connected_accounts,
     :time_zone,
     :invited_by,
     :avatar_attachment,
