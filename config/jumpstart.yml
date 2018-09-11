@@ -10,3 +10,37 @@ omniauth_providers:
 payment_processors:
 - :stripe
 - :paypal
+plans:
+  - name: Basic
+    frequency: monthly
+    stripe_id: basic-monthly
+    amount: 29
+    features:
+      - Feature 1
+      - Feature 2
+      - Feature 3
+  - name: Basic
+    frequency: yearly
+    stripe_id: basic-yearly
+    amount: 290
+    features:
+      - Feature 1
+      - Feature 2
+      - Feature 3
+
+  - name: Advanced
+    frequency: monthly
+    stripe_id: advanced-monthly
+    amount: 29
+    features:
+      - Feature 1
+      - Feature 2
+      - Feature 3
+  - name: Advanced
+    frequency: yearly
+    stripe_id: advanced-yearly
+    amount: 290
+    features:
+      - Feature 1
+      - Feature 2
+      - Feature 3

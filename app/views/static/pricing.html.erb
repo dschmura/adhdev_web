@@ -1,0 +1,47 @@
+<h1>Pricing</h1>
+<p class="text-xl">Simple, straightforward pricing to get your online business up and running</p>
+
+<hr />
+
+<div data-controller="pricing" data-pricing-plans-class="flex hidden" data-pricing-frequency-class="bg-white rounded-full text-black">
+  <div class="inline-block rounded-full bg-blue-dark py-2 px-1 text-white mb-4">
+    <a data-action="click->pricing#switch" data-target="pricing.monthlyFrequency" data-show="monthly" class="cursor-pointer py-2 px-4 bg-white rounded-full text-black">Monthly</a>
+    <a data-action="click->pricing#switch" data-target="pricing.yearlyFrequency" data-show="yearly" class="cursor-pointer py-2 px-4"> Yearly</a>
+  </div>
+
+  <div data-target="pricing.monthlyPlans" class="flex -mx-4">
+    <% Jumpstart.config.monthly_plans.each do |plan| %>
+      <div class="flex-1 text-center border shadow m-4 p-16">
+        <h2><%= plan["name"] %></h2>
+        <p><%= number_to_currency plan["amount"], precision: 0 %>/mo</p>
+
+        <div class="text-left">
+          <% plan["features"].each do |plan_feature| %>
+            <hr class="border-b" />
+            <%= plan_feature %>
+          <% end %>
+        </div>
+
+        <%= link_to "Get Started", new_user_registration_path, class: "btn btn-rounded btn-lg btn-blue" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div data-target="pricing.yearlyPlans" class="hidden -mx-4">
+    <% Jumpstart.config.yearly_plans.each do |plan| %>
+      <div class="flex-1 text-center border shadow m-4 p-16">
+        <h2><%= plan["name"] %></h2>
+        <p><%= number_to_currency plan["amount"], precision: 0 %>/year</p>
+
+        <div class="text-left">
+          <% plan["features"].each do |plan_feature| %>
+            <hr class="border-b" />
+            <%= plan_feature %>
+          <% end %>
+        </div>
+
+        <%= link_to "Get Started", new_user_registration_path, class: "btn btn-rounded btn-lg btn-blue" %>
+      </div>
+    <% end %>
+  </div>
+</div>

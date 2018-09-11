@@ -1,0 +1,39 @@
+<div class="flex">
+  <div class="w-1/4 p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="w-3/4 p-4">
+    <h1>Billing</h1>
+
+    <h3>Current Plan</h3>
+    <p>Review or change your <%= Jumpstart.config.application_name %> plan.</p>
+
+    <% if current_user.subscribed? %>
+    <% else %>
+      <p>You are not currently subscribed.</p>
+    <% end %>
+
+    <hr class="border-b" />
+
+    <h3>Payment Method</h3>
+    <p>Your card is stored securely on file to make future purchases as easy as possible.</p>
+
+    <% if current_user.processor == "stripe" && current_user.card_brand? %>
+      <p><%= current_user.card_brand %> ending in <%= current_user.card_last4 %></p>
+    <% elsif current_user.processor == "braintree" && current_user.card_brand? %>
+      <p><%= current_user.card_brand %> ending in <%= current_user.card_last4 %></p>
+    <% else %>
+      <p>You have no card on file.</p>
+    <% end %>
+
+    <hr class="border-b" />
+
+    <h3>Invoices</h3>
+    <p>Your history of transactions and payments.</p>
+
+    <% current_user.charges.each do |charge| %>
+      <%= link_to charge.created_at.strftime("%B %e, %Y"), charge_path(charge, format: :pdf) %> - <%= number_to_currency charge.amount / 100 %>
+    <% end %>
+  </div>
+</div>

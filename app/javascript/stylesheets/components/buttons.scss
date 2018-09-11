@@ -1,0 +1,44 @@
+.btn {
+  @apply font-bold py-2 px-4 rounded no-underline;
+}
+
+.btn-rounded {
+  @apply rounded-full;
+}
+
+.btn-lg {
+  @apply py-3 px-6;
+}
+
+.btn-blue {
+  @apply bg-blue text-white;
+
+  &:hover{
+    @apply bg-blue-dark;
+  }
+}
+
+.btn-red {
+  @apply bg-red text-white;
+
+  &:hover{
+    @apply bg-red-dark;
+  }
+}
+
+.btn-green {
+  @apply bg-green text-white;
+
+  &:hover{
+    @apply bg-green-dark;
+  }
+}
+
+.btn-grey {
+  @apply bg-grey-dark text-white;
+
+  &:hover{
+    @apply bg-grey-darker;
+  }
+}
+

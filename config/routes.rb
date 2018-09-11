@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resource :subscription do
     patch :resume
   end
+  resources :charges
 
   namespace :user, module: :users do
     resources :connected_accounts
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
     get :about
     get :terms
     get :privacy
+    get :pricing
   end
 
   root to: "static#index"
