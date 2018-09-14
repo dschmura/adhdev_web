@@ -4,18 +4,44 @@
   <%= link_to "Get Started", new_user_registration_path %>
 <% end %>
 
+<hr class="border-b" />
+
+<h4>Buttons</h4>
+<p class="mb-2">
+  <button class="btn btn-grey">Button</button>
+  <button class="btn btn-red">Button</button>
+  <button class="btn btn-blue">Button</button>
+  <button class="btn btn-green">Button</button>
+</p>
+
+<p class="mb-2">
+  <button class="btn btn-sm btn-grey">Button</button>
+  <button class="btn btn-grey">Button</button>
+  <button class="btn btn-lg btn-grey">Button</button>
+</p>
+
+<p class="mb-2">
+  <button class="btn btn-block btn-grey">Block Button</button>
+</p>
+
+<hr class="border-b" />
+
+<h4>Modals</h4>
 
 <div data-controller="modal">
-  <button data-action="click->modal#open">Open Modal</button>
+  <button class="btn btn-grey" data-action="click->modal#open">Open Modal</button>
 
   <div data-target="modal.container" class="hidden">
     <div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, .5);">
       <div data-target="modal.background" data-action="click->modal#closeBackground" class="table-cell align-middle">
 
-        <div class="bg-white w-64 mx-auto rounded shadow p-8">
+        <div class="bg-white mx-auto rounded shadow p-8" style="width:480px">
           <h2>Content</h2>
-          <button>Does nothing</button>
-          <button data-action="click->modal#close">Close</button>
+          <p>This is an example modal dialog box.</p>
+          <div class="text-right">
+            <button class="btn btn-sm btn-grey">Does nothing</button>
+            <button class="btn btn-grey" data-action="click->modal#close">Close</button>
+          </div>
         </div>
 
       </div>

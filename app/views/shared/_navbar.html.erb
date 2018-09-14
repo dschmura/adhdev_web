@@ -17,7 +17,7 @@
   </div>
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
-      <%= link_to "Pricing", pricing_path, class: "block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4" %>
+      <%= link_to "Pricing", pricing_path, class: "block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4" unless user_signed_in? && current_user.subscribed? %>
       <% Jumpstart.config.nav_resources.each do |title, controller| %>
         <%= link_to title, url_for(action: :index, controller: controller), class: "block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4" %>
       <% end %>
@@ -47,7 +47,7 @@
 
       <% else %>
         <%= link_to 'Log In', new_user_session_path, class: 'inline-block text-sm px-4 py-3 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'inline-block font-bold text-sm px-4 py-2 leading-none border rounded no-underline text-white bg-green hover:bg-green-dark mt-4 lg:mt-0' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-green mt-4 lg:mt-0' %>
       <% end %>
     </div>
 

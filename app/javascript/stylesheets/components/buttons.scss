@@ -1,5 +1,17 @@
 .btn {
-  @apply font-bold py-2 px-4 rounded no-underline;
+  @apply py-2 px-4 rounded no-underline;
+}
+
+.btn-sm {
+  @apply text-sm py-1 px-2;
+}
+
+.btn-lg {
+  @apply text-lg;
+}
+
+.btn-block {
+  @apply block w-full;
 }
 
 .btn-rounded {
@@ -35,10 +47,10 @@
 }
 
 .btn-grey {
-  @apply bg-grey-dark text-white;
+  @apply bg-grey-light text-grey-darkest;
 
   &:hover{
-    @apply bg-grey-darker;
+    @apply bg-grey;
   }
 }
 
