@@ -1,19 +1,21 @@
-<% content_for :braintree_javascript do %>
+<% content_for :stripe_javascript do %>
   <%= tag :meta,
             name: "stripe-key",
-            content: Rails.application.credentials.development.dig(:stripe, :public_key) %>
+            content: Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public_key) %>
   <%= javascript_include_tag 'https://js.stripe.com/v3/', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag    'stripe', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<div class="form-row">
+<div class="form-group">
   <label for="card-element">
     Credit or debit card
   </label>
-  <div id="card-element">
+  <div id="card-element" class="form-control">
     <!-- a Stripe Element will be inserted here. -->
   </div>
 
   <!-- Used to display Element errors -->
   <div id="card-errors" role="alert"></div>
 </div>
+
+<%= f.hidden_field :plan, value: @plan["stripe_id"] if @plan.present? %>

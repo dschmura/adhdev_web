@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   # Payments
   resource :card
   resource :subscription do
+    patch :info
     patch :resume
   end
   resources :charges

@@ -24,33 +24,56 @@
 
 .btn-blue {
   @apply bg-blue text-white;
-
   &:hover{
     @apply bg-blue-dark;
   }
 }
 
+.btn-outline-blue {
+  @apply border border-blue text-blue;
+  &:hover {
+    @apply bg-blue text-white;
+  }
+}
+
 .btn-red {
   @apply bg-red text-white;
-
   &:hover{
     @apply bg-red-dark;
   }
 }
 
+.btn-outline-red {
+  @apply border border-red text-red;
+  &:hover {
+    @apply bg-red text-white;
+  }
+}
+
 .btn-green {
   @apply bg-green text-white;
-
   &:hover{
     @apply bg-green-dark;
   }
 }
 
+.btn-outline-green {
+  @apply border border-green text-green;
+  &:hover {
+    @apply bg-green text-white;
+  }
+}
+
 .btn-grey {
   @apply bg-grey-light text-grey-darkest;
-
   &:hover{
     @apply bg-grey;
   }
 }
 
+.btn-outline-grey {
+  @apply border border-grey-darker text-grey-darker;
+  &:hover {
+    @apply bg-grey-darker text-white;
+  }
+}

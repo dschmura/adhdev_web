@@ -7,3 +7,5 @@
                 nil,
                 id: 'dropin-container',
                 data: { client_token: Pay.braintree_gateway.client_token.generate  } %>
+
+<%= f.hidden_field :plan, value: @plan["braintree_id"] if @plan.present? %>

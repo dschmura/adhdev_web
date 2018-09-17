@@ -1,7 +1,6 @@
 --- !ruby/object:Jumpstart::Configuration
 application_name: My New App
 background_job_processor: sidekiq
-cancel_immediately: '1'
 email_provider: sendgrid
 omniauth_providers:
 - :facebook
@@ -11,33 +10,36 @@ payment_processors:
 - :stripe
 - :paypal
 plans:
-  - name: Basic
-    frequency: monthly
-    stripe_id: basic-monthly
+  - id: 1
+    name: Basic
+    interval: month
+    stripe_id: default
     amount: 29
     features:
       - Feature 1
       - Feature 2
       - Feature 3
-  - name: Basic
-    frequency: yearly
+  - id: 2
+    name: Basic
+    interval: year
     stripe_id: basic-yearly
     amount: 290
     features:
       - Feature 1
       - Feature 2
       - Feature 3
-
-  - name: Advanced
-    frequency: monthly
-    stripe_id: advanced-monthly
+  - id: 3
+    name: Advanced
+    interval: month
+    stripe_id: big
     amount: 29
     features:
       - Feature 1
       - Feature 2
       - Feature 3
-  - name: Advanced
-    frequency: yearly
+  - id: 4
+    name: Advanced
+    interval: year
     stripe_id: advanced-yearly
     amount: 290
     features:

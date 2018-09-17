@@ -1,10 +1,13 @@
 class SubscriptionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :require_user
+  before_action :set_plan, only: [:new]
+  before_action :set_subscription, only: [:edit, :update]
 
   def show
   end
 
-  def new; end
+  def new
+  end
 
   def create
     current_user.card_token = token
@@ -18,14 +21,14 @@ class SubscriptionsController < ApplicationController
   def edit; end
 
   def update
-    current_user.subscription.swap(plan)
-    redirect_to edit_subscription_path
+    @subscription.swap(plan)
+    redirect_to subscription_path
   end
 
   def resume
     current_user.subscription.resume
     flash[:notice] = 'Subscription Resumed'
-    redirect_to edit_subscription_path
+    redirect_to subscription_path
   end
 
   def destroy
@@ -35,7 +38,12 @@ class SubscriptionsController < ApplicationController
       current_user.subscription.cancel
     end
 
-    redirect_to edit_subscription_path
+    redirect_to subscription_path
+  end
+
+  def info
+    current_user.update(subscription_params)
+    redirect_to subscription_path, notice: "Extra billing info saved sucessfully."
   end
 
   private
@@ -49,10 +57,23 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:user).permit(:card_token, :plan, :processor)
+    params.require(:user).permit(:card_token, :plan, :processor, :extra_billing_info)
   end
 
   def token
     subscription_params.fetch('card_token')
+  end
+
+  def require_user
+    redirect_to new_user_registration_path unless user_signed_in?
+  end
+
+  def set_plan
+    @plan = Jumpstart.find_plan(params[:plan])
+    redirect_to pricing_path if @plan.nil?
+  end
+
+  def set_subscription
+    @subscription = current_user.subscription
   end
 end

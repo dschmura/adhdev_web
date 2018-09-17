@@ -1,10 +1,43 @@
-<%= form_for current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
-  <% if Jumpstart.config.stripe? %>
-    <%= render 'cards/fields/stripe' %>
-  <% end %>
-  <% if Jumpstart.config.braintree? %>
-    <%= render 'cards/fields/braintree' %>
-  <% end %>
-  <%= f.hidden_field :plan, value: params.fetch('plan', 'default') %>
-  <%= f.button 'Go Charge Yourself', id: 'submit-button' %>
-<% end %>
+<div class="shadow-lg rounded-lg flex w-3/4 mx-auto mt-8">
+  <div class="w-2/3 p-8">
+    <h1>Checkout</h1>
+
+    <hr class="border-b my-8" />
+
+    <%= form_for current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
+      <%= render 'cards/fields/stripe',    f: f if Jumpstart.config.stripe?%>
+      <%= render 'cards/fields/braintree', f: f if Jumpstart.config.braintree?%>
+
+      <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-green btn-lg btn-block", data: { disable_with: disable_with("Processing...") } %>
+    <% end %>
+
+    <div class="text-sm text-center mt-8">
+      <i class="far fa-question-circle text-blue-dark"></i> Need any help? <span class="text-grey-darker">Don't hesitate to <%= link_to "contact support", "#", class: "text-grey-darker" %>!</span>
+    </div>
+  </div>
+
+  <div class="w-1/3 p-8 bg-blue-dark text-white rounded-r-lg">
+    <div class="text-lg"><%= @plan["name"] %></div>
+
+    <div>
+      <sup class="text-xl">$</sup>
+      <span class="text-5xl"><%= @plan["amount"] %></span>
+      <span class="text-lg">/ <%= @plan["interval"] %></span>
+    </div>
+    <div>Automatically renews<br/> after 1 <%= @plan["interval"] %></div>
+
+    <br />
+
+    <% @plan["features"].each do |feature| %>
+      <div class="mb-2"><i class="far fa-check-circle text-blue-lighter"></i> <%= feature %></div>
+    <% end %>
+
+    <hr class="my-8 border-b border-blue-light" />
+
+    <div class="mb-1">I've never found anything easier to use than <%= Jumpstart.config.application_name %>!</div>
+    <div class="flex items-center pt-2">
+      <img class="block h-8 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4" alt="">
+      <p class="leading-tight">Adam Wathan</p>
+    </div>
+  </div>
+</div>

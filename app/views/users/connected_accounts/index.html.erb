@@ -14,15 +14,17 @@
         <h4><%= provider.titleize %></h4>
 
         <% if connected_accounts.any? %>
-          <div>
-            <% connected_accounts.each do |connected_account| %>
-              <%= connected_account.auth["info"]["nickname"] %> Connected
-              <%= link_to "Disconnect", connected_account, method: :delete, data: { disable_with: "Are you sure?" } %>
-            <% end %>
-          </div>
+          <% connected_accounts.each do |connected_account| %>
+            <div class="flex">
+              <div class="flex-1"><%= connected_account.auth["info"]["nickname"] %> Connected</div>
+              <div><%= button_to "Disconnect", connected_account, method: :delete, class: "btn btn-grey" %></div>
+            </div>
+          <% end %>
 
         <% else %>
-          <%= link_to "Connect", omniauth_authorize_path(:user, provider), data: { disable_with: "Redirecting..." } %>
+          <div class="text-right">
+            <%= button_to "Connect", omniauth_authorize_path(:user, provider), class: "btn btn-grey"%>
+          </div>
         <% end %>
       </div>
     <% end %>

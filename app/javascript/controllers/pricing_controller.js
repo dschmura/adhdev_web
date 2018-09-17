@@ -17,7 +17,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "monthlyFrequency", "yearlyFrequency", "monthlyPlans", "yearlyPlans" ]
+  static targets = [ "monthlyToggle", "yearlyToggle", "monthlyPlans", "yearlyPlans" ]
 
   connect() {
     this.plansClass     = (this.data.get("plansClass") || "hidden").split(" ")
@@ -31,12 +31,12 @@ export default class extends Controller {
 
   _toggle(frequency) {
     if (frequency == "monthly") {
-      this.monthlyFrequencyTarget.classList.add(...this.frequencyClass)
-      this.yearlyFrequencyTarget.classList.remove(...this.frequencyClass)
+      this.monthlyToggleTarget.classList.add(...this.frequencyClass)
+      this.yearlyToggleTarget.classList.remove(...this.frequencyClass)
 
     } else {
-      this.monthlyFrequencyTarget.classList.remove(...this.frequencyClass)
-      this.yearlyFrequencyTarget.classList.add(...this.frequencyClass)
+      this.monthlyToggleTarget.classList.remove(...this.frequencyClass)
+      this.yearlyToggleTarget.classList.add(...this.frequencyClass)
     }
 
     this.plansClass.forEach(klass => {

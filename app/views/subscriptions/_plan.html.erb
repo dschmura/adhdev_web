@@ -1,0 +1,17 @@
+<div class="flex-1 text-center border shadow m-4 p-16">
+  <h2><%= plan["name"] %></h2>
+  <div>
+    <sup class="text-xl">$</sup>
+    <span class="text-5xl"><%= plan["amount"] %></span>
+    <span class="text-lg">/ <%= plan["interval"] %></span>
+  </div>
+
+  <div class="text-left my-8">
+    <% plan["features"].each do |plan_feature| %>
+      <hr class="border-b" />
+      <%= plan_feature %>
+    <% end %>
+  </div>
+
+  <%= yield %>
+</div>

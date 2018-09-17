@@ -5,46 +5,44 @@
   </div>
 <% end %>
 
-<% if current_user.subscription.cancelled? %>
-  <% if current_user.subscription.on_grace_period? %>
-    Your subscription ends: <%= current_user.subscription.ends_at %>
+<h1>Change Your Plan</h1>
+<p class="text-xl">Simple, straightforward pricing to get your online business up and running</p>
 
-    <%= form_for current_user, url: resume_subscription_url, method: :patch do |f| %>
-      <%= f.button 'Resume Subscription' %>
+<hr />
+
+<div data-controller="pricing" data-pricing-plans-class="flex hidden" data-pricing-interval-class="bg-white text-black">
+  <div class="inline-block rounded-full bg-blue-dark py-2 px-1 text-white mb-4">
+    <a data-action="click->pricing#switch" data-target="pricing.monthlyToggle" data-show="monthly" class="cursor-pointer py-2 px-4 bg-white rounded-full text-black">Monthly</a>
+    <a data-action="click->pricing#switch" data-target="pricing.yearlyToggle" data-show="yearly" class="cursor-pointer py-2 px-4 rounded-full"> Yearly</a>
+  </div>
+
+  <div data-target="pricing.monthlyPlans" class="flex -mx-4">
+    <% Jumpstart.config.monthly_plans.each do |plan| %>
+      <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
+        <% if @subscription.jumpstart_plan == plan %>
+          <div class="btn btn-rounded btn-lg btn-grey">Current Plan</div>
+        <% else %>
+          <%= form_for current_user, url: subscription_url do |f| %>
+            <%= f.hidden_field :plan, value: Jumpstart.processor_plan_id_for(plan["id"], current_user.processor) %>
+            <%= f.button 'Change Plan', class: "btn btn-rounded btn-lg btn-blue" %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
+  </div>
 
-  <% else %>
-    <p>Your subscription has ended. Would you like to <%= link_to "resubscribe", new_subscription_path %>?</p>
-  <% end %>
-
-
-<% elsif current_user.subscription.active? %>
-  <h4>Change Plan</h4>
-  <%= form_for current_user, url: subscription_url do |f| %>
-    <div>
-      <label>
-        <%= f.radio_button :plan, 'big', checked: current_user.subscribed?(processor_plan: 'big') %>
-        $20
-      </label>
-    </div>
-    <div>
-      <label>
-        <%= f.radio_button :plan, 'default', checked: current_user.subscribed?(processor_plan: 'default') %>
-        $10
-      </label>
-    </div>
-
-    <div>
-      <label>
-        <%= f.radio_button :plan, 'yearly-big', checked: current_user.subscribed?(processor_plan: 'yearly-big') %>
-        $100
-      </label>
-    </div>
-    <%= f.button 'Change Plan' %>
-  <% end %>
-
-  <h4>Cancel</h4>
-  <%= form_for current_user, url: subscription_url, method: :delete do |f| %>
-    <%= f.button 'Cancel Subscription' %>
-  <% end %>
-<% end %>
+  <div data-target="pricing.yearlyPlans" class="hidden -mx-4">
+    <% Jumpstart.config.yearly_plans.each do |plan| %>
+      <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
+        <% if @subscription.jumpstart_plan == plan %>
+          <div class="btn btn-rounded btn-lg btn-grey">Current Plan</div>
+        <% else %>
+          <%= form_for current_user, url: subscription_url do |f| %>
+            <%= f.hidden_field :plan, value: Jumpstart.processor_plan_id_for(plan["id"], current_user.processor) %>
+            <%= f.button 'Change Plan', class: "btn btn-rounded btn-lg btn-blue" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

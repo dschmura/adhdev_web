@@ -3,8 +3,7 @@ class CardsController < ApplicationController
 
   def update
     current_user.update_card(token)
-    flash[:notice] = 'Card Updated'
-    redirect_to edit_card_path
+    redirect_to subscription_path, notice: "Your card was updated successfully."
   end
 
   private

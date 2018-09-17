@@ -30,18 +30,17 @@ export default class extends Controller {
     this.toggleClass = this.data.get("class") || "hidden"
   }
 
-  open() {
+  open(e) {
+    e.preventDefault()
     this.containerTarget.classList.remove(this.toggleClass)
   }
 
-  close() {
+  close(e) {
+    e.preventDefault()
     this.containerTarget.classList.add(this.toggleClass)
   }
 
   closeBackground(e) {
-    console.log(e.target)
-    console.log(this.backgroundTarget)
-
     if (e.target == this.backgroundTarget) { this.close() }
   }
 }
