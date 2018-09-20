@@ -1,11 +1,15 @@
 require 'sidekiq/web'
-# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
   resources :tweets
 
   # Jumpstart views
-  mount Jumpstart::Engine, at: '/jumpstart'
+  if Rails.env.development?
+    mount Jumpstart::Engine, at: '/jumpstart'
+    namespace :docs do
+      resource :javascript
+    end
+  end
 
   # Administrate
   authenticate :user, lambda { |u| u.admin? } do

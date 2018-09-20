@@ -55,16 +55,22 @@
 
       <div class="flex" data-controller="toggle">
         <div class="flex-1">
-          <i class="fab fa-cc-<%= current_user.card_brand.downcase %>"></i> <%= current_user.card_brand %> ending in <%= current_user.card_last4 %>
+          <i class="fab fa-cc-<%= current_user.card_brand.downcase %>"></i> <%= payment_method_details %>
 
-          <%= form_with model: current_user, url: card_url, html: { id: 'payment_form', class: 'hidden mt-4', data: { target: "toggle.toggleable" } } do |f| %>
-            <%= render 'cards/fields/stripe', f: f if Jumpstart.config.stripe? %>
-            <%= render 'cards/fields/braintree', f: f if Jumpstart.config.braintree? %>
-            <%= f.button 'Update Card', class: "btn btn-grey", data: { disable_with: disable_with("Saving...") } %>
+          <% if !current_user.paypal? %>
+            <%= form_with model: current_user, url: card_url, html: { id: 'payment_form', class: 'hidden mt-4', data: { target: "toggle.toggleable" } } do |f| %>
+              <%= render 'cards/fields/stripe',    f: f if Jumpstart.config.stripe? %>
+              <%= render 'cards/fields/braintree', f: f if Jumpstart.config.braintree? %>
+              <%= f.button 'Update Card', class: "btn btn-grey", data: { disable_with: disable_with("Saving...") } %>
+            <% end %>
           <% end %>
         </div>
         <div>
-          <%= link_to "Use a new card", "#", class: "text-grey-darker", data: { action: "click->toggle#toggle" } %>
+          <% if current_user.paypal? %>
+            <%= link_to "Change source", "https://www.paypal.com/us/smarthelp/article/faq1414", target: "_blank", rel: "nofollow noopener" %>
+          <% else %>
+            <%= link_to "Use a new card", "#", class: "text-grey-darker", data: { action: "click->toggle#toggle" } %>
+          <% end %>
         </div>
       </div>
 
@@ -116,7 +122,7 @@
         </div>
         <div>
           <%= form_for current_user, url: subscription_url, method: :delete do |f| %>
-            <%= f.button 'Cancel Subscription', class: "btn btn-outline-grey" %>
+            <%= f.button 'Cancel Subscription', class: "btn btn-outline-grey", data: { confirm: "Are you sure?", disable_with: disable_with("Cancelling..") } %>
           <% end %>
         </div>
       </div>

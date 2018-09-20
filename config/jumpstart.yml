@@ -9,11 +9,13 @@ omniauth_providers:
 payment_processors:
 - :stripe
 - :paypal
+- :braintree
 plans:
   - id: 1
     name: Basic
     interval: month
     stripe_id: default
+    braintree_id: default
     amount: 29
     features:
       - Feature 1
@@ -32,6 +34,7 @@ plans:
     name: Advanced
     interval: month
     stripe_id: big
+    braintree_id: big
     amount: 29
     features:
       - Feature 1
@@ -41,6 +44,7 @@ plans:
     name: Advanced
     interval: year
     stripe_id: advanced-yearly
+    braintree_id: yearly-big
     amount: 290
     features:
       - Feature 1

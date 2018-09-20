@@ -10,8 +10,12 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    # Get the Stripe or Braintree specific ID
+    plan_id = Jumpstart.processor_plan_id_for(plan, processor)
+
     current_user.card_token = token
-    current_user.subscribe(plan, plan, processor)
+    current_user.subscribe('default', plan_id, processor)
+
     redirect_to root_path
   rescue Stripe::CardError => e
     flash[:alert] = e.message
@@ -21,14 +25,14 @@ class SubscriptionsController < ApplicationController
   def edit; end
 
   def update
-    @subscription.swap(plan)
+    plan_id = Jumpstart.processor_plan_id_for(plan, @subscription.processor)
+    @subscription.swap(plan_id)
     redirect_to subscription_path
   end
 
   def resume
     current_user.subscription.resume
-    flash[:notice] = 'Subscription Resumed'
-    redirect_to subscription_path
+    redirect_to subscription_path, notice: "Your subscription has been resumed."
   end
 
   def destroy
