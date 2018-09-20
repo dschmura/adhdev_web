@@ -32,14 +32,29 @@ export default class extends Controller {
 
   open(e) {
     e.preventDefault()
+
+    // Add right padding to the body so the page doesn't shift
+    // when we disable scrolling
+    let scrollbarWidth  = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.paddingRight = `${scrollbarWidth}px`
+
+    // Set overflow hidden to prevent scrolling of background
+    // This must happen after the scrollbar calculation
+    document.body.style.overflow = 'hidden'
+
+    // Unhide the modal
     this.containerTarget.classList.remove(this.toggleClass)
-    document.body.classList.add("overflow-hidden")
   }
 
   close(e) {
     e.preventDefault()
+
+    // Remove tweaks for scrollbar
+    document.body.style.paddingRight = null
+    document.body.style.overflow = null
+
+    // Hide the modal
     this.containerTarget.classList.add(this.toggleClass)
-    document.body.classList.remove("overflow-hidden")
   }
 
   closeBackground(e) {
