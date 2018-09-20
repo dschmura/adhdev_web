@@ -4,7 +4,7 @@
 // This example controller works with specially annotated HTML like:
 //
 //<div class="relative" data-controller="dropdown">
-  //<div data-action="click->dropdown#toggle" role="button" class="inline-block select-none">
+  //<div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" class="inline-block select-none">
     //Open Dropdown
   //</div>
   //<div data-target="dropdown.menu" class="absolute pin-r mt-2 hidden">
@@ -25,5 +25,11 @@ export default class extends Controller {
 
   toggle() {
     this.menuTarget.classList.toggle(this.toggleClass)
+  }
+
+  hide() {
+    if (this.element.contains(event.target) == false) {
+      this.menuTarget.classList.add(this.toggleClass);
+    }
   }
 }
