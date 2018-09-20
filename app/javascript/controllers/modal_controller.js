@@ -33,14 +33,16 @@ export default class extends Controller {
   open(e) {
     e.preventDefault()
     this.containerTarget.classList.remove(this.toggleClass)
+    document.body.classList.add("overflow-hidden")
   }
 
   close(e) {
     e.preventDefault()
     this.containerTarget.classList.add(this.toggleClass)
+    document.body.classList.remove("overflow-hidden")
   }
 
   closeBackground(e) {
-    if (e.target == this.backgroundTarget) { this.close() }
+    if (e.target == this.backgroundTarget) { this.close(e) }
   }
 }
