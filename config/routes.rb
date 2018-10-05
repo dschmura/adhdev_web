@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
   resources :tweets
 
@@ -14,7 +12,10 @@ Rails.application.routes.draw do
   # Administrate
   authenticate :user, lambda { |u| u.admin? } do
     namespace :admin do
-      mount Sidekiq::Web => '/sidekiq'
+      if defined?(Sidekiq)
+        require 'sidekiq/web'
+        mount Sidekiq::Web => '/sidekiq'
+      end
 
       resources :users
       resources :subscriptions
