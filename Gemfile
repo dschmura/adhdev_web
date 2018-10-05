@@ -71,6 +71,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+if File.exists?("config/jumpstart/Gemfile")
+  eval_gemfile "config/jumpstart/Gemfile"
+end
+
 gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
 gem 'mini_magick', '~> 4.8'
 gem 'name_of_person', '~> 1.0'
