@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Jumpstart views
   if Rails.env.development?
     mount Jumpstart::Engine, at: '/jumpstart'
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
     namespace :docs do
       resource :javascript
     end
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
-  scope module: :users do
+  namespace :users do
     resource :password
   end
 

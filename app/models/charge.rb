@@ -11,11 +11,11 @@ class Charge < ApplicationRecord
   def receipt
     Receipts::Receipt.new(
       id: id,
-      product: "HatchBox",
+      product: Jumpstart.config.application_name,
       company: {
-        name: "GoRails, LLC",
-        address: "4411 Vista Ave\nSt. Louis, MO 63110\nUnited States",
-        email: "chris@gorails.com",
+        name: Jumpstart.config.business_name,
+        address: Jumpstart.config.business_address,
+        email: Jumpstart.config.support_email,
         #logo: Rails.root.join("app/assets/images/logo.png")
       },
       line_items: line_items,
@@ -26,7 +26,7 @@ class Charge < ApplicationRecord
     line_items = [
       ["Date",           created_at.to_s],
       ["Account Billed", "#{owner.name} (#{owner.email})"],
-      ["Product",        "HatchBox"],
+      ["Product",        Jumpstart.config.application_name],
       ["Amount",         ActionController::Base.helpers.number_to_currency(amount / 100.0)],
       ["Charged to",     "#{card_type} (**** **** **** #{card_last4})"],
     ]
