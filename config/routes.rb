@@ -37,9 +37,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
-  namespace :users do
-    resource :password
-  end
+  resource :password
 
   # Payments
   resource :card
