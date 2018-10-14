@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     # Get the Stripe or Braintree specific ID
-    plan_id = Jumpstart.processor_plan_id_for(plan, processor)
+    plan_id = Jumpstart.processor_plan_id_for(plan, subscription_params.fetch("interval"), processor)
 
     current_user.card_token = token
     current_user.subscribe('default', plan_id, processor)
@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
   def edit; end
 
   def update
-    plan_id = Jumpstart.processor_plan_id_for(plan, @subscription.processor)
+    plan_id = Jumpstart.processor_plan_id_for(plan, subscription_params.fetch("interval"), @subscription.processor)
     @subscription.swap(plan_id)
     redirect_to subscription_path
   end
@@ -61,7 +61,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:user).permit(:card_token, :plan, :processor, :extra_billing_info)
+    params.require(:user).permit(:card_token, :plan, :interval, :processor, :extra_billing_info)
   end
 
   def token
@@ -74,6 +74,7 @@ class SubscriptionsController < ApplicationController
 
   def set_plan
     @plan = Jumpstart.find_plan(params[:plan])
+    @interval = params.fetch(:interval, "month")
     redirect_to pricing_path if @plan.nil?
   end
 

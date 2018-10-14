@@ -1,52 +1,41 @@
 --- !ruby/object:Jumpstart::Configuration
-application_name: My New App
-background_job_processor: sidekiq
-email_provider: sendgrid
-omniauth_providers:
-- :facebook
-- :github
-- :twitter
+application_name: Jumpstart
+business_name: Jumpstart Company, LLC
+domain: example.com
+support_email: support@example.com
+default_from_email: Jumpstart <support@example.com>
+business_address: ''
+background_job_processor: async
+cancel_immediately: '0'
+email_provider: ses
+omniauth_providers: []
 payment_processors:
 - :stripe
 - :paypal
-- :braintree
 plans:
-  - id: 1
-    name: Basic
-    interval: month
+- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  id: default
+  name: Basic
+  features:
+  - 'yes'
+  month: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    amount: '10'
     stripe_id: default
     braintree_id: default
-    amount: 29
-    features:
-      - Feature 1
-      - Feature 2
-      - Feature 3
-  - id: 2
-    name: Basic
-    interval: year
-    stripe_id: basic-yearly
-    amount: 290
-    features:
-      - Feature 1
-      - Feature 2
-      - Feature 3
-  - id: 3
-    name: Advanced
-    interval: month
+  year: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    amount: '100'
+    stripe_id: default-yearly
+    braintree_id: default-yearly
+- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+  id: big
+  name: Big
+  features:
+  - wat
+  month: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    amount: '20'
     stripe_id: big
     braintree_id: big
-    amount: 29
-    features:
-      - Feature 1
-      - Feature 2
-      - Feature 3
-  - id: 4
-    name: Advanced
-    interval: year
-    stripe_id: advanced-yearly
-    braintree_id: yearly-big
-    amount: 290
-    features:
-      - Feature 1
-      - Feature 2
-      - Feature 3
+  year: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+    amount: '200'
+    stripe_id: big-yearly
+    braintree_id: big-yearly
