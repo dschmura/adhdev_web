@@ -1,3 +1,5 @@
+ # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 Rails.application.routes.draw do
   resources :tweets
 
@@ -58,6 +60,10 @@ Rails.application.routes.draw do
     get :pricing
   end
 
+  authenticated :user do
+    root to: "dashboard#show"
+  end
+
+  # Public marketing homepage
   root to: "static#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

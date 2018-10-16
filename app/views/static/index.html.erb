@@ -1,5 +1,5 @@
-<h1>🙌 Welcome to Jumpstart</h1>
+<div class="my-8">
+  <h1>Welcome to Jumpstart</h1>
 
-<% unless user_signed_in? %>
-  <%= link_to "Get Started", new_user_registration_path %>
-<% end %>
+  <%= link_to "Get Started", new_user_registration_path, class: "btn btn-green" %>
+</div>
