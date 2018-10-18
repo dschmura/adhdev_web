@@ -76,10 +76,13 @@ if File.exists?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
 end
 
+# Jumpstart dependencies
 gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
-gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.2'
 gem 'name_of_person', '~> 1.0'
 gem 'receipts', '~> 0.2.2'
 gem 'turbolinks_render', '~> 0.9.1'
 gem 'webpacker', '>= 4.0.x'
-gem 'strong_migrations', '~> 0.2.3'
+
+# We always want the latest versions of these gems, so no version numbers
+gem 'strong_migrations'
