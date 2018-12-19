@@ -1,4 +1,4 @@
-<% content_for :stripe_javascript do %>
+<% content_for :head do %>
   <%= tag :meta,
             name: "stripe-key",
             content: Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public_key) %>

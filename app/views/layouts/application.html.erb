@@ -8,13 +8,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-    <%= yield(:braintree_javascript) %>
-    <%= yield(:stripe_javascript) %>
+    <%= yield :head %>
 
-    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="font-source-sans font-normal text-black leading-normal flex flex-col h-full">

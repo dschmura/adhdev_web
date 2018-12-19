@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     end
     helper_method :browser_time_zone
 
+    # To add extra fields to Devise registration, add the attribute names to `extra_keys`
     def configure_permitted_parameters
       extra_keys  = [:avatar, :name, :time_zone]
       signup_keys = extra_keys + [:terms_of_service]

@@ -1,7 +1,8 @@
 document.addEventListener("turbolinks:load", () => {
-  const stripeKey = document
-    .querySelector('meta[name="stripe-key"]')
-    .getAttribute("content");
+  const stripeMeta = document.querySelector('meta[name="stripe-key"]')
+  if (stripeMeta === null) { return }
+
+  const stripeKey = stripeMeta.getAttribute("content");
   let stripe = Stripe(stripeKey);
   let elements = stripe.elements();
   let card = elements.create("card");

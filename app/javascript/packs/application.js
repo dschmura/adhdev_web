@@ -7,18 +7,16 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import tippy from 'tippy.js'
-
 import "stylesheets/application"
-import "./timezone"
 
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
+import "controllers"
 
-const application = Application.start();
-const context = require.context("controllers", true, /.js$/);
-application.load(definitionsFromContext(context));
+import "src/timezone"
+import "src/payments/braintree"
+import "src/payments/stripe"
 
+import tippy from 'tippy.js'
 document.addEventListener("turbolinks:load", () => {
   tippy(document.querySelectorAll('[data-tooltip]'))
 })
+

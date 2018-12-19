@@ -1,6 +1,6 @@
 <%# https://developer.paypal.com/docs/checkout/how-to/braintree-integration/#1-set-up-your-client %>
 
-<% content_for :braintree_javascript do %>
+<% content_for :head do %>
   <%# Don't include this twice if we have Braintree enabled too %>
   <% if !Jumpstart.config.braintree? %>
     <%= javascript_include_tag 'https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js' %>

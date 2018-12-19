@@ -12,6 +12,7 @@ we've done our very best to explain each section.
 
 View the full documentation at https://tailwindcss.com.
 
+
 |-------------------------------------------------------------------------------
 | The default config
 |-------------------------------------------------------------------------------
@@ -23,7 +24,8 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-// let defaultConfig = require('tailwindcss/defaultConfig')()
+let defaultConfig = require('tailwindcss/defaultConfig')()
+
 
 /*
 |-------------------------------------------------------------------------------
@@ -144,6 +146,7 @@ module.exports = {
 
   colors: colors,
 
+
   /*
   |-----------------------------------------------------------------------------
   | Screens                      https://tailwindcss.com/docs/responsive-design
@@ -170,6 +173,7 @@ module.exports = {
     'xl': '1200px',
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Fonts                                    https://tailwindcss.com/docs/fonts
@@ -185,6 +189,7 @@ module.exports = {
   | provided by the platform.
   |
   | Class name: .font-{name}
+  | CSS property: font-family
   |
   */
 
@@ -222,8 +227,9 @@ module.exports = {
       'Liberation Mono',
       'Courier New',
       'monospace',
-    ]
+    ],
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -241,6 +247,7 @@ module.exports = {
   | prefer, be it rems, ems, pixels or other.
   |
   | Class name: .text-{size}
+  | CSS property: font-size
   |
   */
 
@@ -256,6 +263,7 @@ module.exports = {
     '5xl': '3rem',      // 48px
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Font weights                       https://tailwindcss.com/docs/font-weight
@@ -267,6 +275,7 @@ module.exports = {
   | all of these, so we recommend removing those you don't need.
   |
   | Class name: .font-{weight}
+  | CSS property: font-weight
   |
   */
 
@@ -282,6 +291,7 @@ module.exports = {
     'black': 900,
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Leading (line height)              https://tailwindcss.com/docs/line-height
@@ -291,6 +301,7 @@ module.exports = {
   | them in Tailwind, leadings.
   |
   | Class name: .leading-{size}
+  | CSS property: line-height
   |
   */
 
@@ -301,6 +312,7 @@ module.exports = {
     'loose': 2,
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Tracking (letter spacing)       https://tailwindcss.com/docs/letter-spacing
@@ -310,6 +322,7 @@ module.exports = {
   | them in Tailwind, tracking.
   |
   | Class name: .tracking-{size}
+  | CSS property: letter-spacing
   |
   */
 
@@ -318,6 +331,7 @@ module.exports = {
     'normal': '0',
     'wide': '0.05em',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -329,10 +343,12 @@ module.exports = {
   | independently if that makes sense for your project.
   |
   | Class name: .text-{color}
+  | CSS property: color
   |
   */
 
   textColors: colors,
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -344,10 +360,12 @@ module.exports = {
   | these independently if that makes sense for your project.
   |
   | Class name: .bg-{color}
+  | CSS property: background-color
   |
   */
 
   backgroundColors: colors,
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -359,6 +377,7 @@ module.exports = {
   | that are specific to your project here as well.
   |
   | Class name: .bg-{size}
+  | CSS property: background-size
   |
   */
 
@@ -367,6 +386,7 @@ module.exports = {
     'cover': 'cover',
     'contain': 'contain',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -378,6 +398,7 @@ module.exports = {
   | width that will be used when you do not specify a border width.
   |
   | Class name: .border{-side?}{-width?}
+  | CSS property: border-width
   |
   */
 
@@ -388,6 +409,7 @@ module.exports = {
     '4': '4px',
     '8': '8px',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -403,10 +425,12 @@ module.exports = {
   | specify a border color.
   |
   | Class name: .border-{color}
+  | CSS property: border-color
   |
   */
 
   borderColors: global.Object.assign({ default: colors['grey-light'] }, colors),
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -421,6 +445,7 @@ module.exports = {
   | a good idea to put it first so other values are able to override it.
   |
   | Class name: .rounded{-side?}{-size?}
+  | CSS property: border-radius
   |
   */
 
@@ -431,6 +456,7 @@ module.exports = {
     'lg': '.5rem',
     'full': '9999px',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -449,6 +475,7 @@ module.exports = {
   | awesome classes like .w-2/3.
   |
   | Class name: .w-{size}
+  | CSS property: width
   |
   */
 
@@ -481,8 +508,9 @@ module.exports = {
     '1/6': '16.66667%',
     '5/6': '83.33333%',
     'full': '100%',
-    'screen': '100vw'
+    'screen': '100vw',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -496,6 +524,7 @@ module.exports = {
   | needed.
   |
   | Class name: .h-{size}
+  | CSS property: height
   |
   */
 
@@ -517,8 +546,9 @@ module.exports = {
     '48': '12rem',
     '64': '16rem',
     'full': '100%',
-    'screen': '100vh'
+    'screen': '100vh',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -531,6 +561,7 @@ module.exports = {
   | these values as needed.
   |
   | Class name: .min-w-{size}
+  | CSS property: min-width
   |
   */
 
@@ -538,6 +569,7 @@ module.exports = {
     '0': '0',
     'full': '100%',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -550,14 +582,16 @@ module.exports = {
   | values as needed.
   |
   | Class name: .min-h-{size}
+  | CSS property: min-height
   |
   */
 
   minHeight: {
     '0': '0',
     'full': '100%',
-    'screen': '100vh'
+    'screen': '100vh',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -571,6 +605,7 @@ module.exports = {
   | modify these values as needed.
   |
   | Class name: .max-w-{size}
+  | CSS property: max-width
   |
   */
 
@@ -587,6 +622,7 @@ module.exports = {
     'full': '100%',
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Maximum height                      https://tailwindcss.com/docs/max-height
@@ -598,6 +634,7 @@ module.exports = {
   | these values as needed.
   |
   | Class name: .max-h-{size}
+  | CSS property: max-height
   |
   */
 
@@ -605,6 +642,7 @@ module.exports = {
     'full': '100%',
     'screen': '100vh',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -618,6 +656,7 @@ module.exports = {
   | values as needed.
   |
   | Class name: .p{side?}-{size}
+  | CSS property: padding
   |
   */
 
@@ -639,6 +678,7 @@ module.exports = {
     '32': '8rem',
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Margin                                  https://tailwindcss.com/docs/margin
@@ -651,6 +691,7 @@ module.exports = {
   | values as needed.
   |
   | Class name: .m{side?}-{size}
+  | CSS property: margin
   |
   */
 
@@ -673,6 +714,7 @@ module.exports = {
     '32': '8rem',
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Negative margin                https://tailwindcss.com/docs/negative-margin
@@ -685,6 +727,7 @@ module.exports = {
   | values as needed.
   |
   | Class name: .-m{side?}-{size}
+  | CSS property: margin
   |
   */
 
@@ -706,6 +749,7 @@ module.exports = {
     '32': '8rem',
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Shadows                                https://tailwindcss.com/docs/shadows
@@ -719,6 +763,7 @@ module.exports = {
   | suffixed `.shadow` utility.
   |
   | Class name: .shadow-{size?}
+  | CSS property: box-shadow
   |
   */
 
@@ -731,6 +776,7 @@ module.exports = {
     'none': 'none',
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Z-index                                https://tailwindcss.com/docs/z-index
@@ -741,6 +787,7 @@ module.exports = {
   | values as needed.
   |
   | Class name: .z-{index}
+  | CSS property: z-index
   |
   */
 
@@ -754,6 +801,7 @@ module.exports = {
     '50': 50,
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Opacity                                https://tailwindcss.com/docs/opacity
@@ -764,6 +812,7 @@ module.exports = {
   | values as needed.
   |
   | Class name: .opacity-{name}
+  | CSS property: opacity
   |
   */
 
@@ -774,6 +823,7 @@ module.exports = {
     '75': '.75',
     '100': '1',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -786,12 +836,14 @@ module.exports = {
   | generated CSS file size down.
   |
   | Class name: .fill-{name}
+  | CSS property: fill
   |
   */
 
   svgFill: {
     'current': 'currentColor',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -804,12 +856,14 @@ module.exports = {
   | keep the generated CSS file size down.
   |
   | Class name: .stroke-{name}
+  | CSS property: stroke
   |
   */
 
   svgStroke: {
     'current': 'currentColor',
   },
+
 
   /*
   |-----------------------------------------------------------------------------
@@ -823,6 +877,7 @@ module.exports = {
   |   - responsive
   |   - hover
   |   - focus
+  |   - focus-within
   |   - active
   |   - group-hover
   |
@@ -857,6 +912,8 @@ module.exports = {
     minHeight: ['responsive'],
     minWidth: ['responsive'],
     negativeMargin: ['responsive'],
+    objectFit: false,
+    objectPosition: false,
     opacity: ['responsive'],
     outline: ['focus'],
     overflow: ['responsive'],
@@ -881,6 +938,7 @@ module.exports = {
     zIndex: ['responsive'],
   },
 
+
   /*
   |-----------------------------------------------------------------------------
   | Plugins                                https://tailwindcss.com/docs/plugins
@@ -901,6 +959,7 @@ module.exports = {
       // padding: '1rem',
     }),
   ],
+
 
   /*
   |-----------------------------------------------------------------------------
