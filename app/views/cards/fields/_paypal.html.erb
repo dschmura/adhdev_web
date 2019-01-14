@@ -4,7 +4,6 @@
   <%# Don't include this twice if we have Braintree enabled too %>
   <% if !Jumpstart.config.braintree? %>
     <%= javascript_include_tag 'https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js' %>
-    <%= javascript_pack_tag 'braintree' unless Jumpstart.config.braintree? %>
   <% end %>
 
   <!-- Load PayPal's checkout.js Library. -->

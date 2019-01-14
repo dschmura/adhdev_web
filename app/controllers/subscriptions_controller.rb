@@ -13,6 +13,7 @@ class SubscriptionsController < ApplicationController
     # Get the Stripe or Braintree specific ID
     plan_id = Jumpstart.processor_plan_id_for(plan, subscription_params.fetch("interval"), processor)
 
+    current_user.processor = processor
     current_user.card_token = token
     current_user.subscribe('default', plan_id, processor)
 

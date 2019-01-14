@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_214212) do
+ActiveRecord::Schema.define(version: 2019_01_14_062651) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "charges", force: :cascade do |t|
+  create_table "pay_charges", force: :cascade do |t|
     t.integer "owner_id"
     t.string "processor", null: false
     t.string "processor_id", null: false
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.string "card_exp_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_charges_on_owner_id"
+    t.index ["owner_id"], name: "index_pay_charges_on_owner_id"
   end
 
-  create_table "subscriptions", force: :cascade do |t|
+  create_table "pay_subscriptions", force: :cascade do |t|
     t.integer "owner_id"
     t.string "name", null: false
     t.string "processor", null: false
@@ -89,16 +89,9 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.string "time_zone"
     t.datetime "accepted_terms_at"
     t.datetime "accepted_privacy_at"
-    t.text "extra_billing_info"
     t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "processor"
-    t.string "processor_id"
-    t.string "card_brand"
-    t.string "card_last4"
-    t.string "card_exp_month"
-    t.string "card_exp_year"
     t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -107,6 +100,14 @@ ActiveRecord::Schema.define(version: 2018_08_21_214212) do
     t.string "invited_by_type"
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.string "processor"
+    t.string "processor_id"
+    t.datetime "trial_ends_at"
+    t.string "card_brand"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.text "extra_billing_info"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
