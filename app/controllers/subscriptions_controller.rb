@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
 
     current_user.processor = processor
     current_user.card_token = token
-    current_user.subscribe('default', plan_id, processor)
+    current_user.subscribe(plan: plan_id)
 
     redirect_to root_path
   rescue Stripe::CardError => e
