@@ -87,3 +87,6 @@ gem 'webpacker', '>= 4.0.x'
 
 # We always want the latest versions of these gems, so no version numbers
 gem 'strong_migrations'
+
+# UI related
+gem 'inline_svg', '~> 1.3', '>= 1.3.1'

@@ -1,0 +1,17 @@
+<div class="mb-10 pb-10 border-b border-grey-light">
+  <h3 class="h2 mb-2 pb-2">Tooltips</h3>
+
+    <p class="mb-4 leading-normal text-lg"><a href="https://atomiks.github.io/tippyjs/">Tippy.js</a>.</p>
+
+    <p class="mb-4 leading-normal">Simply add a <code>data-tooltip</code> and <code>title="My tooltip"</code> to the element you want to add the tooltip to. You can set options using data attributes without writing any JS.</p>
+
+    <div class="mb-4">
+      <button class="btn btn-white primary" data-tooltip title="I'm a Tippy tooltip!" data-tippy-delay="0" data-tippy-arrow="true" data-tippy-size="regular" data-tippy-animation="fade">Hover over me</button>
+    </div>
+
+   <% content_for :snippet do %>
+&lt;button class="btn btn-white primary" data-tooltip title="I'm a Tippy tooltip!" data-tippy-delay="0" data-tippy-arrow="true" data-tippy-size="regular" data-tippy-animation="fade"&gt;Hover over me&lt;/button&gt;
+   <% end %>
+
+   <%= render 'docs/snippet' %>
+</div>

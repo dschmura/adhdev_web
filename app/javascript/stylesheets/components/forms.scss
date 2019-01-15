@@ -1,34 +1,88 @@
 .form-group {
-  @apply mb-6;
+  @apply mb-6 relative;
+}
 
-  label {
-    @apply block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2;
+.form-control {
+  @apply appearance-none block w-full bg-white text-grey-darkest border border-grey-light rounded py-3 px-4 leading-tight;
+
+  transition: ease 0.2s border;
+
+  &:focus {
+    @apply outline-none bg-white border-primary;
   }
 
-  .form-control {
-    @apply text-sm appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight;
+  &::placeholder {
+    @apply text-grey-darker;
+  }
+
+  &.error {
+    @apply border-red-light;
+  }
+
+  &.form-file {
+    width: inherit;
+    height: auto;
+    z-index: 2;
+    cursor: pointer;
+
+    @apply inline-block opacity-0 pl-0 pr-0 py-3 px-3 overflow-hidden absolute border-none;
+  }
+
+  &.form-file + label {
+    @extend .btn;
+    @extend .btn-white;
+    @extend .grey;
+
+    @apply cursor-pointer;
+
+    * {
+      pointer-events: none;
+    }
 
     &:focus {
-      @apply outline-none bg-white border-grey;
+      outline: 1px dotted #000;
+      outline: -webkit-focus-ring-color auto 5px;
     }
   }
+}
 
-  .select {
-    @apply relative;
+label,
+.label {
+  @apply block uppercase tracking-wide text-grey-darker text-xs font-semibold mb-2;
+}
 
-    select {
-      -webkit-apperance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
+.form-hint {
+  @apply text-grey-dark text-xs italic;
 
-    .caret {
-      @apply pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker;
-    }
+  &.error {
+    @apply text-red text-sm italic leading-normal mt-1;
+  }
+}
 
+select,
+.select {
+  @apply relative block appearance-none w-full bg-white border border-grey-light text-grey-darkest py-3 px-4 pr-8 rounded leading-tight;
+
+  &:focus {
+    @apply outline-none bg-white border-primary;
+  }
+}
+
+.caret {
+  @apply pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker;
+}
+
+
+form.inline {
+  .form-group {
+    @apply flex justify-start items-center;
   }
 
-  .hint {
-    @apply text-grey-dark text-xs italic;
+  .form-group .input {
+    @apply flex-1;
+  }
+
+  .form-group .label {
+    @apply w-1/4;
   }
 }

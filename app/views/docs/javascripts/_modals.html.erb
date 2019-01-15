@@ -1,0 +1,197 @@
+<div class="mb-10">
+<h3 class="h2 mb-2 pb-2">Modals</h3>
+
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm pb-3 mb-6 border-b border-grey-light">Small</h4>
+
+  <div data-controller="modal">
+    <button class="btn btn-primary" data-action="click->modal#open">Open Small Modal</button>
+
+    <div data-target="modal.container" class="hidden animated fadeIn">
+      <div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div data-target="modal.background" data-action="click->modal#closeBackground" class="table-cell align-middle">
+
+          <div class="bg-white mx-auto rounded shadow p-8 max-w-sm">
+            <h4>Small Modal Content</h4>
+            <p>This is an example modal dialog box.</p>
+
+            <div class="flex justify-end items-center flex-wrap mt-6">
+              <button class="btn btn-white primary mr-2">Does nothing</button>
+              <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :snippet, flush: true do %>
+&lt;div data-controller="modal"&gt;
+  &lt;button class="btn btn-primary" data-action="click-&gt;modal#open"&gt;Open Small Modal&lt;/button&gt;
+
+  &lt;div data-target="modal.container" class="hidden animated fadeIn"&gt;
+    &lt;div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);"&gt;
+      &lt;div data-target="modal.background" data-action="click-&gt;modal#closeBackground" class="table-cell align-middle"&gt;
+
+        &lt;div class="bg-white mx-auto rounded shadow p-8 max-w-sm"&gt;
+          &lt;h4&gt;Small Modal Content&lt;/h4&gt;
+          &lt;p&gt;This is an example modal dialog box.&lt;/p&gt;
+
+          &lt;div class="flex justify-end items-center flex-wrap mt-6"&gt;
+            &lt;button class="btn btn-white primary mr-2"&gt;Does nothing&lt;/button&gt;
+            &lt;button class="btn btn-primary" data-action="click-&gt;modal#close"&gt;Close&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+<% end %>
+<%= render "docs/snippet" %>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm pb-3 mb-6 border-b border-grey-light">Medium</h4>
+
+  <div data-controller="modal">
+    <button class="btn btn-primary" data-action="click->modal#open">Open Medium Modal</button>
+
+    <div data-target="modal.container" class="hidden animated fadeIn">
+      <div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div data-target="modal.background" data-action="click->modal#closeBackground" class="table-cell align-middle">
+
+          <div class="bg-white mx-auto rounded shadow p-8 max-w-md">
+            <h3>Medium Modal Content</h3>
+            <p>This is an example modal dialog box.</p>
+
+            <div class="flex justify-end items-center flex-wrap mt-6">
+              <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :snippet, flush: true do %>
+&lt;div data-controller="modal"&gt;
+  &lt;button class="btn btn-primary" data-action="click-&gt;modal#open"&gt;Open Medium Modal&lt;/button&gt;
+
+  &lt;div data-target="modal.container" class="hidden animated fadeIn"&gt;
+    &lt;div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);"&gt;
+      &lt;div data-target="modal.background" data-action="click-&gt;modal#closeBackground" class="table-cell align-middle"&gt;
+
+        &lt;div class="bg-white mx-auto rounded shadow p-8 max-w-md"&gt;
+          &lt;h3&gt;Medium Modal Content&lt;/h3&gt;
+          &lt;p&gt;This is an example modal dialog box.&lt;/p&gt;
+
+          &lt;div class="flex justify-end items-center flex-wrap mt-6"&gt;
+            &lt;button class="btn btn-primary" data-action="click-&gt;modal#close"&gt;Close&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+<% end %>
+<%= render "docs/snippet" %>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm pb-3 mb-6 border-b border-grey-light">Large</h4>
+
+  <div data-controller="modal">
+    <button class="btn btn-primary" data-action="click->modal#open">Open Large Modal</button>
+
+    <div data-target="modal.container" class="hidden animated fadeIn">
+      <div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div data-target="modal.background" data-action="click->modal#closeBackground" class="table-cell align-middle">
+
+          <div class="bg-white mx-auto rounded shadow p-8 max-w-lg">
+            <h2>Large Modal Content</h2>
+            <p>This is an example modal dialog box.</p>
+
+            <div class="flex justify-end items-center flex-wrap mt-6">
+              <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :snippet, flush: true do %>
+&lt;div data-controller="modal"&gt;
+  &lt;button class="btn btn-primary" data-action="click-&gt;modal#open"&gt;Open Large Modal&lt;/button&gt;
+
+  &lt;div data-target="modal.container" class="hidden animated fadeIn"&gt;
+    &lt;div class="fixed z-50 pin-t pin-l w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);"&gt;
+      &lt;div data-target="modal.background" data-action="click-&gt;modal#closeBackground" class="table-cell align-middle"&gt;
+
+        &lt;div class="bg-white mx-auto rounded shadow p-8 max-w-lg"&gt;
+          &lt;h2&gt;Large Modal Content&lt;/h2&gt;
+          &lt;p&gt;This is an example modal dialog box.&lt;/p&gt;
+
+          &lt;div class="flex justify-end items-center flex-wrap mt-6"&gt;
+            &lt;button class="btn btn-primary" data-action="click-&gt;modal#close"&gt;Close&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+<% end %>
+<%= render "docs/snippet" %>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm pb-3 mb-6 border-b border-grey-light">Fullscreen</h4>
+
+  <div data-controller="modal">
+    <button class="btn btn-primary" data-action="click->modal#open">Open Fullscreen Modal</button>
+
+    <div data-target="modal.container" class="hidden animated fadeIn">
+      <div class="fixed z-50 pin-t pin-l w-full h-full" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div data-target="modal.background" data-action="click->modal#closeBackground" class="">
+
+          <div class="bg-white w-screen h-screen mx-auto">
+            <div class="flex flex-wrap justify-center items-center h-screen">
+              <div class="w-2/3 m-auto">
+                <h2>Fullscreen Modal Content</h2>
+                <p>This is an example modal dialog box.</p>
+                <div class="flex justify-end items-center flex-wrap mt-6">
+                  <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :snippet, flush: true do %>
+&lt;div data-controller="modal"&gt;
+  &lt;button class="btn btn-primary" data-action="click-&gt;modal#open"&gt;Open Fullscreen Modal&lt;/button&gt;
+
+  &lt;div data-target="modal.container" class="hidden animated fadeIn"&gt;
+    &lt;div class="fixed z-50 pin-t pin-l w-full h-full" style="background-color: rgba(0, 0, 0, 0.8);"&gt;
+      &lt;div data-target="modal.background" data-action="click-&gt;modal#closeBackground" class=""&gt;
+
+        &lt;div class="bg-white w-screen h-screen mx-auto"&gt;
+          &lt;div class="flex flex-wrap justify-center items-center h-screen"&gt;
+            &lt;div class="w-2/3 m-auto"&gt;
+              &lt;h2&gt;Fullscreen Modal Content&lt;/h2&gt;
+              &lt;p&gt;This is an example modal dialog box.&lt;/p&gt;
+              &lt;div class="flex justify-end items-center flex-wrap mt-6"&gt;
+                &lt;button class="btn btn-primary" data-action="click-&gt;modal#close"&gt;Close&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+<% end %>
+<%= render "docs/snippet" %>

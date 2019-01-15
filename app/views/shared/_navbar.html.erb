@@ -1,34 +1,29 @@
 <% if user_masquerade? %>
-  <div class="bg-orange-lightest text-orange-dark text-sm text-center font-bold px-4 py-3" role="alert">
+  <div class="bg-blue-dark text-blue-lightest text-sm text-center font-brand-semibold px-4 py-3" role="alert">
     You're logged in as <b>User #<%= current_user.id %></b> (<%= current_user.email %>)</b>
-    <%= link_to back_masquerade_path(current_user) do %>Logout<% end %>
+    <%= link_to back_masquerade_path(current_user), class: "text-blue-lightest hover:no-underline" do %>Logout<% end %>
   </div>
 <% end %>
 
-<header class="flex items-center justify-between flex-wrap bg-white border-b border-grey-lighter h-16 p-6">
-  <%= link_to root_path, class: "flex items-center flex-no-shrink mr-6 text-black no-underline" do %>
-    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-    <span class="font-semibold text-xl tracking-tight"><%= Jumpstart.config.application_name %></span>
+<header class="flex items-center justify-between flex-wrap bg-white shadow-sm py-1 px-6">
+  <%= link_to root_path, class: "mr-6" do %>
+    <%= render_svg "jumpstart", styles: "fill-current text-grey-darker hover:text-grey-darkest" %>
+    <span class="sr-only"><%= Jumpstart.config.application_name %></span>
   <% end %>
-  <div class="block lg:hidden">
-    <button class="flex items-center px-3 py-2 border rounded text-grey-lighter border-grey-light hover:text-white hover:border-white">
-      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-    </button>
-  </div>
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div class="text-sm lg:flex-grow">
-      <%= link_to "Pricing", pricing_path, class: "block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4" unless user_signed_in? && current_user.subscribed? %>
-      <% Jumpstart.config.nav_resources.each do |title, controller| %>
-        <%= link_to title, url_for(action: :index, controller: controller), class: "block mt-4 lg:inline-block lg:mt-0 font-semibold text-grey hover:text-grey-darker no-underline mr-4" %>
-      <% end %>
-    </div>
+  <div class="flex-1 flex flex-wrap items-center justify-end">
 
-    <div>
+    <div class="flex-1 lg:flex hidden justify-end flex-wrap items-center">
+
+      <%= link_to "Pricing", pricing_path, class: "nav-link" unless user_signed_in? && current_user.subscribed? %>
+      <% Jumpstart.config.nav_resources.each do |title, controller| %>
+        <%= link_to title, url_for(action: :index, controller: controller), class: "nav-link" %>
+      <% end %>
+
       <% if user_signed_in? %>
-        <div class="inline-block text-sm px-4 py-2 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0">
+        <div class="flex items-center px-4 py-2 leading-none rounded no-underline text-grey-darker hover:text-grey-darkest hover:bg-white mt-4 lg:mt-0">
           <div class="relative" data-controller="dropdown">
             <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" class="inline-block select-none">
-              <span class="appearance-none flex items-center inline-block text-grey-dark">
+              <span class="appearance-none flex items-center inline-block text-grey-darker">
                 <% if current_user %>
                 <%= image_tag avatar_url_for(current_user), class: "rounded-full h-8 w-8 align-middle" %>
                 <% end %>
@@ -46,17 +41,22 @@
                     <%= link_to 'Jumpstart', jumpstart_path, class: 'border-t no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
                     <%= link_to 'Letter Opener', letter_opener_web_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', target: "_blank", data: { turbolinks: false } %>
                   <% end %>
-                  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-8 py-3 border-t text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
+                  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-8 py-3 border-t text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
               </div>
             </div>
           </div>
         </div>
 
       <% else %>
-        <%= link_to 'Log In', new_user_session_path, class: 'inline-block text-sm px-4 py-3 leading-none rounded no-underline text-grey hover:text-grey-darker hover:bg-white mt-4 lg:mt-0' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-green mt-4 lg:mt-0' %>
+        <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
       <% end %>
+      </div>
     </div>
-
+    <div class="block lg:hidden ml-4">
+      <button class="flex items-center px-3 py-2 border rounded text-grey-lighter border-grey-light hover:text-white hover:border-white">
+        <svg class="fill-current h-3 w-3 text-grey-darker" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
   </div>
 </header>

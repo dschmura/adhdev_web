@@ -1,3 +1,4 @@
 gem 'stripe'
 gem 'stripe_event'
 gem 'braintree'
+gem 'sidekiq'

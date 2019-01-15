@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount Jumpstart::Engine, at: '/jumpstart'
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    resource :docs
     namespace :docs do
       resource :javascript
+      resource :typography
+      resource :button
+      resource :form
     end
   end
 

@@ -1,0 +1,11 @@
+.nav-link {
+  @apply inline-flex mr-6 no-underline text-primary;
+
+  height: 60px;
+  line-height: 60px;
+
+  &:hover,
+  &:focus {
+    @apply text-primary-dark;
+  }
+}

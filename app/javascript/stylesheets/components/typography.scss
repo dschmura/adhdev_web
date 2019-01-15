@@ -1,0 +1,53 @@
+.font-display-lg {
+  font-size: 4.5rem; // 72px
+
+  @apply font-thin leading-tight;
+}
+
+.font-display {
+  font-size: 4rem; // 64px
+
+  @apply font-thin leading-tight;
+}
+
+h1,
+.h1 {
+  font-size: 3rem; // 48px
+
+  @apply font-normal leading-tight;
+}
+
+h2,
+.h2 {
+  font-size: 2.25rem; // 36px
+
+  @apply font-normal leading-normal;
+}
+
+h3,
+.h3 {
+  font-size: 1.5rem; // 24px
+
+  @apply font-normal leading-normal;
+}
+
+h4,
+.h4 {
+  font-size: 1.125rem; // 18px
+
+  @apply font-normal leading-normal;
+}
+
+h5,
+.h5 {
+  @apply font-bold uppercase tracking-wide text-sm; // .875rem
+}
+
+.link {
+  @apply text-primary;
+
+  &:hover,
+  &:focus {
+    @apply text-primary-dark;
+  }
+}

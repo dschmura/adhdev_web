@@ -1,6 +1,6 @@
 class DeviseInvitableAddToUsers < ActiveRecord::Migration[5.2]
   def up
-    safety_assured do
+    safety_assured {
       change_table :users do |t|
         t.string     :invitation_token
         t.datetime   :invitation_created_at
@@ -13,13 +13,15 @@ class DeviseInvitableAddToUsers < ActiveRecord::Migration[5.2]
         t.index      :invitation_token, unique: true # for invitable
         t.index      :invited_by_id
       end
-    end
+    }
   end
 
   def down
-    change_table :users do |t|
-      t.remove_references :invited_by, polymorphic: true
-      t.remove :invitations_count, :invitation_limit, :invitation_sent_at, :invitation_accepted_at, :invitation_token, :invitation_created_at
-    end
+    safety_assured {
+      change_table :users do |t|
+        t.remove_references :invited_by, polymorphic: true
+        t.remove :invitations_count, :invitation_limit, :invitation_sent_at, :invitation_accepted_at, :invitation_token, :invitation_created_at
+      end
+    }
   end
 end

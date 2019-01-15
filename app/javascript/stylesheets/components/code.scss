@@ -1,0 +1,11 @@
+pre {
+  @apply rounded p-4 break-words whitespace-pre-wrap;
+
+  code {
+    @apply bg-transparent px-0 py-0 border-none;
+  }
+}
+
+code {
+  @apply px-1 bg-grey-lighter rounded border-grey-light border py-px;
+}

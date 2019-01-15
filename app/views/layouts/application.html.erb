@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full bg-white antialiased">
+<html class="h-full antialiased">
   <head>
     <title>Jumpstart</title>
     <%= csrf_meta_tags %>
@@ -20,12 +20,11 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-source-sans font-normal text-black leading-normal flex flex-col h-full">
+  <body class="bg-offwhite font-sans font-normal leading-normal h-full">
     <%= render partial: "shared/navbar" %>
 
-    <div class="container mx-auto flex-1">
+    <div class="container mx-auto main">
       <%= render partial: "shared/flash" %>
-
       <%= yield %>
     </div>
 

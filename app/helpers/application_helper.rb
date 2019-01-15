@@ -28,4 +28,10 @@ module ApplicationHelper
   def disable_with(text)
     "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
+
+  def render_svg(name, styles: "fill-current text-grey", title: nil)
+    filename = "#{name}.svg"
+    title ||= name.underscore.humanize
+    inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)
+  end
 end

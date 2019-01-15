@@ -14,6 +14,7 @@ import "controllers"
 import "src/timezone"
 import "src/payments/braintree"
 import "src/payments/stripe"
+import "src/forms"
 
 import tippy from 'tippy.js'
 document.addEventListener("turbolinks:load", () => {

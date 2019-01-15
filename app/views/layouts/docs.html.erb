@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="h-full antialiased">
+  <head>
+    <title>Jumpstart</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <%= yield :head %>
+
+    <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-offwhite font-sans font-normal leading-normal h-full overflow-x-hidden">
+    <%= render partial: "shared/flash" %>
+
+    <div class="flex flex-wrap justify-between items-start main">
+
+      <div class="lg:w-1/5 w-full pt-4 lg:px-8 px-4">
+        <%= render partial: "docs/nav" %>
+      </div>
+
+      <div class="lg:w-4/5 w-full bg-white h-full border-l border-grey-light docs-main">
+
+        <% if content_for :section_title %>
+          <div class="bg-primary lg:px-16 px-4 py-10 text-white mb-6">
+            <h1><%= yield :section_title %></h1>
+          </div>
+        <% end %>
+
+        <div class="pt-4 lg:px-16 px-4">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <%= render partial: "shared/footer" %>
+  </body>
+</html>
