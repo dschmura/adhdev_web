@@ -90,3 +90,7 @@ gem 'strong_migrations'
 
 # UI related
 gem 'inline_svg', '~> 1.3', '>= 1.3.1'
+
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-twitter'

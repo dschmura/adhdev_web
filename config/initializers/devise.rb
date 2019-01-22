@@ -307,11 +307,9 @@ Devise.setup do |config|
   #
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  # JUMPSTART | Do not remove :)
-  Jumpstart::Devise::OmniauthLoader.new(
-    config: config,
-    providers: Jumpstart.config.omniauth_providers
-  ).add_providers!
+  Jumpstart::Omniauth.enabled_providers do |provider, app_id, app_secret, scope|
+    config.omniauth provider, app_id, app_secret, scope: scope
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
