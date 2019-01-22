@@ -11,7 +11,8 @@ class SubscriptionsController < ApplicationController
 
   def create
     # Get the Stripe or Braintree specific ID
-    plan_id = Jumpstart.processor_plan_id_for(plan, subscription_params.fetch("interval"), processor)
+    @interval = subscription_params.fetch("interval")
+    plan_id = Jumpstart.processor_plan_id_for(plan, @interval, processor)
 
     current_user.processor = processor
     current_user.card_token = token
@@ -19,6 +20,7 @@ class SubscriptionsController < ApplicationController
 
     redirect_to root_path
   rescue Stripe::CardError => e
+    @plan = Jumpstart.find_plan(plan)
     flash[:alert] = e.message
     render :new
   end

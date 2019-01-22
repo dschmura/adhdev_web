@@ -12,7 +12,7 @@
       <%= f.hidden_field :plan, value: @plan["id"] %>
       <%= f.hidden_field :interval, value: @interval %>
 
-      <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-green btn-lg btn-block", data: { disable_with: disable_with("Processing...") } %>
+      <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { disable_with: disable_with("Processing...") } %>
 
       <%= render 'cards/fields/paypal',    f: f if Jumpstart.config.paypal? %>
     <% end %>

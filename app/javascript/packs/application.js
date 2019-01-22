@@ -11,10 +11,10 @@ import "stylesheets/application"
 
 import "controllers"
 
-import "src/timezone"
+import "src/forms"
 import "src/payments/braintree"
 import "src/payments/stripe"
-import "src/forms"
+import "src/timezone"
 
 import tippy from 'tippy.js'
 document.addEventListener("turbolinks:load", () => {

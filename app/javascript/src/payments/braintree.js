@@ -49,8 +49,6 @@ function initializeBraintree(dropin) {
 
 // This provides a custom PayPal button that uses Braintree as the backend
 function initializePayPal(button) {
-  console.log("INIT PAYPAL")
-
   // Create a client.
   braintree.client.create({
     authorization: button.dataset.clientToken,

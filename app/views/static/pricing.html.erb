@@ -12,7 +12,7 @@
   <div data-target="pricing.monthlyPlans" class="flex -mx-4">
     <% Jumpstart.config.monthly_plans.each do |plan| %>
       <%= render layout: "subscriptions/plan", locals: { plan: plan, interval: "month" } do %>
-        <%= link_to "Get Started", new_subscription_path(plan: plan["id"], interval: "month"), class: "btn btn-rounded btn-lg btn-blue" %>
+        <%= link_to "Get Started", new_subscription_path(plan: plan["id"], interval: "month"), class: "btn btn-primary" %>
       <% end %>
     <% end %>
   </div>
@@ -20,7 +20,7 @@
   <div data-target="pricing.yearlyPlans" class="hidden -mx-4">
     <% Jumpstart.config.yearly_plans.each do |plan| %>
       <%= render layout: "subscriptions/plan", locals: { plan: plan, interval: "year" } do %>
-        <%= link_to "Get Started", new_subscription_path(plan: plan["id"], interval: "year"), class: "btn btn-rounded btn-lg btn-blue" %>
+        <%= link_to "Get Started", new_subscription_path(plan: plan["id"], interval: "year"), class: "btn btn-primary" %>
       <% end %>
     <% end %>
   </div>

@@ -1,7 +1,5 @@
 <% content_for :head do %>
-  <%= tag :meta,
-            name: "stripe-key",
-            content: Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public_key) %>
+  <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public_key) %>
 <% end %>
 
 <div class="form-group">

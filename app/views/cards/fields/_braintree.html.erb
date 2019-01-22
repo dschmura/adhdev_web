@@ -1,8 +1,1 @@
-<% content_for :head do %>
-  <%= javascript_include_tag 'https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js' %>
-<% end %>
-
-<%= content_tag :div,
-                nil,
-                id: 'dropin-container',
-                data: { client_token: Pay.braintree_gateway.client_token.generate } %>
+<%= content_tag :div, nil, id: 'dropin-container', data: { client_token: Pay.braintree_gateway.client_token.generate } %>

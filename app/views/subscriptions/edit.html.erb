@@ -20,12 +20,12 @@
     <% Jumpstart.config.monthly_plans.each do |plan| %>
       <%= render layout: "subscriptions/plan", locals: { plan: plan, interval: "month" } do %>
         <% if @subscription.jumpstart_plan == plan && @subscription.jumpstart_plan_interval == "month" %>
-          <div class="btn btn-rounded btn-lg btn-grey">Current Plan</div>
+          <div class="btn btn-white">Current Plan</div>
         <% else %>
           <%= form_for current_user, url: subscription_url do |f| %>
             <%= f.hidden_field :plan, value: plan["id"] %>
             <%= f.hidden_field :interval, value: "month" %>
-            <%= f.button 'Change Plan', class: "btn btn-rounded btn-lg btn-blue" %>
+            <%= f.button 'Change Plan', class: "btn btn-primary" %>
           <% end %>
         <% end %>
       <% end %>
@@ -36,12 +36,12 @@
     <% Jumpstart.config.yearly_plans.each do |plan| %>
       <%= render layout: "subscriptions/plan", locals: { plan: plan, interval: "year" } do %>
         <% if @subscription.jumpstart_plan == plan && @subscription.jumpstart_plan_interval == "year" %>
-          <div class="btn btn-rounded btn-lg btn-grey">Current Plan</div>
+          <div class="btn btn-tertiary">Current Plan</div>
         <% else %>
           <%= form_for current_user, url: subscription_url do |f| %>
             <%= f.hidden_field :plan, value: plan["id"] %>
             <%= f.hidden_field :interval, value: "year" %>
-            <%= f.button 'Change Plan', class: "btn btn-rounded btn-lg btn-blue" %>
+            <%= f.button 'Change Plan', class: "btn btn-primary" %>
           <% end %>
         <% end %>
       <% end %>

@@ -5,14 +5,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# Load anything from the asset pipeline that you might need %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <%# We don't need to reload the Stripe JS for Turbolinks %>
-    <%= javascript_include_tag 'https://js.stripe.com/v3/' %>
 
     <%# All assets are defined in Webpacker app/javascripts now %>
     <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= render "shared/payments_dependencies" %>
 
     <%# Feel free to replace this with Font Awesome Pro %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">

@@ -1,22 +1,3 @@
-<%# https://developer.paypal.com/docs/checkout/how-to/braintree-integration/#1-set-up-your-client %>
-
-<% content_for :head do %>
-  <%# Don't include this twice if we have Braintree enabled too %>
-  <% if !Jumpstart.config.braintree? %>
-    <%= javascript_include_tag 'https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js' %>
-  <% end %>
-
-  <!-- Load PayPal's checkout.js Library. -->
-  <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
-
-  <!-- Load the client component. -->
-  <script src="https://js.braintreegateway.com/web/3.37.0/js/client.min.js"></script>
-
-  <!-- Load the PayPal Checkout component. -->
-  <script src="https://js.braintreegateway.com/web/3.37.0/js/paypal-checkout.min.js"></script>
-<% end %>
-
-
 <div class="my-8 text-center">
   <%= tag.div nil, id: "paypal-button", data: {
     env: braintree_env,
