@@ -81,7 +81,6 @@ end
 gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
 gem 'image_processing', '~> 1.2'
 gem 'name_of_person', '~> 1.0'
-gem 'receipts', '~> 0.2.2'
 gem 'turbolinks_render', '~> 0.9.1'
 gem 'webpacker', '>= 4.0.x'
 
