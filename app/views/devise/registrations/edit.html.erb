@@ -33,11 +33,11 @@
       </div>
 
       <label class="label">Avatar</label>
-        <div class="flex items-center justify-start">
-         <div class="form-group">
-          <%= f.file_field :avatar, name: "avatar", class: "form-control form-file", data: { multiple_caption: "{count} files selected"}, multiple: true %>
-           <label for="avatar" class="cursor-pointer">
-              <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span>Upload Avatar</span>
+      <div class="flex items-center justify-start">
+        <div class="form-group">
+          <%= f.file_field :avatar, class: "form-control form-file" %>
+          <label for="avatar" class="cursor-pointer">
+            <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span>Upload Avatar</span>
           </label>
         </div>
         <%= image_tag avatar_url_for(current_user), class: "rounded-full ml-4 -mt-8 w-16" %>
