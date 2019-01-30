@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div data-controller="pricing" data-pricing-plans-class="flex hidden" data-pricing-interval-class="bg-white text-black" class="flex flex-wrap items-center justify-center">
+  <div data-controller="pricing" data-current="monthly" data-pricing-plans-class="flex hidden" data-pricing-interval-class="bg-white text-black" class="flex flex-wrap items-center justify-center">
 
     <div class="inline-block rounded-full bg-tertiary py-2 px-1 text-white my-8">
       <a data-action="click->pricing#switch" data-target="pricing.monthlyToggle" data-show="monthly" class="cursor-pointer py-2 px-4 bg-white rounded-full text-black">Monthly</a>
@@ -22,7 +22,7 @@
         <% end %>
       </div>
 
-      <div data-target="pricing.yearlyPlans" class="hidden -mx-4">
+      <div data-target="pricing.yearlyPlans" class="hidden flex-wrap items-center justify-center -mx-4">
         <% Jumpstart.config.yearly_plans.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan, interval: "year" } do %>
             <%= link_to "Get Started", new_subscription_path(plan: plan["id"], interval: "year"), class: "btn btn-tertiary" %>
