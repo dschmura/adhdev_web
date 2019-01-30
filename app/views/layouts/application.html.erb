@@ -12,18 +12,17 @@
     <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+    <%# Be sure to add your own custom favicons %>
+    <%= render "shared/favicons" %>
     <%= render "shared/payments_dependencies" %>
-
-    <%# Feel free to replace this with Font Awesome Pro %>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <%= yield :head %>
   </head>
 
-  <body class="bg-offwhite font-sans font-normal leading-normal h-full">
+  <body class="bg-offwhite font-sans font-normal leading-normal h-full antialiased">
     <%= render partial: "shared/navbar" %>
 
-    <div class="container mx-auto main">
+    <div class="main">
       <%= render partial: "shared/flash" %>
       <%= yield %>
     </div>

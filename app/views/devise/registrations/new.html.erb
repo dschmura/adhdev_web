@@ -1,45 +1,48 @@
-<h2>Sign up</h2>
+<% content_for :form_block do %>
 
-<%= form_with(model: resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <h2 class="mb-4">Sign up</h2>
 
-  <div class="form-group">
-    <%= f.label :name, "Full name" %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
-  </div>
+  <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email,  autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: "password", class: "form-control" %>
-    <% if @minimum_password_length %>
-      <p class="hint mt-3">(<%= @minimum_password_length %> characters minimum)</p>
-    <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :time_zone %>
-
-    <div class="select">
-      <%= f.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "form-control" } %>
-      <div class="caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></div>
+    <div class="form-group">
+      <%= f.label :name, "Full name" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email,  autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <% if @minimum_password_length %>
+        <p class="text-sm text-grey-dark mt-3">(<%= @minimum_password_length %> characters minimum)</p>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :time_zone %>
+
+      <div class="relative">
+        <%= f.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "select" } %>
+        <div class="caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></div>
+      </div>
+    </div>
+
+    <div class="form-group">
       <%= f.check_box :terms_of_service %>
-      I accept the <%= link_to "terms of service", terms_path, target: "_blank" %> &amp; <%= link_to "privacy policy", privacy_path, target: "_blank" %>
-    </label>
-  </div>
+        I accept the <%= link_to "terms of service", terms_path, target: "_blank", class: "btn-link" %> &amp; <%= link_to "privacy policy", privacy_path, target: "_blank", class: "btn-link" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.submit "Sign up", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
 <%= render "devise/shared/links" %>
+<% end %>
+
+<%= render "devise/shared/form_block" %>

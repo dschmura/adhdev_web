@@ -1,5 +1,5 @@
 pre {
-  @apply rounded p-4 break-words whitespace-pre-wrap;
+  @apply rounded py-3 px-6 break-words my-4 whitespace-pre-wrap bg-grey-lighter rounded border-grey-light border;
 
   code {
     @apply bg-transparent px-0 py-0 border-none;

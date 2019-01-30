@@ -139,3 +139,67 @@
 
   <%= render "docs/snippet" %>
 </div>
+
+<div class="mb-10">
+
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Code - Light</h4>
+
+<pre class="bg-code-light text-black"><code>class User < ApplicationRecord
+
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, andle :trackable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :invitable, :masqueradable,
+         :omniauthable
+end</code>
+</pre>
+
+  <% content_for :snippet, flush: true do %>
+&lt;pre class="bg-code-light text-black"&gt;&lt;code&gt;
+  class User < ApplicationRecord
+
+    # Include default devise modules. Others available are:
+    # :lockable, :timeoutable, andle :trackable
+    devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :invitable, :masqueradable,
+         :omniauthable
+  end
+&lt;/code&gt;&lt;/pre&gt;
+  <% end %>
+
+  <%= render "docs/snippet" %>
+</div>
+
+<div class="mb-10">
+
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Code - Dark</h4>
+
+<pre class="bg-code-dark text-grey-lighter"><code>class User < ApplicationRecord
+
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, andle :trackable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :invitable, :masqueradable,
+         :omniauthable
+end</code>
+</pre>
+
+  <% content_for :snippet, flush: true do %>
+&lt;pre class="bg-code-dark text-grey-lighter"&gt;&lt;code&gt;
+  class User < ApplicationRecord
+
+    # Include default devise modules. Others available are:
+    # :lockable, :timeoutable, andle :trackable
+    devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :invitable, :masqueradable,
+         :omniauthable
+  end
+&lt;/code&gt;&lt;/pre&gt;
+  <% end %>
+
+  <%= render "docs/snippet" %>
+</div>

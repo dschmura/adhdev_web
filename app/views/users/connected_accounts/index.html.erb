@@ -1,32 +1,36 @@
-<div class="flex">
+<div class="flex flex-wrap my-4 lg:px-4">
   <div class="w-1/4 p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
   <div class="w-3/4 p-4">
-    <h1>Connected Accounts</h1>
+    <h2 class="mb-2">Connected Accounts</h2>
 
-    <% Jumpstart.config.omniauth_providers.map(&:to_s).each do |provider| %>
-      <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider } %>
-      <hr class="border-b" />
+    <% if Jumpstart.config.omniauth_providers.any? %>
+      <% Jumpstart.config.omniauth_providers.map(&:to_s).each do |provider| %>
+        <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider } %>
+        <hr class="border-b" />
 
-      <div class="my-4">
-        <h4><%= provider.titleize %></h4>
+        <div class="my-4">
+          <h4><%= provider.titleize %></h4>
 
-        <% if connected_accounts.any? %>
-          <% connected_accounts.each do |connected_account| %>
-            <div class="flex">
-              <div class="flex-1"><%= connected_account.auth["info"]["nickname"] %> Connected</div>
-              <div><%= button_to "Disconnect", connected_account, method: :delete, class: "btn btn-grey" %></div>
+          <% if connected_accounts.any? %>
+            <% connected_accounts.each do |connected_account| %>
+              <div class="flex">
+                <div class="flex-1"><%= connected_account.auth["info"]["nickname"] %> Connected</div>
+                <div><%= button_to "Disconnect", connected_account, method: :delete, class: "btn btn-grey" %></div>
+              </div>
+            <% end %>
+
+          <% else %>
+            <div class="text-right">
+              <%= button_to "Connect", omniauth_authorize_path(:user, provider), class: "btn btn-grey"%>
             </div>
           <% end %>
-
-        <% else %>
-          <div class="text-right">
-            <%= button_to "Connect", omniauth_authorize_path(:user, provider), class: "btn btn-grey"%>
-          </div>
+        </div>
         <% end %>
-      </div>
+    <% else %>
+      You don't have any connected accounts yet.
     <% end %>
   </div>
 </div>

@@ -1,0 +1,20 @@
+.alert {
+  @apply border border-grey bg-grey-lightest text-grey-darker p-4 rounded-lg;
+
+  &.alert-info {
+    @apply border-primary bg-primary-lightest text-primary;
+  }
+
+  &.alert-success {
+    @apply border-secondary-dark bg-secondary-lightest text-secondary-dark;
+  }
+
+  &.alert-error {
+    @apply border-danger bg-danger-lightest text-danger;
+  }
+
+  &.alert-warning {
+    @apply border-orange bg-orange-lightest text-orange;
+  }
+}
+

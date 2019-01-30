@@ -9,6 +9,8 @@
   &:focus {
     transform: translateY(-1px);
     box-shadow: none;
+
+    @apply cursor-pointer;
   }
 
   @media screen and (max-width: 767px) {

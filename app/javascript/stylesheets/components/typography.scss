@@ -1,13 +1,13 @@
 .font-display-lg {
   font-size: 4.5rem; // 72px
 
-  @apply font-thin leading-tight;
+  @apply leading-tight;
 }
 
 .font-display {
   font-size: 4rem; // 64px
 
-  @apply font-thin leading-tight;
+  @apply leading-tight;
 }
 
 h1,
@@ -21,7 +21,7 @@ h2,
 .h2 {
   font-size: 2.25rem; // 36px
 
-  @apply font-normal leading-normal;
+  @apply font-normal leading-tight;
 }
 
 h3,

@@ -1,11 +1,11 @@
-<div class="flex">
-  <div class="w-1/4 p-4">
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="w-3/4 p-4">
-    <h2>Update Password</h2>
-    <%= form_with(url: password_path, local: true, html: { method: :put }) do |f| %>
+  <div class="lg:w-3/4 w-full p-4">
+    <h2 class="mb-4">Update Password</h2>
+    <%= form_with(url: password_path, local: true, html: { method: :put }, class: "max-w-lg") do |f| %>
       <% if current_user.errors.any? %>
         <div class="bg-red-lightest border-t border-b border-red text-red-dark px-4 py-3 mb-4" role="alert">
           <p class="font-bold">Oops, please fix the errors below.</p>
@@ -20,14 +20,14 @@
       <div class="form-group">
         <%= f.label :current_password %>
         <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Current password", class: "form-control" %>
-        <p class="hint mt-3">We need your current password to confirm your changes</p>
+        <p class="text-sm text-grey-darker mt-3">We need your current password to confirm your changes</p>
       </div>
 
       <div class="form-group">
         <%= f.label :password, "New password" %>
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "New password", class: "form-control" %>
         <% if @minimum_password_length %>
-          <p class="hint mt-3"><%= @minimum_password_length %> characters minimum</p>
+          <p class="text-sm text-grey-darker mt-3"><%= @minimum_password_length %> characters minimum</p>
         <% end %>
       </div>
 
@@ -37,7 +37,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit "Update", class: "btn btn-grey" %>
+        <%= f.submit "Update", class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>

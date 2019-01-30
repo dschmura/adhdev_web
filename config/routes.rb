@@ -9,10 +9,16 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
     resource :docs
     namespace :docs do
-      resource :javascript
-      resource :typography
+      resource :alert
       resource :button
+      resource :card
       resource :form
+      resource :icon
+      resource :javascript
+      resource :pagination
+      resource :pill
+      resource :typography
+      resource :well
     end
   end
 
