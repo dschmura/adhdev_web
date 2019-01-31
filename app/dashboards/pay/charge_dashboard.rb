@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ChargeDashboard < Administrate::BaseDashboard
+class Pay::ChargeDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -29,9 +29,8 @@ class ChargeDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :owner,
     :id,
-    :owner_id,
+    :owner,
     :processor,
   ].freeze
 
@@ -73,6 +72,6 @@ class ChargeDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   # def display_resource(charge)
-  #   "Charge ##{charge.id}"
+  #   "Pay::Charge ##{charge.id}"
   # end
 end

@@ -5,17 +5,8 @@
 
   <div class="lg:w-3/4 w-full p-4">
     <h2 class="mb-4">Update Password</h2>
-    <%= form_with(url: password_path, local: true, html: { method: :put }, class: "max-w-lg") do |f| %>
-      <% if current_user.errors.any? %>
-        <div class="bg-red-lightest border-t border-b border-red text-red-dark px-4 py-3 mb-4" role="alert">
-          <p class="font-bold">Oops, please fix the errors below.</p>
-          <ul>
-            <% current_user.errors.full_messages.each do |message| %>
-              <li class="text-sm"><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <%= form_with(model: current_user, url: account_password_path, local: true, html: { method: :put }, class: "max-w-lg") do |f| %>
+      <%= render "devise/shared/error_messages", resource: current_user %>
 
       <div class="form-group">
         <%= f.label :current_password %>

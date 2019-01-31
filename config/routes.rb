@@ -31,10 +31,12 @@ Rails.application.routes.draw do
       end
 
       resources :users
-      resources :subscriptions
-      resources :charges
       namespace :user do
         resources :connected_accounts
+      end
+      namespace :pay do
+        resources :charges
+        resources :subscriptions
       end
 
       root to: "users#index"
@@ -49,8 +51,6 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
-  resource :password
-
   # Payments
   resource :card
   resource :subscription do
@@ -58,6 +58,9 @@ Rails.application.routes.draw do
     patch :resume
   end
   resources :charges
+  namespace :account do
+    resource :password
+  end
 
   namespace :user, module: :users do
     resources :connected_accounts

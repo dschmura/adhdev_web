@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SubscriptionDashboard < Administrate::BaseDashboard
+class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -73,6 +73,6 @@ class SubscriptionDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   # def display_resource(subscription)
-  #   "Subscription ##{subscription.id}"
+  #   "Pay::Subscription ##{subscription.id}"
   # end
 end

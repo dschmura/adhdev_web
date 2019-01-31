@@ -2,17 +2,17 @@
   <h2 class="mb-4"><%= t "devise.invitations.new.header" %></h2>
 
   <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% resource.class.invite_key_fields.each do |field| -%>
-    <div class="form-group">
-      <%= f.label field %>
-      <%= f.text_field field, class: "form-control" %>
-    </div>
-  <% end -%>
+    <% resource.class.invite_key_fields.each do |field| -%>
+      <div class="form-group">
+        <%= f.label field %>
+        <%= f.text_field field, class: "form-control" %>
+      </div>
+    <% end -%>
 
-  <%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
+    <%= f.submit t("devise.invitations.new.submit_button"), class: "btn btn-primary" %>
   <% end %>
-
 <% end %>
+
 <%= render "devise/shared/form_block" %>
