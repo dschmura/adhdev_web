@@ -1,26 +1,12 @@
 class ApplicationController < ActionController::Base
   include Jumpstart::Controller
+  include Users::SubscriptionStatus
+  include Users::TimeZone
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!
 
-  def subscribed?
-    user_signed_in? && current_user.subscribed?
-  end
-
-  def not_subscribed?
-    !subscribed?
-  end
-
   protected
-
-    def browser_time_zone
-      browser_tz = ActiveSupport::TimeZone.find_tzinfo(cookies[:browser_time_zone])
-      ActiveSupport::TimeZone.all.find { |zone| zone.tzinfo == browser_tz } || Time.zone
-    rescue TZInfo::UnknownTimezone, TZInfo::InvalidTimezoneIdentifier
-      Time.zone
-    end
-    helper_method :browser_time_zone
 
     # To add extra fields to Devise registration, add the attribute names to `extra_keys`
     def configure_permitted_parameters

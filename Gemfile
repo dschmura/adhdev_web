@@ -3,11 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
-gem 'jumpstart-rails', path: '../jumpstart', require: 'jumpstart'
-gem 'omniauth'
-gem 'pay', path: '../pay'
-gem 'receipts', '~> 0.2.2'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
@@ -72,6 +67,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'jumpstart-rails', path: '../jumpstart', require: 'jumpstart'
+gem 'omniauth'
+gem 'pay', path: '../pay'
+gem 'receipts', '~> 0.2.2'
 
 if File.exists?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
