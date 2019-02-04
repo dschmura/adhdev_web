@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!
 
+  def subscribed?
+    user_signed_in? && current_user.subscribed?
+  end
+
+  def not_subscribed?
+    !subscribed?
+  end
+
   protected
 
     def browser_time_zone
