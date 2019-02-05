@@ -1,0 +1,36 @@
+.pagination {
+  @apply text-sm flex;
+
+  .page {
+    &:first-child a, &:first-child {
+      margin-left: 0;
+      border-top-left-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+
+    &:last-child a, &:last-child {
+      border-top-right-radius: .25rem;
+      border-bottom-right-radius: .25rem;
+    }
+  }
+
+  .disabled, .gap {
+    @apply border text-grey leading-tight pt-2 px-3;
+    margin-left: -1px;
+  }
+
+  .current, .active {
+    @apply bg-primary border-primary text-white relative block leading-tight pt-2 px-3;
+    margin-left: -1px;
+    z-index: 1;
+  }
+
+  .page a {
+    @apply border relative block leading-tight bg-white text-primary no-underline py-2 px-3;
+    margin-left: -1px;
+
+    &:hover {
+      @apply bg-grey-lightest;
+    }
+  }
+}
