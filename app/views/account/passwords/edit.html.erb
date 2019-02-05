@@ -6,7 +6,7 @@
   <div class="lg:w-3/4 w-full p-4">
     <h2 class="mb-4">Update Password</h2>
     <%= form_with(model: current_user, url: account_password_path, local: true, html: { method: :put }, class: "max-w-lg") do |f| %>
-      <%= render "devise/shared/error_messages", resource: current_user %>
+      <%= render "shared/error_messages", resource: current_user %>
 
       <div class="form-group">
         <%= f.label :current_password %>
