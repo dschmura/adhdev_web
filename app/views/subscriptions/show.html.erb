@@ -38,25 +38,25 @@
 
       <div class="flex">
         <div class="flex-1">
-          <div>You are currently subscribed to the <strong><%= current_user.subscription.jumpstart_plan["name"] %></strong> plan.</div>
+          <div>You are currently subscribed to the <strong><%= current_user.subscription.plan.name %></strong> plan.</div>
         </div>
         <div>
           <%= link_to "Change my plan", edit_subscription_path, class: "text-grey-darker" %>
         </div>
       </div>
     <% else %>
-      <p>You are not currently subscribed.</p>
+      <p>You are not currently subscribed. <%= link_to "Choose a plan", pricing_path %></p>
     <% end %>
 
     <hr class="border-b my-8" />
 
     <h3>Payment Method</h3>
 
-    <% if current_user.card_brand? %>
+    <% if current_user.card_type? %>
 
       <div class="flex" data-controller="toggle">
         <div class="flex-1">
-          <i class="fab fa-cc-<%= current_user.card_brand.downcase %>"></i> <%= payment_method_details %>
+          <i class="fab fa-cc-<%= current_user.card_type.downcase %>"></i> <%= payment_method_details %>
 
           <% if !current_user.paypal? %>
             <%= form_with model: current_user, url: card_url, html: { id: 'payment_form', class: 'hidden mt-4', data: { target: "toggle.toggleable" } } do |f| %>

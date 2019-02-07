@@ -10,17 +10,16 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    # Get the Stripe or Braintree specific ID
-    @interval = subscription_params.fetch("interval")
-    plan_id = Jumpstart.processor_plan_id_for(plan, @interval, processor)
+    current_user.assign_attributes(subscription_params)
 
-    current_user.processor = processor
-    current_user.card_token = token
+    # Get the Stripe or Braintree specific ID
+    @plan = Plan.find(current_user.plan)
+    plan_id = @plan.plan_id_for_processor(current_user.processor)
+
     current_user.subscribe(plan: plan_id)
 
     redirect_to root_path
-  rescue Stripe::CardError => e
-    @plan = Jumpstart.find_plan(plan)
+  rescue Pay::Error => e
     flash[:alert] = e.message
     render :new
   end
@@ -28,14 +27,25 @@ class SubscriptionsController < ApplicationController
   def edit; end
 
   def update
-    plan_id = Jumpstart.processor_plan_id_for(plan, subscription_params.fetch("interval"), @subscription.processor)
+    current_user.assign_attributes(subscription_params)
+
+    # Get the Stripe or Braintree specific ID
+    @plan = Plan.find(current_user.plan)
+    plan_id = @plan.plan_id_for_processor(current_user.processor)
+
     @subscription.swap(plan_id)
     redirect_to subscription_path
+  rescue Pay::Error => e
+    flash[:alert] = e.message
+    render :edit
   end
 
   def resume
     current_user.subscription.resume
     redirect_to subscription_path, notice: "Your subscription has been resumed."
+  rescue Pay::Error => e
+    flash[:alert] = e.message
+    render :show
   end
 
   def destroy
@@ -46,6 +56,9 @@ class SubscriptionsController < ApplicationController
     end
 
     redirect_to subscription_path
+  rescue Pay::Error => e
+    flash[:alert] = e.message
+    render :show
   end
 
   def info
@@ -55,20 +68,8 @@ class SubscriptionsController < ApplicationController
 
   private
 
-  def plan
-    subscription_params.fetch('plan')
-  end
-
-  def processor
-    subscription_params.fetch('processor')
-  end
-
   def subscription_params
-    params.require(:user).permit(:card_token, :plan, :interval, :processor, :extra_billing_info)
-  end
-
-  def token
-    subscription_params.fetch('card_token')
+    params.require(:user).permit(:card_token, :plan, :processor, :extra_billing_info)
   end
 
   def require_user
@@ -76,8 +77,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_plan
-    @plan = Jumpstart.find_plan(params[:plan])
-    @interval = params.fetch(:interval, "month")
+    @plan = Plan.find_by(id: params[:plan])
     redirect_to pricing_path if @plan.nil?
   end
 

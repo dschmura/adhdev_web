@@ -4,9 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'rails', '~> 6.0.0.beta1'
+# Use postgresql as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -81,7 +81,7 @@ end
 gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
 gem 'image_processing', '~> 1.2'
 gem 'name_of_person', '~> 1.0'
-gem 'turbolinks_render', '~> 0.9.1'
+gem 'turbolinks_render', github: 'excid3/turbolinks_render'
 gem 'webpacker', '>= 4.0.x'
 
 # We always want the latest versions of these gems, so no version numbers

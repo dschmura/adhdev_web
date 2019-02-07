@@ -1,15 +1,17 @@
 <div class="lg:w-1/3 w-full text-center p-8 border shadow m-4 rounded-lg">
-    <h5 class=""><%= plan["name"] %></h5>
-    <div>
-      <sup class="text-xl">$</sup>
-      <span class="text-4xl"><%= plan[interval]["amount"] %></span>
-      <span class="text-lg">/ <%= interval %></span>
-    </div>
+  <h5 class=""><%= plan.name %></h5>
+  <div>
+    <sup class="text-xl">$</sup>
+    <span class="text-4xl"><%= plan.amount / 100 %></span>
+    <span class="text-lg">/ <%= plan.interval %></span>
+  </div>
 
-    <div class="text-left my-2 text-center">
-      <% plan.fetch("features", []).each do |plan_feature| %>
-        <p class="mb-4"><%= plan_feature %></p>
-      <% end %>
-    </div>
-    <%= yield %>
+  <div class="text-left my-2 text-center">
+    <% plan.features.each do |plan_feature| %>
+      <p class="mb-4"><%= plan_feature %></p>
+    <% end %>
+  </div>
+
+  <%# Yield for custom actions at the bottom %>
+  <%= yield %>
 </div>

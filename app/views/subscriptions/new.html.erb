@@ -9,8 +9,7 @@
       <%= render 'cards/fields/stripe',    f: f if Jumpstart.config.stripe? %>
       <%= render 'cards/fields/braintree', f: f if Jumpstart.config.braintree? %>
 
-      <%= f.hidden_field :plan, value: @plan["id"] %>
-      <%= f.hidden_field :interval, value: @interval %>
+      <%= f.hidden_field :plan, value: @plan.id %>
 
       <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { disable_with: disable_with("Processing...") } %>
 
@@ -23,19 +22,19 @@
   </div>
 
   <div class="w-1/3 p-8 bg-blue-dark text-white rounded-r-lg">
-    <div class="text-lg"><%= @plan["name"] %></div>
+    <div class="text-lg"><%= @plan.name %></div>
 
     <div>
       <sup class="text-xl">$</sup>
-      <span class="text-5xl"><%= @plan[@interval]["amount"] %></span>
-      <span class="text-lg">/ <%= @interval %></span>
+      <span class="text-5xl"><%= @plan.amount / 100 %></span>
+      <span class="text-lg">/ <%= @plan.interval %></span>
     </div>
-    <div>Automatically renews<br/> after 1 <%= @interval %></div>
+    <div>Automatically renews<br/> after 1 <%= @plan.interval %></div>
 
     <br />
 
-    <% @plan["features"].each do |feature| %>
-      <div class="mb-2"><i class="far fa-check-circle text-blue-lighter"></i> <%= feature %></div>
+    <% @plan.features.each do |plan_feature| %>
+      <div class="mb-2"><i class="far fa-check-circle text-blue-lighter"></i> <%= plan_feature %></div>
     <% end %>
 
     <hr class="my-8 border-b border-blue-light" />
