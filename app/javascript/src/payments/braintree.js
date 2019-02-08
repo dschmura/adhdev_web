@@ -12,7 +12,7 @@ function braintreeTokenHandler(nonce) {
   addHiddenField(form, "user[card_token]", nonce);
   addHiddenField(form, "user[processor]", "braintree");
 
-  form.submit();
+  Rails.fire('submit', form)
 }
 
 function addHiddenField(form, name, value) {
