@@ -8,4 +8,8 @@
   &:focus {
     @apply text-primary-dark;
   }
+
+  &.active {
+    @apply font-bold;
+  }
 }
