@@ -10,7 +10,7 @@ as defined by the routes in the `admin/` namespace
 <nav class="navigation" role="navigation">
   <%= link_to "← Back to App", root_path, class: "navigation__link" %>
   <%= link_to "Jumpstart", jumpstart_path, class: "navigation__link" if Rails.env.development? %>
-  <%= link_to "Sidekiq", admin_sidekiq_web_path, class: "navigation__link", target: :_blank, if defined?(::Sidekiq) %>
+  <%= link_to "Sidekiq", admin_sidekiq_web_path, class: "navigation__link", target: :_blank if defined?(::Sidekiq) %>
   <hr />
 
   <% Administrate::Namespace.new(namespace).resources.each do |resource| %>
