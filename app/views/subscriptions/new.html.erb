@@ -4,7 +4,7 @@
 
     <hr class="border-b my-8" />
 
-    <%= form_for current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
+    <%= form_with model: current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
 
       <%= render 'cards/fields/stripe',    f: f if Jumpstart.config.stripe? %>
       <%= render 'cards/fields/braintree', f: f if Jumpstart.config.braintree? %>

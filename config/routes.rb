@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       namespace :user do
         resources :connected_accounts
       end
+      resources :plans
       namespace :pay do
         resources :charges
         resources :subscriptions

@@ -39,7 +39,7 @@ function stripeTokenHandler(token) {
   addHiddenField(form, "user[card_token]", token.id);
   addHiddenField(form, "user[processor]", "stripe");
 
-  form.submit();
+  Rails.fire('submit', form)
 }
 
 function addHiddenField(form, name, value) {

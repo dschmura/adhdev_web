@@ -7,7 +7,7 @@
   </div>
 
   <div class="text-left my-2 text-center">
-    <% plan.features.each do |plan_feature| %>
+    <% Array.wrap(plan.features).each do |plan_feature| %>
       <p class="mb-4"><%= plan_feature %></p>
     <% end %>
   </div>
