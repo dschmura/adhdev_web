@@ -1,6 +1,6 @@
 class TeamMembersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team_member, only: [:show, :edit, :update, :destroy, :switch]
+  before_action :set_team_member, only: [:edit, :update, :destroy, :switch]
 
   # GET /teams
   def index
@@ -9,6 +9,7 @@ class TeamMembersController < ApplicationController
 
   # GET /team_members/1
   def show
+    redirect_to current_team
   end
 
   # GET /team_members/new
@@ -34,7 +35,7 @@ class TeamMembersController < ApplicationController
   # PATCH/PUT /team_members/1
   def update
     if @team_member.update(team_member_params)
-      redirect_to @team_member, notice: 'Team member was successfully updated.'
+      redirect_to current_team, notice: 'Team member was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +44,7 @@ class TeamMembersController < ApplicationController
   # DELETE /team_members/1
   def destroy
     @team_member.destroy
-    redirect_to team_members_url, notice: 'Team member was successfully removed.'
+    redirect_to current_team, notice: 'Team member was successfully removed.'
   end
 
   private
