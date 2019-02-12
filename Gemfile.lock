@@ -32,7 +32,7 @@ PATH
 PATH
   remote: ../pay
   specs:
-    pay (0.0.3)
+    pay (1.0.0.alpha3)
       rails (>= 4.2)
       rails-html-sanitizer (~> 1.0.4)
 
