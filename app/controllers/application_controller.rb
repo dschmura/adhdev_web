@@ -6,6 +6,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!
 
+  def current_team
+    @current_team ||= begin
+                        Team.find(session[:team_id])
+                      rescue
+                        current_user.teams.first
+                      end
+  end
+  helper_method :current_team
+
   protected
 
     # To add extra fields to Devise registration, add the attribute names to `extra_keys`

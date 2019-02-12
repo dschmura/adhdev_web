@@ -1,0 +1,41 @@
+<div class="container mx-auto my-8">
+  <div class="flex justify-between items-end">
+    <h1><%= @team.name %></h1>
+    <div>
+      <%= link_to 'Edit Team', edit_team_path(@team), class: "btn btn-primary outline" %>
+      <%= link_to 'Invite Team Member', new_team_member_path, class: "btn btn-primary outline" %>
+    </div>
+  </div>
+
+  <h4>Team Members</h4>
+
+  <div class="bg-white rounded shadow">
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th class="p-3 uppercase text-left text-xs text-grey-dark">Name</th>
+          <th class="p-3 uppercase text-left text-xs text-grey-dark">Roles</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @team.team_members.includes(:user).each do |team_member| %>
+          <% user = team_member.user %>
+          <tr class="group border-t border-grey-light hover:bg-grey-lightest">
+            <td class="p-3">
+              <% if user.created_by_invite? && !user.invitation_accepted? %>
+                <div class="rounded-full py-1 px-4 bg-grey-light text-xs inline-block text-grey-darker font-bold leading-normal uppercase mr-2">Invitation Sent</div>
+              <% end %>
+
+              <%= link_to (user.name || user.email), edit_team_member_path(team_member), class: "text-blue-dark no-underline" %>
+            </td>
+            <td class="p-3"><%= "Admin" if team_member.admin? %></td>
+            <td class="p-3 w-32 text-center"><%= link_to "Edit", edit_team_member_path(team_member), class: "text-sm text-blue-dark no-underline" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

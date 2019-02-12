@@ -51,6 +51,13 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
+  resources :teams do
+    member do
+      patch :switch
+    end
+  end
+  resources :team_members
+
   # Payments
   resource :card
   resource :subscription do

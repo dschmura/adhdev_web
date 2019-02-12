@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Devise for authentication
-gem 'devise', '~> 4.5.0'
+gem 'devise', '~> 4.6.0'
 gem 'devise_invitable', '~> 1.7', '>= 1.7.4'
 gem 'devise_masquerade', '~> 0.6.4'
 
