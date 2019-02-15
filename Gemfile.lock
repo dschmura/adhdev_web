@@ -100,7 +100,7 @@ GEM
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
-    bootsnap (1.3.2)
+    bootsnap (1.4.0)
       msgpack (~> 1.0)
     braintree (2.94.0)
       builder (>= 2.0.0)
@@ -339,7 +339,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stripe (4.8.0)
+    stripe (4.9.0)
       faraday (~> 0.13)
       net-http-persistent (~> 3.0)
     stripe_event (2.2.0)
