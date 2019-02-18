@@ -1,6 +1,13 @@
 // Custom TailwindCSS modals for confirm dialogs
 
+const Rails = require("@rails/ujs")
+
+// Cache a copy of the old Rails.confirm since we'll override it when the modal opens
 const old_confirm = Rails.confirm;
+
+// Elements we want to listen to for data-confirm
+const elements = ['a[data-confirm]', 'button[data-confirm]', 'input[type=submit][data-confirm]']
+
 const createConfirmModal = (element) => {
   var id = 'confirm-modal-' + String(Math.random()).slice(2, -1);
   var title = "Are you sure?"
@@ -70,5 +77,5 @@ const handleConfirm = (event) => {
   }
 }
 
-const elements = ['a[data-confirm]', 'button[data-confirm]', 'input[type=submit][data-confirm]']
+// When a Rails confirm event fires, we'll handle it
 Rails.delegate(document, elements.join(', '), 'confirm', handleConfirm)
