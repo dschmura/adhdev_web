@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Pay::SubscriptionDashboard < Administrate::BaseDashboard
+class TeamMemberDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,19 +8,12 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    owner: Field::BelongsTo.with_options(class_name: "Team"),
+    team: Field::BelongsTo,
+    user: Field::BelongsTo,
     id: Field::Number,
-    owner_id: Field::Number,
-    name: Field::String,
-    processor: Field::String,
-    processor_id: Field::String,
-    processor_plan: Field::String,
-    quantity: Field::Number,
-    trial_ends_at: Field::DateTime,
-    ends_at: Field::DateTime,
+    admin: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    prorate: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,49 +22,36 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :team,
+    :user,
     :id,
-    :owner,
-    :name,
+    :admin,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :owner,
+    :team,
+    :user,
     :id,
-    :owner_id,
-    :name,
-    :processor,
-    :processor_id,
-    :processor_plan,
-    :quantity,
-    :trial_ends_at,
-    :ends_at,
+    :admin,
     :created_at,
     :updated_at,
-    :prorate,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :owner,
-    :owner_id,
-    :name,
-    :processor,
-    :processor_id,
-    :processor_plan,
-    :quantity,
-    :trial_ends_at,
-    :ends_at,
-    :prorate,
+    :team,
+    :user,
+    :admin,
   ].freeze
 
-  # Overwrite this method to customize how subscriptions are displayed
+  # Overwrite this method to customize how team members are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(subscription)
-  #   "Pay::Subscription ##{subscription.id}"
+  # def display_resource(team_member)
+  #   "TeamMember ##{team_member.id}"
   # end
 end

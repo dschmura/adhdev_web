@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable, :invitable, :masqueradable,
          :omniauthable
 
-  include UserAgreements, UserTeams, Pay::Billable
+  include UserAgreements, UserTeams
 
   has_person_name
 

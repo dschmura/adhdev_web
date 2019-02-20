@@ -7,7 +7,8 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-const Rails = require("@rails/ujs")
+window.Rails = require("@rails/ujs")
+
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -18,14 +19,11 @@ import "controllers"
 
 import "src/confirm"
 import "src/forms"
-import "src/payments/braintree"
-import "src/payments/stripe"
 import "src/timezone"
 
 import tippy from 'tippy.js'
 document.addEventListener("turbolinks:load", () => {
   tippy(document.querySelectorAll('[data-tooltip]'))
 })
-
 
 Rails.start()

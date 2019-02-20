@@ -1,6 +1,10 @@
 <div class="container mx-auto my-8">
   <div class="flex justify-between items-end">
-    <h1><%= @team.name %></h1>
+    <div class="flex items-center">
+      <%= team_avatar @team, class: "rounded-full mr-4" %>
+      <h1><%= @team.name %></h1>
+    </div>
+
     <div>
       <%= link_to 'Edit Team', edit_team_path(@team), class: "btn btn-primary outline" %>
       <%= link_to 'Invite Team Member', new_team_member_path, class: "btn btn-primary outline" %>

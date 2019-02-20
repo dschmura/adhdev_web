@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :require_user
+  before_action :require_team
   before_action :set_plan, only: [:new]
   before_action :set_subscription, only: [:edit, :update]
 
@@ -10,13 +10,13 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    current_user.assign_attributes(subscription_params)
+    current_team.assign_attributes(subscription_params)
 
     # Get the Stripe or Braintree specific ID
-    @plan = Plan.find(current_user.plan)
-    plan_id = @plan.plan_id_for_processor(current_user.processor)
+    @plan = Plan.find(current_team.plan)
+    processor_id = @plan.processor_id(current_team.processor)
 
-    current_user.subscribe(plan: plan_id)
+    current_team.subscribe(plan: processor_id)
 
     redirect_to root_path
   rescue Pay::Error => e
@@ -27,13 +27,13 @@ class SubscriptionsController < ApplicationController
   def edit; end
 
   def update
-    current_user.assign_attributes(subscription_params)
+    current_team.assign_attributes(subscription_params)
 
     # Get the Stripe or Braintree specific ID
-    @plan = Plan.find(current_user.plan)
-    plan_id = @plan.plan_id_for_processor(current_user.processor)
+    @plan = Plan.find(current_team.plan)
+    processor_id = @plan.processor_id(current_team.processor)
 
-    @subscription.swap(plan_id)
+    @subscription.swap(processor_id)
     redirect_to subscription_path
   rescue Pay::Error => e
     flash[:alert] = e.message
@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def resume
-    current_user.subscription.resume
+    current_team.subscription.resume
     redirect_to subscription_path, notice: "Your subscription has been resumed."
   rescue Pay::Error => e
     flash[:alert] = e.message
@@ -50,9 +50,9 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     if Jumpstart.config.cancel_immediately?
-      current_user.subscription.cancel_now!
+      current_team.subscription.cancel_now!
     else
-      current_user.subscription.cancel
+      current_team.subscription.cancel
     end
 
     redirect_to subscription_path
@@ -62,18 +62,18 @@ class SubscriptionsController < ApplicationController
   end
 
   def info
-    current_user.update(subscription_params)
+    current_team.update(subscription_params)
     redirect_to subscription_path, notice: "Extra billing info saved sucessfully."
   end
 
   private
 
   def subscription_params
-    params.require(:user).permit(:card_token, :plan, :processor, :extra_billing_info)
+    params.require(:team).permit(:card_token, :plan, :processor, :extra_billing_info)
   end
 
-  def require_user
-    redirect_to new_user_registration_path unless user_signed_in?
+  def require_team
+    redirect_to new_user_registration_path unless current_team
   end
 
   def set_plan
@@ -82,6 +82,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_subscription
-    @subscription = current_user.subscription
+    @subscription = current_team.subscription
   end
 end

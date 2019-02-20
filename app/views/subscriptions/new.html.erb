@@ -1,20 +1,17 @@
-<div class="shadow-lg rounded-lg flex w-3/4 mx-auto my-8">
+<div class="shadow-lg rounded-lg flex w-1/2 mx-auto my-8">
   <div class="w-2/3 p-8">
     <h1>Checkout</h1>
 
     <hr class="border-b my-8" />
 
-    <%= form_with model: current_user, url: subscription_url, method: :post, html: { id: 'payment_form' } do |f| %>
+    <div class="flex items-center my-8">
+      <%= team_avatar current_team, class: "h-10 w-10 rounded-full mr-4" %>
+      <h4><%= current_team.name %></h4>
+    </div>
 
-      <%= render 'cards/fields/stripe',    f: f if Jumpstart.config.stripe? %>
-      <%= render 'cards/fields/braintree', f: f if Jumpstart.config.braintree? %>
-
-      <%= f.hidden_field :plan, value: @plan.id %>
-
-      <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { disable_with: disable_with("Processing...") } %>
-
-      <%= render 'cards/fields/paypal',    f: f if Jumpstart.config.paypal? %>
-    <% end %>
+    <%= render 'subscriptions/forms/stripe'    if Jumpstart.config.stripe? %>
+    <%= render 'subscriptions/forms/braintree' if Jumpstart.config.braintree? %>
+    <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>
 
     <div class="text-sm text-center mt-8">
       <i class="far fa-question-circle text-blue-dark"></i> Need any help? <span class="text-grey-darker">Don't hesitate to <%= link_to "contact support", "#", class: "text-grey-darker" %>!</span>

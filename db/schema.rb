@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_161642) do
+ActiveRecord::Schema.define(version: 2019_02_15_220522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,8 +85,17 @@ ActiveRecord::Schema.define(version: 2019_02_18_161642) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
+    t.boolean "personal", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "processor"
+    t.string "processor_id"
+    t.datetime "trial_ends_at"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.text "extra_billing_info"
   end
 
   create_table "user_connected_accounts", force: :cascade do |t|
@@ -128,14 +137,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_161642) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
-    t.string "processor"
-    t.string "processor_id"
-    t.datetime "trial_ends_at"
-    t.string "card_type"
-    t.string "card_last4"
-    t.string "card_exp_month"
-    t.string "card_exp_year"
-    t.text "extra_billing_info"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

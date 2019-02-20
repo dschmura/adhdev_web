@@ -4,10 +4,10 @@ module SubscriptionsHelper
   end
 
   def payment_method_details
-    if current_user.paypal?
-      "#{current_user.card_type} #{current_user.card_last4}"
+    if current_team.paypal?
+      "#{current_team.card_type} #{current_team.card_last4}"
     else
-      "#{current_user.card_type} ending in #{current_user.card_last4}"
+      "#{current_team.card_type} ending in #{current_team.card_last4}"
     end
   end
 end

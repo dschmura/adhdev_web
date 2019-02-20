@@ -1,5 +1,5 @@
 # This migration comes from pay (originally 20170503131610)
-class AddFieldsToUsers < ActiveRecord::Migration[4.2]
+class AddFieldsToTeams < ActiveRecord::Migration[4.2]
   def change
     unless ActiveRecord::Base.connection.table_exists?(Pay.billable_table)
       create_table Pay.billable_table.to_sym

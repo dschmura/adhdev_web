@@ -1,4 +1,4 @@
-module Users
+module Teams
   module SubscriptionStatus
     extend ActiveSupport::Concern
 
@@ -8,7 +8,7 @@ module Users
     end
 
     def subscribed?
-      user_signed_in? && current_user.subscribed?
+      user_signed_in? && current_team.subscribed?
     end
 
     def not_subscribed?

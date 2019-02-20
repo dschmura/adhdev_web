@@ -1,0 +1,16 @@
+<%= form_with model: current_team,
+  url: card_url,
+  class: "hidden mt-4",
+  data: {
+    controller: "braintree",
+    target: "braintree.form toggle.toggleable",
+    braintree_env: braintree_env,
+    braintree_client_token: Pay.braintree_gateway.client_token.generate
+  } do |f| %>
+
+  <%= tag.div nil, data: { target: "braintree.dropin" } %>
+
+  <div class="my-8 text-center">
+    <%= f.button 'Update Card', class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with("Processing...") } %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<% content_for :head do %>
+  <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public_key) %>
+<% end %>
+
+<%= form_with model: current_team,
+  url: card_url,
+  class: "hidden mt-4",
+  data: {
+    controller: "stripe",
+    target: "stripe.form toggle.toggleable",
+  } do |f| %>
+  <div class="form-group">
+    <label for="card-element">Credit or debit card</label>
+    <div data-target="stripe.card" class="form-control"></div>
+    <div data-target="stripe.error" role="alert"></div>
+  </div>
+
+  <div class="text-center">
+    <%= f.button 'Update Card', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
+  </div>
+<% end %>

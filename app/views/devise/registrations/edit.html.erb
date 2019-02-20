@@ -40,7 +40,7 @@
             <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span>Upload Avatar</span>
           </label>
         </div>
-        <%= image_tag avatar_url_for(current_user), class: "rounded-full ml-4 -mt-8 w-16" %>
+        <%= image_tag avatar_url_for(f.object), class: "rounded-full ml-4 -mt-8 w-16" %>
       </div>
 
       <div class="form-group mt-6">

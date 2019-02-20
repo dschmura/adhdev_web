@@ -21,7 +21,10 @@
         <tbody>
         <% @teams.each do |team| %>
           <tr class="group border-t border-grey-light hover:bg-grey-lightest">
-            <td class="p-3"><%= team.name %></td>
+            <td class="p-3">
+              <%= team_avatar team, class: "rounded-full h-10 w-10 align-middle mr-4" %>
+              <%= team.name %>
+            </td>
 
             <td class="p-3 w-32 text-center">
               <%= link_to "View", team, class: "invisible group-hover:visible text-sm text-blue-dark no-underline" %>

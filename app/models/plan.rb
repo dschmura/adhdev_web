@@ -28,7 +28,8 @@ class Plan < ApplicationRecord
     monthly.where(name: name).first
   end
 
-  def plan_id_for_processor(processor)
+  def processor_id(processor)
+    return if processor.nil?
     send("#{processor}_id")
   end
 end

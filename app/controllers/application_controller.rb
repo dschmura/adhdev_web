@@ -7,11 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :masquerade_user!
 
   def current_team
-    @current_team ||= begin
-                        Team.find(session[:team_id])
-                      rescue
-                        current_user.teams.first
-                      end
+    @current_team ||= Team.find(session[:team_id])
+  rescue ActiveRecord::RecordNotFound
+    @current_team ||= current_user.teams.first if user_signed_in?
   end
   helper_method :current_team
 
