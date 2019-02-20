@@ -33,8 +33,10 @@
     </div>
 
     <div class="form-group">
-      <%= f.check_box :terms_of_service %>
-      <span>I accept the <%= link_to "terms of service", terms_path, target: "_blank", class: "btn-link" %> &amp; <%= link_to "privacy policy", privacy_path, target: "_blank", class: "btn-link" %></span>
+      <label>
+        <%= f.check_box :terms_of_service, class: "mr-1" %>
+        I accept the <%= link_to "terms of service", terms_path, target: "_blank", class: "btn-link" %> &amp; <%= link_to "privacy policy", privacy_path, target: "_blank", class: "btn-link" %>
+      </label>
     </div>
 
     <div class="form-group">
