@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Jumpstart::Controller
-  include Users::SubscriptionStatus
+  include Teams::SubscriptionStatus
   include Users::TimeZone
 
   before_action :configure_permitted_parameters, if: :devise_controller?
