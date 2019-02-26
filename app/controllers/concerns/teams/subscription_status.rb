@@ -8,7 +8,7 @@ module Teams
     end
 
     def subscribed?
-      user_signed_in? && current_team.subscribed?
+      user_signed_in? && current_team && current_team.subscribed?
     end
 
     def not_subscribed?

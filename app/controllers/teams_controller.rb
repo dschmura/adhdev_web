@@ -22,10 +22,11 @@ class TeamsController < ApplicationController
 
   # POST /teams
   def create
-    @team = Team.new(team_params)
+    @team = Team.new(team_params.merge(owner: current_user))
     @team.team_members.new(user: current_user, admin: true)
 
     if @team.save
+      set_active_team
       redirect_to @team, notice: 'Team was successfully created.'
     else
       render :new
@@ -48,7 +49,7 @@ class TeamsController < ApplicationController
   end
 
   def switch
-    session[:team_id] = @team.id
+    set_active_team
     redirect_to root_path
   end
 
@@ -62,4 +63,9 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:name)
     end
+
+    def set_active_team
+      session[:team_id] = @team.id
+    end
+
 end

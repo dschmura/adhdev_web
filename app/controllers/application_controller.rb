@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   def current_team
     @current_team ||= Team.find(session[:team_id])
   rescue ActiveRecord::RecordNotFound
-    @current_team ||= current_user.teams.first if user_signed_in?
+    @current_team ||= current_user.teams.first
+    @current_team ||= current_user.create_personal_team
   end
   helper_method :current_team
 

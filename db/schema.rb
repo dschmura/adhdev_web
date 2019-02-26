@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_220522) do
+ActiveRecord::Schema.define(version: 2019_02_20_201308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,17 +87,18 @@ ActiveRecord::Schema.define(version: 2019_02_15_220522) do
     t.bigint "team_id"
     t.bigint "user_id"
     t.boolean "admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_team_members_on_team_id"
     t.index ["user_id"], name: "index_team_members_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
+    t.bigint "owner_id"
     t.boolean "personal", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "processor"
     t.string "processor_id"
     t.datetime "trial_ends_at"
@@ -96,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_02_15_220522) do
     t.string "card_exp_month"
     t.string "card_exp_year"
     t.text "extra_billing_info"
+    t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
   create_table "user_connected_accounts", force: :cascade do |t|
@@ -147,5 +159,6 @@ ActiveRecord::Schema.define(version: 2019_02_15_220522) do
 
   add_foreign_key "team_members", "teams"
   add_foreign_key "team_members", "users"
+  add_foreign_key "teams", "users", column: "owner_id"
   add_foreign_key "user_connected_accounts", "users"
 end

@@ -9,8 +9,8 @@
   <div class="form-group flex justify-between">
     <%= form.button class: "btn btn-primary" %>
 
-    <% if form.object.persisted? %>
-      <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, data: { confirm: "Are you sure?" } %>
+    <% if form.object.persisted? && !form.object.personal? %>
+      <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
 <% end %>

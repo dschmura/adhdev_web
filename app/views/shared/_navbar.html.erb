@@ -20,7 +20,7 @@
       <%= render "shared/right_nav" %>
 
       <% if user_signed_in? %>
-        <div class="flex items-center px-4 py-2 leading-none rounded no-underline text-grey-darker hover:text-grey-darkest hover:bg-white mt-4 lg:mt-0">
+        <div class="z-10 flex items-center px-4 py-2 leading-none rounded no-underline text-grey-darker hover:text-grey-darkest hover:bg-white mt-4 lg:mt-0">
           <div class="relative" data-controller="dropdown">
             <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button" class="inline-block select-none">
               <span class="appearance-none flex items-center inline-block text-grey-darker">
@@ -30,32 +30,38 @@
             </div>
             <div data-target="dropdown.menu" class="absolute pin-r mt-2 hidden">
               <div class="bg-white shadow rounded border overflow-hidden">
-                <%= link_to 'Profile',  edit_user_registration_path, class: 'no-underline block pl-8 py-3 text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
-                <%= link_to 'Password', account_password_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
-                <%= link_to 'Accounts', user_connected_accounts_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
-                <%= link_to 'Billing',  subscription_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
-
-                <div class="border-t px-8 py-3 text-grey-darkest bg-white font-bold text-xs uppercase">Teams</div>
-                <% current_user.teams.each do |team| %>
-                  <%= link_to team.name, switch_team_path(team), method: :patch, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+                <%= link_to current_team, class: 'border-b text-sm no-underline block px-6 py-3 text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' do %>
+                  Signed in as <strong><%= current_team.name %></strong>
                 <% end %>
-                <%= link_to "Create a team", new_team_path, class: 'text-sm no-underline block px-8 py-3 text-blue-dark bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+
+                <%= link_to 'Profile',  edit_user_registration_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+                <%= link_to 'Password', account_password_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
+                <%= link_to 'Accounts', user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
+                <%= link_to 'Billing',  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap' %>
+
+                <!--
+                <div class="border-t px-6 py-3 text-grey-darkest bg-white font-bold text-xs uppercase">Teams</div>
+                -->
+                <%= link_to "Teams", teams_path, class: 'border-t text-xs uppercase font-bold text-grey-darkest no-underline block px-6 py-3 bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+                <% current_user.teams.each do |team| %>
+                  <%= link_to team.name, switch_team_path(team), method: :patch, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+                <% end %>
 
 
                 <% if current_user.admin? %>
-                  <div class="border-t px-8 py-3 text-grey-darkest bg-white font-bold text-xs uppercase">Admin</div>
-                  <%= link_to 'Dashboard', admin_root_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
+                  <div class="border-t px-6 py-3 text-grey-darkest bg-white font-bold text-xs uppercase">Admin</div>
+                  <%= link_to 'Dashboard', admin_root_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
+                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
                 <% end %>
 
                 <% if Rails.env.development? %>
-                  <div class="border-t px-8 py-3 text-grey-darkest bg-white font-bold text-xs uppercase">Development</div>
-                  <%= link_to 'Jumpstart Config', jumpstart_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Jumpstart Docs', docs_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Letter Opener', letter_opener_web_path, class: 'no-underline block px-8 py-3 text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', target: "_blank", data: { turbolinks: false } %>
+                  <div class="border-t px-6 py-3 text-grey-darkest bg-white font-bold text-xs uppercase">Development</div>
+                  <%= link_to 'Jumpstart Config', jumpstart_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
+                  <%= link_to 'Jumpstart Docs', docs_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', data: { turbolinks: false } %>
+                  <%= link_to 'Letter Opener', letter_opener_web_path, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white  hover:bg-grey-lighter whitespace-no-wrap', target: "_blank", data: { turbolinks: false } %>
                 <% end %>
 
-                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-8 py-3 border-t text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-sm text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
               </div>
             </div>
           </div>

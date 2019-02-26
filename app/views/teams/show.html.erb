@@ -1,45 +1,55 @@
-<div class="container mx-auto my-8">
-  <div class="flex justify-between items-end">
-    <div class="flex items-center">
-      <%= team_avatar @team, class: "rounded-full mr-4" %>
-      <h1><%= @team.name %></h1>
-    </div>
-
-    <div>
-      <%= link_to 'Edit Team', edit_team_path(@team), class: "btn btn-primary outline" %>
-      <%= link_to 'Invite Team Member', new_team_member_path, class: "btn btn-primary outline" %>
-    </div>
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <h4>Team Members</h4>
+  <div class="lg:w-3/4 w-full p-4">
 
-  <div class="bg-white rounded shadow">
-    <table class="w-full">
-      <thead>
-        <tr>
-          <th class="p-3 uppercase text-left text-xs text-grey-dark">Name</th>
-          <th class="p-3 uppercase text-left text-xs text-grey-dark">Roles</th>
-          <th></th>
-        </tr>
-      </thead>
+    <div class="flex justify-between items-end">
+      <div class="flex items-center">
+        <%= team_avatar @team, class: "rounded-full mr-4 h-12 w-12" %>
+        <h1 class="h2"><%= @team.name %></h1>
+      </div>
 
-      <tbody>
-        <% @team.team_members.includes(:user).each do |team_member| %>
-          <% user = team_member.user %>
-          <tr class="group border-t border-grey-light hover:bg-grey-lightest">
-            <td class="p-3">
-              <% if user.created_by_invite? && !user.invitation_accepted? %>
-                <div class="rounded-full py-1 px-4 bg-grey-light text-xs inline-block text-grey-darker font-bold leading-normal uppercase mr-2">Invitation Sent</div>
-              <% end %>
+      <div>
+        <%= link_to 'Edit Team', edit_team_path(@team), class: "btn btn-primary outline" %>
+      </div>
+    </div>
 
-              <%= link_to (user.name || user.email), edit_team_member_path(team_member), class: "text-blue-dark no-underline" %>
-            </td>
-            <td class="p-3"><%= "Admin" if team_member.admin? %></td>
-            <td class="p-3 w-32 text-center"><%= link_to "Edit", edit_team_member_path(team_member), class: "text-sm text-blue-dark no-underline" %></td>
+    <div class="bg-white rounded shadow mt-8">
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-grey-dark">Team Member</th>
+            <th class="p-3 uppercase text-left text-xs text-grey-dark">Roles</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
 
+        <tbody>
+          <% @team.team_members.includes(:user).each do |team_member| %>
+            <% user = team_member.user %>
+            <tr class="group border-t border-grey-light hover:bg-grey-lightest">
+              <td class="p-3">
+                <% if user.created_by_invite? && !user.invitation_accepted? %>
+                  <div class="rounded-full py-1 px-4 bg-grey-light text-xs inline-block text-grey-darker font-bold leading-normal uppercase mr-2">Invitation Sent</div>
+                <% end %>
+
+                <%= link_to (user.name || user.email), edit_team_member_path(team_member), class: "text-blue-dark no-underline" %>
+              </td>
+              <td class="p-3"><%= team_member_roles(@team, team_member).join(", ") %></td>
+              <td class="p-3 w-32 text-center"><%= link_to "Edit", edit_team_member_path(team_member), class: "text-sm text-blue-dark no-underline" %></td>
+            </tr>
+          <% end %>
+
+          <tr class="border-t border-grey-light">
+            <td colspan="3" class="p-3 text-center">
+              <%= link_to 'Invite A Team Member', new_team_member_path, class: "text-blue-dark no-underline" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 </div>
