@@ -407,24 +407,17 @@ trix-editor .attachment__metadata {
 
 
 .attachment {
-    display: inline-block;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    text-align: center;
-    line-height: 1
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: center;
+  line-height: 1
 }
-.attachment--content.attachment--mention, .attachment--content[data-trix-content-type~='application/vnd.mention'] {
-  width: auto;
-  padding: 0;
-  margin: 0 !important;
 
+.mention {
   img {
     border-radius: 50%;
-  }
-
-  .attachment__toolbar {
-    left: 0.75em;
   }
 }
 
@@ -465,5 +458,9 @@ trix-editor .attachment__metadata {
   .highlight {
     background: #1b6ac9;
     color: #fff;
+
+    span {
+      font-weight: bold;
+    }
   }
 }

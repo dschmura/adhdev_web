@@ -1,6 +1,8 @@
  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
+  resources :posts
+  resources :tweets
 
   # Jumpstart views
   if Rails.env.development?
@@ -57,8 +59,9 @@ Rails.application.routes.draw do
     member do
       patch :switch
     end
+
+    resources :team_members, path: :members
   end
-  resources :team_members
 
   # Payments
   resource :card
@@ -71,6 +74,7 @@ Rails.application.routes.draw do
     resource :password
   end
 
+  resources :users
   namespace :user, module: :users do
     resources :connected_accounts
   end

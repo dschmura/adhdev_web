@@ -1,20 +1,22 @@
 class TeamMembersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_team
+  before_action :require_non_personal_team!
   before_action :set_team_member, only: [:edit, :update, :destroy, :switch]
 
   # GET /teams
   def index
-    redirect_to current_team
+    redirect_to @team
   end
 
   # GET /team_members/1
   def show
-    redirect_to current_team
+    redirect_to @team
   end
 
   # GET /team_members/new
   def new
-    @team_member = current_team.team_members.new
+    @team_member = TeamMember.new
   end
 
   # GET /team_members/1/edit
@@ -23,10 +25,10 @@ class TeamMembersController < ApplicationController
 
   # POST /team_members
   def create
-    user = User.invite!({ email: params[:email] }, current_user)
+    user = User.invite!({ name: params[:name], email: params[:email] }, current_user)
     if user.persisted?
-      current_team.team_members.create(user: user, admin: params[:admin])
-      redirect_to current_team, notice: 'Team member was successfully added.'
+      @team.team_members.create(user: user, admin: params[:admin])
+      redirect_to @team, notice: 'Team member was successfully added.'
     else
       render :new
     end
@@ -35,7 +37,7 @@ class TeamMembersController < ApplicationController
   # PATCH/PUT /team_members/1
   def update
     if @team_member.update(team_member_params)
-      redirect_to current_team, notice: 'Team member was successfully updated.'
+      redirect_to @team, notice: 'Team member was successfully updated.'
     else
       render :edit
     end
@@ -44,17 +46,26 @@ class TeamMembersController < ApplicationController
   # DELETE /team_members/1
   def destroy
     @team_member.destroy
-    redirect_to current_team, notice: 'Team member was successfully removed.'
+    redirect_to @team, notice: 'Team member was successfully removed.'
   end
 
   private
+    def set_team
+      @team = current_user.teams.find(params[:team_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_team_member
-      @team_member = current_team.team_members.find(params[:id])
+      @team_member = @team.team_members.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def team_member_params
-      params.require(:team_member).permit(:user_id, :admin)
+      attrs = [:user_id] + TeamMember.local_stored_attributes[:roles]
+      params.require(:team_member).permit(*attrs)
+    end
+
+    def require_non_personal_team!
+      redirect_to teams_path if @team.personal?
     end
 end

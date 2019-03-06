@@ -8,7 +8,7 @@
       <h1 class="h3">Teams</h1>
 
       <% if @teams.exists? %>
-        <%= link_to 'New Team', new_team_path, class: "btn btn-primary" %>
+        <%= link_to 'Create a Team', new_team_path, class: "btn btn-primary" %>
       <% end %>
     </div>
 
@@ -29,6 +29,9 @@
               <td class="p-3">
                 <%= link_to team_avatar(team, class: "rounded-full h-10 w-10 align-middle mr-4"), team %>
                 <%= link_to team.name, team, class: "text-black no-underline" %>
+                <% if team.personal_team_for?(current_user) %>
+                  <div class="ml-2 rounded-full py-1 px-3 bg-grey-light text-xs inline-block text-grey-darker font-bold leading-normal uppercase mr-2">Personal</div>
+                <% end %>
               </td>
 
               <td class="p-3 w-32 text-center">

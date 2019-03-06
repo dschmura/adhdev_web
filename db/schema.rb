@@ -83,10 +83,17 @@ ActiveRecord::Schema.define(version: 2019_02_20_201308) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "team_members", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "user_id"
-    t.boolean "admin"
+    t.jsonb "roles", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_team_members_on_team_id"
@@ -108,6 +115,12 @@ ActiveRecord::Schema.define(version: 2019_02_20_201308) do
     t.string "card_exp_year"
     t.text "extra_billing_info"
     t.index ["owner_id"], name: "index_teams_on_owner_id"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_connected_accounts", force: :cascade do |t|

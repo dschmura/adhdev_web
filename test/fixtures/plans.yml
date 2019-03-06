@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  details: 
+  details: []
 
 two:
   name: MyString
-  details: 
+  details: []

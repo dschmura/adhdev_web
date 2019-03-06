@@ -14,4 +14,8 @@ class Team < ApplicationRecord
   def email
     team_members.includes(:user).order(created_at: :asc).first.user.email
   end
+
+  def personal_team_for?(user)
+    personal? && owner_id == user.id
+  end
 end

@@ -1,5 +1,16 @@
-<div class="container mx-auto my-8">
-  <h1>Edit Team Member</h1>
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
 
-  <%= render "form", team_member: @team_member %>
+  <div class="lg:w-3/4 w-full p-4">
+    <div class="flex items-center">
+      <%= team_avatar @team, class: "rounded-full mr-4 h-12 w-12" %>
+      <h1 class="h2"><%= @team.name %></h1>
+    </div>
+
+    <p class="my-4">Editing team permissions for <%= @team_member.user.name || @team_member.user.email %>.</p>
+
+    <%= render "form", team_member: @team_member %>
+  </div>
 </div>
