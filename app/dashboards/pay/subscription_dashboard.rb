@@ -10,7 +10,6 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     owner: Field::BelongsTo.with_options(class_name: "Team"),
     id: Field::Number,
-    owner_id: Field::Number,
     name: Field::String,
     processor: Field::String,
     processor_id: Field::String,
@@ -21,6 +20,8 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     prorate: Field::Boolean,
+    active?: Field::Boolean,
+    cancelled?: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,14 +33,16 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
     :id,
     :owner,
     :name,
+    :active?,
+    :cancelled?,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :owner,
     :id,
-    :owner_id,
+    :owner,
+    :active?,
     :name,
     :processor,
     :processor_id,

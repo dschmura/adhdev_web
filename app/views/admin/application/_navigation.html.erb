@@ -13,11 +13,15 @@ as defined by the routes in the `admin/` namespace
   <%= link_to "Sidekiq", admin_sidekiq_web_path, class: "navigation__link", target: :_blank if defined?(::Sidekiq) %>
   <hr />
 
+  <%= link_to "Dashboard", admin_root_path, class: "navigation__link" %>
+
   <% Administrate::Namespace.new(namespace).resources.each do |resource| %>
     <%= link_to(
       display_resource_name(resource),
       [namespace, resource_index_route_key(resource)],
       class: "navigation__link navigation__link--#{nav_link_state(resource)}"
     ) %>
+  <% rescue %>
+    <% # Skip navigation items for custom dashboards %>
   <% end %>
 </nav>

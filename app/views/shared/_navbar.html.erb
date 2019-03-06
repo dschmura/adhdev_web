@@ -44,7 +44,7 @@
                 -->
                 <%= link_to "Teams", teams_path, class: 'border-t text-xs uppercase font-bold text-grey-darkest no-underline block px-6 py-3 bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
                 <% current_user.teams.each do |team| %>
-                  <%= link_to team.name, switch_team_path(team), method: :patch, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
+                  <%= link_to team.name, switch_team_path(team), remote: true, method: :patch, class: 'no-underline block px-6 py-3 text-sm text-grey-darkest bg-white hover:bg-grey-lighter whitespace-no-wrap' %>
                 <% end %>
 
 
