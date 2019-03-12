@@ -1,6 +1,0 @@
-<div data-controller="toggle" class="py-2 my-4 shadow-inner-sm rounded bg-white max-w-lg overflow-x-auto">
-  <button class="btn btn-link btn-small text-grey-dark mb-0" data-action="click->toggle#toggle">
-   <%= render_svg "icons/code", styles: "fill-current icon-sm mr-2" %> Toggle Source
-  </button>
-  <div data-target="toggle.toggleable" class="hidden"><pre><code><%= yield :snippet %></code></pre></div>
-</div>

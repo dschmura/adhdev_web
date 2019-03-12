@@ -8,18 +8,12 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount Jumpstart::Engine, at: '/jumpstart'
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
-    resource :docs
-    namespace :docs do
-      resource :alert
-      resource :button
-      resource :card
-      resource :form
-      resource :icon
-      resource :javascript
-      resource :pagination
-      resource :pill
-      resource :typography
-      resource :well
+
+    namespace :jumpstart do
+      resource :docs do
+        [:announcements, :billing, :scaffolds, :teams, :users].each{ |doc| get doc }
+        [:alerts, :buttons, :cards, :forms, :icons, :javascript, :pagination, :pills, :typography, :wells].each{ |doc| get doc }
+      end
     end
   end
 
