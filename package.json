@@ -13,8 +13,8 @@
     "tailwindcss": "^0.7.3",
     "tailwindcss-stimulus-components": "^0.9.2",
     "tippy.js": "^2.6.0",
-    "tributejs": "^3.5.3",
-    "trix": "^1.0.0",
+    "tributejs": "^3.6.0",
+    "trix": "^1.1.0",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
