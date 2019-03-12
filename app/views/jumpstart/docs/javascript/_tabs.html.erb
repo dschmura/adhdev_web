@@ -1,0 +1,35 @@
+<div class="mb-10 pb-10 border-b border-grey-light">
+
+  <h2 class="mb-2 pb-2">Tabs</h2>
+
+  <%= render "jumpstart/docs/snippet" do %>
+<div data-controller="tabs" data-tabs-active-tab="-mb-px tab-active transition">
+  <ul class="list-reset flex border-b">
+    <li class="mr-1" data-target="tabs.tab" data-action="click->tabs#change">
+      <a class="inline-block py-2 px-4 text-primary hover:text-blue-darker font-semibold no-underline" href="#">Active</a>
+    </li>
+    <li class="mr-1" data-target="tabs.tab" data-action="click->tabs#change">
+      <a class="inline-block py-2 px-4 text-primary hover:text-blue-darker font-semibold no-underline" href="#">Tab</a>
+    </li>
+    <li class="mr-1" data-target="tabs.tab" data-action="click->tabs#change">
+      <a class="inline-block py-2 px-4 text-primary hover:text-blue-darker font-semibold no-underline" href="#">Tab</a>
+    </li>
+    <li class="mr-1">
+      <a class="inline-block py-2 px-4 text-grey-light font-semibold no-underline" href="#">Tab</a>
+    </li>
+  </ul>
+
+  <div class="hidden py-4 px-4" data-target="tabs.panel">
+    Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non recusandae, commodi repudiandae exercitationem, architecto assumenda nobis doloribus, deleniti obcaecati quaerat at quam! Rerum vitae quam culpa! Voluptates dolore, molestiae sint.
+  </div>
+
+  <div class="hidden py-4 px-4" data-target="tabs.panel">
+    Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident dolorum, tempora hic odit consectetur saepe ipsam necessitatibus itaque, numquam aspernatur repellendus veritatis suscipit expedita sed sit at, neque impedit nulla!
+  </div>
+
+  <div class="hidden py-4 px-4" data-target="tabs.panel">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/y3niFzo5VLI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+  <% end %>
+</div>

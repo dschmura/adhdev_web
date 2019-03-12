@@ -1,0 +1,26 @@
+<% content_for :section_title, "Icons" %>
+
+<div class="mb-10">
+  <p class="text-lg leading-normal">The icons shipping with Jumpstart are from the <%= link_to "Zondicons", "https://www.zondicons.com/", class: "link" %> library from <%= link_to "Steve Schoger", "https://twitter.com/steveschoger", class: "link" %>. Find them in <code>app/images/icons</code>. We use a <code>SVG</code> render function that hooks into the <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg", class: "link" %> gem. In doing so you can pass <code>styles</code>. <code>title</code>, and <code>name</code> attributes which are all optional.</p>
+
+<p class="text-lg leading-normal">The helper is found in <code>app/helpers/application_helper.rb</code>.</p>
+
+<pre><code>def render_svg(name, styles: "fill-current text-grey", title: nil)
+  filename = "#{name}.svg"
+  title ||= name.underscore.humanize
+  inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)
+end</code></pre>
+
+<p class="text-lg leading-normal">Pass in both <code>fill-current</code> &amp; a text color class from Tailwind CSS to alter the colors respectively. Use the helper like the following for SVG-based icons/images</p>
+
+<pre class=""><code>&lt;%= render_svg "icon-name", styles: "fill-current text-color-black icon-lg", title: "my icon", name: "my icon" %&gt;</code></pre>
+
+<div class="flex flex-wrap items-center justify-between w-full">
+  <% @icons.each do |icon| %>
+    <% name = icon.chomp('.svg') %>
+    <div class="w-32 my-5 mx-3 p-4 border text-center flex items-center justify-center rounded" data-tooltip title="<%= name %>">
+      <%= render_svg "#{name}", styles: "fill-current text-grey-darker icon-lg" %>
+    </div>
+  <% end %>
+  </div>
+</div>

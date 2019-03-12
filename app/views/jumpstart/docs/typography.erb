@@ -1,0 +1,143 @@
+<% content_for :section_title, "Typography" %>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Sans Serif</h4>
+
+  <div class="bg-offwhite p-6">
+    <%= render "jumpstart/docs/snippet" do %>
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-display-lg">Display Large Heading</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-display mb-4">Display Heading</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1>Heading 1</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h2>Heading 2</h2>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h3>Heading 3</h3>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h4>Heading 4</h4>
+</div>
+
+<div class="mb-4 pb-4">
+  <h5>Heading 5</h5>
+</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Serif</h4>
+
+  <div class="bg-offwhite p-6">
+    <%= render "jumpstart/docs/snippet" do %>
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-display-lg font-serif">Display Large Heading</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-display mb-4 font-serif">Display Heading</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-serif">Heading 1</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h2 class="font-serif">Heading 2</h2>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h3 class="font-serif">Heading 3</h3>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h4 class="font-serif">Heading 4</h4>
+</div>
+
+<div class="mb-4 pb-4">
+  <h5 class="font-serif">Heading 5</h5>
+</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Mono</h4>
+
+  <div class="bg-offwhite p-6">
+    <%= render "jumpstart/docs/snippet" do %>
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-display-lg font-mono">Display Large Heading</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-display mb-4 font-mono">Display Heading</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h1 class="font-mono">Heading 1</h1>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h2 class="font-mono">Heading 2</h2>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h3 class="font-mono">Heading 3</h3>
+</div>
+
+<div class="mb-4 pb-4 border-b border-grey-light">
+  <h4 class="font-mono">Heading 4</h4>
+</div>
+
+<div class="mb-4 pb-4">
+  <h5 class="font-mono">Heading 5</h5>
+</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Code - Light</h4>
+
+  <%= render "jumpstart/docs/snippet" do %>
+<pre class="bg-code-light text-black"><code class="nohighlight">class User < ApplicationRecord
+
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, andle :trackable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :invitable, :masqueradable,
+         :omniauthable
+end</code>
+</pre>
+  <% end %>
+</div>
+
+<div class="mb-10">
+  <h4 class="uppercase text-grey-darker tracking-wide font-semibold text-sm border-b border-grey-light pb-3 mb-3">Code - Dark</h4>
+
+  <%= render "jumpstart/docs/snippet" do %>
+<pre class="bg-code-dark text-grey-lighter"><code class="nohighlight">class User < ApplicationRecord
+
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, andle :trackable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :invitable, :masqueradable,
+         :omniauthable
+end</code>
+</pre>
+  <% end %>
+</div>
