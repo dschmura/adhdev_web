@@ -404,40 +404,21 @@ trix-editor .attachment__metadata {
   }
 }
 
-
-
+// Trix attachment formatting
+.attachment--preview {
+  margin: 0.6em 0;
+  text-align: center;
+  width: 100%;
+}
 .attachment {
   display: inline-block;
-  width: 100%;
+  position: relative;
   max-width: 100%;
   margin: 0;
-  text-align: center;
-  line-height: 1
+  padding: 0;
 }
 
-.mention {
-  img {
-    border-radius: 50%;
-  }
-}
-
-//trix-editor .attachment__toolbar {
-    //position: absolute;
-    //z-index: 4;
-    //width: 6rem;
-    //left: 50%;
-    //margin-left: -3rem;
-    //bottom: calc(100% + 1rem);
-    //padding: 1rem 0.75rem;
-    //background: #1b6ac9;
-    //color: #fff;
-    //border-radius: 0.5rem;
-    //text-align: center;
-//}
-//trix-editor .attachment[data-trix-mutable] img {
-    //box-shadow: 0 0 0 2px #1b6ac9 !important;
-//}
-
+// Tribute styles
 .tribute-container {
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.1);
@@ -445,6 +426,7 @@ trix-editor .attachment__metadata {
 
   ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
   }
 
