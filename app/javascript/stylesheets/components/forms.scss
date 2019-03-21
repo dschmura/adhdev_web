@@ -3,7 +3,7 @@
 }
 
 .form-control {
-  @apply appearance-none block w-full bg-white text-grey-darkest border border-grey-light rounded py-3 px-4 leading-tight;
+  @apply appearance-none block w-full bg-white text-gray-900 border border-gray-300 rounded py-3 px-4 leading-tight;
 
   transition: ease 0.2s border;
 
@@ -12,11 +12,11 @@
   }
 
   &::placeholder {
-    @apply text-grey-darker;
+    @apply text-gray-800;
   }
 
   &.error {
-    @apply border-red-light;
+    @apply border-red-300;
   }
 
   &.form-file {
@@ -31,7 +31,7 @@
   &.form-file + label {
     @extend .btn;
     @extend .btn-white;
-    @extend .grey;
+    @extend .gray;
 
     @apply cursor-pointer;
 
@@ -48,20 +48,20 @@
 
 label,
 .label {
-  @apply block uppercase tracking-wide text-grey-darker text-xs font-semibold mb-2;
+  @apply block uppercase tracking-wide text-gray-800 text-xs font-semibold mb-2;
 }
 
 .form-hint {
-  @apply text-grey-dark text-xs italic;
+  @apply text-gray-600 text-xs italic;
 
   &.error {
-    @apply text-red text-sm italic leading-normal mt-1;
+    @apply text-red-500 text-sm italic leading-normal mt-1;
   }
 }
 
 select,
 .select {
-  @apply relative block appearance-none w-full bg-white border border-grey-light text-grey-darkest py-3 px-4 pr-8 rounded leading-tight;
+  @apply relative block appearance-none w-full bg-white border border-gray-300 text-gray-900 py-3 px-4 pr-8 rounded leading-tight;
 
   &:focus {
     @apply outline-none bg-white border-primary;
@@ -69,7 +69,7 @@ select,
 }
 
 .caret {
-  @apply pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker;
+  @apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-800;
 }
 
 

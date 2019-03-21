@@ -8,8 +8,18 @@ one:
   email: one@example.com
   first_name: User
   last_name: One
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "America/Chicago"
+  confirmed_at: <%= Time.current %>
 
 two:
   email: two@example.com
   first_name: User
   last_name: Two
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "America/Chicago"
+  confirmed_at: <%= Time.current %>

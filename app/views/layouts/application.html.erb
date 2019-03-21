@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html class="h-full antialiased">
   <head>
-    <title>Jumpstart</title>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %> |
+      <% end %>
+      <%= Jumpstart.config.application_name %>
+    </title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%# All assets are defined in Webpacker app/javascripts now %>
-    <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
 
     <%# Be sure to add your own custom favicons %>
     <%= render "shared/favicons" %>
@@ -19,7 +24,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="bg-offwhite font-sans font-normal leading-normal h-full antialiased">
+  <body class="bg-gray-100 font-sans font-normal leading-normal h-full antialiased">
     <%= render partial: "shared/navbar" %>
 
     <div class="main">

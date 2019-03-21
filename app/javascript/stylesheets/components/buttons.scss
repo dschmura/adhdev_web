@@ -134,8 +134,8 @@
     @apply text-tertiary;
   }
 
-  &.grey {
-    @apply text-grey-darker;
+  &.gray {
+    @apply text-gray-700;
   }
 }
 
@@ -144,7 +144,7 @@
 
   &:hover,
   &:focus {
-    @apply bg-grey-lightest text-primary-dark;
+    @apply bg-gray-200 text-primary-dark;
 
     transform: none;
   }

@@ -1,15 +1,15 @@
-<div class="bg-white border-t border-grey-light py-1 lg:px-6 px-2 w-full lg:h-16 h-auto">
+<div class="bg-white border-t border-gray-light py-1 lg:px-6 px-2 w-full lg:h-16 h-auto">
   <div class="flex lg:flex-row lg:flex-row flex-col flex-col-reverse flex-wrap lg:items-center items-start justify-between">
     <div class="lg:flex-1 flex items-center flex-wrap lg:justify-start justify-between">
       <%= link_to root_path do %>
-        <%= render_svg 'jumpstart-mark', styles: "fill-current text-grey-darker hover:text-grey-darkest" %>
+        <%= render_svg 'jumpstart-mark', styles: "fill-current text-gray-darker hover:text-gray-darkest" %>
       <% end %>
-      <div class="ml-4 text-grey-darker text-sm">© <%= Date.current.year %> <%= Jumpstart.config.business_name %></div>
+      <div class="ml-4 text-gray-darker text-sm">© <%= Date.current.year %> <%= Jumpstart.config.business_name %></div>
     </div>
     <div class="lg:flex block flex-wrap items-center justify-between items-center">
-      <%= link_to "About Us", about_path, class: "text-grey-darker no-underline block lg:my-0 my-2 lg:px-4" %>
-      <%= link_to "Privacy Policy", privacy_path, class: "text-grey-darker hover:text-grey-darkest no-underline block lg:my-0 my-2 lg:px-4" %>
-      <%= link_to "Terms of Service", terms_path, class: "text-grey-darker hover:text-grey-darkest no-underline block lg:my-0 my-2 lg:pl-4" %>
+      <%= link_to "About Us", about_path, class: "text-gray-darker no-underline block lg:my-0 my-2 lg:px-4" %>
+      <%= link_to "Privacy Policy", privacy_path, class: "text-gray-darker hover:text-gray-darkest no-underline block lg:my-0 my-2 lg:px-4" %>
+      <%= link_to "Terms of Service", terms_path, class: "text-gray-darker hover:text-gray-darkest no-underline block lg:my-0 my-2 lg:pl-4" %>
     </div>
   </div>
 </div>

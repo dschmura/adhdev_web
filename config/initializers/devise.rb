@@ -305,11 +305,16 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   #
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  Jumpstart::Omniauth.enabled_providers do |provider, app_id, app_secret, scope|
-    config.omniauth provider, app_id, app_secret, scope: scope
+  # Jumpmstart comes with several OmniAuth providers already configured for you
+  # To customize the provider options, add the extra configuration to config/jumpstart.yml
+  # or disable it with Jumpstart and manually add the config.omniauth line for your provider
+  Jumpstart::Omniauth.enabled_providers do |provider, app_id, app_secret, options|
+    config.omniauth provider, app_id, app_secret, options
   end
+
+  # To add extra OmniAuth providers, copy this line and add the new ones
+  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -14,7 +14,7 @@
   }
 
   .disabled, .gap {
-    @apply border relative block leading-tight bg-white text-grey no-underline py-2 px-3;
+    @apply border relative block leading-tight bg-white text-gray-500 no-underline py-2 px-3;
     margin-left: -1px;
   }
 
@@ -29,7 +29,7 @@
       margin-left: -1px;
 
       &:hover {
-        @apply bg-grey-lightest;
+        @apply bg-gray-200;
       }
     }
   }

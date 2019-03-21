@@ -44,4 +44,7 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  # Reduce key stretching for performance in tests
+  config.stretches = 1
 end

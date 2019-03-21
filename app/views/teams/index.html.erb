@@ -17,30 +17,37 @@
         <table class="w-full">
           <thead>
             <tr>
-              <th class="p-3 uppercase text-left text-xs text-grey-dark">Name</th>
+              <th class="p-3 uppercase text-left text-xs text-gray-dark">Name</th>
 
               <th></th>
             </tr>
           </thead>
 
           <tbody>
-          <% @teams.each do |team| %>
-            <tr class="group border-t border-grey-light hover:bg-grey-lightest">
-              <td class="p-3">
-                <%= link_to team_avatar(team, class: "rounded-full h-10 w-10 align-middle mr-4"), team %>
-                <%= link_to team.name, team, class: "text-black no-underline" %>
-                <% if team.personal_team_for?(current_user) %>
-                  <div class="ml-2 rounded-full py-1 px-3 bg-grey-light text-xs inline-block text-grey-darker font-bold leading-normal uppercase mr-2">Personal</div>
-                <% end %>
-              </td>
+            <% @teams.each do |team| %>
+              <tr class="group border-t border-gray-light hover:bg-gray-lightest">
+                <td class="p-3">
+                  <%= link_to team, class: "inline-block mr-4 align-middle" do %>
+                    <span class="appearance-none flex items-center text-gray-700">
+                      <%= team_avatar team, class: "rounded-full h-10 w-10" %>
+                    </span>
+                  <% end %>
 
-              <td class="p-3 w-32 text-center">
-                <% if current_team != team %>
-                  <%= link_to "Switch", switch_team_path(team), method: :patch, class: "text-sm text-blue-dark no-underline" %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+                  <%= link_to team.name, team, class: "text-black no-underline" %>
+                  <% if team.personal_team_for?(current_user) %>
+                    <div class="ml-2 rounded-full py-1 px-3 bg-gray-300 text-xs inline-block text-gray-600 font-bold leading-normal uppercase mr-2">Personal</div>
+                  <% end %>
+                </td>
+
+                <td class="p-3 w-32 text-center">
+                  <% if current_team != team %>
+                    <%= link_to "Switch", switch_team_path(team), method: :patch, class: "text-sm text-blue-600 no-underline" %>
+                  <% else %>
+                    <span class="text-sm text-gray-500">Current Team</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
@@ -54,7 +61,7 @@
         <div class="text-center p-8">
           <%= image_tag "empty.svg", class: "w-1/3 mb-4" %>
           <p class="h3 mb-4">Create your first Team</p>
-        <%= link_to 'New Team', new_team_path, class: "btn btn-primary" %>
+          <%= link_to 'New Team', new_team_path, class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>

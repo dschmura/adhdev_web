@@ -4,39 +4,11 @@ business_name: Jumpstart Company, LLC
 domain: example.com
 support_email: support@example.com
 default_from_email: Jumpstart <support@example.com>
-business_address: ''
-background_job_processor: sidekiq
-cancel_immediately: '0'
-email_provider: ses
-omniauth_providers: []
 payment_processors:
-- :braintree
 - :stripe
 - :paypal
-plans:
-- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-  id: default
-  name: Basic
-  features:
-  - 'yes'
-  month: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    amount: '10'
-    stripe_id: default
-    braintree_id: default
-  year: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    amount: '100'
-    stripe_id: default-yearly
-    braintree_id: default-yearly
-- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-  id: big
-  name: Big
-  features:
-  - wat
-  month: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    amount: '20'
-    stripe_id: big
-    braintree_id: big
-  year: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
-    amount: '200'
-    stripe_id: big-yearly
-    braintree_id: big-yearly
+omniauth_providers:
+- facebook
+- github
+- google-oauth2
+- twitter

@@ -14,11 +14,12 @@
     <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>
 
     <div class="text-sm text-center mt-8">
-      <i class="far fa-question-circle text-blue-dark"></i> Need any help? <span class="text-grey-darker">Don't hesitate to <%= link_to "contact support", "#", class: "text-grey-darker" %>!</span>
+      <%= render_svg "icons/question", styles: "fill-current text-gray-500 w-4 h-4 inline-block" %>
+      Need any help? <span class="text-gray-darker">Don't hesitate to <%= link_to "contact support", "#", class: "text-gray-800 underline" %>.</span>
     </div>
   </div>
 
-  <div class="w-1/3 p-8 bg-blue-dark text-white rounded-r-lg">
+  <div class="w-1/3 p-8 bg-blue-700 text-white rounded-r-lg">
     <div class="text-lg"><%= @plan.name %></div>
 
     <div>
@@ -31,10 +32,10 @@
     <br />
 
     <% @plan.features.each do |plan_feature| %>
-      <div class="mb-2"><i class="far fa-check-circle text-blue-lighter"></i> <%= plan_feature %></div>
+      <div class="mb-2"><i class="far fa-check-circle text-blue-400"></i> <%= plan_feature %></div>
     <% end %>
 
-    <hr class="my-8 border-b border-blue-light" />
+    <hr class="my-8 border-b border-blue-600" />
 
     <div class="mb-1">I've never found anything easier to use than <%= Jumpstart.config.application_name %>!</div>
     <div class="flex items-center pt-2">

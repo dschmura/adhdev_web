@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def avatar_url_for(user, opts={})
     size = opts[:size] || 48
 
@@ -35,7 +37,7 @@ module ApplicationHelper
     "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
 
-  def render_svg(name, styles: "fill-current text-grey", title: nil)
+  def render_svg(name, styles: "fill-current text-gray", title: nil)
     filename = "#{name}.svg"
     title ||= name.underscore.humanize
     inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)

@@ -1,5 +1,5 @@
 .alert {
-  @apply border border-grey bg-grey-lightest text-grey-darker p-4 rounded-lg;
+  @apply border border-gray-500 bg-gray-100 text-gray-700 p-4 rounded-lg;
 
   &.alert-info {
     @apply border-primary bg-primary-lightest text-primary;
@@ -14,7 +14,6 @@
   }
 
   &.alert-warning {
-    @apply border-orange bg-orange-lightest text-orange;
+    @apply border-orange-500 bg-orange-100 text-orange-500;
   }
 }
-

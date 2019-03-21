@@ -5,7 +5,7 @@
 
 <p class="text-lg leading-normal">The helper is found in <code>app/helpers/application_helper.rb</code>.</p>
 
-<pre><code>def render_svg(name, styles: "fill-current text-grey", title: nil)
+<pre><code>def render_svg(name, styles: "fill-current text-gray", title: nil)
   filename = "#{name}.svg"
   title ||= name.underscore.humanize
   inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)
@@ -18,8 +18,11 @@ end</code></pre>
 <div class="flex flex-wrap items-center justify-between w-full">
   <% @icons.each do |icon| %>
     <% name = icon.chomp('.svg') %>
-    <div class="w-32 my-5 mx-3 p-4 border text-center flex items-center justify-center rounded" data-tooltip title="<%= name %>">
-      <%= render_svg "#{name}", styles: "fill-current text-grey-darker icon-lg" %>
+    <div class="text-center my-5">
+      <div class="w-32 mx-3 p-4 border text-center flex items-center justify-center rounded" data-tooltip title="<%= name %>">
+        <%= render_svg "#{name}", styles: "fill-current text-gray-700 icon-lg" %>
+      </div>
+      <div class="text-gray-700 my-2 text-sm"><%= name %></div>
     </div>
   <% end %>
   </div>

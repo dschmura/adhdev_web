@@ -6,7 +6,7 @@ class StaticController < ApplicationController
   end
 
   def pricing
-    redirect_to root_path, alert: "There are no pricing plans configured." if Jumpstart.config.plans.none?
+    redirect_to root_path, alert: "There are no pricing plans configured." unless Plan.exists?
   end
 
   def terms

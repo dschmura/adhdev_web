@@ -6,31 +6,30 @@
   <div class="w-3/4 p-4">
     <h2 class="mb-2">Connected Accounts</h2>
 
-    <% if Jumpstart.config.omniauth_providers.any? %>
-      <% Jumpstart.config.omniauth_providers.map(&:to_s).each do |provider| %>
-        <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider } %>
+    <% if Devise.omniauth_configs.any? %>
+      <% Devise.omniauth_configs.each do |provider, config| %>
+        <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider.to_s } %>
         <hr class="border-b" />
 
         <div class="my-4">
-          <h4><%= provider.titleize %></h4>
+          <h4><%= provider.to_s.titleize %></h4>
 
           <% if connected_accounts.any? %>
             <% connected_accounts.each do |connected_account| %>
               <div class="flex">
                 <div class="flex-1"><%= connected_account.auth["info"]["nickname"] %> Connected</div>
-                <div><%= button_to "Disconnect", connected_account, method: :delete, class: "btn btn-grey" %></div>
+                <div><%= button_to "Disconnect", connected_account, method: :delete, class: "btn btn-gray" %></div>
               </div>
             <% end %>
 
           <% else %>
-            <div class="text-right">
-              <%= button_to "Connect", omniauth_authorize_path(:user, provider), class: "btn btn-grey"%>
-            </div>
+            <%= button_to "Connect", omniauth_authorize_path(:user, provider), class: "btn btn-primary", data: { disable_with: "Redirecting..." } %>
           <% end %>
         </div>
         <% end %>
+
     <% else %>
-      You don't have any connected accounts yet.
+      You don't have any connected accounts.
     <% end %>
   </div>
 </div>

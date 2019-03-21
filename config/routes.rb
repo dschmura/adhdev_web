@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :tweets
 
   # Jumpstart views
-  if Rails.env.development?
+  if Rails.env.development? || Rails.env.test?
     mount Jumpstart::Engine, at: '/jumpstart'
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
 

@@ -438,7 +438,7 @@ trix-editor .attachment__metadata {
   }
 
   .highlight {
-    background: #1b6ac9;
+    @apply bg-primary;
     color: #fff;
 
     span {

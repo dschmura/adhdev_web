@@ -9,6 +9,11 @@ export default class extends Controller {
     }, this.clientCreated.bind(this))
   }
 
+  disconnect() {
+    // Remove the paypal button on disconnect
+    this.buttonTarget.querySelector(".paypal-button").remove()
+  }
+
   clientCreated(error, clientInstance) {
     if (error) {
       console.error("Error creating client", error)
@@ -21,7 +26,6 @@ export default class extends Controller {
   }
 
   paypalCreated(paypalCheckoutErr, paypalCheckoutInstance) {
-
     // Stop if there was a problem creating PayPal Checkout.
     // This could happen if there was a network error or if it's incorrectly
     // configured.

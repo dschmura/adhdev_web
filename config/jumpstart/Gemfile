@@ -1,4 +1,7 @@
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 gem 'stripe'
 gem 'stripe_event'
 gem 'braintree'
-gem 'sidekiq'

@@ -7,7 +7,7 @@ class CreateUserConnectedAccounts < ActiveRecord::Migration[5.2]
       t.string :access_token
       t.string :refresh_token
       t.datetime :expires_at
-      t.string :auth
+      t.text :auth
 
       t.timestamps
     end

@@ -20,7 +20,7 @@ module TeamsHelper
         content += image_tag(avatar_url_for(current_user), class: "avatar-small")
       end
 
-      content_tag :span, content, class: "avatar bg-blue #{classes}"
+      content_tag :span, content, class: "avatar bg-blue-500 #{classes}"
     end
   end
 

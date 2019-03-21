@@ -1,9 +1,15 @@
 class User::ConnectedAccount < ApplicationRecord
-  serialize :auth
+  serialize :auth, JSON
 
   # Associations
   belongs_to :user
 
+  # Helper scopes for each provider
+  Devise.omniauth_configs.each do |provider, _|
+    scope provider, ->{ where(provider: provider) }
+  end
+
+  # Look up from Omniauth auth hash
   def self.for_auth(auth)
     where(provider: auth.provider, uid: auth.uid).first
   end
