@@ -20,8 +20,8 @@
       <table class="w-full">
         <thead>
           <tr>
-            <th class="p-3 uppercase text-left text-xs text-gray-dark">Team Member</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-dark">Roles</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-600">Team Member</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-600">Roles</th>
             <th></th>
           </tr>
         </thead>
@@ -29,23 +29,23 @@
         <tbody>
           <% @team.team_members.includes(:user).each do |team_member| %>
             <% user = team_member.user %>
-            <tr class="group border-t border-gray-light hover:bg-gray-lightest">
+            <tr class="group border-t border-gray-400 hover:bg-gray-200">
               <td class="p-3">
                 <%= link_to (user.name || user.email), edit_team_team_member_path(@team, team_member), class: "text-blue-dark no-underline" %>
 
                 <% if user.created_by_invite? && !user.invitation_accepted? %>
-                  <div class="ml-2 rounded-full py-1 px-4 bg-gray-light text-xs inline-block text-gray-darker font-bold leading-normal uppercase">Invitation Sent</div>
+                  <div class="ml-2 rounded-full py-1 px-4 bg-gray-400 text-xs inline-block text-gray-700 font-bold leading-normal uppercase">Invitation Sent</div>
                 <% end %>
               </td>
               <td class="p-3"><%= team_member_roles(@team, team_member).join(", ") %></td>
-              <td class="p-3 w-32 text-center"><%= link_to "Edit", edit_team_team_member_path(@team, team_member), class: "text-sm text-blue-dark no-underline" %></td>
+              <td class="p-3 w-32 text-center"><%= link_to "Edit", edit_team_team_member_path(@team, team_member), class: "text-sm text-blue-600 no-underline" %></td>
             </tr>
           <% end %>
 
           <% if !@team.personal? %>
-            <tr class="border-t border-gray-light">
+            <tr class="border-t border-gray-400">
               <td colspan="3" class="p-3 text-center">
-                <%= link_to 'Invite A Team Member', new_team_team_member_path(@team), class: "text-blue-dark no-underline" %>
+                <%= link_to 'Invite A Team Member', new_team_team_member_path(@team), class: "text-blue-600 no-underline" %>
               </td>
             </tr>
           <% end %>

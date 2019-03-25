@@ -1,17 +1,19 @@
 <% content_for :section_title, "Icons" %>
 
 <div class="mb-10">
-  <p class="text-lg leading-normal">The icons shipping with Jumpstart are from the <%= link_to "Zondicons", "https://www.zondicons.com/", class: "link" %> library from <%= link_to "Steve Schoger", "https://twitter.com/steveschoger", class: "link" %>. Find them in <code>app/images/icons</code>. We use a <code>SVG</code> render function that hooks into the <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg", class: "link" %> gem. In doing so you can pass <code>styles</code>. <code>title</code>, and <code>name</code> attributes which are all optional.</p>
+  <p class="leading-normal mb-6">The icons shipping with Jumpstart are from the <%= link_to "Zondicons", "https://www.zondicons.com/", class: "link" %> library from <%= link_to "Steve Schoger", "https://twitter.com/steveschoger", class: "link" %>. Find them in <code>app/images/icons</code>. We use a <code>SVG</code> render function that hooks into the <%= link_to "inline_svg", "https://github.com/jamesmartin/inline_svg", class: "link" %> gem. In doing so you can pass <code>styles</code>. <code>title</code>, and <code>name</code> attributes which are all optional.</p>
 
-<p class="text-lg leading-normal">The helper is found in <code>app/helpers/application_helper.rb</code>.</p>
+<p class="leading-normal">The helper is found in <code>app/helpers/application_helper.rb</code>.</p>
 
-<pre><code>def render_svg(name, styles: "fill-current text-gray", title: nil)
+<div class="mb-6">
+<pre><code>def render_svg(name, styles: "fill-current text-gray-500", title: nil)
   filename = "#{name}.svg"
   title ||= name.underscore.humanize
   inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)
 end</code></pre>
+</div>
 
-<p class="text-lg leading-normal">Pass in both <code>fill-current</code> &amp; a text color class from Tailwind CSS to alter the colors respectively. Use the helper like the following for SVG-based icons/images</p>
+<p class="leading-normal">Pass in both <code>fill-current</code> &amp; a text color class from Tailwind CSS to alter the colors respectively. Use the helper like the following for SVG-based icons/images</p>
 
 <pre class=""><code>&lt;%= render_svg "icon-name", styles: "fill-current text-color-black icon-lg", title: "my icon", name: "my icon" %&gt;</code></pre>
 
@@ -20,7 +22,7 @@ end</code></pre>
     <% name = icon.chomp('.svg') %>
     <div class="text-center my-5">
       <div class="w-32 mx-3 p-4 border text-center flex items-center justify-center rounded" data-tooltip title="<%= name %>">
-        <%= render_svg "#{name}", styles: "fill-current text-gray-700 icon-lg" %>
+        <%= render_svg "#{name}", title: "#{name}", styles: "fill-current text-gray-700 icon-lg" %>
       </div>
       <div class="text-gray-700 my-2 text-sm"><%= name %></div>
     </div>

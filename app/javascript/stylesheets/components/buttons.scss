@@ -1,8 +1,8 @@
 .btn {
-  @apply inline-flex font-bold text-sm uppercase tracking-wide text-center px-4 py-0 rounded no-underline items-center justify-between;
+  @apply inline-flex font-bold text-xs uppercase tracking-wide text-center px-4 py-0 rounded no-underline items-center justify-between;
 
-  height: 38px;
-  line-height: 38px;
+  height: 36px;
+  line-height: 36px;
   transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
   &:hover,
@@ -19,14 +19,14 @@
 }
 
 .btn-small {
-  @apply text-xs px-4;
+  @apply px-4;
 
   height: 32px;
   line-height: 32px;
 }
 
 .btn-large {
-  @apply text-lg px-6;
+  @apply text-base px-6;
 
   height: 48px;
   line-height: 48px;
@@ -144,7 +144,7 @@
 
   &:hover,
   &:focus {
-    @apply bg-gray-200 text-primary-dark;
+    @apply text-primary-dark;
 
     transform: none;
   }
