@@ -83,13 +83,6 @@ ActiveRecord::Schema.define(version: 2019_02_20_201308) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "team_members", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "user_id"
@@ -117,12 +110,6 @@ ActiveRecord::Schema.define(version: 2019_02_20_201308) do
     t.index ["owner_id"], name: "index_teams_on_owner_id"
   end
 
-  create_table "tweets", force: :cascade do |t|
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "user_connected_accounts", force: :cascade do |t|
     t.bigint "user_id"
     t.string "provider"
@@ -130,7 +117,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_201308) do
     t.string "access_token"
     t.string "refresh_token"
     t.datetime "expires_at"
-    t.string "auth"
+    t.text "auth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_connected_accounts_on_user_id"

@@ -4,7 +4,7 @@
 #
 #  id            :bigint(8)        not null, primary key
 #  access_token  :string
-#  auth          :string
+#  auth          :text
 #  expires_at    :datetime
 #  provider      :string
 #  refresh_token :string
