@@ -20,6 +20,7 @@ import "stylesheets/application"
 import "controllers"
 
 import "src/confirm"
+import "src/direct_uploads"
 import "src/forms"
 import "src/timezone"
 
