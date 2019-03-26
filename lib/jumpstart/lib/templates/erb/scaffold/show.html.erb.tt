@@ -1,0 +1,11 @@
+<div class="container mx-auto my-8 px-4">
+  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <p>
+    <strong><%= attribute.human_name %>:</strong>
+    <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+  </p>
+
+  <% end -%>
+  <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "link" %> <span class="text-gray-500">|</span>
+  <%%= link_to 'Back', <%= index_helper %>_path, class: "link" %>
+</div>

@@ -1,0 +1,109 @@
+<%= form_for @config, url: jumpstart_config_path do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#application" role="tab" aria-controls="v-pills-home" aria-selected="true">Application</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#workers" role="tab" aria-controls="v-pills-settings" aria-selected="false">Background Workers</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#email" role="tab" aria-controls="v-pills-settings" aria-selected="false">Email</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#oauth" role="tab" aria-controls="v-pills-messages" aria-selected="false">Login & OAuth</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#payments" role="tab" aria-controls="v-pills-profile" aria-selected="false">Payments</a>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="tab-content" id="v-pills-tabContent">
+
+        <div class="tab-pane fade show active" id="application" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <div class="form-group">
+            <%= f.label :application_name %>
+            <%= f.text_field :application_name, placeholder: "App", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :business_name %>
+            <%= f.text_field :business_name, placeholder: "Company, LLC", class: "form-control" %>
+            <small class="form-text text-muted">This will be shown in the footer, terms of service, privacy policy, in receipts, etc.</small>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :business_address %>
+            <%= f.text_area :business_address, placeholder: "1234 My Street\nCity, State Zipcode", class: "form-control" %>
+            <small class="form-text text-muted">Your business address will be used in receipts.</small>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :support_email %>
+            <%= f.text_field :support_email, placeholder: "support@example.com", class: "form-control" %>
+            <small class="form-text text-muted">This email will be used in receipts if a user needs help.</small>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="workers" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <div class="form-group">
+            <label>Background Job Processor</label>
+            <%= f.select :background_job_processor, Jumpstart::JobProcessor::AVAILABLE_PROVIDERS, {}, { class: "form-control" } %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <div class="form-group">
+            <label>Email Service</label>
+            <%= f.select :email_provider, Jumpstart::Configuration::Mailable::AVAILABLE_PROVIDERS, {}, { class: "form-control" } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :domain %>
+            <%= f.text_field :domain, placeholder: "support@example.com", class: "form-control" %>
+            <small class="form-text text-muted">We'll use this domain to generate links inside emails.</small>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :default_from_email %>
+            <%= f.text_field :default_from_email, class: "form-control" %>
+            <small class="form-text text-muted">When sending emails, we'll send them from this email address by default unless you override it in the mailer.</small>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="oauth" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+          <div class="form-group">
+            <h4>Social Login with Omniauth</h4>
+            <p>Let users log in with third-party accounts.</p>
+
+            <p>To enable an omniauth provider, add your OAuth details to Rails credentials under the <code>omniauth</code>. Any extra options will be passed into the omniauth provider automatically so you can easily customize scopes and more.</p>
+            <pre><code class="yaml rounded">omniauth:
+  facebook:
+    public_key: x
+    private_key: y
+    scope: email</code></pre>
+
+            <% Jumpstart::Omniauth.all_providers.each do |gem_name, details| %>
+              <div class="mb-4">
+                <div class="font-weight-semibold"><%= details[:name] %></div>
+
+                <% if Jumpstart::Omniauth.has_credentials?(gem_name) %>
+                  <div class="custom-control custom-checkbox">
+                    <%= check_box_tag "configuration[omniauth_providers][]", gem_name, Jumpstart::Omniauth.enabled?(gem_name), disabled: !Jumpstart::Omniauth.has_credentials?(gem_name), id: gem_name, class: "custom-control-input" %>
+                    <%= label_tag gem_name, "Enable", class: "custom-control-label" %>
+                  </div>
+
+                <% else %>
+                  <div>Add keys for <em><%= details[:name] %></em> to your credentials to enable it for login.</div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="payments" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+          <%= render "payments", f: f %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <%= f.submit "Save & Reload", class: "btn btn-secondary" %>
+<% end %>
+
+<%= render partial: "welcome" if params[:welcome] %>

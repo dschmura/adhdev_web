@@ -1,0 +1,38 @@
+<div class="form-group">
+  <label>Payment Processors</label>
+  <li>
+    <label>
+      <%= check_box_tag "configuration[payment_processors][stripe]",
+        :stripe,
+        @config.stripe? %>
+      Stripe
+    </label>
+  </li>
+  <li>
+    <label>
+      <%= check_box_tag "configuration[payment_processors][braintree]",
+        :braintree,
+        @config.braintree? %>
+      Braintree
+    </label>
+  </li>
+  <li>
+    <label>
+      <%= check_box_tag "configuration[payment_processors][paypal]",
+        :paypal,
+        @config.paypal? %>
+      Paypal
+    </label>
+  </li>
+  <li>
+    <label>
+      <%= f.check_box :cancel_immediately %>
+      Cancel subscriptions immediately?
+    </label>
+  </li>
+</div>
+
+<hr />
+
+<h5>Plans</h5>
+<p>To add plans, visit <%= link_to "the Plans page", admin_plans_path %> in the admin.</p>
