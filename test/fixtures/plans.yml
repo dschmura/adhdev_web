@@ -1,9 +1,53 @@
+# == Schema Information
+#
+# Table name: plans
+#
+#  id         :bigint(8)        not null, primary key
+#  amount     :integer          default(0), not null
+#  details    :jsonb            not null
+#  interval   :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  details: []
+personal:
+  name: Personal
+  amount: 1900
+  interval: month
+  details:
+    stripe_id: personal
+    braintree_id: personal
+    features:
+      - Unlimited access
 
-two:
-  name: MyString
-  details: []
+business:
+  name: Business
+  amount: 7900
+  interval: month
+  details:
+    stripe_id: business
+    braintree_id: business
+    features:
+      - Unlimited access
+
+personal-annual:
+  name: Personal
+  amount: 19000
+  interval: year
+  details:
+    stripe_id: personal-annual
+    braintree_id: personal-annual
+
+business-annual:
+  name: Business
+  amount: 79000
+  interval: year
+  details:
+    stripe_id: business-annual
+    braintree_id: business-annual
+    features:
+      - Unlimited access
+      - Business Feature

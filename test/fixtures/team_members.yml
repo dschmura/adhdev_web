@@ -20,12 +20,14 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-require 'test_helper'
+one:
+  user: one
+  team: one
 
-class TeamMemberTest < ActiveSupport::TestCase
-  test "converts roles to booleans" do
-    member = TeamMember.new admin: "1"
-    assert_equal true, member.admin
-  end
-end
+two:
+  user: two
+  team: two
 
+company:
+  user: one
+  team: company

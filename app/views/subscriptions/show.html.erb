@@ -58,10 +58,8 @@
         <div class="flex-1">
           <i class="fab fa-cc-<%= current_team.card_type.downcase %>"></i> <%= payment_method_details %>
 
-          <% if !current_team.paypal? %>
-            <%= render 'cards/forms/stripe'    if current_team.stripe? %>
-            <%= render 'cards/forms/braintree' if current_team.braintree? %>
-          <% end %>
+          <%= render 'cards/forms/stripe'    if current_team.stripe? %>
+          <%= render 'cards/forms/braintree' if current_team.braintree? && current_team.paypal? %>
         </div>
         <div>
           <% if current_team.paypal? %>
