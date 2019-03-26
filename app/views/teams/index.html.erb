@@ -17,7 +17,7 @@
         <table class="w-full">
           <thead>
             <tr>
-              <th class="p-3 uppercase text-left text-xs text-gray-dark">Name</th>
+              <th class="p-3 uppercase text-left text-xs text-gray-600">Name</th>
 
               <th></th>
             </tr>
@@ -25,7 +25,7 @@
 
           <tbody>
             <% @teams.each do |team| %>
-              <tr class="group border-t border-gray-light hover:bg-gray-lightest">
+              <tr class="group border-t border-gray-400 hover:bg-gray-200">
                 <td class="p-3">
                   <%= link_to team, class: "inline-block mr-4 align-middle" do %>
                     <span class="appearance-none flex items-center text-gray-700">

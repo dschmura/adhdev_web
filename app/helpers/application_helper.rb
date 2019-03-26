@@ -37,7 +37,7 @@ module ApplicationHelper
     "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
 
-  def render_svg(name, styles: "fill-current text-gray", title: nil)
+  def render_svg(name, styles: "fill-current text-gray-500", title: nil)
     filename = "#{name}.svg"
     title ||= name.underscore.humanize
     inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)
