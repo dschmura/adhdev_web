@@ -68,7 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 # Jumpstart dependencies
-gem 'jumpstart-rails', path: '../jumpstart', require: 'jumpstart'
+gem 'jumpstart', path: 'lib/jumpstart'
 
 gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
 gem 'image_processing', '~> 1.2'
