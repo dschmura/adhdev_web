@@ -42,4 +42,10 @@ module ApplicationHelper
     title ||= name.underscore.humanize
     inline_svg(filename, aria: true, nocomment: true, title: title, class: styles)
   end
+
+  def fa_icon(name, options={})
+    weight  = options[:weight] || "far"
+    classes = [weight, "fa-#{name}", options[:class]]
+    content_tag :i, nil, class: classes
+  end
 end

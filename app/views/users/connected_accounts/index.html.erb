@@ -4,32 +4,45 @@
   </div>
 
   <div class="w-3/4 p-4">
-    <h2 class="mb-2">Connected Accounts</h2>
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
+      <h2 class="mb-2">Connected Accounts</h2>
+      <p>Connecting your social media accounts makes logging in easier.</p>
 
-    <% if Devise.omniauth_configs.any? %>
-      <% Devise.omniauth_configs.each do |provider, config| %>
-        <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider.to_s } %>
-        <hr class="border-b" />
+      <% if Devise.omniauth_configs.any? %>
+        <% Devise.omniauth_configs.each do |provider, config| %>
+          <% connected_accounts = @connected_accounts.select{ |a| a.provider == provider.to_s } %>
+          <hr />
 
-        <div class="my-4">
-          <h4><%= provider.to_s.titleize %></h4>
+          <div class="p-4 -mx-4 hover:bg-gray-100">
+            <% if connected_accounts.any? %>
+              <% connected_accounts.each do |connected_account| %>
+                <div class="flex border-top align-middle">
+                  <div class="flex-1">
+                    <%= image_tag connected_account.auth["info"]["image"], class: "inline-block h-10 w-10 rounded shadow mr-2" %>
+                    <div class="inline-block align-middle">
+                      <div><%= connected_account.auth["info"]["name"] %></div>
+                      <div class="text-sm text-gray-700"><%= social_icon connected_account.provider %> <%= provider_config(connected_account.provider)[:name] %></div>
+                    </div>
+                  </div>
+                  <%= button_to connected_account, method: :delete, class: "btn btn-link text-gray-700" do %>
+                    <%= render_svg "icons/close", styles: "fill-current h-3 w-3 mr-1" %>
+                    Remove
+                  <% end %>
+                </div>
+              <% end %>
 
-          <% if connected_accounts.any? %>
-            <% connected_accounts.each do |connected_account| %>
-              <div class="flex">
-                <div class="flex-1"><%= connected_account.auth["info"]["nickname"] %> Connected</div>
-                <div><%= button_to "Disconnect", connected_account, method: :delete, class: "btn btn-gray" %></div>
-              </div>
+            <% else %>
+              <%= button_to omniauth_authorize_path(:user, provider), class: "btn btn-#{provider}", data: { disable_with: "Redirecting..." } do %>
+                <%= social_icon provider, class: "mr-2" %>
+                <%= provider.to_s.titleize %>
+              <% end %>
             <% end %>
-
-          <% else %>
-            <%= button_to "Connect", omniauth_authorize_path(:user, provider), class: "btn btn-primary", data: { disable_with: "Redirecting..." } %>
+          </div>
           <% end %>
-        </div>
-        <% end %>
 
-    <% else %>
-      You don't have any connected accounts.
-    <% end %>
+      <% else %>
+        You don't have any connected accounts.
+      <% end %>
+    </div>
   </div>
 </div>

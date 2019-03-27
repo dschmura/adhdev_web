@@ -4,125 +4,127 @@
   </div>
 
   <div class="lg:w-3/4 w-full p-4">
-    <div class="max-w-lg">
-    <h2 class="mb-2">Billing</h2>
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
+      <h1 class="h2 mb-2">Billing</h2>
 
-    <h3>Current Plan</h3>
+      <h3>Current Plan</h3>
 
-    <% if current_team.subscription && current_team.subscription.on_trial? %>
-      <div class="flex items-center bg-orange-200 text-orange-600 text-sm font-bold px-4 py-3 my-4" role="alert">
-        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
-        <p>Your trial ends in <%= time_ago_in_words current_team.subscription.trial_ends_at %>.</p>
-      </div>
-    <% end %>
+      <% if current_team.subscription && current_team.subscription.on_trial? %>
+        <div class="flex items-center bg-orange-200 text-orange-600 text-sm font-bold px-4 py-3 my-4" role="alert">
+          <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
+          <p>Your trial ends in <%= time_ago_in_words current_team.subscription.trial_ends_at %>.</p>
+        </div>
+      <% end %>
 
-    <% if current_team.subscription && current_team.subscription.cancelled? %>
-      <% if current_team.subscription.on_grace_period? %>
-        <div class="flex">
-          <div class="flex-1">
-            Your subscription ends <strong><%= current_team.subscription.ends_at.strftime("%B %d, %Y") %></strong>
+      <% if current_team.subscription && current_team.subscription.cancelled? %>
+        <% if current_team.subscription.on_grace_period? %>
+          <div class="flex">
+            <div class="flex-1">
+              Your subscription ends <strong><%= current_team.subscription.ends_at.strftime("%B %d, %Y") %></strong>
+            </div>
+
+            <div>
+              <%= form_for current_team, url: resume_subscription_url, method: :patch do |f| %>
+                <%= f.button 'Resume Subscription', class: "btn btn-gray", data: { disable_with: disable_with("Resuming...") } %>
+              <% end %>
+            </div>
           </div>
 
+        <% else %>
+          <p>Your subscription has ended. Would you like to <%= link_to "resubscribe", new_subscription_path, class: "underline text-blue-500" %>?</p>
+        <% end %>
+
+      <% elsif current_team.subscription && current_team.subscription.active? %>
+
+        <div class="flex">
+          <div class="flex-1">
+            <div>You are currently subscribed to the <strong><%= current_team.subscription.plan.name %></strong> plan.</div>
+          </div>
           <div>
-            <%= form_for current_team, url: resume_subscription_url, method: :patch do |f| %>
-              <%= f.button 'Resume Subscription', class: "btn btn-gray", data: { disable_with: disable_with("Resuming...") } %>
+            <%= link_to "Change my plan", edit_subscription_path, class: "btn btn-link text-gray-700" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="flex">
+          <div class="flex-1 text-gray-700">You are not currently subscribed.</div>
+          <div><%= link_to "Choose a plan", pricing_path, class: "btn btn-primary" %></div>
+        </div>
+      <% end %>
+
+      <hr class="border-b my-8" />
+
+      <h3>Payment Method</h3>
+
+      <% if current_team.card_type? %>
+
+        <div class="flex" data-controller="toggle">
+          <div class="flex-1">
+            <i class="fab fa-cc-<%= current_team.card_type.downcase %> text-gray-700"></i> <%= payment_method_details %>
+
+            <%= render 'cards/forms/stripe'    if current_team.stripe? %>
+            <%= render 'cards/forms/braintree' if current_team.braintree? && current_team.paypal? %>
+          </div>
+          <div>
+            <% if current_team.paypal? %>
+              <%= link_to "Change source", "https://www.paypal.com/us/smarthelp/article/faq1414", class: "btn btn-link text-gray-700", target: "_blank", rel: "nofollow noopener" %>
+            <% else %>
+              <%= link_to "Use a new card", "#", class: "btn btn-link text-gray-700", data: { action: "click->toggle#toggle" } %>
             <% end %>
           </div>
         </div>
 
       <% else %>
-        <p>Your subscription has ended. Would you like to <%= link_to "resubscribe", new_subscription_path, class: "underline text-blue-500" %>?</p>
+        <p class="text-gray-700">You have no card on file.</p>
       <% end %>
 
-    <% elsif current_team.subscription && current_team.subscription.active? %>
+      <hr class="border-b my-8" />
 
-      <div class="flex">
-        <div class="flex-1">
-          <div>You are currently subscribed to the <strong><%= current_team.subscription.plan.name %></strong> plan.</div>
-        </div>
-        <div>
-          <%= link_to "Change my plan", edit_subscription_path, class: "text-gray-700" %>
-        </div>
-      </div>
-    <% else %>
-      <p>You are not currently subscribed. <%= link_to "Choose a plan", pricing_path %></p>
-    <% end %>
-
-    <hr class="border-b my-8" />
-
-    <h3>Payment Method</h3>
-
-    <% if current_team.card_type? %>
-
+      <h3>Extra Billing Information</h3>
       <div class="flex" data-controller="toggle">
         <div class="flex-1">
-          <i class="fab fa-cc-<%= current_team.card_type.downcase %>"></i> <%= payment_method_details %>
+          <div class="text-gray-700">Add any additional information to all of your receipts such as your VAT ID, full business name, and address.</div>
 
-          <%= render 'cards/forms/stripe'    if current_team.stripe? %>
-          <%= render 'cards/forms/braintree' if current_team.braintree? && current_team.paypal? %>
-        </div>
-        <div>
-          <% if current_team.paypal? %>
-            <%= link_to "Change source", "https://www.paypal.com/us/smarthelp/article/faq1414", target: "_blank", rel: "nofollow noopener" %>
-          <% else %>
-            <%= link_to "Use a new card", "#", class: "text-gray-darker", data: { action: "click->toggle#toggle" } %>
+          <%= form_with model: current_team, url: info_subscription_path, html: { class: "hidden mt-4", data: { target: "toggle.toggleable" }} do |f| %>
+            <div class="form-group">
+              <%= f.label :extra_billing_info %>
+              <%= f.text_area :extra_billing_info, class: "form-control", placeholder: "VAT ID, Business name, address, etc..." %>
+            </div>
+
+            <div class="form-group">
+              <%= f.button "Save Information", class: "btn btn-primary", data: { disable_with: disable_with("Saving...") } %>
+            </div>
           <% end %>
+        </div>
+
+        <div>
+          <%= link_to "Add information", "#", class: "btn btn-link text-gray-700", data: { action: "click->toggle#toggle" } %>
         </div>
       </div>
 
-    <% else %>
-      <p>You have no card on file.</p>
-    <% end %>
+      <hr class="border-b my-8" />
 
-    <hr class="border-b my-8" />
+      <h3>Invoices</h3>
+      <p class="text-gray-700">Your history of transactions and payments.</p>
 
-    <h3>Extra Billing Information</h3>
-    <div class="flex" data-controller="toggle">
-      <div class="flex-1">
-        Add any additional information to all of your receipts such as your VAT ID, full business name, and address.
-
-      <%= form_with model: current_team, url: info_subscription_path, html: { class: "hidden mt-4", data: { target: "toggle.toggleable" }} do |f| %>
-        <div class="form-group">
-          <%= f.label :extra_billing_info %>
-          <%= f.text_area :extra_billing_info, class: "form-control", placeholder: "VAT ID, Business name, address, etc..." %>
-        </div>
-
-        <div class="form-group">
-          <%= f.button "Save Information", class: "btn btn-primary", data: { disable_with: disable_with("Saving...") } %>
-        </div>
+      <% current_team.charges.each do |charge| %>
+        <%= link_to charge.created_at.strftime("%B %e, %Y"), charge_path(charge, format: :pdf) %> - <%= number_to_currency charge.amount / 100 %>
       <% end %>
 
-      </div>
-      <div>
-        <%= link_to "Add information", "#", class: "text-gray-darker", data: { action: "click->toggle#toggle" } %>
-      </div>
-
+      <% if current_team.subscription && !current_team.subscription.cancelled? %>
+        <hr class="border-b my-8" />
+        <h3>Cancel Your Subscription</h3>
+        <div class="flex">
+          <div class="flex-1 text-gray-700">
+            <div class="font-bold">You can cancel anytime, but you'll lose access to <%= Jumpstart.config.application_name %>.</div>
+            <div>Need to talk to someone? <%= mail_to Jumpstart.config.support_email, "Contact us", subject: "Question about #{Jumpstart.config.application_name}", class: "underline text-blue-600" %> -- we'd love to help.</div>
+          </div>
+          <div>
+            <%= form_for current_team, url: subscription_url, method: :delete do |f| %>
+              <%= f.button 'Cancel Subscription', class: "btn btn-link text-gray-700", data: { confirm: "Are you sure?", disable_with: disable_with("Cancelling..") } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-
-    <hr class="border-b my-8" />
-
-    <h3>Invoices</h3>
-    <p>Your history of transactions and payments.</p>
-
-    <% current_team.charges.each do |charge| %>
-      <%= link_to charge.created_at.strftime("%B %e, %Y"), charge_path(charge, format: :pdf) %> - <%= number_to_currency charge.amount / 100 %>
-    <% end %>
-
-    <% if current_team.subscription && !current_team.subscription.cancelled? %>
-      <hr class="border-b my-8" />
-      <h3>Cancel Your Subscription</h3>
-      <div class="flex">
-        <div class="flex-1">
-          <div class="font-bold">You can cancel anytime, but you'll lose access to <%= Jumpstart.config.application_name %></div>
-          <div>Need to talk to someone? Contact us -- we'd love to help.</div>
-        </div>
-        <div>
-          <%= form_for current_team, url: subscription_url, method: :delete do |f| %>
-            <%= f.button 'Cancel Subscription', class: "btn btn-tertiary outline", data: { confirm: "Are you sure?", disable_with: disable_with("Cancelling..") } %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
   </div>
 </div>

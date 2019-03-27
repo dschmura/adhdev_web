@@ -1,13 +1,17 @@
 <%= form_for @config, url: jumpstart_config_path do |f| %>
   <div class="row">
     <div class="col-md-3">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#application" role="tab" aria-controls="v-pills-home" aria-selected="true">Application</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#workers" role="tab" aria-controls="v-pills-settings" aria-selected="false">Background Workers</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#email" role="tab" aria-controls="v-pills-settings" aria-selected="false">Email</a>
         <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#oauth" role="tab" aria-controls="v-pills-messages" aria-selected="false">Login & OAuth</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#payments" role="tab" aria-controls="v-pills-profile" aria-selected="false">Payments</a>
       </div>
+
+      <hr />
+
+      <%= f.submit "Save & Reload", class: "btn btn-block btn-primary" %>
     </div>
 
     <div class="col-md-9">
@@ -103,7 +107,6 @@
   </div>
 
   <hr />
-  <%= f.submit "Save & Reload", class: "btn btn-secondary" %>
 <% end %>
 
 <%= render partial: "welcome" if params[:welcome] %>
