@@ -11,7 +11,7 @@ class PlanDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     amount: Field::Number,
-    interval: Field::String,
+    interval: Field::Select.with_options(collection: ["month", "year"]),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     details: Field::String.with_options(searchable: false),
