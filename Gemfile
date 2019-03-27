@@ -82,6 +82,7 @@ gem 'turbolinks_render', '~> 0.9.12'
 # We always want the latest versions of these gems, so no version numbers
 gem 'omniauth'
 gem 'strong_migrations'
+gem 'whenever', require: false
 
 # Jumpstart manages a few gems for us, so install them from the extra Gemfile
 if File.exists?("config/jumpstart/Gemfile")
