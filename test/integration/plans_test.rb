@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
+  setup do
+    # Two expects handle multiple calls, if Braintree & PayPal are both enabled for example
+    mock_client_token = Minitest::Mock.new
+    mock_client_token.expect :generate, "mock_client_token"
+    mock_client_token.expect :generate, "mock_client_token"
+
+    mock_gateway = Minitest::Mock.new
+    mock_gateway.expect :client_token, mock_client_token
+    mock_gateway.expect :client_token, mock_client_token
+    Pay.braintree_gateway = mock_gateway
+  end
+
   test "can register and login with a social account" do
     get "/pricing"
 

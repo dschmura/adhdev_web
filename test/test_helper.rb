@@ -16,9 +16,3 @@ end
 class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 end
-
-mock_client_token = Minitest::Mock.new
-mock_client_token.expect :generate, "mock_client_token"
-mock_gateway = Minitest::Mock.new
-mock_gateway.expect :client_token, mock_client_token
-Pay.braintree_gateway = mock_gateway
