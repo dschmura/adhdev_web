@@ -6,6 +6,7 @@ support_email: support@example.com
 default_from_email: Jumpstart <support@example.com>
 payment_processors:
 - :stripe
+- :braintree
 - :paypal
 omniauth_providers:
 - facebook

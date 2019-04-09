@@ -15,6 +15,9 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 
+import LocalTime from "local-time"
+LocalTime.start()
+
 import "stylesheets/application"
 
 import "controllers"

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         mount Sidekiq::Web => '/sidekiq'
       end
 
+      resources :announcements
       resources :users
       namespace :user do
         resources :connected_accounts
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
+  resources :announcements, only: [:index]
   resources :teams do
     member do
       patch :switch

@@ -35,11 +35,11 @@
       </table>
     </div>
 
-    <% if @pagy.pages > 1 %>
+    <%% if @pagy.pages > 1 %>
       <div class="text-center my-6">
         <%%== pagy_nav(@pagy) %>
       </div>
-    <% end %>
+    <%% end %>
 
   <%% else %>
     <div class="bg-white rounded shadow flex items-center justify-between p-8">

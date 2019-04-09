@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :time_zone
       t.datetime :accepted_terms_at
       t.datetime :accepted_privacy_at
+      t.datetime :announcements_read_at
       t.boolean :admin
 
       t.timestamps null: false

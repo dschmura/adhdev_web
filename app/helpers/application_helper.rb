@@ -48,4 +48,13 @@ module ApplicationHelper
     classes = [weight, "fa-#{name}", options[:class]]
     content_tag :i, nil, class: classes
   end
+
+  def badge(text, options={})
+    base  = options.delete(:base) || "rounded-full py-1 px-4 text-xs inline-block font-bold leading-normal uppercase mr-2"
+    color = options.delete(:color) || "bg-gray-400 text-gray-700"
+
+    options[:class] = Array.wrap(options[:class]) + [base, color]
+
+    content_tag :div, text, options
+  end
 end

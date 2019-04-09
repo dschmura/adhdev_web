@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', github: 'rails/rails' #'~> 6.0.0.beta1'
+gem 'rails', github: 'rails/rails' #'~> 6.0.0.beta3'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -73,6 +73,7 @@ gem 'jumpstart', path: 'lib/jumpstart'
 gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
 gem 'image_processing', '~> 1.2'
 gem 'inline_svg', '~> 1.3', '>= 1.3.1'
+gem 'local_time', '~> 2.1'
 gem 'name_of_person', '~> 1.0'
 gem 'pagy', '>= 2.1', '< 3'
 gem 'pay', '~> 1.0.0.beta4'

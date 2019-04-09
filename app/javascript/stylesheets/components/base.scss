@@ -1,3 +1,13 @@
 .main {
   min-height: calc(100vh - 64px);
 }
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 420px) {
+  html {
+    font-size:16px;
+  }
+}

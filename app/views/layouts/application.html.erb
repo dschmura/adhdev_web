@@ -27,9 +27,8 @@
   </head>
 
   <body class="bg-gray-100 font-sans font-normal leading-normal h-full antialiased">
-    <%= render partial: "shared/navbar" %>
-
     <div class="main">
+      <%= render partial: "shared/navbar" %>
       <%= render partial: "shared/flash" %>
       <%= yield %>
     </div>

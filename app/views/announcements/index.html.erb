@@ -1,0 +1,38 @@
+<div class="container mx-auto">
+  <h1 class="h2 my-6">What's New</h1>
+
+  <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
+    <% @announcements.each_with_index do |announcement, index| %>
+      <% if index != 0 %>
+        <hr class="border-t my-4" />
+      <% end %>
+
+      <div class="flex" id="<%= dom_id(announcement) %>">
+        <div>
+          <%= link_to announcements_path(anchor: dom_id(announcement)), class: "text-gray-700" do %>
+            <%= local_time_ago announcement.published_at %>
+          <% end %>
+        </div>
+
+        <div class="flex-1 ml-8">
+          <h2 class="text-xl mb-2"><%= announcement.title %></h2>
+          <%= badge announcement.kind.humanize.titleize, class: "mb-2", color: "announcement-#{announcement.kind}" %>
+
+          <div class="text-gray-700">
+            <%= announcement.description %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @announcements.empty? %>
+      <div>Exciting stuff coming very soon!</div>
+    <% end %>
+  </div>
+
+  <% if @pagy.pages > 1 %>
+    <div class="text-center mt-8">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>
