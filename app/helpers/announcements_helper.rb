@@ -9,12 +9,4 @@ module AnnouncementsHelper
       "unread-announcements"
     end
   end
-
-  def announcement_class(type)
-    {
-      "new" => "text-success",
-      "update" => "text-warning",
-      "fix" => "text-danger",
-    }.fetch(type, "text-success")
-  end
 end
