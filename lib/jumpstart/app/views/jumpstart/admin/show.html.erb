@@ -73,13 +73,17 @@
             <h4>Social Login with Omniauth</h4>
             <p>Let users log in with third-party accounts.</p>
 
-            <p>To enable an omniauth provider, add your OAuth details to Rails credentials under the <code>omniauth</code>. Any extra options will be passed into the omniauth provider automatically so you can easily customize scopes and more.</p>
+            <p>To enable an omniauth provider, add your OAuth details to Rails credentials under the <code>omniauth</code> key. Any extra options will be passed into the omniauth provider automatically so you can easily customize scopes and more.</p>
             <pre><code class="yaml rounded">omniauth:
   facebook:
     public_key: x
     private_key: y
     scope: email</code></pre>
 
+            <p>We recommend you use environment specific credentials (new in Rails 6.0) so you can safely separate your production and development keys.</p>
+            <pre><code class="bash rounded">rails credentials:edit --environment development</code></pre>
+
+            <h4>Providers</h4>
             <% Jumpstart::Omniauth.all_providers.each do |gem_name, details| %>
               <div class="mb-4">
                 <div class="font-weight-semibold"><%= details[:name] %></div>
