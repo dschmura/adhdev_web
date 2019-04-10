@@ -42,3 +42,9 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore Jumpstart files
+/config/credentials.yml.enc
+/config/credentials/development.key
+/config/credentials/development.yml.enc
+/config/jumpstart.yml
