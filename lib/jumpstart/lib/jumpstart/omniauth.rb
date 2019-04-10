@@ -51,7 +51,7 @@ module Jumpstart
     #     private_key: x
     #     public_key: y
     def self.credentials_for(provider)
-      Jumpstart.credentials.dig(:omniauth, provider) || {}
+      Jumpstart.credentials.dig(Rails.env, :omniauth, provider) || Jumpstart.credentials.dig(:omniauth, provider) || {}
     end
 
     # Returns a hash of all the other keys and values in the omniauth hash for this provider

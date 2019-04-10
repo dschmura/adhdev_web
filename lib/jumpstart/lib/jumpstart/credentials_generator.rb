@@ -102,13 +102,6 @@ Rails::Generators::CredentialsGenerator.class_eval do
         # For processing Stripe webhooks
         # https://dashboard.stripe.com/account/webhooks
         signing_secret: ''
-
-      development:
-
-      staging:
-
-      production:
-
     YAML
   end
 end
