@@ -1,5 +1,31 @@
 <% content_for :section_title, "Scaffolds" %>
 
-<div class="mb-20">
-  <h2 class="pb-3 mb-6 border-b border-gray-400">Block</h2>
+<div class="mb-10">
+  <p class="text-xl text-gray-700 leading-normal">Jumpstart customizes scaffolds to make it easier and quicker to develop your application.</p>
+</div>
+
+<div class="mb-10 pb-10 border-b border-gray-light">
+  <h3 class="h2 mb-2 pb-2">Team Resources</h3>
+
+  <p class="mb-4 leading-normal">If you'd like a resource to be shared across a Team, you can scope your controllers to the current team so the resources are shared between users in the associated team.</p>
+  <p class="mb-4 leading-normal">Every user has a personal team that's only usable by themselves, so you can easily associate resources to teams and still have private resources to a user.</p>
+  <p class="mb-4 leading-normal">Make sure to add <code>team:references</code> when generating your models.</p>
+</div>
+
+<div class="mb-10 pb-10 border-b border-gray-light">
+  <h3 class="h2 mb-2 pb-2">Theme</h3>
+
+  <p class="mb-4 leading-normal">The scaffold generator has been customized to include a default design for scaffolds. You can customize this as you like to bring your own design.</p>
+</div>
+
+<div class="mb-10 pb-10 border-b border-gray-light">
+  <h3 class="h2 mb-2 pb-2">Navigation</h3>
+
+  <p class="mb-4 leading-normal">Jumpstart includes an addition to the scaffold generator to automatically include new scaffolds into the navbar for convenience.</p>
+</div>
+
+<div class="mb-10 pb-10 border-b border-gray-light">
+  <h3 class="h2 mb-2 pb-2">Pagy</h3>
+
+  <p class="mb-4 leading-normal">Scaffolds use <%= link_to "Pagy", "https://github.com/ddnexus/pagy", target: :_blank %> to paginate scaffolds by default. Pagination is also themed to match the template.</p>
 </div>
