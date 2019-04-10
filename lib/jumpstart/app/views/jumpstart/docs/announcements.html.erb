@@ -4,7 +4,8 @@
   <div class="mb-10">
     <p class="mb-4 text-xl text-gray-700 leading-normal">Announcements are a way for you to notify users of new features, changes, and improvements you've made to your product.</p>
 
-    <p class="mb-4">To add announcements, login as an admin and visit <code>/admin/announcements</code>.</p>
+    <h3 class="mb-2">Creating Announcements</h3>
+    <p class="mb-4">To add announcements, login as an admin and visit <%= link_to "/admin/announcements", admin_announcements_path, class: "text-blue-500 underline" %>.</p>
 
     <h3 class="mb-2">Announcement types</h3>
     <p class="mb-4">Jumpstart comes with 4 default announcement types. You can add more by modifying <code>TYPES</code> in <code>app/models/announcements.rb</code> and adding colors to <code>announcements.scss</code>.</p>

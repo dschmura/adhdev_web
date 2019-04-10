@@ -60,8 +60,9 @@ module Jumpstart
     def save_gemfile
       gems = dependencies
 
-      content = format_dependencies(gems[:main])
-      content += "\n\ngroup :test do\n#{format_dependencies(gems[:test], spacing: "  ")}\nend"
+      content = ""
+      content += format_dependencies(gems[:main]) if gems[:main].any?
+      content += "\n\ngroup :test do\n#{format_dependencies(gems[:test], spacing: "  ")}\nend" if gems[:test].any?
 
       FileUtils.mkdir_p Rails.root.join("config/jumpstart")
       File.write(gemfile_path, content)
@@ -73,7 +74,7 @@ module Jumpstart
       gems[:main] += [{ name: "stripe" }, { name: "stripe_event" }] if stripe?
       gems[:test] += [{ name: "stripe-ruby-mock", github: 'rebelidealist/stripe-ruby-mock' }] if stripe?
       gems[:main] << { name: "braintree" } if braintree? || paypal?
-      gems[:main] << { name: job_processor } unless job_processor.to_s == "async"
+      gems[:main] << { name: job_processor.to_s } unless job_processor.to_s == "async"
       gems
     end
 
@@ -91,7 +92,7 @@ module Jumpstart
       content = File.read gemfile_path
 
       dependencies.each do |group, items|
-        return if items.all? { |dependency| content.include?(dependency[:name]) }
+        return if items.all? { |dependency| content.include?(dependency[:name].to_s) }
       end
 
       save_gemfile

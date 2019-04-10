@@ -2,7 +2,7 @@
   <label>Payment Processors</label>
   <li>
     <label>
-      <%= check_box_tag "configuration[payment_processors][stripe]",
+      <%= check_box_tag "jumpstart_configuration[payment_processors][]",
         :stripe,
         @config.stripe? %>
       Stripe
@@ -10,7 +10,7 @@
   </li>
   <li>
     <label>
-      <%= check_box_tag "configuration[payment_processors][braintree]",
+      <%= check_box_tag "jumpstart_configuration[payment_processors][]",
         :braintree,
         @config.braintree? %>
       Braintree
@@ -18,7 +18,7 @@
   </li>
   <li>
     <label>
-      <%= check_box_tag "configuration[payment_processors][paypal]",
+      <%= check_box_tag "jumpstart_configuration[payment_processors][]",
         :paypal,
         @config.paypal? %>
       Paypal

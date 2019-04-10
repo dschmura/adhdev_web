@@ -310,7 +310,13 @@ Devise.setup do |config|
   # To customize the provider options, add the extra configuration to config/jumpstart.yml
   # or disable it with Jumpstart and manually add the config.omniauth line for your provider
   Jumpstart::Omniauth.enabled_providers do |provider, app_id, app_secret, options|
-    config.omniauth provider, app_id, app_secret, options
+    name = provider.to_s
+    klass = OmniAuth.config.camelizations.fetch(name, name.classify)
+    if Object.const_defined? "OmniAuth::Strategies::#{klass}"
+      config.omniauth provider, app_id, app_secret, options
+    else
+      Rails.logger.warn "Couldn't enable omniauth-#{provider} because the gem isn't loaded."
+    end
   end
 
   # To add extra OmniAuth providers, copy this line and add the new ones

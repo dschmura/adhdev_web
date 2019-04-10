@@ -2,6 +2,9 @@ module Jumpstart
   class Configuration
     module Payable
       attr_writer :payment_processors
+      attr_accessor :plans
+      attr_accessor :monthly_plans
+      attr_accessor :yearly_plans
 
       def braintree?
         payment_processors.include? :braintree
@@ -16,12 +19,8 @@ module Jumpstart
       end
 
       def payment_processors
-        Array.wrap(@payment_processors)
+        Array.wrap(@payment_processors).map(&:to_sym)
       end
-
-      attr_accessor :plans
-      attr_accessor :monthly_plans
-      attr_accessor :yearly_plans
 
       def plans
         Array.wrap(@plans)

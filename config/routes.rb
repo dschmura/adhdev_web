@@ -6,13 +6,6 @@ Rails.application.routes.draw do
   if Rails.env.development? || Rails.env.test?
     mount Jumpstart::Engine, at: '/jumpstart'
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
-
-    namespace :jumpstart do
-      resource :docs do
-        [:announcements, :billing, :scaffolds, :teams, :users].each{ |doc| get doc }
-        [:alerts, :buttons, :cards, :forms, :icons, :javascript, :pagination, :pills, :typography, :wells].each{ |doc| get doc }
-      end
-    end
   end
 
   # Administrate
