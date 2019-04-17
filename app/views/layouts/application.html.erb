@@ -30,7 +30,10 @@
     <div class="main">
       <%= render partial: "shared/navbar" %>
       <%= render partial: "shared/flash" %>
-      <%= yield %>
+
+      <div class="px-3 lg:px-0">
+        <%= yield %>
+      </div>
     </div>
 
     <%= render partial: "shared/footer" %>

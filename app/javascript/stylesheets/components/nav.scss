@@ -1,8 +1,5 @@
 .nav-link {
-  @apply inline-flex mr-6 no-underline text-primary;
-
-  height: 60px;
-  line-height: 60px;
+  @apply block mr-6 no-underline text-primary my-2;
 
   &:hover,
   &:focus {
@@ -11,5 +8,14 @@
 
   &.active {
     @apply font-bold;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-link {
+    @apply inline-flex py-0;
+
+    height: 60px;
+    line-height: 60px;
   }
 }
