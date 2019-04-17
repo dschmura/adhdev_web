@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :require_team
   before_action :set_plan, only: [:new]
   before_action :set_subscription, only: [:edit, :update]
