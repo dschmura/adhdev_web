@@ -21,6 +21,10 @@ class Plan < ApplicationRecord
   scope :monthly, ->{ where(interval: :month) }
   scope :yearly,  ->{ where(interval: :year) }
 
+  def features
+    Array.wrap(super)
+  end
+
   # Find a plan with the same name in the opposite interval
   # This is useful when letting users upgrade to the yearly plan
   def find_interval_plan
