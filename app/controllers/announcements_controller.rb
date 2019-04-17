@@ -2,7 +2,7 @@ class AnnouncementsController < ApplicationController
   before_action :mark_as_read, if: :user_signed_in?
 
   def index
-    @pagy, @announcements = pagy(Announcement.order(published_at: :desc), items: 1)
+    @pagy, @announcements = pagy(Announcement.order(published_at: :desc))
   end
 
   private
