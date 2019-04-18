@@ -4,8 +4,18 @@
   </div>
 
   <div class="lg:w-3/4 w-full p-4">
-    <h1>Editing Team</h1>
+    <div class="text-sm text-gray-600 mb-5">
+      <%= link_to "All Teams", teams_path, class: "hover:text-black" %>
+      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+      <%= link_to @team.name, @team, class: "hover:text-black" %>
+      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+      Edit
+    </div>
 
-    <%= render 'form', team: @team %>
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
+      <h1 class="h2">Edit Team</h1>
+
+      <%= render 'form', team: @team %>
+    </div>
   </div>
 </div>

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="block lg:hidden ml-4">
-    <button data-action="click->toggle#toggle touchstart->toggle#toggle" class="flex items-center px-3 py-2 border rounded text-gray-300 border-gray-400 hover:text-white hover:border-white">
+    <button data-action="click->toggle#toggle touch->toggle#toggle" class="flex items-center px-3 py-2 border rounded text-gray-300 border-gray-400 hover:text-white hover:border-white">
       <svg class="fill-current h-3 w-3 text-gray-700" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
     </button>
   </div>
@@ -28,7 +28,7 @@
       <% if user_signed_in? %>
         <div class="z-10 inline-flex items-center align-middle leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white">
           <div class="relative" data-controller="dropdown">
-            <div data-action="click->dropdown#toggle click@window->dropdown#hide touchstart->dropdown#toggle touchstart@window->dropdown#hide" role="button" class="inline-block select-none">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" role="button" class="inline-block select-none">
               <span class="appearance-none flex items-center inline-block text-gray-700">
                 <%= team_avatar current_team, include_user: true, class: "rounded-full h-10 w-10" %>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1rem" height="1rem" class="h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>

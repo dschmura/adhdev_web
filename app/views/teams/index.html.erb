@@ -7,10 +7,12 @@
     <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
 
       <div class="flex justify-between items-center mb-3">
-        <h1 class="h2">Teams</h1>
+        <h1 class="h2 flex-1">Teams</h1>
 
         <% if @teams.exists? %>
-          <%= link_to 'Create a Team', new_team_path, class: "btn btn-primary" %>
+          <div>
+            <%= link_to 'Create a Team', new_team_path, class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
 
