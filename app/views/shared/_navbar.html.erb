@@ -26,7 +26,7 @@
       <%= render "shared/right_nav" %>
 
       <% if user_signed_in? %>
-        <div class="z-10 flex items-center py-2 leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white lg:mt-4 lg:mt-0 lg:px-4">
+        <div class="z-10 inline-flex items-center align-middle leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white">
           <div class="relative" data-controller="dropdown">
             <div data-action="click->dropdown#toggle click@window->dropdown#hide touchstart->dropdown#toggle touchstart@window->dropdown#hide" role="button" class="inline-block select-none">
               <span class="appearance-none flex items-center inline-block text-gray-700">
