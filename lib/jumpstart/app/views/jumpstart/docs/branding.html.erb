@@ -1,0 +1,13 @@
+<% content_for :section_title, "Branding" %>
+
+<div class="mb-10">
+  <p class="mb-4 text-xl text-gray-700 leading-normal">Jumpstart includes branding assets that are easily replaceable with your own logo.</p>
+
+  <h3 class="mb-2">Logo SVG</h3>
+  <p class="mb-4">The Jumpstart placeholder is located in <code>app/assets/images/logo.svg</code> and you can simply replace this file to use your own logo.</p>
+  <p class="mb-4">We recommend using an svg logo for crisp rendering at any size.</p>
+  <%= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
+
+  <h3 class="mb-2 mt-4">Favicons</h3>
+  <p class="mb-4">The Jumpstart favicon placeholders are located in <code>app/assets/images/favicon</code> and you can simply replace these files to use your own logos.</p>
+</div>
