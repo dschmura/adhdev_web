@@ -20,6 +20,7 @@ class Plan < ApplicationRecord
 
   scope :monthly, ->{ where(interval: :month) }
   scope :yearly,  ->{ where(interval: :year) }
+  scope :sorted,  ->{ order(amount: :asc) }
 
   def features
     Array.wrap(super)
