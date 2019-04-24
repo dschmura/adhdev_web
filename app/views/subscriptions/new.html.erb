@@ -15,7 +15,7 @@
 
     <div class="text-sm text-center mt-8">
       <%= render_svg "icons/question", styles: "fill-current text-gray-500 w-4 h-4 inline-block" %>
-      Need any help? <span class="text-gray-darker">Don't hesitate to <%= link_to "contact support", "#", class: "text-gray-800 underline" %>.</span>
+      Need any help? <span class="text-gray-darker">Don't hesitate to <%= mail_to Jumpstart.config.support_email, "contact support", subject: "I have a question about #{Jumpstart.config.application_name}", class: "text-gray-800 underline" %>.</span>
     </div>
   </div>
 
