@@ -29,6 +29,10 @@ module Jumpstart
       Pay.subscription_model.include Jumpstart::SubscriptionExtensions
 
       Administrate::ApplicationController.helper Jumpstart::AdministrateHelpers
+
+      if Rails.env.development?
+        Rails.application.config.assets.precompile += %w( *.svg )
+      end
     end
   end
 end
