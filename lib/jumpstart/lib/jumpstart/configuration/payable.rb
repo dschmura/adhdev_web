@@ -18,6 +18,10 @@ module Jumpstart
         payment_processors.include? :stripe
       end
 
+      def payments_enabled?
+        stripe? || braintree? || paypal?
+      end
+
       def payment_processors
         Array.wrap(@payment_processors).map(&:to_sym)
       end

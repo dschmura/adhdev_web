@@ -43,7 +43,7 @@
                 <%= link_to 'Profile',  edit_user_registration_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
                 <%= link_to 'Password', account_password_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' %>
                 <%= link_to 'Accounts', user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Devise.omniauth_configs.any? %>
-                <%= link_to 'Billing',  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to 'Billing',  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
 
                 <!--
                 <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Teams</div>

@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_team
+  before_action :require_team, :require_payments_enabled
   before_action :set_plan, only: [:new]
   before_action :set_subscription, only: [:edit, :update]
 
@@ -75,6 +75,12 @@ class SubscriptionsController < ApplicationController
 
   def require_team
     redirect_to new_user_registration_path unless current_team
+  end
+
+  def require_payments_enabled
+    return if Jumpstart.config.payments_enabled?
+    flash[:alert] = "Jumpstart must be configured for payments before you can manage subscriptions."
+    redirect_back(fallback_location: root_path)
   end
 
   def set_plan
