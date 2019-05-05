@@ -76,7 +76,7 @@ gem 'inline_svg', '~> 1.3', '>= 1.3.1'
 gem 'local_time', '~> 2.1'
 gem 'name_of_person', '~> 1.0'
 gem 'pagy', '~> 3.0'
-gem 'pay', '~> 1.0.0.beta4'
+gem 'pay', '~> 1.0.0.beta5'
 gem 'receipts', '~> 0.2.2'
 gem 'turbolinks_render', '~> 0.9.12'
 

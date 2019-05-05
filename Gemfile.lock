@@ -196,7 +196,7 @@ GEM
       rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
     pagy (3.0.0)
-    pay (1.0.0.beta4)
+    pay (1.0.0.beta5)
       rails (>= 4.2)
       rails-html-sanitizer (~> 1.0.4)
     pdf-core (0.7.0)
@@ -349,7 +349,7 @@ DEPENDENCIES
   name_of_person (~> 1.0)
   omniauth
   pagy (~> 3.0)
-  pay (~> 1.0.0.beta4)
+  pay (~> 1.0.0.beta5)
   pg
   pry-rails
   puma (~> 3.12)
