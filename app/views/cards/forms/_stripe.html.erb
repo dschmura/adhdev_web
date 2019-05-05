@@ -1,6 +1,4 @@
-<% content_for :head do %>
-  <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :public_key) %>
-<% end %>
+<% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
 
 <%= form_with model: current_team,
   url: card_url,
