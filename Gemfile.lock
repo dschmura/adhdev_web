@@ -194,7 +194,7 @@ GEM
       rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
     pagy (3.2.0)
-    pay (1.0.0.beta5)
+    pay (1.0.0.rc1)
       rails (>= 4.2)
       rails-html-sanitizer (~> 1.0.4)
     pdf-core (0.7.0)
@@ -368,7 +368,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 2.6.2p47
+   ruby 2.6.3p62
 
 BUNDLED WITH
    1.17.3
