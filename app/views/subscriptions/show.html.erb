@@ -56,20 +56,12 @@
       <h3>Payment Method</h3>
 
       <% if current_team.card_type? %>
-
-        <div class="flex" data-controller="toggle">
+        <div class="flex">
           <div class="flex-1">
             <i class="fab fa-cc-<%= current_team.card_type.downcase %> text-gray-700"></i> <%= payment_method_details %>
-
-            <%= render 'cards/forms/stripe'    if current_team.stripe? %>
-            <%= render 'cards/forms/braintree' if current_team.braintree? && current_team.paypal? %>
           </div>
           <div>
-            <% if current_team.paypal? %>
-              <%= link_to "Change source", "https://www.paypal.com/us/smarthelp/article/faq1414", class: "btn btn-link text-gray-700", target: "_blank", rel: "nofollow noopener" %>
-            <% else %>
-              <%= link_to "Use a new card", "#", class: "btn btn-link text-gray-700", data: { action: "click->toggle#toggle" } %>
-            <% end %>
+            <%= link_to "Update payment method", edit_card_path, class: "btn btn-link text-gray-700" %>
           </div>
         </div>
 

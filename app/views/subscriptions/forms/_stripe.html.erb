@@ -14,7 +14,7 @@
     <div data-target="stripe.error" role="alert"></div>
   </div>
 
-  <%= f.hidden_field :plan, value: @plan.id if @plan.present? %>
+  <%= f.hidden_field :plan, value: @plan.id %>
 
   <div class="text-center">
     <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>

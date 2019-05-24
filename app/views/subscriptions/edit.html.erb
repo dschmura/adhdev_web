@@ -27,7 +27,7 @@
             <% if @subscription.plan == plan %>
               <div class="btn btn-white">Current Plan</div>
             <% else %>
-              <%= form_with model: current_user, url: subscription_url do |f| %>
+              <%= form_with model: current_team, url: subscription_url do |f| %>
                 <%= f.hidden_field :plan, value: plan.id %>
                 <%= f.button 'Change Plan', class: "btn btn-tertiary", data: { disable_with: "Processing..." } %>
               <% end %>
@@ -42,7 +42,7 @@
             <% if @subscription.plan == plan %>
               <div class="btn btn-white">Current Plan</div>
             <% else %>
-              <%= form_with model: current_user, url: subscription_url do |f| %>
+              <%= form_with model: current_team, url: subscription_url do |f| %>
                 <%= f.hidden_field :plan, value: plan.id %>
                 <%= f.button 'Change Plan', class: "btn btn-tertiary", data: { disable_with: "Processing..." } %>
               <% end %>

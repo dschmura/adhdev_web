@@ -2,7 +2,7 @@
 
 <%= form_with model: current_team,
   url: card_url,
-  class: "hidden mt-4",
+  class: "mt-4",
   data: {
     controller: "stripe",
     target: "stripe.form toggle.toggleable",
@@ -13,7 +13,5 @@
     <div data-target="stripe.error" role="alert"></div>
   </div>
 
-  <div class="text-center">
-    <%= f.button 'Update Card', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
-  </div>
+  <%= f.button 'Update Card', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
 <% end %>

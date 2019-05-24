@@ -10,7 +10,7 @@
 
   <%= tag.div nil, data: { target: "braintree.dropin" } %>
 
-  <%= f.hidden_field :plan, value: @plan.id if @plan.present? %>
+  <%= f.hidden_field :plan, value: @plan.id %>
 
   <div class="my-8 text-center">
     <%= f.button 'Subscribe',

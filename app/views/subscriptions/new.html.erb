@@ -9,9 +9,30 @@
       <h4><%= current_team.name %></h4>
     </div>
 
-    <%= render 'subscriptions/forms/stripe'    if Jumpstart.config.stripe? %>
-    <%= render 'subscriptions/forms/braintree' if Jumpstart.config.braintree? %>
-    <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>
+    <div data-controller="toggle">
+      <% if current_team.card_last4? %>
+        <div data-target="toggle.toggleable">
+          <div class="flex mb-8">
+            <div class="flex-1">
+              <label>Payment Method</label>
+              <i class="fab fa-cc-<%= current_team.card_type.downcase %> text-gray-700"></i> <%= payment_method_details %>
+            </div>
+            <%= link_to "Change", "#", class: "text-primary text-sm mt-6", data: { action: "click->toggle#toggle" } %>
+          </div>
+
+          <%= form_with model: current_team, url: subscription_url, method: :post do |f| %>
+            <%= f.hidden_field :plan, value: @plan.id if @plan.present? %>
+            <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= content_tag :div, class: ("hidden" if current_team.card_last4?), data: { target: "toggle.toggleable" } do %>
+        <%= render 'subscriptions/forms/stripe'    if Jumpstart.config.stripe? %>
+        <%= render 'subscriptions/forms/braintree' if Jumpstart.config.braintree? %>
+        <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>
+      <% end %>
+    </div>
 
     <div class="text-sm text-center mt-8">
       <%= render_svg "icons/question", styles: "fill-current text-gray-500 w-4 h-4 inline-block" %>

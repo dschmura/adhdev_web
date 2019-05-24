@@ -21,8 +21,8 @@ module ApplicationHelper
     active_class    = options.delete(:active_class) || "active"
     inactive_class  = options.delete(:inactive_class) || ""
 
-    active = if options[:starts_with]
-               request.path.start_with?(options[:starts_with])
+    active = if paths = Array.wrap(options[:starts_with])
+               paths.any? { |path| request.path.start_with?(path) }
              else
                request.path == path
              end

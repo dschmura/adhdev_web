@@ -2,6 +2,6 @@
   <%= nav_link_to "Profile", edit_user_registration_path,   class: "block no-underline p-3 px-6 rounded-t", active_class: "bg-primary text-white", inactive_class: "text-gray-700 hover:bg-gray-200" %>
   <%= nav_link_to "Password", edit_account_password_path,   class: "block no-underline p-3 px-6", active_class: "bg-primary text-white", inactive_class: "text-gray-700 hover:bg-gray-200" %>
   <%= nav_link_to "Accounts", user_connected_accounts_path, class: "block no-underline p-3 px-6", active_class: "bg-primary text-white", inactive_class: "text-gray-700 hover:bg-gray-200" if Devise.omniauth_configs.any? %>
-  <%= nav_link_to "Billing", subscription_path,             class: "block no-underline p-3 px-6", active_class: "bg-primary text-white", inactive_class: "text-gray-700 hover:bg-gray-200" if Jumpstart.config.payments_enabled? %>
+  <%= nav_link_to "Billing", subscription_path,             class: "block no-underline p-3 px-6", active_class: "bg-primary text-white", inactive_class: "text-gray-700 hover:bg-gray-200", starts_with: ["/subscription", "/card"] if Jumpstart.config.payments_enabled? %>
   <%= nav_link_to "Teams", teams_path,                      class: "block no-underline p-3 px-6 rounded-b", active_class: "bg-primary text-white", inactive_class: "text-gray-700 hover:bg-gray-200", starts_with: "/team" %>
 </div>

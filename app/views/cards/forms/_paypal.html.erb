@@ -1,6 +1,5 @@
 <%= form_with model: current_team,
   url: card_url,
-  method: :post,
   data: {
     controller: "paypal",
     target: "paypal.form",
@@ -8,10 +7,7 @@
     paypal_client_token: Pay.braintree_gateway.client_token.generate
   } do |f| %>
 
-  <div class="my-8 text-center">
+  <div class="my-8">
     <%= tag.div nil, data: { target: "paypal.button" } %>
   </div>
-
-  <%= f.hidden_field :plan, value: @plan.id %>
 <% end %>
-

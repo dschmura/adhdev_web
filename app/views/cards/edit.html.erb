@@ -1,10 +1,19 @@
-<%= form_for current_user, url: card_url, html: { id: 'payment_form' } do |f| %>
-  <p>Current Card: <%= current_user.card_type %> <%= current_user.card_last4 %></p>
-  <% if Jumpstart.config.stripe? %>
-    <%= render 'cards/fields/stripe', f: f %>
-  <% end %>
-  <% if Jumpstart.config.braintree? %>
-    <%= render 'cards/fields/braintree', f: f %>
-  <% end %>
-  <%= f.button 'Update Card' %>
-<% end %>
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="lg:w-3/4 w-full p-4">
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 shadow-lg">
+      <h1 class="h2 mb-2"><%= link_to "Billing", subscription_path, class: "text-primary hover:underline" %> / Payment Details</h2>
+
+      <% if current_team.paypal? %>
+        <%#= link_to "Change source", "https://www.paypal.com/us/smarthelp/article/faq1414", class: "btn btn-link text-gray-700", target: "_blank", rel: "nofollow noopener" %>
+        <%= render 'cards/forms/paypal'    if Jumpstart.config.paypal? %>
+      <% else %>
+        <%= render 'cards/forms/stripe'    if Jumpstart.config.stripe? %>
+        <%= render 'cards/forms/braintree' if Jumpstart.config.braintree? %>
+      <% end %>
+    </div>
+  </div>
+</div>
