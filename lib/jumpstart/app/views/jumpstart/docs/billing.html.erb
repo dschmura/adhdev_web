@@ -22,10 +22,10 @@
   <h4 class="pb-3 mb-6 border-b border-gray-400">Webhooks</h4>
   <p>The <code>/webhooks/stripe</code> endpoint is available in your application for handling webhooks from Stripe. You can add the webhook to Stripe to have it </p>
 
-  <h2 class="pb-3 mb-6 border-b border-gray-400">Braintree</h2>
+  <h2 class="pb-3 mb-6 mt-6 border-b border-gray-400">Braintree</h2>
   <p class="mb-4">Processing payments with Braintree is as simple as adding your Braintree credentials, enabling the Braintree configuration, and adding plans with the Braintree IDs on them. We handle all the heavy lifting such as calculation proration discounts to allow users to swap between monthly and yearly plans which Braintree does not support out of the box.</p>
 
-  <h4 class="pb-3 mb-6 border-b border-gray-400">PayPal</h4>
+  <h4 class="pb-3 mb-6 mt-6 border-b border-gray-400 tracking-wider font-semibold uppercase text-gray-700">PayPal</h4>
   <p class="mb-4">PayPal is supported out of the box, using Braintree for processing.</p>
   <p class="mb-4">To enable PayPal in Jumpstart, you'll first need to enable it in your Braintree account under the Processing Options section.</p>
   <%= image_tag "https://i.imgur.com/coAmQpf.png", class: "mb-4" %>
@@ -40,7 +40,7 @@
   <p class="mb-4">The Braintree Drop-In UI is a widget like Stripe elements that handles all the various enabled payment options. If you wish to process both credit cards and PayPal through Braintree, this is the best option.</p>
   <p class="mb-4">The Standalone PayPal button is designed for users who want to use PayPal with Stripe or by itself. This embeds a PayPal checkout button in the form without using the Braintree Drop-In UI. It still uses the Braintree Javascript to do this, but without the credit card form.</p>
 
-  <h4 class="pb-3 mb-6 border-b border-gray-400">Plan Credit Discount</h4>
+  <h4 class="pb-3 mb-6 mt-6 border-b border-gray-400 tracking-wider font-semibold uppercase text-gray-700">Plan Credit Discount</h4>
   <p class="mb-4">Before using Braintree, you will need to define a <code>plan-credit</code> discount in your Braintree control panel. This discount will be used to properly prorate subscriptions that change from yearly to monthly billing, or from monthly to yearly billing.</p>
   <p class="mb-4">The discount amount configured in the Braintree control panel can be any value you wish, as Pay will override the defined amount with our own custom amount each time we apply the coupon. This coupon is needed since Braintree does not natively support prorating subscriptions across subscription frequencies.</p>
 </div>
