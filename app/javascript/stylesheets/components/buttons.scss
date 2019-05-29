@@ -1,15 +1,12 @@
 .btn {
-  @apply inline-flex font-bold text-xs uppercase tracking-wide text-center px-4 py-0 rounded no-underline items-center justify-between;
+  @apply inline-flex font-bold text-sm text-center px-4 py-0 rounded no-underline items-center justify-between;
 
-  height: 36px;
-  line-height: 36px;
+  height: 40px;
+  line-height: 40px;
   transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
   &:hover,
   &:focus {
-    transform: translateY(-1px);
-    box-shadow: none;
-
     @apply cursor-pointer;
   }
 
@@ -35,8 +32,6 @@
 .btn-primary {
   @apply bg-primary text-white;
 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(78, 104, 242, 0.1);
-
   &:hover,
   &:focus {
     @apply bg-primary-dark;
@@ -54,8 +49,6 @@
 
 .btn-secondary {
   @apply bg-secondary text-white;
-
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(54, 180, 124, 0.1);
 
   &:hover,
   &:focus {
@@ -75,8 +68,6 @@
 .btn-tertiary {
   @apply bg-tertiary text-white;
 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(87, 88, 110, 0.1);
-
   &:hover,
   &:focus {
     @apply bg-tertiary-dark;
@@ -94,8 +85,6 @@
 
 .btn-danger {
   @apply bg-danger text-white;
-
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(243, 123, 123, 0.1);
 
   &:hover,
   &:focus {
@@ -115,11 +104,9 @@
 .btn-white {
   @apply bg-white;
 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(78, 104, 242, 0.1);
-
   &:hover,
   &:focus {
-    box-shadow: none;
+    @apply bg-gray-100;
   }
 
   &.primary {
