@@ -14,7 +14,15 @@ module Jumpstart
     config.before_initialize do
       Jumpstart.config = Jumpstart::Configuration.load!
       Jumpstart.config.verify_dependencies!
+    end
 
+    config.to_prepare do
+      Pay.subscription_model.include Jumpstart::SubscriptionExtensions
+
+      Administrate::ApplicationController.helper Jumpstart::AdministrateHelpers
+    end
+
+    initializer "jumpstart.setup" do
       # Set ActiveJob from Jumpstart
       ActiveJob::Base.queue_adapter = Jumpstart.config.job_processor
 
@@ -27,12 +35,6 @@ module Jumpstart
       if Rails.env.development?
         Rails.application.config.assets.precompile += %w( *.svg )
       end
-    end
-
-    config.to_prepare do
-      Pay.subscription_model.include Jumpstart::SubscriptionExtensions
-
-      Administrate::ApplicationController.helper Jumpstart::AdministrateHelpers
     end
   end
 end
