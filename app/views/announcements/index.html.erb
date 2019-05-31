@@ -16,7 +16,7 @@
 
         <div class="flex-1 ml-8">
           <h2 class="text-xl mb-2"><%= announcement.title %></h2>
-          <%= badge announcement.kind.humanize.titleize, class: "mb-2", color: "announcement-#{announcement.kind}" %>
+          <%= badge announcement.kind.humanize.titleize, class: "mb-2", color: announcement_color(announcement) %>
 
           <div class="text-gray-700">
             <%= announcement.description %>

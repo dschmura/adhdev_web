@@ -1,4 +1,20 @@
 module AnnouncementsHelper
+  # Use the explicit class names so purgecss can find them
+  def announcements_color(announcement)
+    case announcement.kind
+    when "new"
+      "announcement-new"
+    when "update"
+      "announcement-update"
+    when "improvement"
+      "announcement-improvement"
+    when "fix"
+      "announcement-fix"
+    else
+      "announcement-update"
+    end
+  end
+
   def unread_announcements_class(user)
     announcement = Announcement.order(published_at: :desc).first
     return if announcement.nil?
