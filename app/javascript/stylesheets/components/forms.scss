@@ -48,7 +48,7 @@
 
 label,
 .label {
-  @apply block uppercase tracking-wide text-gray-800 text-xs font-semibold mb-2;
+  @apply block uppercase tracking-wide text-gray-800 text-xs font-semibold mb-2 cursor-pointer;
 }
 
 .form-hint {
