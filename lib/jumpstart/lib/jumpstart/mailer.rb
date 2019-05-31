@@ -68,7 +68,7 @@ module Jumpstart
     def postmark_settings
       {
         address:   'smtp.postmarkapp.com',
-        user_name: get_credential(::postmark, :username),
+        user_name: get_credential(:postmark, :username),
         password:  get_credential(:postmark, :password),
       }.merge(shared_settings)
     end
