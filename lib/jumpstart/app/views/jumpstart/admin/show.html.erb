@@ -1,4 +1,4 @@
-<%= form_for @config, url: jumpstart_config_path do |f| %>
+<%= form_with model: @config, url: jumpstart_config_path do |f| %>
   <div class="row">
     <div class="col-md-3">
       <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -11,9 +11,9 @@
 
       <hr />
 
-      <p><%= f.submit "Save & Reload", class: "btn btn-block btn-primary" %></p>
+      <p><%= f.button "Save Changes", class: "btn btn-block btn-primary", data: { disable_with: "Saving..." } %></p>
 
-      <p class="text-muted small">Jumpstart will install any new dependencies and restart your Rails application automatically for you. This can take a while.</p>
+      <p class="text-muted small">Jumpstart Pro will install any new dependencies after saving and automatically restart your app.</p>
     </div>
 
     <div class="col-md-9">

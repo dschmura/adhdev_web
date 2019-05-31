@@ -4,9 +4,15 @@ module Jumpstart
   class ConfigsController < ApplicationController
     def create
       Jumpstart::Configuration.new(config_params).save
+
+      # Install the new gem dependencies
+      Jumpstart.bundle
       Jumpstart.restart
 
-      redirect_to main_app.root_path, notice: "Jumpstart configuration updated successfully."
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "Restart your Rails app to load the new Jumpstart configuration." }
+        format.js
+      end
     end
 
     private

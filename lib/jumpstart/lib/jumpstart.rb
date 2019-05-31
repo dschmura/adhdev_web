@@ -13,11 +13,12 @@ module Jumpstart
   @@config = {}
 
   def self.restart
-    # Install gems before restarting
-    system("bundle")
+    Bundler.clean_system("rails restart")
+  end
 
-    FileUtils.mkdir_p("tmp")
-    FileUtils.touch "tmp/restart.txt"
+  # https://stackoverflow.com/a/25615344/277994
+  def self.bundle
+    Bundler.clean_system('bundle')
   end
 
   def self.find_plan(id)
