@@ -14,10 +14,16 @@ let environment = {
 }
 
 if (process.env.RAILS_ENV === "production") {
+  // A whitelist of css classes to keep that might not be found in the app
+  function collectWhitelist() {
+    return ['font-serif', 'tab-active', 'transition', 'text-gray-400'];
+  }
+
   environment.plugins.push(
     require('@fullhuman/postcss-purgecss')({
-      content: ['./app/**/*.html.erb', './app/helpers/**/*.rb'],
-      defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+      content: ['./**/*.html.erb', './app/helpers/**/*.rb'],
+      defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+      whitelist: collectWhitelist()
     })
   )
 }

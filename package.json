@@ -8,6 +8,7 @@
     "@rails/activestorage": "^6.0.0-rc1",
     "@rails/ujs": "^6.0.0-rc1",
     "@rails/webpacker": "^4.0.2",
+    "core-js": "3",
     "js-cookie": "^2.2.0",
     "jstz": "^2.0.0",
     "local-time": "^2.1.0",
