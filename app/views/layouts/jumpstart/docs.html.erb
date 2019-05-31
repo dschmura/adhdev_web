@@ -35,12 +35,12 @@
       <div class="lg:w-4/5 w-full bg-white h-full border-l border-gray-400 docs-main">
 
         <% if content_for :section_title %>
-          <div class="bg-primary lg:px-16 px-4 py-10 text-white mb-6">
+          <div class="bg-primary lg:px-56 px-4 py-10 text-white mb-6">
             <h1><%= yield :section_title %></h1>
           </div>
         <% end %>
 
-        <div class="pt-4 lg:px-16 px-4">
+        <div class="pt-4 lg:px-56 px-4">
           <%= yield %>
         </div>
       </div>
