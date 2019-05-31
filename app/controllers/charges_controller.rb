@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   def show
     respond_to do |format|
       format.pdf {
-        send_data @charge.receipt.render,
+        send_data @charge.receipt,
           filename: @charge.filename,
           type: "application/pdf",
           disposition: :inline
@@ -16,6 +16,6 @@ class ChargesController < ApplicationController
   private
 
     def set_charge
-      @charge = current_user.charges.find(params[:id])
+      @charge = current_team.charges.find(params[:id])
     end
 end

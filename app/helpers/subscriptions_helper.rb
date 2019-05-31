@@ -3,11 +3,11 @@ module SubscriptionsHelper
     Rails.env.production? ? 'production' : 'sandbox'
   end
 
-  def payment_method_details
-    if current_team.paypal?
-      "#{current_team.card_type} #{current_team.card_last4}"
+  def payment_method_details(object)
+    if object.paypal?
+      "#{object.card_type} #{object.card_last4}"
     else
-      "#{current_team.card_type} ending in #{current_team.card_last4}"
+      "#{object.card_type} ending in #{object.card_last4}"
     end
   end
 end

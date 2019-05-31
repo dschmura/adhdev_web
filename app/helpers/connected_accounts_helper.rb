@@ -6,6 +6,6 @@ module ConnectedAccountsHelper
 
   def provider_config(provider)
     _, config = Jumpstart::Omniauth::AVAILABLE_PROVIDERS.find{ |_, config| config[:provider].to_s == provider.to_s }
-    config || {}
+    config || { name: provider.to_s.humanize}
   end
 end
