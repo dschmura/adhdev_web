@@ -26,6 +26,11 @@ module Jumpstart
       Rails.application.credentials
     end
 
+    # Search through credentials scoped, then unscoped
+    def get_credential(*path)
+      credentials.dig(Rails.env.to_sym, *path) || credentials.dig(*path)
+    end
+
     def shared_settings
       {
         port: 587,
@@ -34,35 +39,37 @@ module Jumpstart
       }
     end
 
+    #TODO: SEARCH RAILS ENV THEN NON RAILS ENV
+
     def mailgun_settings
       {
         address: 'smtp.mailgun.org',
-        user_name: credentials.dig(Rails.env.to_sym, :mailgun, :username),
-        password:  credentials.dig(Rails.env.to_sym, :mailgun, :password),
+        user_name: get_credential(:mailgun, :username),
+        password:  get_credential(:mailgun, :password),
       }.merge(shared_settings)
     end
 
     def mailjet_settings
       {
         address:   'in.mailjet.com',
-        user_name: credentials.dig(Rails.env.to_sym, :mailjet, :username),
-        password:  credentials.dig(Rails.env.to_sym, :mailjet, :password),
+        user_name: get_credential(:mailjet, :username),
+        password:  get_credential(:mailjet, :password),
       }.merge(shared_settings)
     end
 
     def mandrill_settings
       {
         address:   'smtp.mandrillapp.com',
-        user_name: credentials.dig(Rails.env.to_sym, :mandrill, :username),
-        password:  credentials.dig(Rails.env.to_sym, :mandrill, :password),
+        user_name: get_credential(:mandrill, :username),
+        password:  get_credential(:mandrill, :password),
       }.merge(shared_settings)
     end
 
     def postmark_settings
       {
         address:   'smtp.postmarkapp.com',
-        user_name: credentials.dig(Rails.env.to_sym, :postmark, :username),
-        password:  credentials.dig(Rails.env.to_sym, :postmark, :password),
+        user_name: get_credential(::postmark, :username),
+        password:  get_credential(:postmark, :password),
       }.merge(shared_settings)
     end
 
@@ -70,25 +77,25 @@ module Jumpstart
       shared_settings.merge({
         address:        'smtp-relay.sendinblue.com',
         authentication: 'login',
-        user_name: credentials.dig(Rails.env.to_sym, :sendinblue, :username),
-        password:  credentials.dig(Rails.env.to_sym, :sendinblue, :password),
+        user_name:      get_credential(:sendinblue, :username),
+        password:       get_credential(:sendinblue, :password),
       })
     end
 
     def sendgrid_settings
       {
         address:   'smtp.sendgrid.net',
-        domain:    credentials.dig(Rails.env.to_sym, :sendgrid, :domain),
-        user_name: credentials.dig(Rails.env.to_sym, :sendgrid, :username),
-        password:  credentials.dig(Rails.env.to_sym, :sendgrid, :password),
+        domain:    get_credential(:sendgrid, :domain),
+        user_name: get_credential(:sendgrid, :username),
+        password:  get_credential(:sendgrid, :password),
       }.merge(shared_settings)
     end
 
     def ses_settings
       {
-        address:   credentials.dig(Rails.env.to_sym, :ses, :address),
-        user_name: credentials.dig(Rails.env.to_sym, :ses, :username),
-        password:  credentials.dig(Rails.env.to_sym, :ses, :password),
+        address:   get_credential(:ses, :address),
+        user_name: get_credential(:ses, :username),
+        password:  get_credential(:ses, :password),
       }.merge(shared_settings)
     end
 
@@ -96,7 +103,7 @@ module Jumpstart
       {
         address:   'smtp.sparkpostmail.com',
         user_name: 'SMTP_Injection',
-        password:  credentials.dig(Rails.env.to_sym, :sparkpost, :password),
+        password:  get_credential(:sparkpost, :password),
       }.merge(shared_settings)
     end
   end
