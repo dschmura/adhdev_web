@@ -1,107 +1,143 @@
+# Credentials Generator override
+# This handles the shared credentials file
 require "rails/generators"
 require "rails/generators/rails/credentials/credentials_generator"
 
 Rails::Generators::CredentialsGenerator.class_eval do
   def credentials_template
-    <<~YAML
-      # Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
-      secret_key_base: #{SecureRandom.hex(64)}
+    Jumpstart::Credentials.template
+  end
+end
 
-      # aws:
-      #   access_key_id: 123
-      #   secret_access_key: 345
+# Encrypted File Generator override
+# This handles the environment credentials
+require "rails/generators/rails/encrypted_file/encrypted_file_generator"
 
-      # Jumpstart config
-      # ----------------
-      # Here you can define global credentials which will be available for all environments.
-      # You can override for an environment by nesting them under the environment keys
-      # For example:
-      #
-      # stripe_key: 'xxx'
-      # production:
-      #   stripe_key: 'yyy'
-      #
-      # This will use 'yyy' in production, but 'xxx' in any other environment.
+Rails::Generators::EncryptedFileGenerator.class_eval do
+  private
+    def encrypted_file_template
+      Jumpstart::Credentials.template
+    end
+end
 
-      # Login Providers
-      # ---------------
-      omniauth:
-        facebook:
-          # https://developers.facebook.com/apps/
+module Jumpstart
+  module Credentials
+    def self.template
+      <<~YAML
+        # Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
+        secret_key_base: #{SecureRandom.hex(64)}
+
+        # aws:
+        #   access_key_id: 123
+        #   secret_access_key: 345
+
+        # Jumpstart config
+        # ----------------
+        # Here you can define global credentials which will be available for all environments.
+        # You can override for an environment by nesting them under the environment keys
+        # For example:
+        #
+        # stripe_key: 'xxx'
+        # production:
+        #   stripe_key: 'yyy'
+        #
+        # This will use 'yyy' in production, but 'xxx' in any other environment.
+
+        # Login Providers via OmniAuth
+        # ---------------
+        omniauth:
+          # Add other OmniAuth providers here
+
+          facebook:
+            # https://developers.facebook.com/apps/
+            public_key: ''
+            private_key: ''
+
+          google:
+            # https://code.google.com/apis/console/
+            public_key: ''
+            private_key: ''
+
+          github:
+            # https://github.com/settings/developers
+            public_key: ''
+            private_key: ''
+
+          twitter:
+            # https://apps.twitter.com
+            public_key: ''
+            private_key: ''
+
+        # Mail Providers
+        # --------------
+
+        mailjet:
+          # https://app.mailjet.com/account/setup
+          username: ''
+          password: ''
+          domain: ''
+
+        mailgun:
+          # https://app.mailgun.com/app/account/security/api_keys
+          username: ''
+          password: ''
+
+        mandrill:
+          # https://mandrillapp.com/settings/index
+          username: ''
+          password: ''
+          domain: ''
+
+        postmark:
+          # https://account.postmarkapp.com/servers -> Server -> Credentials
+          username: ''
+          password: ''
+
+        sendgrid:
+          # https://app.sendgrid.com/settings/api_keys
+          username: 'apikey'
+          password: ''
+          domain: example.com
+
+        sendinblue:
+          # https://account.sendinblue.com/advanced/api
+          username: ''
+          password: ''
+
+        ses:
+          # https://console.aws.amazon.com/ses/home
+          username: ''
+          password: ''
+          address: ''
+
+        sparkpost:
+          # https://app.sparkpost.com/account/api-keys
+          username: 'SMTP_Injection'
+          password: ''
+
+        ### Payment Providers
+
+        # Braintree Payments (Required for PayPal support)
+        # https://braintreegateway.com
+        # https://sandbox.braintreegateway.com
+        # Webhooks should be pointed to https://domain.com/webhooks/braintree
+        braintree:
+          environment: ''
+          public_key: ''
+          private_key: ''
+          merchant_key: ''
+
+        # Stripe Payments
+        # https://dashboard.stripe.com/account/apikeys
+        stripe:
           public_key: ''
           private_key: ''
 
-        twitter:
-          # https://apps.twitter.com
-          public_key: ''
-          private_key: ''
-
-        google:
-          # https://code.google.com/apis/console/
-          public_key: ''
-          private_key: ''
-
-      # Mail Providers
-      # --------------
-
-      sendgrid:
-        # https://app.sendgrid.com/settings/api_keys
-        username: ''
-        password: ''
-        domain: example.com
-
-      ses:
-        # https://console.aws.amazon.com/ses/home
-        username: ''
-        password: ''
-        address: ''
-
-      mailjet:
-        username: ''
-        password: ''
-        domain: ''
-
-      mandrill:
-        username: ''
-        password: ''
-        domain: ''
-
-      sparkpost:
-        username: ''
-        password: ''
-
-      mailgun:
-        username: ''
-        password: ''
-
-      postmark:
-        username: ''
-        password: ''
-
-      sendinblue:
-        username: ''
-        password: ''
-
-      ### Payment Providers
-
-      # Braintree Payments (Required for PayPal support)
-      # https://braintreegateway.com
-      # https://sandbox.braintreegateway.com
-      braintree:
-        environment: ''
-        public_key: ''
-        private_key: ''
-        merchant_key: ''
-
-      # Stripe Payments
-      # https://dashboard.stripe.com/account/apikeys
-      stripe:
-        public_key: ''
-        private_key: ''
-
-        # For processing Stripe webhooks
-        # https://dashboard.stripe.com/account/webhooks
-        signing_secret: ''
-    YAML
+          # For processing Stripe webhooks
+          # https://dashboard.stripe.com/account/webhooks
+          # Webhooks should be pointed to https://domain.com/webhooks/stripe
+          signing_secret: ''
+      YAML
+    end
   end
 end
