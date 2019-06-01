@@ -39,10 +39,9 @@ class TeamDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :charges,
-    :subscriptions,
+    :personal,
+    :processor,
     :team_members,
-    :users,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
