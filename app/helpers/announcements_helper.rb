@@ -1,6 +1,6 @@
 module AnnouncementsHelper
   # Use the explicit class names so purgecss can find them
-  def announcements_color(announcement)
+  def announcement_color(announcement)
     case announcement.kind
     when "new"
       "announcement-new"
