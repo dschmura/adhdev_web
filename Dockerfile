@@ -28,4 +28,6 @@ RUN yarn install
 RUN bundle install
 
 ENTRYPOINT ["bin/rails"]
-CMD ["s", "-b", "0.0.0.0"]
+CMD ["s"]
+
+EXPOSE 3000
