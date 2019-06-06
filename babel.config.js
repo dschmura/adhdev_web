@@ -1,5 +1,5 @@
 module.exports = function(api) {
-  var validEnv = ['development', 'test', 'staging' 'production']
+  var validEnv = ['development', 'test', 'staging', 'production']
   var currentEnv = api.env()
   var isDevelopmentEnv = api.env('development')
   var isProductionEnv = api.env('production') || api.env('staging')
