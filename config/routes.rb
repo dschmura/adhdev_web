@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   # Administrate
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticated :user, lambda { |u| u.admin? } do
     namespace :admin do
       if defined?(Sidekiq)
         require 'sidekiq/web'
