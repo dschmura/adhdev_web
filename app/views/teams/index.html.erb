@@ -28,6 +28,8 @@
 
           <tbody>
             <% @teams.each do |team| %>
+              <% next if team.personal? # Skip display personal teams to reduce confusion %>
+
               <tr class="group border-t border-gray-400 hover:bg-gray-200">
                 <td class="p-3">
                   <%= link_to team, class: "inline-block mr-4 align-middle" do %>
