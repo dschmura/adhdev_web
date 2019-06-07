@@ -4,8 +4,39 @@ Rails.application.routes.draw do
     resource :config, only: [:create]
 
     resource :docs do
-      [:announcements, :billing, :scaffolds, :teams, :users].each{ |doc| get doc }
-      [:alerts, :branding, :buttons, :cards, :forms, :icons, :javascript, :pagination, :pills, :typography, :wells].each{ |doc| get doc }
+      get :action_cable
+      get :action_mailbox
+      get :action_text
+      get :active_storage
+      get :admin
+      get :announcements
+      get :api
+      get :authentication
+      get :background_workers
+      get :billing
+      get :credentials
+      get :cron
+      get :databases
+      get :deploying
+      get :development
+      get :email
+      get :oauth
+      get :scaffolds
+      get :teams
+      get :users
+      get :webpacker
+
+      get :alerts
+      get :branding
+      get :buttons
+      get :cards
+      get :forms
+      get :icons
+      get :javascript
+      get :pagination
+      get :pills
+      get :typography
+      get :wells
     end
 
     root to: "admin#show"

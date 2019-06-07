@@ -13,7 +13,6 @@ module Jumpstart
     attr_accessor :business_address
     attr_accessor :domain
     attr_accessor :background_job_processor
-    attr_accessor :cancel_immediately
     attr_accessor :email_provider
     attr_accessor :default_from_email
     attr_accessor :support_email
@@ -98,10 +97,6 @@ module Jumpstart
       save_gemfile
       puts "It looks like your Jumpstart dependencies are out of sync. We've updated your Jumpstart Gemfile to match the dependencies you have selected.\nRun 'bundle' to install them and then restart your app."
       exit 1
-    end
-
-    def cancel_immediately?
-      !!cancel_immediately
     end
 
     def job_processor

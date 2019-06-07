@@ -1,0 +1,51 @@
+<% content_for :section_title, "Webpacker" %>
+
+<div class="mb-20">
+  <div class="mb-10">
+    <p class="mb-4 text-xl text-gray-700 leading-normal">Jumpstart Pro is built using Webpacker as the primary tool for compiling both Javascript and CSS stylesheets.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Javascript &amp; Babel</h2>
+    <p class="mb-4">Rails 6 uses Webpacker instead of the asset pipeline for providing a more modern Javascript build process. This moves all our Javascript code to <code>app/javascript</code> and allows us use of <code>webpack-dev-server</code> to automatically reload our JS and CSS after save.</code></p>
+    <p class="mb-4">webpacker (and webpack) are often changing, so if you run into issues, take a look at the webpacker issues on github.</p>
+    <p class="mb-4">We are using the following Javascript libraries and features:</p>
+    <ul class="mb-4 list-disc list-inside">
+        <li><%= link_to "Turbolinks", "https://github.com/turbolinks/turbolinks", target: :_blank, class: "underline" %></li>
+        <li><%= link_to "StimulusJS", "https://stimulusjs.org", target: :_blank, class: "underline" %></li>
+        <li><%= link_to "Tippy", "https://atomiks.github.io/tippyjs/", target: :_blank, class: "underline" %> for Tooltips</li>
+        <li><%= link_to "Trix", "https://trix-editor.org", target: :_blank, class: "underline" %>, a Rich text editor used by ActionText</li>
+        <li><%= link_to "TailwindCSS Stimulus Components", "https://github.com/excid3/tailwindcss-stimulus-components", target: :_blank, class: "underline" %> for Dropdowns, Modals, Tabs, etc.</li>
+        <li><%= link_to "Local Time", "https://github.com/basecamp/local_time", target: :_blank, class: "underline" %> to converts timestamps to the browser's timezone so your app doesn't have to</li>
+        <li>All forms are submitted with AJAX using form_with and Rails UJS for Turbolinks iOS and Android compatibility so you can easily make a mobile version of your Jumpstart Pro app</li>
+        <li>Overriding Rails UJS data-confirm to use a custom Tailwind confirm modal</li>
+        <li>Direct uploads for file uploads with Trix</li>
+        <li>Automatic detection of user's browser timezone and saving to their account on registration</li>
+        <li>Payments integrations for Stripe Elements and Braintree Dropin UI</li>
+    </ul>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Stimulus JS</h2>
+    <p class="mb-4">Our Javascript framework of choice in Jumpstart Pro is <%= link_to "StimulusJS", "https://stimulusjs.org", target: :_blank %>. This gives us extremely lightweight Javascript sprinkles of functionality with complete flexibility of the HTML it gets applied to.</p>
+    <p class="mb-4">We're using Stimulus for several pieces of functionality:</p>
+
+    <ul class="mb-4 list-disc list-inside">
+        <li>User @mentions in Trix editor with ActionText</li>
+        <li>PayPal payments form</li>
+        <li>Braintree payments form</li>
+        <li>Stripe payments form</li>
+        <li>Pricing plans toggle</li>
+        <li>TailwindCSS components (Dropdowns, Modals, Tabs, etc.)</li>
+    </ul>
+
+    <p class="mb-4">We also override data-confirm to use TailwindCSS modals with the default Rails UJS functionality.</p>
+    <p class="mb-4">The Javascript for Stimulus components can be found in <code>app/javascript/controllers</code>.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">TailwindCSS</h2>
+    <p class="mb-4">Jumpstart Pro uses TailwindCSS 1.0 as the CSS framework. We've included a nice default theme and helpers to make using TailwindCSS as easy as Bootstrap. Check out the Frontend section of the docs for more information on how to use the comopnents we have created for you.</p>
+    <p class="mb-4">Tailwind is processed using PostCSS. The Tailwind config is located <code>app/javascript/stylesheets/tailwind.config.js</code>. You can use this file to tweak colors, fonts and other defaults.</p>
+    <p class="mb-4">The components are located in <code>app/javascript/stylesheets/components/</code>. You will find an organized set of files for each component in the app design there.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">PurgeCSS</h2>
+    <p class="mb-4">We have included PurgeCSS by default to automatically remove unused CSS when deploying to production. This greatly reduces the size of TailwindCSS in production to deliver a much faster experience in production.</p>
+    <p class="mb-4">PurgeCSS works by searching folders for exact matches of any CSS classes in your app. By default, we have configured PurgeCSS to look for CSS classes used in <code>app/views/**/*.html.erb</code> and <code>app/helpers/**/*.rb</code>. Any CSS classes referenced in these files will automatically be kept for production.</p>
+    <p class="mb-4">To add more search paths to PurgeCSS, add them to <code>postcss.config.js</code>.</p>
+  </div>
+</div>
