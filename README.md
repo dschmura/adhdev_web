@@ -1,24 +1,48 @@
-# README
+# Jumpstart Pro Rails Template
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+All your Rails apps should start off with a bunch of great defaults. It's like Laravel Spark, for Rails.
 
-Things you may want to cover:
+**Note:** Requires Rails 5.2 or higher
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+Jumpstart Pro is a preconfigured Rails application, so you can either
+download the code or clone this repository and add your own repo as a
+remote to merge in updates.
 
-* Configuration
+#### Requirements
 
-* Database creation
+You'll need the following installed to run the template successfully:
 
-* Database initialization
+* Ruby 2.6 or higher
+* bundler - `gem install bundler`
+* Redis - For ActionCable support (and Sidekiq, caching, etc)
+* PostgreSQL -
+* Yarn - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
+* Foreman (optional) - `gem install foreman` - helps run all your
+  processes in development
 
-* How to run the test suite
+#### Initial Setup
 
-* Services (job queues, cache servers, search engines, etc.)
+First, you'll want to tweak `config/database.yml` and rename `jumpstart`
+anywhere to the name of your app.
 
-* Deployment instructions
+Next, you can run `bin/setup` to install Rubygem and Javascript dependencies. This will also install foreman system wide for you and setup your database.
 
-* ...
+#### Running Jumpstart Pro
+
+If you're using foreman: `foreman start`
+
+Otherwise, you'll need to spin up several processes in different
+terminals:
+
+```bash
+rails server
+
+# Your background workers
+sidekiq # or whatever you're using
+
+# Optionally, the webpack dev server for automatically reloading JS and
+CSS changes
+bin/webpack-dev-server
+```
