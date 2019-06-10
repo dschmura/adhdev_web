@@ -70,7 +70,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Jumpstart dependencies
 gem 'jumpstart', path: 'lib/jumpstart'
 
-gem 'administrate', github: 'excid3/administrate' #'~> 0.10.0'
+gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart' #'~> 0.10.0'
 gem 'image_processing', '~> 1.2'
 gem 'inline_svg', '~> 1.3', '>= 1.3.1'
 gem 'local_time', '~> 2.1'
