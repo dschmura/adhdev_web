@@ -24,7 +24,6 @@
   function removeItem(e) {
     if (e.target.dataset.behavior === "remove-item") {
       e.preventDefault()
-      console.log("REMOVE")
       e.target.closest(".row").remove()
     }
   }
