@@ -32,7 +32,6 @@ const createConfirmModal = (element) => {
   element.insertAdjacentHTML('afterend', content)
 
   var modal = element.nextElementSibling
-  console.log(modal)
   element.dataset.confirmModal = `#${id}`
 
   modal.querySelector("[data-behavior='cancel']").addEventListener("click", (event) => {
@@ -61,7 +60,6 @@ const createConfirmModal = (element) => {
 
 // Checks if confirm modal is open
 const confirmModalOpen = (element) => {
-  console.log(element.dataset.confirmModal)
   return !!element.dataset.confirmModal;
 }
 
