@@ -10,16 +10,16 @@
 
   <div class="form-group">
     <%%= form.label :password_confirmation %>
-    <%%= form.password_field :password_confirmation %>
+    <%%= form.password_field :password_confirmation, class: "form-control" %>
 <% elsif attribute.attachments? -%>
     <%%= form.label :<%= attribute.column_name %> %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-control" %>
 <% elsif attribute.rich_text? -%>
     <%%= form.label :<%= attribute.column_name %> %>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, data: { controller: "mentions", target: "mentions.field" } %>
 <% else -%>
     <%%= form.label :<%= attribute.column_name %> %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %> %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>
 <% end -%>
   </div>
 
