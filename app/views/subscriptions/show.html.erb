@@ -72,7 +72,7 @@
       <hr class="border-b my-8" />
 
       <h3>Extra Billing Information</h3>
-      <div class="flex" data-controller="toggle">
+      <div class="flex items-center" data-controller="toggle">
         <div class="flex-1">
           <div class="text-gray-700">Add any additional information to all of your receipts such as your VAT ID, full business name, and address.</div>
 
@@ -91,6 +91,9 @@
         <div>
           <%= link_to "Add information", "#", class: "btn btn-link text-gray-700", data: { action: "click->toggle#toggle" } %>
         </div>
+      </div>
+      <div class="text-gray-600">
+        <%= current_team.extra_billing_info %>
       </div>
 
       <hr class="border-b my-8" />
