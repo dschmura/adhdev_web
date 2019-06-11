@@ -20,29 +20,16 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
-# Use Devise for authentication
-gem 'devise', '~> 4.6.0'
-gem 'devise_invitable', '~> 2.0'
-gem 'devise_masquerade', '~> 0.6.4'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.1', require: false
+gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
-
   gem 'annotate'
   gem 'brakeman'
   gem 'bundler-audit'
-
   gem 'letter_opener_web', '~> 1.3', '>= 1.3.4'
 end
 
@@ -66,11 +53,13 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
 # Jumpstart dependencies
 gem 'jumpstart', path: 'lib/jumpstart'
 
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart' #'~> 0.10.0'
+gem 'devise', '~> 4.6.0'
+gem 'devise_invitable', '~> 2.0'
+gem 'devise_masquerade', '~> 0.6.4'
 gem 'image_processing', '~> 1.2'
 gem 'inline_svg', '~> 1.3', '>= 1.3.1'
 gem 'local_time', '~> 2.1'

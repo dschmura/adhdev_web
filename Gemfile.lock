@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/excid3/administrate.git
-  revision: 20c258bce7eb98794b74e4c6b8bf69fb500eedf7
+  revision: 6c9a083ebd63d13691374e3e2929035608bd351a
   branch: jumpstart
   specs:
     administrate (0.11.0)
@@ -340,7 +340,7 @@ PLATFORMS
 DEPENDENCIES
   administrate!
   annotate
-  bootsnap (>= 1.4.1)
+  bootsnap (>= 1.4.2)
   brakeman
   bundler-audit
   byebug
