@@ -49,6 +49,7 @@ module Jumpstart
     def save
       File.write(self.class.config_path, to_yaml)
       save_gemfile
+      update_procfiles
       Jumpstart.config = self
     end
 
@@ -106,5 +107,27 @@ module Jumpstart
     def omniauth_providers
       Array.wrap(@omniauth_providers)
     end
+
+    def update_procfiles
+      write_file Rails.root.join("Procfile"), procfile_content
+      write_file Rails.root.join("Procfile.dev"), procfile_content(webpack_dev_server: true)
+    end
+
+    private
+
+      def procfile_content(webpack_dev_server: false)
+        content = ["web: bundle exec rails s"]
+        content << "webpack: bin/webpack-dev-server" if webpack_dev_server
+
+        if worker_command = Jumpstart::JobProcessor.command(job_processor)
+          content << "worker: #{worker_command}"
+        end
+
+        content.join("\n")
+      end
+
+      def write_file(path, content)
+        File.open(path, "wb") { |file| file.write(content) }
+      end
   end
 end
