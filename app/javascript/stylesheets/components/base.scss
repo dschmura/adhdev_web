@@ -11,3 +11,22 @@ html {
     font-size:16px;
   }
 }
+
+a {
+  @apply text-primary;
+
+  &:hover,
+  &:focus {
+    @apply text-primary-dark;
+
+    transform: none;
+  }
+}
+
+ul {
+  @apply list-disc list-inside;
+}
+
+ol {
+  @apply list-decimal list-inside;
+}
