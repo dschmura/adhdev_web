@@ -1,9 +1,9 @@
 .nav-link {
-  @apply block mr-6 no-underline text-primary px-2 py-1;
+  @apply block mr-6 no-underline text-primary-500 px-2 py-1;
 
   &:hover,
   &:focus {
-    @apply text-primary-dark;
+    @apply text-primary-600;
   }
 
   &.active {

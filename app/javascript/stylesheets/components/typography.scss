@@ -44,10 +44,10 @@ h5,
 }
 
 .link {
-  @apply text-primary;
+  @apply text-primary-500;
 
   &:hover,
   &:focus {
-    @apply text-primary-dark;
+    @apply text-primary-600;
   }
 }

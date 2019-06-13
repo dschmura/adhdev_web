@@ -8,7 +8,7 @@
   transition: ease 0.2s border;
 
   &:focus {
-    @apply outline-none bg-white border-primary;
+    @apply outline-none bg-white border-primary-500;
   }
 
   &::placeholder {
@@ -64,7 +64,7 @@ select,
   @apply relative block appearance-none w-full bg-white border border-gray-300 text-gray-900 py-3 px-4 pr-8 rounded leading-tight cursor-pointer;
 
   &:focus {
-    @apply outline-none bg-white border-primary;
+    @apply outline-none bg-white border-primary-500;
   }
 }
 

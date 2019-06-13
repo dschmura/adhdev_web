@@ -30,73 +30,73 @@
 }
 
 .btn-primary {
-  @apply bg-primary text-white;
+  @apply bg-primary-500 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-primary-dark text-white;
+    @apply bg-primary-600 text-white;
   }
 
   &.outline {
-    @apply bg-transparent border border-primary text-primary shadow-none;
+    @apply bg-transparent border border-primary-500 text-primary-500 shadow-none;
 
     &:hover,
     &:focus {
-      @apply bg-primary text-white;
+      @apply bg-primary-500 text-white;
     }
   }
 }
 
 .btn-secondary {
-  @apply bg-secondary text-white;
+  @apply bg-secondary-500 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-secondary-dark text-white;
+    @apply bg-secondary-600 text-white;
   }
 
   &.outline {
-    @apply bg-transparent border border-secondary-dark text-secondary-dark shadow-none;
+    @apply bg-transparent border border-secondary-600 text-secondary-600 shadow-none;
 
     &:hover,
     &:focus {
-      @apply bg-secondary text-white;
+      @apply bg-secondary-500 text-white;
     }
   }
 }
 
 .btn-tertiary {
-  @apply bg-tertiary text-white;
+  @apply bg-tertiary-500 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-tertiary-dark text-white;
+    @apply bg-tertiary-600 text-white;
   }
 
   &.outline {
-    @apply bg-transparent border border-tertiary text-tertiary shadow-none;
+    @apply bg-transparent border border-tertiary-500 text-tertiary-500 shadow-none;
 
     &:hover,
     &:focus {
-      @apply bg-tertiary text-white;
+      @apply bg-tertiary-500 text-white;
     }
   }
 }
 
 .btn-danger {
-  @apply bg-danger text-white;
+  @apply bg-danger-500 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-danger-dark text-white;
+    @apply bg-danger-600 text-white;
   }
 
   &.outline {
-    @apply bg-transparent border border-danger text-danger shadow-none;
+    @apply bg-transparent border border-danger-500 text-danger-500 shadow-none;
 
     &:hover,
     &:focus {
-      @apply bg-danger text-white;
+      @apply bg-danger-500 text-white;
     }
   }
 }
@@ -110,15 +110,15 @@
   }
 
   &.primary {
-    @apply text-primary;
+    @apply text-primary-500;
   }
 
   &.secondary {
-    @apply text-secondary;
+    @apply text-secondary-500;
   }
 
   &.tertiary {
-    @apply text-tertiary;
+    @apply text-tertiary-500;
   }
 
   &.gray {
@@ -127,11 +127,11 @@
 }
 
 .btn-link {
-  @apply text-primary bg-transparent;
+  @apply text-primary-500 bg-transparent;
 
   &:hover,
   &:focus {
-    @apply text-primary-dark;
+    @apply text-primary-600;
 
     transform: none;
   }

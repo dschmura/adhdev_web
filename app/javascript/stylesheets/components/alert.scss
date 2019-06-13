@@ -2,15 +2,15 @@
   @apply border border-gray-500 bg-gray-100 text-gray-700 p-4 rounded-lg;
 
   &.alert-info {
-    @apply border-primary bg-primary-lightest text-primary;
+    @apply border-primary-500 bg-primary-200 text-primary-500;
   }
 
   &.alert-success {
-    @apply border-secondary-dark bg-secondary-lightest text-secondary-dark;
+    @apply border-secondary-600 bg-secondary-200 text-secondary-600;
   }
 
   &.alert-error {
-    @apply border-danger bg-danger-lightest text-danger;
+    @apply border-danger-500 bg-danger-200 text-danger-500;
   }
 
   &.alert-warning {
