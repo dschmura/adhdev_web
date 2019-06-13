@@ -10,9 +10,9 @@
     @apply cursor-pointer;
   }
 
-  @media screen and (max-width: 767px) {
-    @apply block w-full mb-4;
-  }
+  //@media screen and (max-width: 767px) {
+    //@apply block w-full mb-4;
+  //}
 }
 
 .btn-small {
@@ -34,7 +34,7 @@
 
   &:hover,
   &:focus {
-    @apply bg-primary-dark;
+    @apply bg-primary-dark text-white;
   }
 
   &.outline {

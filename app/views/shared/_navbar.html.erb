@@ -5,24 +5,26 @@
   </div>
 <% end %>
 
-<header class="flex items-center justify-between flex-wrap bg-white border border-b-gray py-1 px-6" data-controller="toggle">
-  <%= link_to root_path, class: "flex items-center flex-shrink-0 mr-6" do %>
-    <%= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
-    <span class="sr-only"><%= Jumpstart.config.application_name %></span>
-  <% end %>
+<nav class="flex items-center justify-between flex-wrap bg-white border-b px-4 py-2" data-controller="toggle">
+  <div class="flex items-center flex-shrink-0 mr-6">
+    <%= link_to root_path do %>
+      <%= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
+      <span class="sr-only"><%= Jumpstart.config.application_name %></span>
+    <% end %>
+  </div>
 
-  <div class="block lg:hidden ml-4">
-    <button data-action="click->toggle#toggle touch->toggle#toggle" class="flex items-center px-3 py-2 border rounded text-gray-300 border-gray-400 hover:text-white hover:border-white">
-      <svg class="fill-current h-3 w-3 text-gray-700" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+  <div class="block lg:hidden">
+    <button type="button" id="sidebar-open" class="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700" data-action="click->toggle#toggle touch->toggle#toggle">
+      <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
     </button>
   </div>
 
-  <div data-target="toggle.toggleable" class="w-full hidden lg:block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div class="lg:flex-grow">
+  <div class="w-full block flex-grow hidden lg:flex lg:items-center lg:w-auto" data-target="toggle.toggleable" >
+    <div class="text-sm lg:flex-grow">
       <%= render "shared/left_nav" %>
     </div>
 
-    <div>
+    <div class="text-sm">
       <%= render "shared/right_nav" %>
 
       <% if user_signed_in? %>
@@ -77,7 +79,7 @@
         <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
         <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
       <% end %>
-    </div>
 
+    </div>
   </div>
-</header>
+</nav>

@@ -1,9 +1,14 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 .main {
-  min-height: calc(100vh - 64px);
+  flex: 1;
 }
 
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 420px) {
@@ -29,4 +34,17 @@ ul {
 
 ol {
   @apply list-decimal list-inside;
+}
+
+.table {
+  @apply w-full;
+  th, td {
+    @apply align-top;
+  }
+
+}
+
+.table-responsive {
+  @apply block w-full overflow-x-auto;
+  -webkit-overflow-scrolling: touch;
 }

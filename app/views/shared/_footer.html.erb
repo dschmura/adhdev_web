@@ -1,12 +1,13 @@
 <div class="bg-white border-t border-gray-400 py-1 lg:px-6 px-2 w-full lg:h-16 h-auto">
-  <div class="flex lg:flex-row lg:flex-row flex-col flex-col-reverse flex-wrap lg:items-center items-start justify-between">
-    <div class="lg:flex-1 flex items-center flex-wrap lg:justify-start justify-between">
+  <div class="text-sm flex flex-col-reverse p-4 lg:flex-row lg:justify-between lg:p-0">
+    <div class="flex items-center justify-center">
       <%= link_to root_path do %>
         <%= render_svg 'jumpstart-mark', styles: "fill-current text-gray-600 hover:text-gray-700" %>
       <% end %>
-      <div class="ml-4 text-gray-700 text-sm">© <%= Date.current.year %> <%= Jumpstart.config.business_name %></div>
+      <div class="ml-4 text-gray-700">© <%= Date.current.year %> <%= Jumpstart.config.business_name %></div>
     </div>
-    <div class="lg:flex block flex-wrap items-center justify-between items-center">
+
+    <div class="flex flex-col items-center lg:flex-row">
       <%= link_to "About Us", about_path, class: "text-gray-700 no-underline block lg:my-0 my-2 lg:px-4" %>
       <%= link_to "Privacy Policy", privacy_path, class: "text-gray-700 hover:text-gray-800 no-underline block lg:my-0 my-2 lg:px-4" %>
       <%= link_to "Terms of Service", terms_path, class: "text-gray-700 hover:text-gray-800 no-underline block lg:my-0 my-2 lg:pl-4" %>
