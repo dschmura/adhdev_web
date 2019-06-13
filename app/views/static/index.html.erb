@@ -5,13 +5,16 @@
   Skip the boilerplate setup and build your app faster.</p>
 
 
-<div class="flex flex-wrap items-center justify-start">
+<div class="flex flex-col items-center md:flex-row">
+    <div class="w-full md:w-auto">
+      <%= link_to "Configure Jumpstart", jumpstart_path, data: { turbolinks: false }, class: "btn btn-primary lg:mr-4 mr-0 lg:mb-0 mb-4" %>
+    </div>
 
-    <%= link_to "Configure Jumpstart", jumpstart_path, data: { turbolinks: false }, class: "btn btn-primary lg:mr-4 mr-0 lg:mb-0 mb-4" %>
+    <div>
+      <span class="hidden md:inline border border-gray-200 h-10 mr-4"></span>
 
-    <span class="border border-gray-200 h-10 mr-4"></span>
-
-    <%= link_to "Create a User", new_user_registration_path, class: "btn btn-tertiary outline lg:mr-4 mr-0 lg:mb-0 mb-4" %>
-    <%= link_to "Read the Docs", jumpstart_docs_path, target: :_blank, data: { turbolinks: false }, class: "btn btn-tertiary outline lg:mr-4 mr-0 lg:mb-0 mb-4" %>
+      <%= link_to "Create a User", new_user_registration_path, class: "btn btn-tertiary outline lg:mr-4 mr-0 lg:mb-0 mb-4" %>
+      <%= link_to "Read the Docs", jumpstart_docs_path, target: :_blank, data: { turbolinks: false }, class: "btn btn-tertiary outline lg:mr-4 mr-0 lg:mb-0 mb-4" %>
+    </div>
   </div>
 </div>
