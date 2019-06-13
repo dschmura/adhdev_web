@@ -52,7 +52,7 @@
 
   &:hover,
   &:focus {
-    @apply bg-secondary-dark;
+    @apply bg-secondary-dark text-white;
   }
 
   &.outline {
@@ -70,7 +70,7 @@
 
   &:hover,
   &:focus {
-    @apply bg-tertiary-dark;
+    @apply bg-tertiary-dark text-white;
   }
 
   &.outline {
@@ -88,7 +88,7 @@
 
   &:hover,
   &:focus {
-    @apply bg-danger-dark;
+    @apply bg-danger-dark text-white;
   }
 
   &.outline {
