@@ -34,6 +34,7 @@ class Team < ApplicationRecord
   has_many :users, through: :team_members
 
   scope :personal, ->{ where(personal: true) }
+  scope :impersonal, ->{ where(personal: false) }
 
   has_one_attached :avatar
 
