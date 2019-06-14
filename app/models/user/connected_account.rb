@@ -60,6 +60,11 @@ class User::ConnectedAccount < ApplicationRecord
     access_token
   end
 
+  # Safely handles empty strings before attempting encryption
+  def access_token_secret=(value)
+    super(value.blank? ? nil : value)
+  end
+
   private
 
     def current_token
