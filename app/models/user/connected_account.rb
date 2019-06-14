@@ -2,20 +2,26 @@
 #
 # Table name: user_connected_accounts
 #
-#  id            :bigint(8)        not null, primary key
-#  access_token  :string
-#  auth          :text
-#  expires_at    :datetime
-#  provider      :string
-#  refresh_token :string
-#  uid           :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  user_id       :bigint(8)
+#  id                               :bigint(8)        not null, primary key
+#  auth                             :text
+#  encrypted_access_token           :string
+#  encrypted_access_token_iv        :string
+#  encrypted_access_token_secret    :string
+#  encrypted_access_token_secret_iv :string
+#  expires_at                       :datetime
+#  provider                         :string
+#  refresh_token                    :string
+#  uid                              :string
+#  created_at                       :datetime         not null
+#  updated_at                       :datetime         not null
+#  user_id                          :bigint(8)
 #
 # Indexes
 #
-#  index_user_connected_accounts_on_user_id  (user_id)
+#  index_connected_accounts_access_token_iv                    (encrypted_access_token_iv) UNIQUE
+#  index_connected_accounts_access_token_secret_iv             (encrypted_access_token_secret_iv) UNIQUE
+#  index_user_connected_accounts_on_encrypted_access_token_iv  (encrypted_access_token_iv) UNIQUE
+#  index_user_connected_accounts_on_user_id                    (user_id)
 #
 # Foreign Keys
 #
@@ -27,6 +33,9 @@ class User::ConnectedAccount < ApplicationRecord
 
   # Associations
   belongs_to :user
+
+  attr_encrypted :access_token, key: Base64.decode64(Rails.application.credentials.access_token_encryption_key)
+  attr_encrypted :access_token_secret, key: Base64.decode64(Rails.application.credentials.access_token_encryption_key), allow_empty_value: true
 
   # Helper scopes for each provider
   Devise.omniauth_configs.each do |provider, _|
@@ -51,19 +60,22 @@ class User::ConnectedAccount < ApplicationRecord
     access_token
   end
 
-  def current_token
-    OAuth2::AccessToken.new(
-      strategy.client,
-      access_token,
-      refresh_token: refresh_token
-    )
-  end
+  private
 
-  def strategy
-    OmniAuth::Strategies.const_get(provider.classify).new(
-      nil,
-      Rails.application.secrets.send("#{provider}_client_id"),
-      Rails.application.secrets.send("#{provider}_client_secret")
-    )
-  end
+    def current_token
+      OAuth2::AccessToken.new(
+        strategy.client,
+        access_token,
+        refresh_token: refresh_token
+      )
+    end
+
+    def strategy
+      provider_config = Jumpstart::Omniauth.enabled_providers[provider.to_sym]
+      OmniAuth::Strategies.const_get(provider.classify).new(
+        nil,
+        provider_config[:public_key], # client id
+        provider_config[:private_key], # client secret
+      )
+    end
 end

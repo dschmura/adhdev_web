@@ -15,6 +15,8 @@ module Jumpstart
     end
 
     def self.enabled_providers
+      enabled = {}
+
       AVAILABLE_PROVIDERS.each do |gem_name, details|
         next unless has_credentials?(gem_name)
 
@@ -22,15 +24,14 @@ module Jumpstart
         default_options = {}
         default_options[:scope] = details[:scope] if details[:scope]
 
-        yield(
-          provider,
-          credentials_for(provider).dig(:public_key),
-          credentials_for(provider).dig(:private_key),
-          default_options.merge(options_for(provider))
-        )
-      rescue LoadError
-        Rails.logger.error "Add omniauth-#{gem_name} to your Gemfile, run bundle and restart your app to enable social login."
+        enabled[provider] = {
+          public_key: credentials_for(provider).dig(:public_key),
+          private_key: credentials_for(provider).dig(:private_key),
+          options: default_options.merge(options_for(provider))
+        }
       end
+
+      enabled
     end
 
     # Takes the provider's provider name instead of gem name because it's underscored

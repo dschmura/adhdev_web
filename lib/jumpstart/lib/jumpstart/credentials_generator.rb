@@ -43,6 +43,9 @@ module Jumpstart
         #
         # This will use 'yyy' in production, but 'xxx' in any other environment.
 
+        # Used for encrypting OAuth access tokens
+        access_token_encryption_key: '#{Base64.encode64(SecureRandom.random_bytes(32)).strip}'
+
         # Login Providers via OmniAuth
         # ---------------
         omniauth:

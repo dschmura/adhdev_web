@@ -96,13 +96,19 @@ class Jumpstart::OmniauthCallbacksController < Devise::OmniauthCallbacksControll
     end
 
     def connected_account_params
+      # Clean auth hash credentials
+      auth_hash = auth.to_hash
+      auth_hash.delete("credentials")
+      auth_hash["extra"].delete("access_token")
+
       {
         provider:      auth.provider,
         uid:           auth.uid,
         access_token:  auth.credentials.token,
+        access_token_secret: auth.credentials.secret,
         expires_at:    expires_at,
         refresh_token: auth.credentials.refresh_token,
-        auth:          auth.to_hash
+        auth:          auth_hash
       }
     end
 end

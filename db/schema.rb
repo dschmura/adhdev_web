@@ -122,12 +122,18 @@ ActiveRecord::Schema.define(version: 2019_04_09_222127) do
     t.bigint "user_id"
     t.string "provider"
     t.string "uid"
-    t.string "access_token"
+    t.string "encrypted_access_token"
+    t.string "encrypted_access_token_iv"
+    t.string "encrypted_access_token_secret"
+    t.string "encrypted_access_token_secret_iv"
     t.string "refresh_token"
     t.datetime "expires_at"
     t.text "auth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["encrypted_access_token_iv"], name: "index_connected_accounts_access_token_iv", unique: true
+    t.index ["encrypted_access_token_iv"], name: "index_user_connected_accounts_on_encrypted_access_token_iv", unique: true
+    t.index ["encrypted_access_token_secret_iv"], name: "index_connected_accounts_access_token_secret_iv", unique: true
     t.index ["user_id"], name: "index_user_connected_accounts_on_user_id"
   end
 
