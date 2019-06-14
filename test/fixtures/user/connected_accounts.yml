@@ -33,16 +33,18 @@
 one:
   user: one
   provider: MyString
-  access_token: MyString
+  encrypted_access_token: "<%= @secret = User::ConnectedAccount.new(access_token: '0000'); @secret.encrypted_access_token.gsub(/\n/, '\\\\n') %>"
+  encrypted_access_token_iv: "<%= @secret.encrypted_access_token %>"
   refresh_token: MyString
   expires_at: MyString
   auth: MyString
   uid: MyString
 
 two:
-  user: two
+  user: one
   provider: MyString
-  access_token: MyString
+  encrypted_access_token: "<%= @secret = User::ConnectedAccount.new(access_token: '0000'); @secret.encrypted_access_token.gsub(/\n/, '\\\\n') %>"
+  encrypted_access_token_iv: "<%= @secret.encrypted_access_token_iv %>"
   refresh_token: MyString
   expires_at: MyString
   auth: MyString
