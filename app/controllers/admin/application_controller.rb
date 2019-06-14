@@ -7,15 +7,16 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
-    before_action :default_params
 
     def authenticate_admin
       redirect_to '/', alert: 'Not authorized.' unless user_signed_in? && current_user.admin?
     end
 
-    def default_params
-      params[:order] ||= 'id'
-      params[:direction] ||= 'desc'
+    def order
+      @order ||= Administrate::Order.new(
+        params.fetch(resource_name, {}).fetch(:order, 'created_at'),
+        params.fetch(resource_name, {}).fetch(:direction, 'desc'),
+      )
     end
 
     # Override this value to specify the number of elements to display at a time

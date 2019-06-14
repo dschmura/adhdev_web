@@ -32,13 +32,16 @@ class Pay::ChargeDashboard < Administrate::BaseDashboard
     :id,
     :owner,
     :processor,
+    :amount,
+    :card_type,
+    :card_last4,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :owner,
     :id,
+    :owner,
     :owner_id,
     :processor,
     :processor_id,

@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     first_name: Field::String,
     last_name: Field::String,
+    name: Field::String,
     email: Field::String,
     password: Field::Password.with_options(searchable: false),
     password_confirmation: Field::Password.with_options(searchable: false),
@@ -51,6 +52,7 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :name,
     :email,
     :teams,
     :connected_accounts,
@@ -95,6 +97,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :name,
     :email,
     :password,
     :password_confirmation,
