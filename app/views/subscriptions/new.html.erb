@@ -15,7 +15,7 @@
           <div class="flex mb-8">
             <div class="flex-1">
               <label>Payment Method</label>
-              <i class="fab fa-cc-<%= current_team.card_type.downcase %> text-gray-700"></i> <%= payment_method_details %>
+              <i class="fab fa-cc-<%= current_team.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(current_team) %>
             </div>
             <%= link_to "Change", "#", class: "text-primary text-sm mt-6", data: { action: "click->toggle#toggle" } %>
           </div>
