@@ -50,11 +50,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    if Jumpstart.config.cancel_immediately?
-      current_team.subscription.cancel_now!
-    else
-      current_team.subscription.cancel
-    end
+    current_team.subscription.cancel
+
+    # Optionally, you can cancel immediately
+    # current_team.subscription.cancel_now!
 
     redirect_to subscription_path
   rescue Pay::Error => e
