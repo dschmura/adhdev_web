@@ -23,7 +23,9 @@ if (process.env.RAILS_ENV === "production" || process.env.RAILS_ENV === "staging
     require('@fullhuman/postcss-purgecss')({
       content: ['./**/*.html.erb', './app/helpers/**/*.rb'],
       defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-      whitelist: collectWhitelist()
+      whitelist: collectWhitelist(),
+      whitelistPatterns: [],
+      whitelistPatternsChildren: [/trix/, /attachment/, /tribute/],
     })
   )
 }
