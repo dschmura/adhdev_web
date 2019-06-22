@@ -128,7 +128,7 @@ module Jumpstart
           environment: ''
           public_key: ''
           private_key: ''
-          merchant_key: ''
+          merchant_id: ''
 
         # Stripe Payments
         # https://dashboard.stripe.com/account/apikeys
