@@ -20,6 +20,9 @@
     <h2 class="pb-3 mb-6 border-b border-gray-400">Heroku</h2>
     <p class="mb-4">Deploying to Heroku is easy. You'll need to setup Redis and PostgreSQL addons to run your app.</p>
     <p class="mb-4">We also include a Procfile to help automatically configure your Heroku processes.</p>
+    <p class="mb-4">You will need to add the Active Storage buildpack in order to have previews to work with Active Storage file uploads.</p>
+
+    <pre><code>heroku buildpacks:add -i 1 https://github.com/heroku/heroku-buildpack-activestorage-preview</code></pre>
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">Docker</h2>
     <p class="mb-4">We provide a sample Dockerfile and docker-compose.yml for you in case you'd like to deploy your application using Docker.</p>
