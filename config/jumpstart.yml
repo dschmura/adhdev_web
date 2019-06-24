@@ -1,0 +1,11 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: Jumpstart
+business_name: Jumpstart Company, LLC
+domain: example.com
+support_email: support@example.com
+default_from_email: Jumpstart <support@example.com>
+business_address: |-
+  1234 My Street
+  Example City, CA 90210
+background_job_processor: sidekiq
+email_provider: ''
