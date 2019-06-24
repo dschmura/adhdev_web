@@ -18,9 +18,10 @@
 #
 # Indexes
 #
-#  index_connected_accounts_access_token_iv         (encrypted_access_token_iv) UNIQUE
-#  index_connected_accounts_access_token_secret_iv  (encrypted_access_token_secret_iv) UNIQUE
-#  index_user_connected_accounts_on_user_id         (user_id)
+#  index_connected_accounts_access_token_iv                    (encrypted_access_token_iv) UNIQUE
+#  index_connected_accounts_access_token_secret_iv             (encrypted_access_token_secret_iv) UNIQUE
+#  index_user_connected_accounts_on_encrypted_access_token_iv  (encrypted_access_token_iv) UNIQUE
+#  index_user_connected_accounts_on_user_id                    (user_id)
 #
 # Foreign Keys
 #

@@ -1,3 +1,2 @@
-web: bundle exec rails s
-webpack: bin/webpack-dev-server
-worker: bundle exec sidekiq
+web: bundle exec rails server
+webpack: bundle exec bin/webpack-dev-server
