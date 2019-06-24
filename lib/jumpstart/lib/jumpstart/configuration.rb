@@ -111,6 +111,7 @@ module Jumpstart
     def update_procfiles
       write_file Rails.root.join("Procfile"), procfile_content
       write_file Rails.root.join("Procfile.dev"), procfile_content(webpack_dev_server: true)
+      write_file Rails.root.join("config", "sidekiq.yml"), JobProcessor.sidekiq_config if job_processor == "sidekiq"
     end
 
     private
