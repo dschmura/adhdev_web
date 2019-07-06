@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :masquerade_user!
 
   def current_team
-    @current_team ||= Team.find(session[:team_id])
+    @current_team ||= current_user.teams.find(session[:team_id])
   rescue ActiveRecord::RecordNotFound
     @current_team ||= current_user.teams.first
     @current_team ||= current_user.create_personal_team
