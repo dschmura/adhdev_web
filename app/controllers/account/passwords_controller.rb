@@ -12,7 +12,7 @@ module Account
     def update
       if current_user.update_with_password(password_params)
         bypass_sign_in current_user
-        redirect_to edit_password_path, notice: "Your password was changed successfully"
+        redirect_to account_password_path, notice: "Your password was changed successfully"
       else
         render action: :edit
       end
@@ -21,7 +21,7 @@ module Account
     private
 
       def password_params
-        params.permit(:current_password, :password, :password_confirmation)
+        params.require(:user).permit(:current_password, :password, :password_confirmation)
       end
   end
 end

@@ -56,7 +56,7 @@ module Jumpstart
             public_key: ''
             private_key: ''
 
-          google:
+          google_oauth2:
             # https://code.google.com/apis/console/
             public_key: ''
             private_key: ''
