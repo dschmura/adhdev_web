@@ -58,6 +58,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # Associations
+  has_many :api_tokens, dependent: :destroy
   has_many :connected_accounts, dependent: :destroy
 
   # We don't need users to confirm their email address on create,
@@ -66,4 +67,8 @@ class User < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+
+  def self.for_token(token)
+    joins(:api_tokens).where("api_tokens.expires_at IS NULL OR api_tokens.expires_at > ?", Time.current).find_by(api_tokens: { token: token })
+  end
 end

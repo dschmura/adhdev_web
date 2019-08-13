@@ -1,0 +1,47 @@
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="lg:w-3/4 w-full p-4">
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+
+      <div class="flex justify-between items-center mb-3">
+        <h1 class="h2 flex-1">API Tokens</h1>
+
+        <div>
+          <%= link_to 'Create an API Token', new_api_token_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+
+      <% if @api_tokens.exists? %>
+        <table class="table text-left">
+          <thead>
+            <tr>
+              <th class="p-3 uppercase text-left text-xs text-gray-700">Name</th>
+              <th class="p-3 uppercase text-left text-xs text-gray-700">Last Used</th>
+              <th class="p-3 uppercase text-left text-xs text-gray-700">Created</th>
+              <th class="p-3 uppercase text-left text-xs text-gray-700"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @api_tokens.each do |api_token| %>
+              <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                <td class="p-3"><%= link_to api_token.name, api_token %></td>
+                <td class="p-3"><%= api_token.last_used_at? ? local_time_ago(api_token.last_used_at) : "—" %></td>
+                <td class="p-3"><%= api_token.created_at.strftime("%b %e, %Y") %></td>
+                <td class="p-3 text-right"><%= link_to "Revoke", api_token, method: :delete, data: { confirm: "Are you sure?" } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      <% else %>
+        <div class="text-center p-8">
+          <%= image_tag "empty.svg", class: "w-1/3 mb-4 m-auto" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="lg:w-3/4 w-full p-4">
+    <div class="text-sm text-gray-600 mb-5">
+      <%= link_to "All API Tokens", api_tokens_path, class: "hover:text-black" %>
+      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+      <%= link_to @api_token.name, @api_token, class: "hover:text-black" %>
+    </div>
+
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+
+      <div class="flex justify-between items-end mb-5">
+        <div class="flex items-center">
+          <h1 class="h2"><%= @api_token.name %></h1>
+        </div>
+
+        <div>
+          <%= link_to 'Edit API Token', edit_api_token_path(@api_token), class: "btn btn-primary outline" %>
+          <%= link_to "Revoke Token", @api_token, method: :delete, class: "btn btn-danger outline", data: { confirm: "Are you sure you want to revoke this API token?" } %>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="text-gray-600 text-xs uppercase font-bold">Token</div>
+        <%= @api_token.token %>
+      </div>
+
+      <div class="mb-4">
+        <div class="text-gray-600 text-xs uppercase font-bold">Created</div>
+        <%= @api_token.created_at.strftime("%b %e, %Y") %>
+      </div>
+
+      <div class="mb-4">
+        <div class="text-gray-600 text-xs uppercase font-bold">Last Used</div>
+        <%= @api_token.last_used_at? ? local_time_ago(@api_token.last_used_at) : "—" %>
+      </div>
+
+      <div class="mb-4">
+        <div class="text-gray-600 text-xs uppercase font-bold">Authenticate using Header</div>
+        <pre><code>GET /api/v1/me.json
+Authorization: Bearer <%= @api_token.token %></code></pre>
+      </div>
+
+    </div>
+  </div>
+</div>

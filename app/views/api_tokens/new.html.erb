@@ -1,0 +1,15 @@
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="lg:w-3/4 w-full p-4">
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+      <h1>New API Token</h1>
+
+      <%= render 'form', api_token: @api_token %>
+
+      <%= link_to 'Back', api_tokens_path %>
+    </div>
+  </div>
+</div>

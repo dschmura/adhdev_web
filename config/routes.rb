@@ -33,6 +33,14 @@ Rails.application.routes.draw do
     end
   end
 
+  # API routes
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resource :me, controller: :me
+      resources :teams
+    end
+  end
+
   # User account
   devise_for :users,
              controllers: {
@@ -42,6 +50,7 @@ Rails.application.routes.draw do
              }
 
   resources :announcements, only: [:index]
+  resources :api_tokens
   resources :teams do
     member do
       patch :switch
