@@ -70,7 +70,9 @@ Rails.application.routes.draw do
     resource :password
   end
 
-  resources :users
+  namespace :users do
+    resources :mentions, only: [:index]
+  end
   namespace :user, module: :users do
     resources :connected_accounts
   end

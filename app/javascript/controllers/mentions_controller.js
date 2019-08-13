@@ -26,7 +26,7 @@ export default class extends Controller {
   }
 
   fetchUsers(text, callback) {
-    fetch('/users.json')
+    fetch(`/users/mentions.json?query=${text}`)
       .then(response => response.json())
       .then(users => callback(users))
       .catch(error => callback([]))

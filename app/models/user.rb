@@ -54,6 +54,9 @@ class User < ApplicationRecord
 
   has_person_name
 
+  include PgSearch::Model
+  pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: { tsearch: { prefix: true } }
+
   # ActiveStorage Associations
   has_one_attached :avatar
 

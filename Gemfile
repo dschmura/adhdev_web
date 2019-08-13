@@ -68,6 +68,7 @@ gem 'name_of_person', '~> 1.0'
 gem 'oj', '~> 3.8', '>= 3.8.1'
 gem 'pagy', '~> 3.0'
 gem 'pay', '~> 1.0.0.beta5'
+gem 'pg_search', '~> 2.3'
 gem 'receipts', '~> 0.2.2'
 gem 'turbolinks_render', '~> 0.9.12'
 

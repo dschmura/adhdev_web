@@ -205,6 +205,9 @@ GEM
       rails-html-sanitizer (~> 1.0.4)
     pdf-core (0.7.0)
     pg (1.1.4)
+    pg_search (2.3.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -365,6 +368,7 @@ DEPENDENCIES
   pagy (~> 3.0)
   pay (~> 1.0.0.beta5)
   pg
+  pg_search (~> 2.3)
   pry-rails
   puma (~> 3.12)
   rails (~> 6.0.0.rc1)
