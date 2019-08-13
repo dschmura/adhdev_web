@@ -136,7 +136,7 @@ GEM
     hashie (3.6.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    image_processing (1.9.2)
+    image_processing (1.9.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
     inline_svg (1.5.2)
@@ -192,7 +192,7 @@ GEM
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     oj (3.8.1)
     omniauth (1.9.0)
@@ -219,7 +219,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.1.1)
-    puma (3.12.1)
+    puma (4.1.0)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -370,7 +371,7 @@ DEPENDENCIES
   pg
   pg_search (~> 2.3)
   pry-rails
-  puma (~> 3.12)
+  puma (~> 4.1)
   rails (~> 6.0.0.rc1)
   receipts (~> 0.2.2)
   redis (~> 4.0)
