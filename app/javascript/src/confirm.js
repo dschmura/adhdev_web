@@ -22,7 +22,7 @@ const createConfirmModal = (element) => {
 
           <div class="flex justify-end items-center flex-wrap mt-6">
             <button data-behavior="cancel" class="btn btn-white primary mr-2">Cancel</button>
-            <button data-behavior="commit" class="btn btn-danger">Confirm</button>
+            <button data-behavior="commit" class="btn btn-danger focus:outline-none">Confirm</button>
           </div>
         </div>
       </div>
@@ -33,6 +33,14 @@ const createConfirmModal = (element) => {
 
   var modal = element.nextElementSibling
   element.dataset.confirmModal = `#${id}`
+
+  modal.addEventListener("keyup", (event) => {
+    if(event.key === "Escape") {
+      event.preventDefault()
+      element.removeAttribute("data-confirm-modal")
+      modal.remove()
+    }
+  })
 
   modal.querySelector("[data-behavior='cancel']").addEventListener("click", (event) => {
     event.preventDefault()
@@ -55,6 +63,7 @@ const createConfirmModal = (element) => {
     modal.remove()
   })
 
+  modal.querySelector("[data-behavior='commit']").focus()
   return modal
 }
 
