@@ -81,7 +81,7 @@ module Jumpstart
           domain: ''
 
         mailgun:
-          # https://app.mailgun.com/app/account/security/api_keys
+          # https://app.mailgun.com/app/sending/domains/<YOUR_MAILGUN_DOMAIN>/credentials
           username: ''
           password: ''
 
