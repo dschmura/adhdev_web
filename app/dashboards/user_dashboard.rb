@@ -11,7 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     first_name: Field::String,
     last_name: Field::String,
-    name: Field::String,
+    name: Field::String.with_options(searchable: false),
     email: Field::String,
     password: Field::Password.with_options(searchable: false),
     password_confirmation: Field::Password.with_options(searchable: false),
