@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jumpstart', path: 'lib/jumpstart'
 
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart' #'~> 0.10.0'
+gem 'administrate-field-active_storage', '~> 0.1.8'
 gem 'attr_encrypted', '~> 3.1'
 gem 'devise', '~> 4.6.0'
 gem 'devise_invitable', '~> 2.0'
