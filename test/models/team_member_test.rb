@@ -27,5 +27,11 @@ class TeamMemberTest < ActiveSupport::TestCase
     member = TeamMember.new admin: "1"
     assert_equal true, member.admin
   end
+
+  test "can be assigned a role" do
+    member = TeamMember.new admin: "1"
+    assert_equal true, member.admin
+    assert_equal true, member.admin?
+  end
 end
 

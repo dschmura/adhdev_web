@@ -34,6 +34,6 @@ class TeamMember < ApplicationRecord
   ROLES.each do |role|
     define_method(:"#{role}=") { |value| super ActiveRecord::Type::Boolean.new.deserialize(value) }
     define_method(:"#{role}")  { ActiveRecord::Type::Boolean.new.deserialize super() }
-    define_method(:"#{role}?") { role == true }
+    define_method(:"#{role}?") { send(role) == true }
   end
 end
