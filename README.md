@@ -43,7 +43,6 @@ rails server
 # Your background workers
 sidekiq # or whatever you're using
 
-# Optionally, the webpack dev server for automatically reloading JS and
-CSS changes
+# Optionally, the webpack dev server for automatically reloading JS and CSS changes
 bin/webpack-dev-server
 ```
