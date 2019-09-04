@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0.rc1'
+gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -59,9 +59,9 @@ gem 'jumpstart', path: 'lib/jumpstart'
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart' #'~> 0.10.0'
 gem 'administrate-field-active_storage', '~> 0.1.8'
 gem 'attr_encrypted', '~> 3.1'
-gem 'devise', '~> 4.6.0'
-gem 'devise_invitable', '~> 2.0'
-gem 'devise_masquerade', '~> 0.6.4'
+gem 'devise', '~> 4.7'
+gem 'devise_invitable', '~> 2.0', '>= 2.0.1'
+gem 'devise_masquerade', '~> 0.6.5'
 gem 'image_processing', '~> 1.9', '>= 1.9.2'
 gem 'inline_svg', '~> 1.3', '>= 1.3.1'
 gem 'local_time', '~> 2.1'
