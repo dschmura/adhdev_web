@@ -25,8 +25,13 @@ You'll need the following installed to run the template successfully:
 
 #### Initial Setup
 
-First, you'll want to tweak `config/database.yml` and rename `jumpstart`
-anywhere to the name of your app.
+First, you'll want to tweak `config/database.yml` and change the
+database name. You can also rename the app in the Jumpstart admin UI
+which updates the app name in the navbar, footer, etc.
+
+Optionally, you can rename the application name in
+`config/application.rb`. This won't affect anything, so it's not too
+important.
 
 Next, you can run `bin/setup` to install Rubygem and Javascript dependencies. This will also install foreman system wide for you and setup your database.
 
