@@ -1,5 +1,6 @@
 class Api::V1::TeamsController < Api::BaseController
   def index
-    render partial: "teams/team", collection: current_user.teams, as: :team
+    @teams = current_user.teams
+    render "teams/index"
   end
 end

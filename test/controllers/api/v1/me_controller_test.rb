@@ -7,6 +7,6 @@ class MeControllerTest < ActionDispatch::IntegrationTest
     get api_v1_me_url, headers: { Authorization: "token #{user.api_tokens.first.token}" }
     assert_response :success
 
-    assert_equal user.email, response.parsed_body['email']
+    assert_equal user.name, response.parsed_body['name']
   end
 end

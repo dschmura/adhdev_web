@@ -99,7 +99,7 @@ class Jumpstart::OmniauthCallbacksController < Devise::OmniauthCallbacksControll
       # Clean auth hash credentials
       auth_hash = auth.to_hash
       auth_hash.delete("credentials")
-      auth_hash["extra"].delete("access_token")
+      auth_hash["extra"].delete("access_token") if auth_hash["extra"]
 
       {
         provider:      auth.provider,
