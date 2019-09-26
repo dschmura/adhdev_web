@@ -6323,6 +6323,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+slim-select@^1.23.1:
+  version "1.23.1"
+  resolved "https://registry.yarnpkg.com/slim-select/-/slim-select-1.23.1.tgz#bf053c67d3b6020bd3c1a9636c6d2f7c451dcfba"
+  integrity sha512-FLaUYso61GP8h81lsIWrDcCuaulz+CMeDoSmp8tv4/uEo08bAP18URKldWe7MascAKw+JXlpitLe07VqaKeEJA==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
