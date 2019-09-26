@@ -65,3 +65,14 @@ two:
   accepted_privacy_at: <%= Time.current %>
   time_zone: "America/Chicago"
   confirmed_at: <%= Time.current %>
+
+admin:
+  email: admin@example.com
+  first_name: Admin
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "America/Chicago"
+  confirmed_at: <%= Time.current %>
+  admin: true
