@@ -4,7 +4,7 @@ module UserTeams
   included do
     has_many :team_members
     has_many :teams, through: :team_members, dependent: :destroy
-    has_one :personal_team, class_name: "Team", foreign_key: :owner_id, inverse_of: :owner, dependent: :destroy
+    has_one :personal_team, ->{ where(personal: true) }, class_name: "Team", foreign_key: :owner_id, inverse_of: :owner, dependent: :destroy
 
     # Regular users should get their team created immediately
     after_create :create_personal_team
