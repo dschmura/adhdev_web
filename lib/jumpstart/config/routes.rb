@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :jumpstart do
     resource :admin, only: [:show]
     resource :config, only: [:create]
+    resources :users, only: [:create]
 
     resource :docs do
       get :action_cable
