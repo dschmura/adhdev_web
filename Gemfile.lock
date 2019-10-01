@@ -355,7 +355,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara (>= 2.15)
-  devise (~> 4.7)
+  devise (>= 4.7.1)
   devise_invitable (~> 2.0, >= 2.0.1)
   devise_masquerade (~> 0.6.5)
   image_processing (~> 1.9, >= 1.9.2)
