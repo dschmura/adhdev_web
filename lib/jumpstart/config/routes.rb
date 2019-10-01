@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Jumpstart::Engine.routes.draw do
   namespace :jumpstart do
     resource :admin, only: [:show]
     resource :config, only: [:create]
