@@ -25,10 +25,10 @@
   <p class="mb-4">Subscriptions in Jumpstart Pro are billed against a Team, not a User. This allows you to handle various different billing situations.</p>
   <p class="mb-4">To subscribe an individual, they just need to be logged in as their personal team and the subscription will be billed to them.</p>
   <p class="mb-4">Team billing allows you to share resources and billing functionality with the entire team and allows any member to manage the subscription. It's much easier to start with team billing support than adding it later, so we've got you covered even if you don't need it right away.</p>
-  <p class="mb-4">For more information on how teams work in Jumpstart Pro, check out <%= link_to "the Teams documentation", teams_jumpstart_docs_path, target: :_blank, class: "text-blue-500" %>.</p>
+  <p class="mb-4">For more information on how teams work in Jumpstart Pro, check out <%= link_to "the Teams documentation", teams_docs_path, target: :_blank, class: "text-blue-500" %>.</p>
 
   <h3 class="pb-3 mb-6 border-b border-gray-400">Defining Plans</h3>
-  <p class="mb-4">Plans can be defined in the <%= link_to "Plans Admin", admin_plans_path, target: :_blank, class: "text-blue-500" %> and allows for changes without deploying code. Each plan should be defined with the price amount in cents.</p>
+  <p class="mb-4">Plans can be defined in the <%= link_to "Plans Admin", main_app.admin_plans_path, target: :_blank, class: "text-blue-500" %> and allows for changes without deploying code. Each plan should be defined with the price amount in cents.</p>
   <p class="mb-4">The Stripe and Braintree IDs are used to subscribe the user to the matching plan defined inside Stripe or Braintree.</p>
 
   <h3 class="pb-3 mb-6 border-b border-gray-400">Stripe</h3>

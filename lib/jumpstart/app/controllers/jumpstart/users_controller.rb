@@ -6,9 +6,9 @@ module Jumpstart
       user = User.new(user_params)
 
       if user.save
-        redirect_to jumpstart_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin."
+        redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin."
       else
-        redirect_to jumpstart_path(anchor: :users), alert: "Unable to save user. Make sure to fill out all fields and have a strong enough password.password"
+        redirect_to root_path(anchor: :users), alert: "Unable to save user. Make sure to fill out all fields and have a strong enough password.password"
       end
     end
 
@@ -19,4 +19,3 @@ module Jumpstart
     end
   end
 end
-

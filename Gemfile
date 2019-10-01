@@ -10,7 +10,7 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5'
+gem 'sass-rails', '~> 6.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jumpstart', path: 'lib/jumpstart'
 
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart' #'~> 0.10.0'
-gem 'administrate-field-active_storage', '~> 0.1.8'
+gem 'administrate-field-active_storage', '~> 0.2.0'
 gem 'attr_encrypted', '~> 3.1'
 gem "devise", ">= 4.7.1"
 gem 'devise_invitable', '~> 2.0', '>= 2.0.1'
