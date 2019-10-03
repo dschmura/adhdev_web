@@ -3,7 +3,7 @@ require 'pagy/extras/trim'
 
 module Jumpstart
   class Engine < ::Rails::Engine
-    #isolate_namespace Jumpstart
+    isolate_namespace Jumpstart
     engine_name 'jumpstart'
 
     config.app_generators do |g|

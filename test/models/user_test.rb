@@ -43,7 +43,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "user has many teams" do
+    user = users(:one)
+    assert_includes user.teams, teams(:one)
+    assert_includes user.teams, teams(:company)
+  end
+
+  test "user has a personal team" do
+    user = users(:one)
+    assert_equal teams(:one), user.personal_team
+  end
 end

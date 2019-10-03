@@ -66,7 +66,7 @@
                 <% if Rails.env.development? %>
                   <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Development</div>
                   <%= link_to 'Jumpstart Config', jumpstart_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Jumpstart Docs', jumpstart_docs_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
+                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
                   <%= link_to 'Letter Opener', letter_opener_web_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
                 <% end %>
 
