@@ -18,7 +18,7 @@ module Jumpstart
     private
 
     def config_params
-      params.require(:jumpstart_configuration).
+      params.require(:configuration).
         permit(
           :application_name,
           :business_name,
