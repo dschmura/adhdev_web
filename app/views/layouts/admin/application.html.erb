@@ -19,7 +19,7 @@ By default, it renders:
     <meta name="robots" content="noodp, noydir, index, follow">
     <meta name="viewport" content="initial-scale=1">
     <title>
-      <%= content_for(:title) || 'Dashboard' %> - <%= Rails.application.class.parent_name.titlecase %>
+      <%= content_for(:title) || 'Dashboard' %> - <%= Jumpstart.config.application_name %>
     </title>
     <%= javascript_pack_tag 'administrate', 'data-turbolinks-track': 'reload' %>
 
