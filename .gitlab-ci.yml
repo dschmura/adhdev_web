@@ -1,0 +1,37 @@
+image: "ruby:2.6"
+
+services:
+  - postgres
+
+variables:
+  RAILS_ENV: test
+  POSTGRES_DB: jumpstart_test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: ""
+  DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/jumpstart_test"
+
+before_script:
+  - apt-get update -qq && apt-get install -y -qq nodejs
+  # Install yarn as outlined in (https://yarnpkg.com/lang/en/docs/install/#alternatives-stable)
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  # Make available in the current terminal
+  - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+  - node -v
+  - yarn -v
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-document
+  - bundle install --jobs $(nproc)  "${FLAGS[@]}" --path /cache
+  - yarn install
+
+  # Database setup
+  - bin/rails db:setup
+
+test:
+  stage: test
+  cache:
+    paths:
+      - node_modules/
+      - .yarn
+  script:
+  - bundle exec rails test
