@@ -15,7 +15,7 @@
     <%= form.button class: "btn btn-primary" %>
 
     <% if form.object.persisted? %>
-      <%= link_to 'Delete', team_team_member_path(form.object), class: "btn btn-danger outline", method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+      <%= link_to 'Delete', team_team_member_path(@team, form.object), class: "btn btn-danger outline", method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
 <% end %>
