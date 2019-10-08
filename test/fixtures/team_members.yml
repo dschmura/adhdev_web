@@ -28,6 +28,10 @@ two:
   user: two
   team: two
 
-company:
+company_one:
   user: one
+  team: company
+
+company_two:
+  user: two
   team: company
