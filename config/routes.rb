@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :me, controller: :me
       resources :teams
+      resources :users
     end
   end
 
