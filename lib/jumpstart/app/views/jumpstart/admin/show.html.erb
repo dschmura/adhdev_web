@@ -126,7 +126,7 @@
 
                 <% if Jumpstart::Omniauth.has_credentials?(gem_name) %>
                   <div class="custom-control custom-checkbox">
-                    <%= check_box_tag "jumpstart_configuration[omniauth_providers][]", gem_name, Jumpstart::Omniauth.enabled?(gem_name), disabled: !Jumpstart::Omniauth.has_credentials?(gem_name), id: gem_name, class: "custom-control-input" %>
+                    <%= check_box_tag "configuration[omniauth_providers][]", gem_name, Jumpstart::Omniauth.enabled?(gem_name), disabled: !Jumpstart::Omniauth.has_credentials?(gem_name), id: gem_name, class: "custom-control-input" %>
                     <%= label_tag gem_name, "Enable", class: "custom-control-label" %>
                   </div>
 
