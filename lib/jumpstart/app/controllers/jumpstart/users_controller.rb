@@ -15,7 +15,7 @@ module Jumpstart
     private
 
     def user_params
-      params.require(:user).  permit(:name, :email, :password, :password_confirmation).merge(admin: true)
+      params.require(:user).  permit(:name, :email, :password, :password_confirmation).merge({ admin: true, terms_of_service: true })
     end
   end
 end
