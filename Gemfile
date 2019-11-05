@@ -61,7 +61,7 @@ gem 'administrate-field-active_storage', '~> 0.2.0'
 gem 'attr_encrypted', '~> 3.1'
 gem "devise", ">= 4.7.1"
 gem 'devise_invitable', '~> 2.0', '>= 2.0.1'
-gem 'devise_masquerade', '~> 0.6.5'
+gem 'devise_masquerade', '~> 1.2'
 gem 'image_processing', '~> 1.9', '>= 1.9.2'
 gem 'inline_svg', '~> 1.3', '>= 1.3.1'
 gem 'local_time', '~> 2.1'
