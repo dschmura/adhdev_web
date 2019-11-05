@@ -17,4 +17,3 @@ document.addEventListener("turbolinks:load", () => {
 })
 
 Rails.start()
-

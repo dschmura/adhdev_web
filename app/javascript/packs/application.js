@@ -28,7 +28,6 @@ import "src/forms"
 import "src/timezone"
 
 import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
 document.addEventListener("turbolinks:load", () => {
   tippy(document.querySelectorAll('[data-tippy-content]'))
 })
