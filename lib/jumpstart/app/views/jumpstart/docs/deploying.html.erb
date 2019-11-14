@@ -18,11 +18,22 @@
     <p class="mb-4"><%= link_to "Hatchbox.io", "https://hatchbox.io", target: :blank %> is built by the makers of Jumpstart Pro and GoRails. It's a fantastically simple and cheap option for deploying apps to your own servers.</p>
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">Heroku</h2>
-    <p class="mb-4">Deploying to Heroku is easy. You'll need to setup Redis and PostgreSQL addons to run your app.</p>
-    <p class="mb-4">We also include a Procfile to help automatically configure your Heroku processes.</p>
-    <p class="mb-4">You will need to add the Active Storage buildpack in order to have previews to work with Active Storage file uploads.</p>
+    <p class="mb-4">Deploying to Heroku is easy. Jumpstart Pro includes a Procfile to help automatically configure your Heroku processes.</p>
+    <p class="mb-4">
+      <iframe width="840" height="428" src="https://www.youtube.com/embed/alUh4DX3XAw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p>
 
-    <pre><code>heroku buildpacks:add -i 1 https://github.com/heroku/heroku-buildpack-activestorage-preview</code></pre>
+    <p class="mb-4">First, you'll need to <%= link_to "install the Heroku CLI", "http://toolbelt.heroku.com/", target: :_blank %> and login with <code>heroku login</code></p>
+    <p class="mb-4">Now you can create a Heroku app by running <code>heroku create myapp</code></p>
+    <p class="mb-4">You'll need to setup <%= link_to "PostgreSQL", "https://elements.heroku.com/addons/heroku-postgresql", target: :_blank %> and <%= link_to "Redis", "https://elements.heroku.com/addons/heroku-redis", target: :_blank %> addons to run your app.</p>
+
+    <pre><code>heroku addons:create heroku-postgresql:hobby-dev
+heroku addons:create heroku-redis:hobby-dev</code></pre>
+
+    <p class="mb-4">Afterwards, you need to add the <code>RAILS_MASTER_KEY</code> environment variable and set it equal to the key inside <code>config/credentials/production.key</code>.</p>
+    <p class="mb-4">Then you can deploy your code to Heroku and run migrations.</p>
+    <pre><code>git push heroku master
+heroku run rails db:migrate</code></pre>
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">Docker</h2>
     <p class="mb-4">We provide a sample Dockerfile and docker-compose.yml for you in case you'd like to deploy your application using Docker.</p>

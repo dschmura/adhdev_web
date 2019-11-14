@@ -33,7 +33,8 @@ module Jumpstart
       end
 
       if Rails.env.development?
-        Rails.application.config.assets.precompile += %w( *.svg )
+        # This makes sure we can load the Jumpstart assets in development
+        config.assets.precompile << "jumpstart_manifest.js"
       end
     end
   end
