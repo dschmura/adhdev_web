@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/excid3/pay.git
-  revision: b5d11a20083c95003a0ef7a01eedd0fd35f0f8e2
+  revision: de5898dc0229e4f069f1d9be63c6a12cb1e8ef00
   branch: sca
   specs:
     pay (2.0.0)
