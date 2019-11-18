@@ -26,7 +26,7 @@ module Webhooks
 end
 
 Rails.application.config.to_prepare do
-  if Jumpstart.config.stripe?
+  if defined?(StripeEvent) && Jumpstart.config.stripe?
     require 'pay/stripe/webhooks'
 
     class Pay::Stripe::Webhooks::ChargeSucceeded
