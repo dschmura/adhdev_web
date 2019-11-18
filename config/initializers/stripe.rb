@@ -1,5 +1,3 @@
-require 'pay/stripe/webhooks'
-
 # Extend the Pay Stripe webhooks to send receipts
 
 module Webhooks
@@ -27,14 +25,20 @@ module Webhooks
   end
 end
 
-class Pay::Stripe::Webhooks::ChargeSucceeded
-  prepend Webhooks::ChargeSucceededExtension
-end
+Rails.application.config.to_prepare do
+  if Jumpstart.config.stripe?
+    require 'pay/stripe/webhooks'
 
-class Pay::Stripe::Webhooks::ChargeRefunded
-  prepend Webhooks::ChargeRefundedExtension
-end
+    class Pay::Stripe::Webhooks::ChargeSucceeded
+      prepend Webhooks::ChargeSucceededExtension
+    end
 
-class Pay::Stripe::Webhooks::SubscriptionRenewing
-  prepend Webhooks::SubscriptionRenewingExtension
+    class Pay::Stripe::Webhooks::ChargeRefunded
+      prepend Webhooks::ChargeRefundedExtension
+    end
+
+    class Pay::Stripe::Webhooks::SubscriptionRenewing
+      prepend Webhooks::SubscriptionRenewingExtension
+    end
+  end
 end
