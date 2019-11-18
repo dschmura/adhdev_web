@@ -12,12 +12,13 @@ class PlanDashboard < Administrate::BaseDashboard
     name: Field::String,
     amount: Field::Number,
     interval: Field::Select.with_options(collection: ["month", "year"]),
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    trial_period_days: Field::Number,
     details: Field::String.with_options(searchable: false),
     stripe_id: Field::String,
     braintree_id: Field::String,
     features: ArrayField,
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,6 +31,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :name,
     :amount,
     :interval,
+    :trial_period_days,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,6 +41,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :name,
     :amount,
     :interval,
+    :trial_period_days,
     :stripe_id,
     :braintree_id,
     :features,
@@ -53,6 +56,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :name,
     :amount,
     :interval,
+    :trial_period_days,
     :stripe_id,
     :braintree_id,
     :features,

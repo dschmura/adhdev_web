@@ -17,6 +17,7 @@ class Plan < ApplicationRecord
 
   validates :name, :amount, :interval, presence: true
   validates :interval, inclusion: %w{ month year }
+  validates :trial_period_days, numericality: { only_integer: true }
 
   scope :monthly, ->{ where(interval: :month) }
   scope :yearly,  ->{ where(interval: :year) }

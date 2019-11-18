@@ -11,7 +11,7 @@
         <%#= link_to "Change source", "https://www.paypal.com/us/smarthelp/article/faq1414", class: "btn btn-link text-gray-700", target: "_blank", rel: "nofollow noopener" %>
         <%= render 'cards/forms/paypal'    if Jumpstart.config.paypal? %>
       <% else %>
-        <%= render 'cards/forms/stripe'    if Jumpstart.config.stripe? %>
+        <%= render 'subscriptions/forms/stripe', button: "Update Card", url: card_path, method: :put if Jumpstart.config.stripe? %>
         <%= render 'cards/forms/braintree' if Jumpstart.config.braintree? %>
       <% end %>
     </div>

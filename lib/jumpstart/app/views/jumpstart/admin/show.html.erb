@@ -13,7 +13,8 @@
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#application" role="tab" aria-controls="v-pills-home" aria-selected="true">Application</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#workers" role="tab" aria-controls="v-pills-settings" aria-selected="false">Background Workers</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#users" role="tab" aria-controls="v-pills-settings" aria-selected="false">Users</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#email" role="tab" aria-controls="v-pills-settings" aria-selected="false">Email</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#email" role="tab" aria-controls="v-pills-settings" aria-selected="false">Transactional Email</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#integrations" role="tab" aria-controls="v-pills-settings" aria-selected="false">Integrations</a>
         <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#oauth" role="tab" aria-controls="v-pills-messages" aria-selected="false">Login & OAuth</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#payments" role="tab" aria-controls="v-pills-profile" aria-selected="false">Payments</a>
       </div>
@@ -101,6 +102,28 @@
             <%= f.label :default_from_email %>
             <%= f.text_field :default_from_email, class: "form-control" %>
             <small class="form-text text-muted">When sending emails, we'll send them from this email address by default unless you override it in the mailer.</small>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="integrations" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <div class="form-group">
+            <h4>Integrations</h4>
+            <p class="small text-muted">Integrations with popular services can be enabled with the click of a button. Simply add your credentials and enable the integration and we'll take care of installing and configuring it for you.</p>
+            <pre><code>rails credentials:edit --environment=development</code></pre>
+
+            <h5>Services</h5>
+            <% Jumpstart::Configuration::Integratable::AVAILABLE_PROVIDERS.each do |integration_name, name| %>
+              <div class="mb-4">
+                <div class="font-weight-semibold"><%= integration_name %></div>
+
+                <div class="custom-control custom-checkbox">
+                  <% if Jumpstart::Configuration::Integratable.has_credentials?(name) %>
+                    <%= check_box_tag "configuration[integrations][]", name, Jumpstart.config.integrations.include?(name), disabled: false, id: name, class: "custom-control-input" %> <%= label_tag name, "Enable", class: "custom-control-label" %> </div>
+                  <% else %>
+                    <%= check_box_tag "configuration[integrations][]", name, Jumpstart.config.integrations.include?(name), disabled: true, id: name, class: "custom-control-input" %> <%= label_tag name, "Add credentials to enable", class: "custom-control-label" %> </div>
+                  <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
 

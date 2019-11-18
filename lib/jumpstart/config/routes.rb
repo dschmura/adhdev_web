@@ -37,6 +37,8 @@ Jumpstart::Engine.routes.draw do
     get :pills
     get :typography
     get :wells
+
+    get :integrations
   end
 
   root to: "admin#show"

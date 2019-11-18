@@ -8,11 +8,11 @@ gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -63,12 +63,12 @@ gem "devise", ">= 4.7.1"
 gem 'devise_invitable', '~> 2.0', '>= 2.0.1'
 gem 'devise_masquerade', '~> 1.2'
 gem 'image_processing', '~> 1.9', '>= 1.9.2'
-gem 'inline_svg', '~> 1.3', '>= 1.3.1'
+gem 'inline_svg', '~> 1.6'
 gem 'local_time', '~> 2.1'
 gem 'name_of_person', '~> 1.0'
 gem 'oj', '~> 3.8', '>= 3.8.1'
-gem 'pagy', '~> 3.0'
-gem 'pay', '~> 1.0.0.beta5'
+gem 'pagy', '~> 3.7'
+gem 'pay', github: 'excid3/pay', branch: 'sca' #'~> 1.0.0.beta5'
 gem 'pg_search', '~> 2.3'
 gem 'receipts', '~> 0.2.2'
 gem 'turbolinks_render', '~> 0.9.12'

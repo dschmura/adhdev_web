@@ -55,19 +55,18 @@
 
       <h3>Payment Method</h3>
 
-      <% if current_team.card_type? %>
-        <div class="flex">
-          <div class="flex-1">
+      <div class="flex">
+        <div class="flex-1">
+          <% if current_team.card_type? %>
             <i class="fab fa-cc-<%= current_team.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(current_team) %>
-          </div>
-          <div>
-            <%= link_to "Update payment method", edit_card_path, class: "btn btn-link text-gray-700" %>
-          </div>
+          <% else %>
+            <p class="text-gray-700">You have no card on file.</p>
+          <% end %>
         </div>
-
-      <% else %>
-        <p class="text-gray-700">You have no card on file.</p>
-      <% end %>
+        <div>
+          <%= link_to "Update payment method", edit_card_path, class: "btn btn-link text-gray-700" %>
+        </div>
+      </div>
 
       <hr class="border-b my-8" />
 

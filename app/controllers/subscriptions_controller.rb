@@ -8,18 +8,21 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
+    if Jumpstart.config.stripe? && @plan.trial_period_days.to_i > 0
+      @setup_intent = current_team.create_setup_intent
+    end
   end
 
   def create
     current_team.assign_attributes(subscription_params)
-
-    # Get the Stripe or Braintree specific ID
-    @plan = Plan.find(current_team.plan)
+    @plan = Plan.find(current_team.plan) # Get the Stripe or Braintree specific ID
     processor_id = @plan.processor_id(current_team.processor)
-
     current_team.subscribe(plan: processor_id)
+    redirect_to root_path, notice: "Thanks for subscribing!"
 
-    redirect_to root_path
+  rescue Pay::ActionRequired => e
+    redirect_to pay.payment_path(e.payment.id)
+
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :new

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/excid3/administrate.git
-  revision: 09c8306ff8a8c7e80db9d4c25b61ac8795d9d8d8
+  revision: aa1df6d8b294e2f9f8da7271b8ac68c5ca32970c
   branch: jumpstart
   specs:
     administrate (0.12.0)
@@ -14,6 +14,14 @@ GIT
       momentjs-rails (~> 2.8)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+
+GIT
+  remote: https://github.com/excid3/pay.git
+  revision: b5d11a20083c95003a0ef7a01eedd0fd35f0f8e2
+  branch: sca
+  specs:
+    pay (2.0.0)
+      rails (>= 4.2)
 
 PATH
   remote: lib/jumpstart
@@ -84,9 +92,9 @@ GEM
     administrate-field-active_storage (0.2.1)
       administrate (>= 0.2.2)
       rails (>= 6.0)
-    annotate (3.0.2)
+    annotate (3.0.3)
       activerecord (>= 3.2, < 7.0)
-      rake (>= 10.4, < 13.0)
+      rake (>= 10.4, < 14.0)
     attr_encrypted (3.1.0)
       encryptor (~> 3.0.0)
     autoprefixer-rails (9.7.1)
@@ -131,7 +139,7 @@ GEM
     encryptor (3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
-    ffi (1.11.1)
+    ffi (1.11.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
@@ -140,7 +148,7 @@ GEM
     image_processing (1.9.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
-    inline_svg (1.5.2)
+    inline_svg (1.6.0)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     jbuilder (2.9.1)
@@ -200,9 +208,7 @@ GEM
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
-    pagy (3.6.0)
-    pay (1.0.2)
-      rails (>= 4.2)
+    pagy (3.7.0)
     pdf-core (0.7.0)
     pg (1.1.4)
     pg_search (2.3.0)
@@ -219,7 +225,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.1)
-    puma (4.2.1)
+    puma (4.3.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
@@ -252,7 +258,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
-    rake (12.3.3)
+    rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -318,7 +324,7 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (4.0.7)
+    webpacker (4.2.0)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
@@ -348,7 +354,7 @@ DEPENDENCIES
   devise_invitable (~> 2.0, >= 2.0.1)
   devise_masquerade (~> 1.2)
   image_processing (~> 1.9, >= 1.9.2)
-  inline_svg (~> 1.3, >= 1.3.1)
+  inline_svg (~> 1.6)
   jbuilder (~> 2.5)
   jumpstart!
   letter_opener_web (~> 1.3, >= 1.3.4)
@@ -357,12 +363,12 @@ DEPENDENCIES
   name_of_person (~> 1.0)
   oj (~> 3.8, >= 3.8.1)
   omniauth
-  pagy (~> 3.0)
-  pay (~> 1.0.0.beta5)
+  pagy (~> 3.7)
+  pay!
   pg
   pg_search (~> 2.3)
   pry-rails
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.0)
   receipts (~> 0.2.2)
   redis (~> 4.0)
@@ -376,7 +382,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 4.0)
+  webpacker (~> 4.2)
   whenever
 
 RUBY VERSION

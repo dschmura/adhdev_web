@@ -51,3 +51,13 @@ business-annual:
     features:
       - Unlimited access
       - Business Feature
+
+personal_with_trial:
+  name: Personal
+  amount: 1900
+  interval: month
+  details:
+    stripe_id: personal-monthly-trial
+    braintree_id: personal-monthly-trial
+    features:
+      - Unlimited access

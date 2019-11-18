@@ -140,6 +140,60 @@ module Jumpstart
           # https://dashboard.stripe.com/account/webhooks
           # Webhooks should be pointed to https://domain.com/webhooks/stripe
           signing_secret: ''
+
+        ###  Integrations
+
+        airbrake:
+          # https://airbrake.io
+          project_id: ''
+          project_key: ''
+
+        appsignal:
+          # https://appsignal.com App -> App Settings -> Push & deploy -> Push key
+          api_key: ''
+
+        convertkit:
+          # https://app.convertkit.com/account/edit#account_info
+          api_key: ''
+          api_secret: ''
+
+        drip:
+          # https://www.getdrip.com/user/edit
+          api_key: ''
+          account_id: ''
+
+        honeybadger:
+          # https://www.honeybadger.io/
+          api_key: ''
+
+        intercom:
+          # https://intercom.io
+          # You can find this at Settings > Installation > Web
+          app_id: ''
+
+          # Optional, used for Identity Verification
+          # You can find this at Settings > Installation > Security > Enforce identity on web
+          api_secret: ''
+
+        mailchimp:
+          # https://mailchimp.com/
+          api_key: ''
+
+        scout:
+          # https://scoutapm.com/
+          api_key: ''
+
+        sentry:
+          # https://sentry.io
+          dsn: ''
+
+        skylight:
+          # https://skylight.io
+          auth_token: ''
+
+        rollbar:
+          # https://rollbar.com/
+          access_token: ''
       YAML
     end
   end

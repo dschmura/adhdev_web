@@ -1,10 +1,12 @@
 class CardsController < ApplicationController
-  def edit; end
+  def edit
+    @setup_intent = current_team.create_setup_intent
+  end
 
   def update
     current_team.assign_attributes(processor: processor)
     current_team.update_card(token)
-    redirect_back fallback_location: subscription_path, notice: "Your card was updated successfully."
+    redirect_to subscription_path, notice: "Your card was updated successfully."
   end
 
   private

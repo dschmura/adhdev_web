@@ -1,10 +1,14 @@
 require "jumpstart/configuration/mailable"
+require "jumpstart/configuration/integratable"
 require "jumpstart/configuration/payable"
+require "thor"
 
 module Jumpstart
   class Configuration
     include ActiveModel::Model
+    include Thor::Actions
     include Mailable
+    include Integratable
     include Payable
 
     # Attributes
@@ -37,7 +41,7 @@ module Jumpstart
     end
 
     def initialize(options={})
-      super(options)
+      assign_attributes(options)
       self.application_name ||= "Jumpstart"
       self.business_name ||= "Jumpstart Company, LLC"
       self.domain ||= "example.com"
@@ -47,9 +51,16 @@ module Jumpstart
     end
 
     def save
+			# Creates config/jumpstart.yml
       File.write(self.class.config_path, to_yaml)
+
+			# Updates config/jumpstart/Gemfile
       save_gemfile
+
       update_procfiles
+			copy_initializers
+
+			# Change the Jumpstart config to the latest version
       Jumpstart.config = self
     end
 
@@ -71,8 +82,18 @@ module Jumpstart
     def dependencies
       gems = { main: [], test: [] }
       gems[:main] += Array.wrap(omniauth_providers).map{ |provider| { name: "omniauth-#{provider}" } }
+      gems[:main] += [{ name: "airbrake"}] if airbrake?
+      gems[:main] += [{ name: "appsignal"}] if appsignal?
+      gems[:main] += [{ name: "convertkit-ruby", github: 'excid3/convertkit-ruby', require: 'convertkit'}] if convertkit?
+      gems[:main] += [{ name: "gibbon"}] if mailchimp?
+      gems[:main] += [{ name: "drip-ruby", require: 'drip'}] if drip?
+      gems[:main] += [{ name: "honeybadger"}] if honeybadger?
+      gems[:main] += [{ name: "intercom-rails"}] if intercom?
+      gems[:main] += [{ name: "rollbar"}] if rollbar?
+      gems[:main] += [{ name: "scout_apm" }] if scout?
+      gems[:main] += [{ name: "sentry-raven" }] if sentry?
+      gems[:main] += [{ name: "skylight" }] if skylight?
       gems[:main] += [{ name: "stripe" }, { name: "stripe_event" }] if stripe?
-      gems[:test] += [{ name: "stripe-ruby-mock", github: 'rebelidealist/stripe-ruby-mock' }] if stripe?
       gems[:main] << { name: "braintree" } if braintree? || paypal?
       gems[:main] << { name: job_processor.to_s } unless job_processor.to_s == "async"
       gems
@@ -110,25 +131,88 @@ module Jumpstart
 
     def update_procfiles
       write_file Rails.root.join("Procfile"), procfile_content
-      write_file Rails.root.join("Procfile.dev"), procfile_content(webpack_dev_server: true)
+      write_file Rails.root.join("Procfile.dev"), procfile_content(dev: true)
       write_file Rails.root.join("config", "sidekiq.yml"), JobProcessor.sidekiq_config if job_processor == :sidekiq
     end
 
+		def copy_initializers
+      if airbrake?
+        copy_template("config/initializers/airbrake.rb")
+      end
+
+      if appsignal?
+        copy_template("config/appsignal.yml")
+      end
+
+			if convertkit?
+        copy_template("config/initializers/convertkit.rb")
+			end
+
+      if drip?
+        copy_template("config/initializers/drip.rb")
+      end
+
+      if honeybadger?
+        copy_template("config/honeybadger.yml")
+      end
+
+      if intercom?
+        copy_template("config/initializers/intercom.rb")
+      end
+
+      if mailchimp?
+        copy_template("config/initializers/mailchimp.rb")
+      end
+
+      if rollbar?
+        copy_template("config/initializers/rollbar.rb")
+      end
+
+      if scout?
+        copy_template("config/scout_apm.yml")
+      end
+
+      if sentry?
+        copy_template("config/initializers/sentry.rb")
+      end
+
+      if skylight?
+        copy_template("config/skylight.yml")
+      end
+		end
+
     private
 
-      def procfile_content(webpack_dev_server: false)
+      def procfile_content(dev: false)
         content = ["web: bundle exec rails s"]
-        content << "webpack: bin/webpack-dev-server" if webpack_dev_server
 
+        # Development should use the webpack-dev-server for convenience
+        content << "webpack: bin/webpack-dev-server" if dev
+
+        # Background workers
         if worker_command = Jumpstart::JobProcessor.command(job_processor)
           content << "worker: #{worker_command}"
         end
+
+        # Add the Stripe CLI
+        content << "stripe: stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
 
         content.join("\n")
       end
 
       def write_file(path, content)
         File.open(path, "wb") { |file| file.write(content) }
+      end
+
+      def copy_template(filename)
+        # Safely copy template, so we don't blow away any customizations you made
+        if !File.exists?(filename)
+          FileUtils.cp(template_path(filename), Rails.root.join(filename))
+        end
+      end
+
+      def template_path(filename)
+        File.join(File.dirname(__FILE__), '../templates/', filename)
       end
   end
 end

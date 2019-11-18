@@ -1,0 +1,18 @@
+<div class="w-full max-w-lg mx-auto bg-white rounded shadow p-4 mt-8">
+  <% if @payment.succeeded? %>
+    <h1 class="h3 mb-4">Payment Successful</h1>
+    <p class="text-gray-700 text-sm">This payment was already successfully confirmed.</p>
+    <%= link_to "Go back", root_path %>
+
+  <% elsif @payment.canceled? %>
+    <h1 class="h3 mb-4">Payment Cancelled</h1>
+    <p class="text-gray-700 text-sm">This payment was cancelled.</p>
+    <%= link_to "Go back", root_path %>
+
+  <% else %>
+    <h1 class="h3 mb-4">Confirm your <%= number_to_currency @payment.amount / 100.0 %> payment</h1>
+    <p class="text-gray-700 text-sm mb-4">Extra confirmation is needed to process your payment. Please confirm your payment by filling out your payment details below.</p>
+
+    <%= render 'subscriptions/forms/stripe', button: "Confirm Payment"  if Jumpstart.config.stripe? %>
+  <% end %>
+</div>

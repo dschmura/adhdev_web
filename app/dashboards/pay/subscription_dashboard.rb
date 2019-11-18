@@ -60,7 +60,6 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :owner,
-    :owner_id,
     :name,
     :processor,
     :processor_id,

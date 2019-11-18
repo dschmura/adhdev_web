@@ -7,6 +7,7 @@ export default class extends Controller {
     braintree.dropin.create({
       authorization: this.data.get("clientToken"),
       container: this.dropinTarget,
+      //threeDSecure: true,
       paypal: {
         flow: "vault"
       },

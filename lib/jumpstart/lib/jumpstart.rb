@@ -1,3 +1,4 @@
+require "jumpstart/clients"
 require "jumpstart/configuration"
 require "jumpstart/controller"
 require "jumpstart/credentials_generator"

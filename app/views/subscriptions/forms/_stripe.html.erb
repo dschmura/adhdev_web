@@ -1,22 +1,29 @@
 <% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
 
 <%= form_with model: current_team,
-  url: subscription_url,
-  method: :post,
+  url: local_assigns.fetch(:url, subscription_url),
+  method: local_assigns.fetch(:method, :post),
   data: {
     controller: "stripe",
     target: "stripe.form",
+    stripe_setup_intent: @setup_intent.try(:client_secret),
+    stripe_payment_intent: @payment.try(:client_secret)
   } do |f| %>
 
   <div class="form-group">
     <label for="card-element">Credit or debit card</label>
     <div data-target="stripe.card" class="form-control"></div>
-    <div data-target="stripe.error" role="alert"></div>
+    <div data-target="stripe.error" role="alert" class="text-red-600 text-sm mt-2"></div>
   </div>
 
-  <%= f.hidden_field :plan, value: @plan.id %>
+  <div class="form-group">
+    <%= f.label :name_on_card %>
+    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: "Full Name", required: true, data: { target: "stripe.name" } %>
+  </div>
+
+  <%= f.hidden_field :plan, value: @plan.try(:id) %>
 
   <div class="text-center">
-    <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
+    <%= f.button local_assigns.fetch(:button, 'Subscribe'), id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
   </div>
 <% end %>
