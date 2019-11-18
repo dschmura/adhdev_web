@@ -10,8 +10,7 @@ const elements = ['a[data-confirm]', 'button[data-confirm]', 'input[type=submit]
 
 const createConfirmModal = (element) => {
   var id = 'confirm-modal-' + String(Math.random()).slice(2, -1);
-  var title = "Are you sure?"
-  var confirm = "Are you sure?"
+  var confirm = element.dataset.confirm
 
   var content = `
     <div id="${id}" class="animated fadeIn fixed top-0 left-0 w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
