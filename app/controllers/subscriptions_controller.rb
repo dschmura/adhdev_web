@@ -92,5 +92,6 @@ class SubscriptionsController < ApplicationController
 
   def set_subscription
     @subscription = current_team.subscription
+    redirect_to subscription_path if @subscription.nil?
   end
 end
