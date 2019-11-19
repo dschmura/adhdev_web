@@ -7,7 +7,7 @@
     "@rails/actiontext": "^6.0.0-rc1",
     "@rails/activestorage": "^6.0.0-rc1",
     "@rails/ujs": "^6.0.0-rc1",
-    "@rails/webpacker": "^4.0.2",
+    "@rails/webpacker": "^4.2.0",
     "core-js": "3",
     "flatpickr": "^4.6.1",
     "js-cookie": "^2.2.0",
@@ -19,7 +19,7 @@
     "tailwindcss": "^1.1.0",
     "tailwindcss-stimulus-components": "^1.0.0",
     "tippy.js": "^5.0.0",
-    "tributejs": "^3.6.0",
+    "tributejs": "^4.0.0",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0"
   },
