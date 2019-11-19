@@ -61,9 +61,14 @@ class User::ConnectedAccount < ApplicationRecord
   end
 
   # Safely handles empty strings before attempting encryption
-  def access_token_secret=(value)
-    super(value.blank? ? nil : value)
+  def safe_access_token_secret=(value)
+    return if value.blank?
+    __send__("attr_encrypted_access_token_secret=", value)
   end
+
+  # Replace the dynamically defined attr_encrypted method with our own
+  alias_method :attr_encrypted_access_token_secret=, :access_token_secret=
+  alias_method :access_token_secret=, :safe_access_token_secret=
 
   private
 

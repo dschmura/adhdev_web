@@ -31,6 +31,11 @@
 require 'test_helper'
 
 class User::ConnectedAccountTest < ActiveSupport::TestCase
+  test "handles access token secrets" do
+    ca = User::ConnectedAccount.new(access_token_secret: "test")
+    assert_equal "test", ca.access_token_secret
+  end
+
   test "handles empty access token secrets" do
     assert_nothing_raised do
       User::ConnectedAccount.new(access_token_secret: "")
