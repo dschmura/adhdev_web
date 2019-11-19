@@ -47,17 +47,26 @@ class User::ConnectedAccount < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first
   end
 
+  # Use this method to retrieve the latest access_token.
+  # Token will be automatically renewed as necessary
   def token
-    if expires_at? && expires_at <= Time.zone.now
-      new_token = current_token.refresh!
-      update(
-        access_token: new_token.token,
-        refresh_token: new_token.refresh_token,
-        expires_at: Time.at(new_token.expires_at)
-      )
-    end
-
+    renew_token! if expired?
     access_token
+  end
+
+  # Tokens that expire very soon should be consider expired
+  def expired?
+    expires_at? && expires_at <= 30.minutes.from_now
+  end
+
+  # Force a renewal of the access token
+  def renew_token!
+    new_token = current_token.refresh!
+    update(
+      access_token: new_token.token,
+      refresh_token: new_token.refresh_token,
+      expires_at: Time.at(new_token.expires_at)
+    )
   end
 
   # Safely handles empty strings before attempting encryption
