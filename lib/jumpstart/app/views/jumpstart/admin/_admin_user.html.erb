@@ -22,6 +22,7 @@
           <%= form.label :password %>
           <%= form.password_field :password, class: "form-control" %>
         </div>
+        <%= form.hidden_field :terms_of_service, value: '1' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
