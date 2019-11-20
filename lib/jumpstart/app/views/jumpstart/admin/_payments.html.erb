@@ -46,7 +46,7 @@ rails credentials:edit --environment production</code></pre>
 
 <h5>Plans</h5>
 <p>To add plans, visit <%= link_to "the Plans page", main_app.admin_plans_path, target: :blank %> in the admin.</p>
-<p class="small text-muted"><strong>Don't forget!</strong> You need to be signed in as an admin to view the Plans page in the admin area. <%= link_to "Create an admin user", "#href", data: { toggle: "pill" } %></p>
+<p class="small text-muted"><strong>Don't forget!</strong> You need to be <%= link_to "signed in", main_app.new_user_session_path %> as an admin to view the Plans page in the admin area. <%= link_to "Create an admin user.", "#users", data: { toggle: "pill" } %></p>
 
 <hr />
 

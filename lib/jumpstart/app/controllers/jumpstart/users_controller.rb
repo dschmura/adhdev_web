@@ -11,14 +11,14 @@ module Jumpstart
 
         redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin."
       else
-        redirect_to root_path(anchor: :users), alert: "Unable to save user. Make sure to fill out all fields and have a strong enough password.password"
+        redirect_to root_path(anchor: :users), alert: "Unable to save user. Make sure to fill out all fields and have a strong enough password."
       end
     end
 
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation).merge(admin: true)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :terms_of_service).merge(admin: true)
     end
 
     def subscription_params
