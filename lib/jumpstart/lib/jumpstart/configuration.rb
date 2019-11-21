@@ -60,6 +60,8 @@ module Jumpstart
       update_procfiles
 			copy_initializers
 
+      generate_credentials
+
 			# Change the Jumpstart config to the latest version
       Jumpstart.config = self
     end
@@ -180,6 +182,22 @@ module Jumpstart
         copy_template("config/skylight.yml")
       end
 		end
+
+    def generate_credentials
+      %w{ test development staging production }.each do |env|
+        key_path = Pathname.new("config/credentials/#{env}.key")
+        credentials_path = "config/credentials/#{env}.yml.enc"
+
+        Rails::Generators::EncryptionKeyFileGenerator.new.add_key_file_silently(key_path)
+        Rails::Generators::EncryptionKeyFileGenerator.new.ignore_key_file_silently(key_path)
+        Rails::Generators::EncryptedFileGenerator.new.add_encrypted_file_silently(credentials_path, key_path, Jumpstart::Credentials.template)
+
+        # Add the credentials if we're in a git repo
+        if File.directory?(".git")
+          system("git add #{credentials_path}")
+        end
+      end
+    end
 
     private
 
