@@ -12,16 +12,17 @@
 #
 
 class Plan < ApplicationRecord
-  store_accessor :details, :features, :stripe_id, :braintree_id
+  store_accessor :details, :features, :stripe_id, :braintree_id, :jumpstart_id
   attribute :features, :string, array: true
 
   validates :name, :amount, :interval, presence: true
   validates :interval, inclusion: %w{ month year }
   validates :trial_period_days, numericality: { only_integer: true }
 
-  scope :monthly, ->{ where(interval: :month) }
-  scope :yearly,  ->{ where(interval: :year) }
+  scope :monthly, ->{ without_free.where(interval: :month) }
+  scope :yearly,  ->{ without_free.where(interval: :year) }
   scope :sorted,  ->{ order(amount: :asc) }
+  scope :without_free, ->{ where.not(details: {jumpstart_id: :free}) }
 
   def features
     Array.wrap(super)

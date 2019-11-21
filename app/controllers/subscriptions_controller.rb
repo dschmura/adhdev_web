@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     current_team.assign_attributes(subscription_params)
-    @plan = Plan.find(current_team.plan) # Get the Stripe or Braintree specific ID
+    @plan = Plan.without_free.find(current_team.plan) # Get the Stripe or Braintree specific ID
     processor_id = @plan.processor_id(current_team.processor)
     current_team.subscribe(plan: processor_id)
     redirect_to root_path, notice: "Thanks for subscribing!"
@@ -86,7 +86,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_plan
-    @plan = Plan.find_by(id: params[:plan])
+    @plan = Plan.without_free.find_by(id: params[:plan])
     redirect_to pricing_path if @plan.nil?
   end
 
