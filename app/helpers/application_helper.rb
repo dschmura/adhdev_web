@@ -37,10 +37,14 @@ module ApplicationHelper
     "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
 
-  def render_svg(name, styles: "fill-current text-gray-500", title: nil)
+  def render_svg(name, options={})
+    options[:title] ||= name.underscore.humanize
+    options[:aria] = true
+    options[:nocomment] = true
+    options[:class] = options.fetch(:styles, "fill-current text-gray-500")
+
     filename = "#{name}.svg"
-    title ||= name.underscore.humanize
-    inline_svg_tag(filename, aria: true, nocomment: true, title: title, class: styles)
+    inline_svg_tag(filename, options)
   end
 
   def fa_icon(name, options={})
