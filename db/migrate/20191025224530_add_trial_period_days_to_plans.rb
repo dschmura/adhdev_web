@@ -1,6 +1,7 @@
 class AddTrialPeriodDaysToPlans < ActiveRecord::Migration[6.0]
   def self.up
-    add_column :plans, :trial_period_days, :integer, default: 0
+    add_column :plans, :trial_period_days, :integer
+    change_column_default :plans, :trial_period_days, 0
 
     Plan.reset_column_information
 
