@@ -188,6 +188,9 @@ module Jumpstart
         key_path = Pathname.new("config/credentials/#{env}.key")
         credentials_path = "config/credentials/#{env}.yml.enc"
 
+        # Skip generating if credentials file already exists
+        next if File.exist?(credentials_path)
+
         Rails::Generators::EncryptionKeyFileGenerator.new.add_key_file_silently(key_path)
         Rails::Generators::EncryptionKeyFileGenerator.new.ignore_key_file_silently(key_path)
         Rails::Generators::EncryptedFileGenerator.new.add_encrypted_file_silently(credentials_path, key_path, Jumpstart::Credentials.template)
