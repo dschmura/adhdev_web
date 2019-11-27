@@ -51,18 +51,18 @@ module Jumpstart
     end
 
     def save
-			# Creates config/jumpstart.yml
+      # Creates config/jumpstart.yml
       File.write(self.class.config_path, to_yaml)
 
-			# Updates config/jumpstart/Gemfile
+      # Updates config/jumpstart/Gemfile
       save_gemfile
 
       update_procfiles
-			copy_initializers
+      copy_configs
 
       generate_credentials
 
-			# Change the Jumpstart config to the latest version
+      # Change the Jumpstart config to the latest version
       Jumpstart.config = self
     end
 
@@ -134,10 +134,16 @@ module Jumpstart
     def update_procfiles
       write_file Rails.root.join("Procfile"), procfile_content
       write_file Rails.root.join("Procfile.dev"), procfile_content(dev: true)
-      write_file Rails.root.join("config", "sidekiq.yml"), JobProcessor.sidekiq_config if job_processor == :sidekiq
     end
 
-		def copy_initializers
+    def copy_configs
+      if job_processor == :sidekiq
+        path = Rails.root.join("config", "sidekiq.yml")
+        if !File.exist?(path)
+          write_file path, JobProcessor.sidekiq_config
+        end
+      end
+
       if airbrake?
         copy_template("config/initializers/airbrake.rb")
       end
@@ -146,9 +152,9 @@ module Jumpstart
         copy_template("config/appsignal.yml")
       end
 
-			if convertkit?
+      if convertkit?
         copy_template("config/initializers/convertkit.rb")
-			end
+      end
 
       if drip?
         copy_template("config/initializers/drip.rb")
@@ -181,7 +187,7 @@ module Jumpstart
       if skylight?
         copy_template("config/skylight.yml")
       end
-		end
+    end
 
     def generate_credentials
       %w{ test development staging production }.each do |env|
@@ -204,36 +210,36 @@ module Jumpstart
 
     private
 
-      def procfile_content(dev: false)
-        content = ["web: bundle exec rails s"]
+    def procfile_content(dev: false)
+      content = ["web: bundle exec rails s"]
 
-        # Development should use the webpack-dev-server for convenience
-        content << "webpack: bin/webpack-dev-server" if dev
+      # Development should use the webpack-dev-server for convenience
+      content << "webpack: bin/webpack-dev-server" if dev
 
-        # Background workers
-        if worker_command = Jumpstart::JobProcessor.command(job_processor)
-          content << "worker: #{worker_command}"
-        end
-
-        # Add the Stripe CLI
-        content << "stripe: stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
-
-        content.join("\n")
+      # Background workers
+      if worker_command = Jumpstart::JobProcessor.command(job_processor)
+        content << "worker: #{worker_command}"
       end
 
-      def write_file(path, content)
-        File.open(path, "wb") { |file| file.write(content) }
-      end
+      # Add the Stripe CLI
+      content << "stripe: stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
 
-      def copy_template(filename)
-        # Safely copy template, so we don't blow away any customizations you made
-        if !File.exists?(filename)
-          FileUtils.cp(template_path(filename), Rails.root.join(filename))
-        end
-      end
+      content.join("\n")
+    end
 
-      def template_path(filename)
-        File.join(File.dirname(__FILE__), '../templates/', filename)
+    def write_file(path, content)
+      File.open(path, "wb") { |file| file.write(content) }
+    end
+
+    def copy_template(filename)
+      # Safely copy template, so we don't blow away any customizations you made
+      if !File.exists?(filename)
+        FileUtils.cp(template_path(filename), Rails.root.join(filename))
       end
+    end
+
+    def template_path(filename)
+      File.join(File.dirname(__FILE__), '../templates/', filename)
+    end
   end
 end
