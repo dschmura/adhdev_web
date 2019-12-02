@@ -15,7 +15,7 @@ module UserTeams
     # Invited users don't have a name immediately, so we will run this method twice for them
     # once on create where no name is present and again on accepting the invitation
     return unless name.present?
-    return if personal_team.present?
+    return personal_team if personal_team.present?
 
     team = build_personal_team name: name, personal: true
     team.team_members.new(user: self, admin: true)

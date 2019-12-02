@@ -36,4 +36,8 @@ class TeamMember < ApplicationRecord
     define_method(:"#{role}")  { ActiveRecord::Type::Boolean.new.deserialize super() }
     define_method(:"#{role}?") { send(role) }
   end
+
+  def active_roles
+    ROLES.select{ |role| send(:"#{role}?") }.compact
+  end
 end
