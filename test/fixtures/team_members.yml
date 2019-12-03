@@ -31,6 +31,8 @@ two:
 company_one:
   user: one
   team: company
+  roles:
+    admin: true
 
 company_two:
   user: two

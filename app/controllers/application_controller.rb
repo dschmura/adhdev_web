@@ -3,17 +3,10 @@ class ApplicationController < ActionController::Base
   include Teams::SubscriptionStatus
   include Users::TimeZone
   include Pagy::Backend
+  include CurrentHelper
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!
-
-  def current_team
-    @current_team ||= current_user.teams.find(session[:team_id])
-  rescue ActiveRecord::RecordNotFound
-    @current_team ||= current_user.teams.first
-    @current_team ||= current_user.create_personal_team
-  end
-  helper_method :current_team
 
   protected
 

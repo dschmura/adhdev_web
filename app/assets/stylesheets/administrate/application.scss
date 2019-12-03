@@ -109,3 +109,7 @@
 
 @import "flatpickr/dist/flatpickr.min";
 @import "library/slim-select";
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  display: inline-block;
+}

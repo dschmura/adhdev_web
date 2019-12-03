@@ -39,4 +39,14 @@ class TeamMemberTest < ActiveSupport::TestCase
     assert_equal false, member.admin
     assert_equal false, member.admin?
   end
+
+  test "keeps track of active roles" do
+    member = TeamMember.new admin: true
+    assert_equal [:admin], member.active_roles
+  end
+
+  test "has no active roles" do
+    member = TeamMember.new admin: false
+    assert_empty member.active_roles
+  end
 end

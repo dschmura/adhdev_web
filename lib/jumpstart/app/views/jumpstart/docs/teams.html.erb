@@ -24,4 +24,17 @@
 
   <p class="mb-4 leading-normal">Users can be assigned a role for each team they are a part of. By default, we only provide an <code>admin</code> role, but you can add more rules in <code>app/models/team_member.rb</code>. These roles will be listed in the UI when adding or editing a team member.</p>
   <p class="mb-4 leading-normal">You can check the role on the team member to restrict access to certain functionality on the team as needed.</p>
+
+  <p class="mb-4 leading-normal">To access the current team member or roles, you can use the following helpers in your controllers and views:</p>
+
+  <pre><code>current_team_member #=> TeamMember
+current_roles #=> [:admin]</code></pre>
+
+  <p class="mb-4 leading-normal">You can also access the roles individually on the TeamMember model:</p>
+
+  <pre><code>team_member = TeamMember.new
+team_member.admin? #=> false
+team_member.admin = true
+team_member.admin? #=> true
+team_member.active_roles #=> [:admin]</code></pre>
 </div>
