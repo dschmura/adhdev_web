@@ -73,7 +73,7 @@ class TeamMembersController < ApplicationController
     def require_admin
       team_member = @team.team_members.find_by(user: current_user)
       if team_member.nil? || !team_member.admin?
-        redirect_to team_path(@team), notice: "You must be that team's admin to do that." 
+        redirect_to team_path(@team), notice: "You must be a team admin to do that."
       end
     end
 end
