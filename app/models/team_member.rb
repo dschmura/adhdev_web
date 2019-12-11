@@ -32,8 +32,7 @@ class TeamMember < ApplicationRecord
 
   # Cast roles to/from booleans
   ROLES.each do |role|
-    define_method(:"#{role}=") { |value| super ActiveRecord::Type::Boolean.new.deserialize(value) }
-    define_method(:"#{role}")  { ActiveRecord::Type::Boolean.new.deserialize super() }
+    define_method(:"#{role}=") { |value| super ActiveRecord::Type::Boolean.new.cast(value) }
     define_method(:"#{role}?") { send(role) }
   end
 

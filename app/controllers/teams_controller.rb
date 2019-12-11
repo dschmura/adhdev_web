@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_team, only: [:show, :edit, :update, :destroy, :switch]
+  before_action :require_admin, only: [:edit, :update]
 
   # GET /teams
   def index
@@ -68,4 +69,10 @@ class TeamsController < ApplicationController
       session[:team_id] = @team.id
     end
 
+    def require_admin
+      team_member = @team.team_members.find_by(user: current_user)
+      if team_member.nil? || !team_member.admin?
+        redirect_to team_path(@team), notice: "You must be that team's admin to do that." 
+      end
+    end
 end

@@ -28,12 +28,12 @@ two:
   user: two
   team: two
 
-company_one:
-  user: one
+company_admin:
   team: company
+  user: one
   roles:
     admin: true
 
-company_two:
-  user: two
+company_regular_user:
   team: company
+  user: two

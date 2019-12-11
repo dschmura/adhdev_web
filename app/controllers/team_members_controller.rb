@@ -3,6 +3,7 @@ class TeamMembersController < ApplicationController
   before_action :set_team
   before_action :require_non_personal_team!
   before_action :set_team_member, only: [:edit, :update, :destroy, :switch]
+  before_action :require_admin, except: [:index, :show]
 
   # GET /teams
   def index
@@ -67,5 +68,12 @@ class TeamMembersController < ApplicationController
 
     def require_non_personal_team!
       redirect_to teams_path if @team.personal?
+    end
+
+    def require_admin
+      team_member = @team.team_members.find_by(user: current_user)
+      if team_member.nil? || !team_member.admin?
+        redirect_to team_path(@team), notice: "You must be that team's admin to do that." 
+      end
     end
 end

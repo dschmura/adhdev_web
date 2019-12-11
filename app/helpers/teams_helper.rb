@@ -32,4 +32,8 @@ module TeamsHelper
     end
     roles
   end
+
+  def team_admin?(team, team_member)
+    TeamMember.find_by(team: team, user: team_member).admin?
+  end
 end
