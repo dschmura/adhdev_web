@@ -28,7 +28,7 @@ class TeamMembersController < ApplicationController
   def create
     user = User.invite!({ name: params[:name], email: params[:email] }, current_user)
     if user.persisted?
-      @team.team_members.create(user: user, admin: params[:admin])
+      @team.team_members.create(team_member_params.merge(user: user))
       redirect_to @team, notice: 'Team member was successfully added.'
     else
       render :new
@@ -62,8 +62,7 @@ class TeamMembersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def team_member_params
-      attrs = [:user_id] + TeamMember.local_stored_attributes[:roles]
-      params.require(:team_member).permit(*attrs)
+      params.require(:team_member).permit(*TeamMember::ROLES)
     end
 
     def require_non_personal_team!

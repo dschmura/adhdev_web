@@ -36,9 +36,9 @@
 
         <h5 class="mb-2">Roles</h5>
         <div class="form-group">
-          <% TeamMember.local_stored_attributes[:roles].each do |role| %>
+          <% TeamMember::ROLES.each do |role| %>
             <label>
-              <%= form.check_box role, class: "mr-1" %>
+              <%= form.check_box "team_member[#{role}]", class: "mr-1" %>
               <%= role.to_s.humanize %>
             </label>
           <% end %>

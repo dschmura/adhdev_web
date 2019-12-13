@@ -25,7 +25,7 @@ class TeamMember < ApplicationRecord
   belongs_to :user
 
   # Add team roles to this line
-  ROLES = [:admin]
+  ROLES = [:admin, :member]
 
   # Store the roles in the roles json column and cast to booleans
   store_accessor :roles, *ROLES

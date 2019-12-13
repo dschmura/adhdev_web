@@ -28,10 +28,23 @@ class Jumpstart::TeamMembersTest < ActionDispatch::IntegrationTest
     test "can add team members" do
       name, email = "Team Member", "new-member@example.com"
       assert_difference "@team.team_members.count" do
-        post team_team_members_path(@team), params: { name: name, email: email }
+        post team_team_members_path(@team), params: { name: name, email: email, team_member: { admin: "0" } }
       end
-      assert_includes @team.users, User.find_by(email: email)
       assert_response :redirect
+      team_member = @team.team_members.find_by(user: User.find_by(email: email))
+      assert team_member
+      assert_not team_member.admin?
+    end
+
+    test "can add team members with roles" do
+      name, email = "Team Member", "new-member@example.com"
+      assert_difference "@team.team_members.count" do
+        post team_team_members_path(@team), params: { name: name, email: email, team_member: { admin: "1" } }
+      end
+      assert_response :redirect
+      team_member = @team.team_members.find_by(user: User.find_by(email: email))
+      assert team_member
+      assert team_member.admin?
     end
 
     test "can edit team member" do
