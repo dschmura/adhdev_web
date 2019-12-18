@@ -30,7 +30,7 @@ class Jumpstart::TeamsTest < ActionDispatch::IntegrationTest
         delete team_path(@team)
       end
       assert_redirected_to teams_path
-      assert_equal flash[:info], "Team was successfully dsetroyed."
+      assert_equal flash[:notice], "Team was successfully destroyed."
     end
 
     test 'cannot delete personal team' do
@@ -39,14 +39,6 @@ class Jumpstart::TeamsTest < ActionDispatch::IntegrationTest
         delete team_path(team)
       end
       assert_equal flash[:alert], "You cannot delete your personal team."
-    end
-
-    test 'cannot delete personal team' do
-      @team = teams(:one)
-      assert_no_difference "Team.count" do
-        delete team_path(@team)
-      end
-      assert_redirected_to team_path(@team)
     end
   end
 
