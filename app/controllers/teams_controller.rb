@@ -78,7 +78,7 @@ class TeamsController < ApplicationController
     end
     
     def prevent_personal_team_deletion
-      if @team.owner == current_user && @team.personal?
+      if @team.personal?
         redirect_to team_path(@team), notice: "You cannot delete your personal team."
       end
     end
