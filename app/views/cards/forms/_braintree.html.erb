@@ -10,7 +10,6 @@
 
   <%= tag.div nil, data: { target: "braintree.dropin" } %>
 
-  <div class="my-8 text-center">
-    <%= f.button 'Update Card', class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with("Processing...") } %>
-  </div>
+  <%= f.hidden_field :processor, value: :braintree %>
+  <%= f.button 'Update Card', class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with("Processing...") } %>
 <% end %>
