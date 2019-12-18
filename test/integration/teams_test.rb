@@ -31,6 +31,14 @@ class Jumpstart::TeamsTest < ActionDispatch::IntegrationTest
       end
       assert_redirected_to teams_path
     end
+
+    test 'cannot delete personal team' do
+      @team = teams(:one)
+      assert_no_difference "Team.count" do
+        delete team_path(@team)
+      end
+      assert_redirected_to team_path(@team)
+    end
   end
 
   class RegularUsers < Jumpstart::TeamsTest
