@@ -10,7 +10,7 @@
     <%= form.button class: "btn btn-primary" %>
 
     <% if form.object.persisted? %>
-      <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, data: { confirm: "Are you sure?" } if personal_team?(@team, current_user) %>
+      <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, data: { confirm: "Are you sure?" } if !@team.personal? %>
     <% end %>
   </div>
 <% end %>
