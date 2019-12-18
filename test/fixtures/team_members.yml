@@ -23,10 +23,14 @@
 one:
   user: one
   team: one
+  roles:
+    admin: true
 
 two:
   user: two
   team: two
+  roles:
+    admin: true
 
 company_admin:
   team: company
