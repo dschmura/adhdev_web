@@ -82,4 +82,10 @@ class TeamsController < ApplicationController
         redirect_to team_path(@team), alert: "You cannot delete your personal team."
       end
     end
+    
+    def prevent_personal_team_deletion
+      if @team.personal?
+        redirect_to team_path(@team), notice: "You cannot delete your personal team."
+      end
+    end
 end
