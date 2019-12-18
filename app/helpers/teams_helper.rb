@@ -36,8 +36,4 @@ module TeamsHelper
   def team_admin?(team, team_member)
     TeamMember.find_by(team: team, user: team_member).admin?
   end
-
-  def personal_team?(team, user)
-    (team.owner != user) && !team.personal?
-  end
 end
