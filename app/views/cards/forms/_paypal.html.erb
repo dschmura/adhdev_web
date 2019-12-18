@@ -8,6 +8,7 @@
   } do |f| %>
 
   <div class="my-8">
+    <%= f.hidden_field :processor, value: :braintree %>
     <%= tag.div nil, data: { target: "paypal.button" } %>
   </div>
 <% end %>

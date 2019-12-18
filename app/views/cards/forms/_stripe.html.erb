@@ -6,6 +6,7 @@
   data: {
     controller: "stripe",
     target: "stripe.form toggle.toggleable",
+    action: "keydown->stripe#keydown",
     stripe_setup_intent: setup_intent.client_secret,
   } do |f| %>
 
@@ -20,5 +21,6 @@
     <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: "Full Name", required: true, data: { target: "stripe.name" } %>
   </div>
 
+  <%= f.hidden_field :processor, value: :stripe %>
   <%= f.button 'Update Card', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
 <% end %>
