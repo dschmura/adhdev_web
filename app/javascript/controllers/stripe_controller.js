@@ -31,6 +31,14 @@ export default class extends Controller {
     }
   }
 
+  keydown(event) {
+    if (event.keyCode == 13) {
+      // Catch Enter key's form submission and process as submit
+      event.preventDefault()
+      this.submit(event)
+    }
+  }
+
   submit(event) {
     event.preventDefault()
 

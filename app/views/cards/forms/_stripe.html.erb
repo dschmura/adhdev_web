@@ -6,6 +6,7 @@
   data: {
     controller: "stripe",
     target: "stripe.form toggle.toggleable",
+    action: "keydown->stripe#keydown",
     stripe_setup_intent: setup_intent.client_secret,
   } do |f| %>
 
