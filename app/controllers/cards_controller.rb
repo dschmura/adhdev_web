@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
+
   def edit
     @setup_intent = current_team.create_setup_intent
   end
