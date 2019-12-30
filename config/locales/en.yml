@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  team_invitations_mailer:
+    invite:
+      subject: "%{inviter} invited you to %{team}"

@@ -57,7 +57,9 @@ Rails.application.routes.draw do
     end
 
     resources :team_members, path: :members
+    resources :team_invitations, path: :invitations, module: :teams
   end
+  resources :team_invitations
 
   # Payments
   resource :card

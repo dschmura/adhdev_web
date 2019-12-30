@@ -16,7 +16,7 @@ class Jumpstart::TeamMembersTest < ActionDispatch::IntegrationTest
       get team_path(@team)
       assert_select "h1", @team.name
       assert_select "a", text: "Edit Team", count: 1
-      assert_select "a", text: "Edit", count: @team.team_members.count
+      assert_select "a", text: "Edit", count: @team.team_members.count + @team.team_invitations.count
       assert_select "a", text: "Invite A Team Member", count: 1
     end
 

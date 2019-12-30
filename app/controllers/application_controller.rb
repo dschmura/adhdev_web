@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update,    keys: extra_keys)
       devise_parameter_sanitizer.permit(:accept_invitation, keys: extra_keys)
     end
+
+    def after_sign_in_path_for(resource_or_scope)
+      stored_location_for(resource_or_scope) || super
+    end
 end

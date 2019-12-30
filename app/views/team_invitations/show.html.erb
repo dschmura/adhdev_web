@@ -1,0 +1,9 @@
+<div class="mx-auto mt-10 p-10 bg-white rounded-lg border border-gray-300 text-center" style="max-width: 600px">
+  <h1 class="text-3xl mb-3">Join <%= @team.name %></h1>
+  <p class="text-gray-700"><strong><%= @invited_by.name %></strong> has invited you to collaborate on <strong><%= @team.name %></strong>.</p>
+
+  <div class="mt-5">
+    <%= link_to "Accept invitation", team_invitation_path(@team_invitation.token), method: :put, class: "btn btn-secondary" %>
+    <%= link_to "Decline", team_invitation_path(@team_invitation.token), method: :delete, class: "btn btn-tertiary outline" %>
+  </div>
+</div>

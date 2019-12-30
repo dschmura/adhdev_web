@@ -26,7 +26,7 @@ module TeamsHelper
 
   def team_member_roles(team, team_member)
     roles = []
-    roles << "Owner" if team.owner_id == team_member.user_id
+    roles << "Owner" if team_member.respond_to?(:user_id) && team.owner_id == team_member.user_id
     TeamMember::ROLES.each do |role|
       roles << role.to_s.humanize if team_member.public_send(:"#{role}?")
     end

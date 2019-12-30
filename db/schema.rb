@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_224530) do
+ActiveRecord::Schema.define(version: 2019_12_19_010439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,20 @@ ActiveRecord::Schema.define(version: 2019_10_25_224530) do
     t.integer "trial_period_days", default: 0
   end
 
+  create_table "team_invitations", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "invited_by_id", null: false
+    t.string "token"
+    t.string "name"
+    t.string "email"
+    t.jsonb "roles", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invited_by_id"], name: "index_team_invitations_on_invited_by_id"
+    t.index ["team_id"], name: "index_team_invitations_on_team_id"
+    t.index ["token"], name: "index_team_invitations_on_token", unique: true
+  end
+
   create_table "team_members", force: :cascade do |t|
     t.bigint "team_id"
     t.bigint "user_id"
@@ -188,6 +202,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_224530) do
   end
 
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "team_invitations", "teams"
+  add_foreign_key "team_invitations", "users", column: "invited_by_id"
   add_foreign_key "team_members", "teams"
   add_foreign_key "team_members", "users"
   add_foreign_key "teams", "users", column: "owner_id"

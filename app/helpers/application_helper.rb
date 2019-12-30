@@ -4,7 +4,7 @@ module ApplicationHelper
   def avatar_url_for(user, opts={})
     size = opts[:size] || 48
 
-    if user.avatar.attached? && user.avatar.variable?
+    if user.respond_to?(:avatar) && user.avatar.attached? && user.avatar.variable?
       user.avatar.variant(combine_options: {
         thumbnail: "#{size}x#{size}^",
         gravity: "center",
