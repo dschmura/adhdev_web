@@ -123,10 +123,8 @@
       <div class="font-bold">You can cancel anytime, but you'll lose access to <%= Jumpstart.config.application_name %>.</div>
       <div>Need to talk to someone? <%= mail_to Jumpstart.config.support_email, "Contact us", subject: "Question about #{Jumpstart.config.application_name}", class: "underline text-blue-600" %> -- we'd love to help.</div>
     </div>
+
     <div>
-      <%= form_for current_team, url: subscription_url, method: :delete do |f| %>
-        <%= f.button 'Cancel Subscription', class: "btn btn-link text-gray-700", data: { confirm: "Are you sure?", disable_with: disable_with("Cancelling..") } %>
-      <% end %>
+      <%= link_to 'Cancel Subscription', subscription_url, method: :delete, class: "btn btn-link text-gray-700", data: { confirm: "Are you sure?", disable_with: disable_with("Cancelling...") } %>
     </div>
-  </div>
-<% end %>
+  </div> <% end %>
