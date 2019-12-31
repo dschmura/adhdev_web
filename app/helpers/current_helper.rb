@@ -13,4 +13,14 @@ module CurrentHelper
   def current_roles
     current_team_member.active_roles
   end
+
+  def current_team_admin?
+    !!current_team_member&.admin?
+  end
+
+  def require_current_team_admin
+    unless current_team_admin?
+      redirect_to root_path, alert: "You must be an admin to do that."
+    end
+  end
 end

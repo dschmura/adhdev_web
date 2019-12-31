@@ -1,4 +1,7 @@
 <%# Place any links for the RIGHT side of the nav bar here. Be sure to add class: "nav-link" to each item for proper spacing. %>
 
-<%= nav_link_to "Pricing", pricing_path, class: "nav-link" if Jumpstart.config.payments_enabled? && not_subscribed? %>
+<% if Jumpstart.config.payments_enabled? && (!user_signed_in? || current_team_admin?) && not_subscribed? %>
+  <%= nav_link_to "Pricing", pricing_path, class: "nav-link" %>
+<% end %>
+
 <%= nav_link_to content_tag(:span, "What's New"), announcements_path, class: ["nav-link", unread_announcements_class(current_user)] %>

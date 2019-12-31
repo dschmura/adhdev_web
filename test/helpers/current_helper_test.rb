@@ -33,6 +33,16 @@ class CurrentHelperTest < ActionView::TestCase
     assert_not_nil current_team_member
   end
 
+  test 'current_team_admin returns true for an admin' do
+    @current_team_member = team_members(:two)
+    assert current_team_admin?
+  end
+
+  test 'current_team_admin returns false for a non admin' do
+    @current_team_member = team_members(:company_regular_user)
+    assert_not current_team_admin?
+  end
+
   test "current team member is from current team" do
     team_member = current_user.team_members.last
     session[:team_id] = team_member.team_id
