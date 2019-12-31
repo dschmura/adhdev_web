@@ -29,10 +29,17 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
+      - uses: actions/cache@v1
+        id: cache
         with:
-          ruby-version: 2.6.x
+          path: ~/local/rubies
+          key: ruby-2.7.0
+
+      - uses: clupprich/ruby-build-action@master
+        id: ruby
+        with:
+          ruby-version: 2.7.0
+          cache-available: ${{ steps.cache.outputs.cache-hit == 'true' }}
 
       - name: Setup Node 12
         uses: actions/setup-node@v1
@@ -50,6 +57,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Cache gems
         uses: actions/cache@v1
         with:
@@ -57,12 +65,14 @@ jobs:
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gem-
+
       - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
           bundle install --path vendor/bundle --jobs 4 --retry 3
           yarn install --frozen-lockfile
+
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
