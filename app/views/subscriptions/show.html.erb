@@ -10,7 +10,7 @@
       <% if team_admin?(current_team, current_user) %>
         <%= render "current_plan" %>
       <% else %>
-        <h3>Contact a Team Admin to change subscription</h3>
+        <p>Contact an admin to change the <%= current_team.name %> subscription.</p>
       <% end %>
     </div>
   </div>
