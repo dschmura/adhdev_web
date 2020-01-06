@@ -27,5 +27,6 @@ import "src/direct_uploads"
 import "src/forms"
 import "src/timezone"
 import "src/tooltips"
+import "src/actiontext"
 
 Rails.start()

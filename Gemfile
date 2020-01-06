@@ -71,6 +71,7 @@ gem "pagy", "~> 3.7"
 gem "pay", github: "excid3/pay", branch: "sca" # '~> 1.0.0.beta5'
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 0.2.2"
+gem "ruby-oembed", "~> 0.12.0", require: "oembed"
 gem "turbolinks_render", "~> 0.9.12"
 
 # We always want the latest versions of these gems, so no version numbers

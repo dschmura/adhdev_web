@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/excid3/pay.git
-  revision: beb64bf516712ac446baa8b3d148f96d3110cb0c
+  revision: 805cb1a4cb164638704441e2522590217b7cb3f3
   branch: sca
   specs:
     pay (2.0.0)
@@ -198,7 +198,7 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
     mimemagic (0.3.3)
-    mini_magick (4.9.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
@@ -214,7 +214,7 @@ GEM
     orm_adapter (0.5.0)
     pagy (3.7.1)
     pdf-core (0.7.0)
-    pg (1.2.0)
+    pg (1.2.1)
     pg_search (2.3.1)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
@@ -228,7 +228,7 @@ GEM
       method_source (~> 0.9.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.2)
+    public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
@@ -274,6 +274,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    ruby-oembed (0.12.0)
     ruby-vips (2.0.16)
       ffi (~> 1.9)
     rubyzip (2.0.0)
@@ -307,7 +308,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    ttfunk (1.5.1)
+    ttfunk (1.6.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -375,6 +376,7 @@ DEPENDENCIES
   rails (~> 6.0.0)
   receipts (~> 0.2.2)
   redis (~> 4.0)
+  ruby-oembed (~> 0.12.0)
   sass-rails (~> 6.0)
   selenium-webdriver
   spring
