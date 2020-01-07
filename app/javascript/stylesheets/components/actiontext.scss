@@ -32,23 +32,16 @@
     }
   }
 
-  action-text-attachment, .attachment {
-    display: block;
+  .embed {
+    display: inline-block;
     line-height: 1;
     margin: 1em 0 !important;
-    max-width: 100%;
     padding: 0 !important;
-    text-align: center;
     width: 100%;
+  }
 
-    .embed {
-      display: inline-block;
-      width: 100%;
-    }
-
-    iframe, twitter-widget {
-      display: inline-block !important;
-    }
+  iframe, twitter-widget {
+    display: inline-block !important;
   }
 }
 
