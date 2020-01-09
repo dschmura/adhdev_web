@@ -3,13 +3,32 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
+// Rails functionality
+window.Rails = require("@rails/ujs")
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("trix")
 require("@rails/actiontext")
 
+// Administrate specific functionality
 require("../administrate/index")
 
+// Stimulus controllers
 import "controllers"
+
+// Jumpstart Pro & other Functionality
+import "src/actiontext"
+//import "src/confirm" // We don't really care about fancy confirm modals in the admin
+import "src/direct_uploads"
+import "src/forms"
+import "src/timezone"
+import "src/tooltips"
+
+import LocalTime from "local-time"
+LocalTime.start()
+
+// ADD YOUR JAVACSRIPT HERE
+
+// Start Rails UJS
+Rails.start()
