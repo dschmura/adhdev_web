@@ -1,6 +1,6 @@
 class TeamInvitation < ApplicationRecord
   belongs_to :team
-  belongs_to :invited_by, class_name: "User"
+  belongs_to :invited_by, class_name: "User", optional: true
   has_secure_token
 
   validates :name, :email, presence: true
