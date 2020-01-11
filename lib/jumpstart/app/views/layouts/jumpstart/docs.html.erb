@@ -32,19 +32,19 @@
 
       <div class="flex flex-wrap justify-between items-start main">
 
-        <div class="lg:w-1/5 w-full pt-4 lg:px-8 px-4">
+        <div class="md:w-1/5 w-full pt-4 lg:px-8 px-4">
           <%= render partial: "jumpstart/docs/nav" %>
         </div>
 
-        <div class="lg:w-4/5 w-full bg-white h-full border-l border-gray-400 docs-main">
+        <div class="md:w-4/5 w-full bg-white h-full border-l border-gray-400 docs-main">
 
           <% if content_for :section_title %>
-            <div class="bg-primary-500 lg:px-56 px-4 py-10 text-white mb-6">
+            <div class="bg-primary-500 md:px-20 lg:px-40 xl:px-56 px-4 py-10 text-white mb-6">
               <h1><%= yield :section_title %></h1>
             </div>
           <% end %>
 
-          <div class="pt-4 lg:px-56 px-4">
+          <div class="pt-4 md:px-20 lg:px-40 xl:px-56 px-4">
             <%= yield %>
           </div>
         </div>

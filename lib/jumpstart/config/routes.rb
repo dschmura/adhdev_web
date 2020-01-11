@@ -4,6 +4,11 @@ Jumpstart::Engine.routes.draw do
   resources :users, only: [:create]
 
   resource :docs do
+    get :installation
+    get :configuration
+    get :deploying
+    get :screencasts
+
     get :action_cable
     get :action_mailbox
     get :action_text
@@ -17,7 +22,6 @@ Jumpstart::Engine.routes.draw do
     get :credentials
     get :cron
     get :databases
-    get :deploying
     get :development
     get :email
     get :oauth
