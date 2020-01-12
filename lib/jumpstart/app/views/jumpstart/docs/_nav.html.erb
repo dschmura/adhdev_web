@@ -3,6 +3,14 @@
     <%= image_tag "jumpstart-docs-logo.svg" %>
   <% end %>
 
+  <h4 class="mt-6 font-semibold mb-1 text-gray-800">Get Started</h4>
+  <ul class="list-none leading-loose pb-6">
+    <li><%= link_to "Installation", installation_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
+    <li><%= link_to "Configuration", configuration_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
+    <li><%= link_to "Deploying", deploying_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
+    <li><%= link_to "Screencasts", screencasts_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
+  </ul>
+
   <h4 class="mt-6 font-semibold mb-1 text-gray-800">Backend</h4>
   <ul class="list-none leading-loose pb-6">
     <li><%= link_to "Action Cable", action_cable_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
@@ -43,7 +51,6 @@
 
   <h4 class="mt-6 font-semibold mb-1 text-gray-800">Extras</h4>
   <ul class="list-none leading-loose pb-6">
-    <li><%= link_to "Deploying", deploying_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Integrations", integrations_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
   </ul>
 </div>

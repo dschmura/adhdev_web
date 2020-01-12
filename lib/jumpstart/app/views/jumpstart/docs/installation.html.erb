@@ -1,0 +1,33 @@
+<% content_for :section_title, "Installation" %>
+
+<div class="mb-20">
+  <div class="mb-10">
+    <p class="mb-4 text-xl text-gray-700 leading-normal">Installing Jumpstart Pro is easy. We'll walk you through it.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Dependencies</h2>
+    <p class="mb-4">Jumpstart Pro requires the following basic dependencies to run. If you haven't setup Ruby or Rails before, check out the <%= link_to "GoRails Install Rails Guide", "https://gorails.com/setup", target: :_blank %>.</p>
+
+    <p class="mb-4">MacOS users can use the included <code>brew</code> commands to install dependencies using <%= link_to "Homebrew", "https://brew.sh/", target: :_blank %>.</p>
+
+    <p class="mb-1"><%= link_to "Ruby", "https://www.ruby-lang.org/", class: "font-bold", target: :_blank %> 2.6 or higher. We recommend using <%= link_to "rbenv", "https://github.com/rbenv/rbenv", target: :_blank %> for Ruby version management.</p>
+    <p class="mb-1"><%= link_to "Bundler", "https://bundler.io/", class: "font-bold", target: :_blank %> - <code>gem install bundler</code></p>
+    <p class="mb-1"><%= link_to "PostgreSQL", "https://www.postgresql.org/", class: "font-bold", target: :_blank %> - Our primary database. - <code>brew install postgresql</code></p>
+    <p class="mb-1"><%= link_to "Redis", "https://redis.io/", class: "font-bold", target: :_blank %> - for ActionCable, Sidekiq, and/or caching - <code>brew install redis</code></p>
+    <p class="mb-1"><%= link_to "Imagemagick", "https://imagemagick.org", class: "font-bold", target: :_blank %> or <%= link_to "libvips", "http://libvips.github.io/libvips/", class: "font-bold", target: :_blank %> - for processing images (avatars, file uploads, etc) - <code>brew install imagemagick vips</code></p>
+    <p class="mb-1"><%= link_to "Yarn", "https://yarnpkg.com/", class: "font-bold", target: :_blank %> - for installing Javascript dependencies - <code>brew install yarn</code></p>
+
+    <p class="mb-1 mt-4 text-gray-800 font-semibold">Optional Dependencies</p>
+    <p class="mb-1"><%= link_to "Foreman", "https://github.com/ddollar/foreman", class: "font-bold", target: :_blank %> - for managing running processes in development. - <code>gem install foreman</code></p>
+
+    <p class="mb-1"><%= link_to "Stripe CLI", "https://stripe.com/docs/stripe-cli", class: "font-bold", target: :_blank %> - for Stripe payments and webhooks in development. - <code>brew install stripe/stripe-cli/stripe</code></p>
+
+    <h2 class="pb-3 mt-8 mb-6 border-b border-gray-400">Screencast</h2>
+    <p class="mb-4">This screencast will walk you through cloning Jumpstart Pro's git repository, installing dependencies, and setting up your brand new application so you can easily merge updates from git.</p>
+
+    <div class="w-full xl:w-1/2">
+      <div class="embed-container">
+        <iframe src='https://www.youtube.com/embed/2DEneP450hU' frameborder='0' allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
