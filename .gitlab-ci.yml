@@ -35,3 +35,6 @@ test:
       - .yarn
   script:
   - bundle exec rails test
+  only:
+  - master
+  - merge_requests
