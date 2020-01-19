@@ -70,6 +70,7 @@ module Jumpstart
             # https://apps.twitter.com
             public_key: ''
             private_key: ''
+            secure_image_url: 'true'
 
         # Mail Providers
         # --------------
