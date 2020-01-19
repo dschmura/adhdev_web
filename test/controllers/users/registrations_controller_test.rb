@@ -4,8 +4,6 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   include InvisibleCaptcha
 
   setup do
-    User.destroy_all
-
     @user_params = {user:
                         {name: 'Test User',
                          username: 'new_testuser',
@@ -41,18 +39,14 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
   class InvibleCaptchaTest < Users::RegistrationsControllerTest
     test "honeypot is not filled and user creation succeeds" do
-      InvisibleCaptcha.stub(:generate_random_honeypot, :honeypotx) do
-        assert_difference 'User.count' do
-          post user_registration_url, params: @user_params.merge(honeypotx: '')
-        end
+      assert_difference 'User.count' do
+        post user_registration_url, params: @user_params.merge(honeypotx: '')
       end
     end
 
     test "honeypot is filled and user creation fails" do
-      InvisibleCaptcha.stub(:generate_random_honeypot, :honeypotx) do
-        assert_no_difference 'User.count' do
-          post user_registration_url, params: @user_params.merge(honeypotx: 'spam')
-        end
+      assert_no_difference 'User.count' do
+        post user_registration_url, params: @user_params.merge(honeypotx: 'spam')
       end
     end
   end
