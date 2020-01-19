@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  invisible_captcha only: :create
+
   protected
 
   def build_resource(hash = {})
