@@ -16,6 +16,15 @@ GIT
       selectize-rails (~> 0.6)
 
 GIT
+  remote: https://github.com/excid3/devise_masquerade.git
+  revision: 7b76df52ae61c938cef48ec54dde5221e9cc8609
+  specs:
+    devise_masquerade (1.2.0)
+      devise (>= 4.7.0)
+      globalid (>= 0.3.6)
+      railties (>= 5.2.0)
+
+GIT
   remote: https://github.com/excid3/pay.git
   revision: 805cb1a4cb164638704441e2522590217b7cb3f3
   branch: sca
@@ -141,9 +150,6 @@ GEM
     devise_invitable (2.0.1)
       actionmailer (>= 5.0)
       devise (>= 4.6)
-    devise_masquerade (1.2.0)
-      devise (>= 4.7.0)
-      railties (>= 5.2.0)
     encryptor (3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
@@ -356,7 +362,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise (>= 4.7.1)
   devise_invitable (~> 2.0, >= 2.0.1)
-  devise_masquerade (~> 1.2)
+  devise_masquerade!
   image_processing (~> 1.9, >= 1.9.2)
   inline_svg (~> 1.6)
   jbuilder (~> 2.5)
