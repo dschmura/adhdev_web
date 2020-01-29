@@ -6,6 +6,7 @@ Jumpstart::Engine.routes.draw do
   resource :docs do
     get :installation
     get :configuration
+    get :upgrading
     get :deploying
     get :screencasts
 

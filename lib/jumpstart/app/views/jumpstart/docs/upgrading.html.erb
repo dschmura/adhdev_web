@@ -1,0 +1,36 @@
+<% content_for :section_title, "Upgrades" %>
+
+<div class="mb-20">
+  <div class="mb-10">
+    <p class="mb-4 text-xl text-gray-700 leading-normal">You can clone Jumpstart Pro from our Git repository and merge updates at any time.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Installing Jumpstart Pro with Git</h2>
+    <p class="mb-4">The Git version of Jumpstart Pro allows you to easily merge in changes from newer versions whenever you like. We use <%= link_to "GitLab", "https://gitlab.com", target: :_blank %> for our Git hosting, so you'll need an account to clone the repository.</p>
+
+    <p class="mb-4">1. Connect your GitLab account on JumpstartRails.com</p>
+
+    <p class="mb-4">2. Create a new repo for your Jumpstart Pro app</p>
+    <p class="text-gray-700 mb-4"><%= link_to "Create a repository", "https://gitlab.com/projects/new", class: "text-blue-600 hover:underline", target: :_blank %> for your new Jumpstart Pro app. Feel free to use <%= link_to "GitHub", "https://github.com/new", class: "text-blue-600 hover:underline", target: :_blank %>, <%= link_to "Bitbucket", "https://bitbucket.org/repo/create", class: "text-blue-600 hover:underline", target: :_blank %>, or whatever you prefer.</p>
+
+    <p class="mb-4">3. Clone the Jumpstart Pro repository</p>
+    <p class="text-gray-700">Next, we will clone the Jumpstart Pro repository. Make sure to replace <code>username/myapp</code> with the name of the app you want.</p>
+    <pre><code>git clone git@gitlab.com:gorails/jumpstart-pro.git myapp</code></pre>
+
+    <p class="text-gray-700">Then, we'll rename the origin remote to "jumpstart" so you can use origin for your own git repository.</p>
+    <pre><code>cd myapp
+git remote rename origin jumpstart</code></pre>
+
+    <p class="text-gray-700">Once created, we can add your new repository as the <code>origin</code> and push our code up to it.</p>
+    <pre><code>git remote add origin git@gitlab.com:username/myapp.git
+git push -u origin master</code></pre>
+
+    <p class="text-gray-700 font-brand-semibold mb-4">You're all set!</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Merging Updates</h2>
+    <p class="text-gray-700">To merge updates from Jumpstart Pro's repository, you can merge from the jumpstart origin.</p>
+    <pre><code>git fetch jumpstart
+git merge jumpstart/master</code></pre>
+
+    <p class="text-gray-700">Keep in mind, the more customization you do, the harder merges will be. Instead of merging from jumpstart, you might want to cherry pick commits or manually apply changes to you repository.</p>
+  </div>
+</div>
