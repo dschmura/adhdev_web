@@ -16,7 +16,7 @@ let environment = {
 if (process.env.RAILS_ENV === "production" || process.env.RAILS_ENV === "staging") {
   // A whitelist of css classes to keep that might not be found in the app
   function collectWhitelist() {
-    return ['font-serif', 'tab-active', 'transition', 'text-gray-400'];
+    return ['font-serif', 'tab-active', 'transition', 'text-gray-400', 'bg-twitter', 'bg-facebook', 'bg-google_oauth2', 'text-twitter', 'text-facebook', 'text-google_oauth2'];
   }
 
   environment.plugins.push(
