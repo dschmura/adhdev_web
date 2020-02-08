@@ -8,8 +8,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def switch_team(team)
-    patch "/teams/#{team.id}/switch"
+  def switch_account(account)
+    patch "/accounts/#{account.id}/switch"
   end
 end
 

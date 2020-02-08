@@ -10,16 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_10_222159) do
+ActiveRecord::Schema.define(version: 2020_02_08_030344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "account_invitations", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "invited_by_id"
+    t.string "token"
+    t.string "name"
+    t.string "email"
+    t.jsonb "roles", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_account_invitations_on_account_id"
+    t.index ["invited_by_id"], name: "index_account_invitations_on_invited_by_id"
+    t.index ["token"], name: "index_account_invitations_on_token", unique: true
+  end
+
+  create_table "account_users", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "user_id"
+    t.jsonb "roles", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_account_users_on_account_id"
+    t.index ["user_id"], name: "index_account_users_on_user_id"
+  end
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "owner_id"
+    t.boolean "personal", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "processor"
+    t.string "processor_id"
+    t.datetime "trial_ends_at"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.text "extra_billing_info"
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
+  end
+
   create_table "action_text_embeds", force: :cascade do |t|
     t.string "url"
     t.jsonb "fields"
-    t.string "provider"
-    t.string "format"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -116,47 +155,6 @@ ActiveRecord::Schema.define(version: 2020_01_10_222159) do
     t.integer "trial_period_days", default: 0
   end
 
-  create_table "team_invitations", force: :cascade do |t|
-    t.bigint "team_id", null: false
-    t.bigint "invited_by_id"
-    t.string "token"
-    t.string "name"
-    t.string "email"
-    t.jsonb "roles", default: {}, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["invited_by_id"], name: "index_team_invitations_on_invited_by_id"
-    t.index ["team_id"], name: "index_team_invitations_on_team_id"
-    t.index ["token"], name: "index_team_invitations_on_token", unique: true
-  end
-
-  create_table "team_members", force: :cascade do |t|
-    t.bigint "team_id"
-    t.bigint "user_id"
-    t.jsonb "roles", default: {}, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["team_id"], name: "index_team_members_on_team_id"
-    t.index ["user_id"], name: "index_team_members_on_user_id"
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.bigint "owner_id"
-    t.boolean "personal", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "processor"
-    t.string "processor_id"
-    t.datetime "trial_ends_at"
-    t.string "card_type"
-    t.string "card_last4"
-    t.string "card_exp_month"
-    t.string "card_exp_year"
-    t.text "extra_billing_info"
-    t.index ["owner_id"], name: "index_teams_on_owner_id"
-  end
-
   create_table "user_connected_accounts", force: :cascade do |t|
     t.bigint "user_id"
     t.string "provider"
@@ -210,11 +208,11 @@ ActiveRecord::Schema.define(version: 2020_01_10_222159) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "account_invitations", "accounts"
+  add_foreign_key "account_invitations", "users", column: "invited_by_id"
+  add_foreign_key "account_users", "accounts"
+  add_foreign_key "account_users", "users"
+  add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "api_tokens", "users"
-  add_foreign_key "team_invitations", "teams"
-  add_foreign_key "team_invitations", "users", column: "invited_by_id"
-  add_foreign_key "team_members", "teams"
-  add_foreign_key "team_members", "users"
-  add_foreign_key "teams", "users", column: "owner_id"
   add_foreign_key "user_connected_accounts", "users"
 end

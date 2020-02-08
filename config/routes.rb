@@ -20,8 +20,8 @@ Rails.application.routes.draw do
       namespace :user do
         resources :connected_accounts
       end
-      resources :teams
-      resources :team_members
+      resources :accounts
+      resources :account_users
       resources :plans
       namespace :pay do
         resources :charges
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resource :me, controller: :me
-      resources :teams
+      resources :accounts
       resources :users
     end
   end
@@ -51,15 +51,15 @@ Rails.application.routes.draw do
 
   resources :announcements, only: [:index]
   resources :api_tokens
-  resources :teams do
+  resources :accounts do
     member do
       patch :switch
     end
 
-    resources :team_members, path: :members
-    resources :team_invitations, path: :invitations, module: :teams
+    resources :account_users, path: :members
+    resources :account_invitations, path: :invitations, module: :accounts
   end
-  resources :team_invitations
+  resources :account_invitations
 
   # Payments
   resource :card

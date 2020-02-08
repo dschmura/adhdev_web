@@ -2,12 +2,12 @@ require 'test_helper'
 
 class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
   setup do
-    @team = teams(:company)
+    @account = accounts(:company)
     @admin = users(:one)
     @regular_user = users(:two)
     @plan = plans(:personal)
     @card_token = "tok_visa"
-    switch_team(@team)
+    switch_account(@account)
   end
 
   class AdminUsers < Jumpstart::SubscriptionsTest
@@ -15,7 +15,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
       sign_in @admin
     end
 
-    test "can subscribe team" do
+    test "can subscribe account" do
       Jumpstart.config.stub(:payments_enabled?, true) do
         get new_subscription_path(@plan.id)
         assert_redirected_to pricing_path

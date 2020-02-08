@@ -6,7 +6,7 @@ require "application_system_test_case"
 class StripeTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
-    @team = @user.teams.first
+    @account = @user.accounts.first
     login_as @user, scope: :user
   end
 
@@ -16,7 +16,7 @@ class StripeTest < ApplicationSystemTestCase
     fill_in "Name on card", with: @user.name
     click_on "Subscribe"
     assert_selector "p", text: "Thanks for subscribing!"
-    assert @team.subscribed?
+    assert @account.subscribed?
   end
 
   test "can subscribe with SCA" do
@@ -57,7 +57,7 @@ class StripeTest < ApplicationSystemTestCase
     fill_in "Name on card", with: @user.name
     click_on "Update Card"
     assert_selector "p", text: "Your card was updated successfully."
-    assert_equal "4242", @team.reload.card_last4
+    assert_equal "4242", @account.reload.card_last4
   end
 
   test "can update card with SCA" do
@@ -67,7 +67,7 @@ class StripeTest < ApplicationSystemTestCase
     click_on "Update Card"
     complete_stripe_sca
     assert_selector "p", text: "Your card was updated successfully."
-    assert_equal "3184", @team.reload.card_last4
+    assert_equal "3184", @account.reload.card_last4
   end
 
   test "can fail updating card with SCA" do
@@ -77,16 +77,16 @@ class StripeTest < ApplicationSystemTestCase
     click_on "Update Card"
     fail_stripe_sca
     assert_selector "div", text: "We are unable to authenticate your payment method. Please choose a different payment method and try again."
-    assert_nil @team.reload.card_last4
+    assert_nil @account.reload.card_last4
   end
 
   test "can swap plans" do
-    team = @user.teams.first
+    account = @user.accounts.first
     old_plan_id = plans(:personal).processor_id(:stripe)
 
-    team.processor = :stripe
-    team.card_token = payment_method.id
-    team.subscribe(plan: old_plan_id)
+    account.processor = :stripe
+    account.card_token = payment_method.id
+    account.subscribe(plan: old_plan_id)
 
     visit edit_subscription_url
     first("button").click
@@ -94,11 +94,11 @@ class StripeTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "Billing"
     # We should be on a different subscription now
-    assert_not_equal old_plan_id, team.subscription.processor_plan
+    assert_not_equal old_plan_id, account.subscription.processor_plan
   end
 
   test "can swap plans with SCA" do
-    team = @user.teams.first
+    account = @user.accounts.first
 
     # Subscribe to a new plan
     visit new_subscription_url(plan: plans(:personal))
@@ -110,9 +110,9 @@ class StripeTest < ApplicationSystemTestCase
     assert_selector "p", text: "The payment was successful."
 
     # Fake webhook that sets subscription status to active
-    team.subscription.update(status: :active)
+    account.subscription.update(status: :active)
 
-    old_plan_id = team.subscription.processor_plan
+    old_plan_id = account.subscription.processor_plan
 
     # Swap subscription
     visit edit_subscription_url
@@ -122,7 +122,7 @@ class StripeTest < ApplicationSystemTestCase
     # Changes are prorated so we don't have to go through SCA again
 
     assert_selector "h1", text: "Billing"
-    assert_not_equal old_plan_id, team.subscription.processor_plan
+    assert_not_equal old_plan_id, account.subscription.processor_plan
   end
 
   # Subscribe with no trial

@@ -3,6 +3,6 @@
   <%= nav_link_to "Password", edit_account_password_path,   class: "block no-underline p-3 px-6", active_class: "bg-primary-500 text-white hover:text-white", inactive_class: "text-gray-700 hover:text-gray-700 hover:bg-gray-100" %>
   <%= nav_link_to "Accounts", user_connected_accounts_path, class: "block no-underline p-3 px-6", active_class: "bg-primary-500 text-white hover:text-white", inactive_class: "text-gray-700 hover:text-gray-700 hover:bg-gray-100" if Devise.omniauth_configs.any? %>
   <%= nav_link_to "Billing", subscription_path,             class: "block no-underline p-3 px-6", active_class: "bg-primary-500 text-white hover:text-white", inactive_class: "text-gray-700 hover:text-gray-700 hover:bg-gray-100", starts_with: ["/subscription", "/card"] if Jumpstart.config.payments_enabled? %>
-  <%= nav_link_to "Teams", teams_path,                      class: "block no-underline p-3 px-6", active_class: "bg-primary-500 text-white hover:text-white", inactive_class: "text-gray-700 hover:text-gray-700 hover:bg-gray-100", starts_with: "/team" %>
+  <%= nav_link_to "Accounts", accounts_path,                      class: "block no-underline p-3 px-6", active_class: "bg-primary-500 text-white hover:text-white", inactive_class: "text-gray-700 hover:text-gray-700 hover:bg-gray-100", starts_with: "/account" %>
   <%= nav_link_to "API", api_tokens_path,                   class: "block no-underline p-3 px-6 rounded-b", active_class: "bg-primary-500 text-white hover:text-white", inactive_class: "text-gray-700 hover:text-gray-700 hover:bg-gray-100" %>
 </div>

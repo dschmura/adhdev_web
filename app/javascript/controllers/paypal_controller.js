@@ -79,8 +79,8 @@ export default class extends Controller {
       return
     }
 
-    this.addHiddenField("team[processor]", "braintree")
-    this.addHiddenField("team[card_token]", payload.nonce)
+    this.addHiddenField("account[processor]", "braintree")
+    this.addHiddenField("account[card_token]", payload.nonce)
 
     Rails.fire(this.formTarget, "submit")
   }

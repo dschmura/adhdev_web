@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Jumpstart::Controller
-  include Teams::SubscriptionStatus
+  include Accounts::SubscriptionStatus
   include Users::TimeZone
   include Pagy::Backend
   include CurrentHelper

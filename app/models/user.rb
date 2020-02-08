@@ -50,7 +50,7 @@ class User < ApplicationRecord
          :confirmable, :invitable, :masqueradable,
          :omniauthable
 
-  include UserAgreements, UserTeams
+  include UserAgreements, UserAccounts
 
   has_person_name
 

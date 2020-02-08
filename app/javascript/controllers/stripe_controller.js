@@ -87,8 +87,8 @@ export default class extends Controller {
   }
 
   handlePaymentMethod(payment_method_id) {
-    this.addHiddenField("team[processor]", "stripe")
-    this.addHiddenField("team[card_token]", payment_method_id)
+    this.addHiddenField("account[processor]", "stripe")
+    this.addHiddenField("account[card_token]", payment_method_id)
 
     Rails.fire(this.formTarget, "submit")
   }

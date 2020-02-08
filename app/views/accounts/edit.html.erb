@@ -1,0 +1,21 @@
+<div class="flex flex-wrap my-4 lg:px-4">
+  <div class="lg:w-1/4 w-full p-4">
+    <%= render partial: "shared/account_navbar" %>
+  </div>
+
+  <div class="lg:w-3/4 w-full p-4">
+    <div class="text-sm text-gray-600 mb-5">
+      <%= link_to "All Accounts", accounts_path, class: "hover:text-black" %>
+      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+      <%= link_to @account.name, @account, class: "hover:text-black" %>
+      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+      Edit
+    </div>
+
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+      <h1 class="h2">Edit Account</h1>
+
+      <%= render 'form', account: @account %>
+    </div>
+  </div>
+</div>

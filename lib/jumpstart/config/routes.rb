@@ -27,7 +27,7 @@ Jumpstart::Engine.routes.draw do
     get :email
     get :oauth
     get :scaffolds
-    get :teams
+    get :accounts
     get :users
     get :webpacker
 

@@ -7,50 +7,50 @@ class CurrentHelperTest < ActionView::TestCase
 
   setup do
     @current_user = users(:one)
-    @current_team = nil
-    @current_team_member = nil
-    session[:team_id] = nil
+    @current_account = nil
+    @current_account_user = nil
+    session[:account_id] = nil
   end
 
-  test "current_team" do
-    assert_not_nil current_team
+  test "current_account" do
+    assert_not_nil current_account
   end
 
-  test "uses team from session" do
-    # The first team is the fallback, so we want to check that it uses the second team
-    team = current_user.teams.last
-    session[:team_id] = team.id
-    assert_equal team, current_team
+  test "uses account from session" do
+    # The first account is the fallback, so we want to check that it uses the second account
+    account = current_user.accounts.last
+    session[:account_id] = account.id
+    assert_equal account, current_account
   end
 
-  test "creates a team if none exist" do
-    @current_user = users(:noteam)
-    assert_empty current_user.teams
-    assert_not_nil current_team
+  test "creates a account if none exist" do
+    @current_user = users(:noaccount)
+    assert_empty current_user.accounts
+    assert_not_nil current_account
   end
 
-  test "current_team_member" do
-    assert_not_nil current_team_member
+  test "current_account_user" do
+    assert_not_nil current_account_user
   end
 
-  test 'current_team_admin returns true for an admin' do
-    @current_team_member = team_members(:two)
-    assert current_team_admin?
+  test 'current_account_admin returns true for an admin' do
+    @current_account_user = account_users(:two)
+    assert current_account_admin?
   end
 
-  test 'current_team_admin returns false for a non admin' do
-    @current_team_member = team_members(:company_regular_user)
-    assert_not current_team_admin?
+  test 'current_account_admin returns false for a non admin' do
+    @current_account_user = account_users(:company_regular_user)
+    assert_not current_account_admin?
   end
 
-  test "current team member is from current team" do
-    team_member = current_user.team_members.last
-    session[:team_id] = team_member.team_id
-    assert_equal team_member, current_team_member
+  test "current account member is from current account" do
+    account_user = current_user.account_users.last
+    session[:account_id] = account_user.account_id
+    assert_equal account_user, current_account_user
   end
 
   test "current_roles" do
-    @current_team = teams(:company)
+    @current_account = accounts(:company)
     assert_equal [:admin], current_roles
   end
 end

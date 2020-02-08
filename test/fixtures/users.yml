@@ -77,8 +77,8 @@ admin:
   confirmed_at: <%= Time.current %>
   admin: true
 
-noteam:
-  email: noteam@example.com
+noaccount:
+  email: noaccount@example.com
   first_name: No Team
   last_name: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
