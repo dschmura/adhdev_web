@@ -20,7 +20,9 @@ module SetCurrentRequestDetails
       end
 
       # Fallback to session cookies
-      Current.account ||= current_user.accounts.find_by(id: session[:account_id])
+      if Jumpstart::Multitenancy.session?
+        Current.account ||= current_user.accounts.find_by(id: session[:account_id])
+      end
 
       # Fallback to first account
       Current.account ||= current_user.accounts.first

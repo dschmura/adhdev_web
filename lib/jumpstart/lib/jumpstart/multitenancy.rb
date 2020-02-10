@@ -17,7 +17,9 @@ module Jumpstart
       selected.include?("session")
 
     def self.selected
-      Array.wrap(Jumpstart.config.multitenancy)
+      # Default to session cookie account switching if none specified
+      # This is for backwards compatibility with the previous Team model
+      Array.wrap(Jumpstart.config.multitenancy || ["session"])
     end
   end
 end
