@@ -34,6 +34,8 @@ class Account < ApplicationRecord
   has_many :account_users, dependent: :destroy
   has_many :users, through: :account_users
 
+  has_one_attached :logo
+
   scope :personal, ->{ where(personal: true) }
   scope :impersonal, ->{ where(personal: false) }
 

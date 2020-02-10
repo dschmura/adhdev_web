@@ -30,4 +30,10 @@ class ApplicationController < ActionController::Base
         redirect_to new_user_registration_path, alert: "Please create an account first"
       end
     end
+
+    def require_current_account_admin
+      unless current_account_admin?
+        redirect_to root_path, alert: "You must be an admin to do that."
+      end
+    end
 end

@@ -21,6 +21,7 @@ module Jumpstart
     attr_accessor :default_from_email
     attr_accessor :support_email
     attr_accessor :omniauth_providers
+    attr_accessor :multitenancy
 
     def self.load!
       if File.exists?(config_path)

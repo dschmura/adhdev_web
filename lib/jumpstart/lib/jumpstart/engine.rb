@@ -22,7 +22,7 @@ module Jumpstart
       Administrate::ApplicationController.helper Jumpstart::AdministrateHelpers
     end
 
-    initializer "jumpstart.setup" do
+    initializer "jumpstart.setup" do |app|
       # Set ActiveJob from Jumpstart
       ActiveJob::Base.queue_adapter = Jumpstart.config.job_processor
 
@@ -35,6 +35,10 @@ module Jumpstart
       if Rails.env.development?
         # This makes sure we can load the Jumpstart assets in development
         config.assets.precompile << "jumpstart_manifest.js"
+      end
+
+      if Jumpstart::Multitenancy.path?
+        app.config.middleware.use Jumpstart::AccountMiddleware
       end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_030344) do
+ActiveRecord::Schema.define(version: 2020_02_09_004223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_030344) do
     t.string "card_exp_month"
     t.string "card_exp_year"
     t.text "extra_billing_info"
+    t.string "domain"
+    t.string "subdomain"
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
   end
 

@@ -9,8 +9,18 @@ module SetCurrentRequestDetails
 
       Current.user = current_user
 
-      # TODO: Find account by domain, subdomain, and path
-      Current.account = current_user.accounts.find_by(id: session[:account_id])
+      # Account may already be set by the AccountMiddleware
+
+      if Jumpstart::Multitenancy.custom_domains?
+        Current.account ||= Account.find_by(domain: request.domain)
+      end
+
+      if Jumpstart::Multitenancy.subdomains?
+        Current.account ||= Account.find_by(subdomain: request.subdomains.first)
+      end
+
+      # Fallback to session cookies
+      Current.account ||= current_user.accounts.find_by(id: session[:account_id])
 
       # Fallback to first account
       Current.account ||= current_user.accounts.first
