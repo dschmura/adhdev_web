@@ -23,7 +23,8 @@ gem "redis", "~> 4.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem 'invisible_captcha'
+# Security update
+gem "nokogiri", ">= 1.10.8"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -66,13 +67,14 @@ gem "devise_invitable", "~> 2.0", ">= 2.0.1"
 gem "devise_masquerade", github: "excid3/devise_masquerade"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"
+gem 'invisible_captcha', '~> 1.0'
 gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "oj", "~> 3.8", ">= 3.8.1"
 gem "pagy", "~> 3.7"
 gem "pay", '~> 2.0.0'
 gem "pg_search", "~> 2.3"
-gem "receipts", "~> 0.2.2"
+gem "receipts", "~> 1.0.0"
 gem "ruby-oembed", "~> 0.12.0", require: "oembed"
 gem "turbolinks_render", "~> 0.9.12"
 
