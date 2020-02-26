@@ -36,6 +36,9 @@ class UserDashboard < Administrate::BaseDashboard
     invitation_accepted_at: Field::DateTime,
     invitation_limit: Field::Number,
     invitations_count: Field::Number,
+    terms_of_service: Field::Boolean,
+    accepted_terms_at: Field::DateTime,
+    accepted_privacy_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -69,6 +72,8 @@ class UserDashboard < Administrate::BaseDashboard
     :confirmation_sent_at,
     :unconfirmed_email,
     :admin,
+    :accepted_terms_at,
+    :accepted_privacy_at,
     :created_at,
     :updated_at,
     :invitation_token,
@@ -88,6 +93,7 @@ class UserDashboard < Administrate::BaseDashboard
     :password,
     :password_confirmation,
     :admin,
+    :terms_of_service,
   ].freeze
 
   # Overwrite this method to customize how users are displayed
