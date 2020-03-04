@@ -46,6 +46,8 @@ company:
   owner: one
   name: "Company"
   personal: false
+  domain: company.com
+  subdomain: company
 
 invited:
   owner: invited

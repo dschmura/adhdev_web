@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
+  include SetCurrentRequestDetails
   include Jumpstart::Controller
   include Accounts::SubscriptionStatus
   include Users::TimeZone
   include Pagy::Backend
   include CurrentHelper
-  include SetCurrentRequestDetails
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :masquerade_user!

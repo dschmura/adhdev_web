@@ -4,7 +4,7 @@ module CurrentHelper
   end
 
   def current_account_user
-    @account_user ||= Current.account.account_users.find_by(user: current_user)
+    @account_user ||= current_account.account_users.find_by(user: current_user)
   end
 
   def current_roles

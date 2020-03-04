@@ -2,7 +2,7 @@ module SetCurrentRequestDetails
   extend ActiveSupport::Concern
 
   included do
-    before_action do
+    prepend_before_action do
       Current.request_id = request.uuid
       Current.user_agent = request.user_agent
       Current.ip_address = request.ip
@@ -18,11 +18,15 @@ module SetCurrentRequestDetails
         Current.account ||= Account.find_by(subdomain: request.subdomains.first)
       end
 
-      # Fallback to session cookies
       if Jumpstart::Multitenancy.session? && user_signed_in?
         Current.account ||= current_user.accounts.find_by(id: session[:account_id])
+      end
+
+      # Fallback accounts
+      if user_signed_in?
+        Current.account ||= current_user.accounts.order(created_at: :asc).first
+        Current.account ||= current_user.create_personal_account
       end
     end
   end
 end
-

@@ -15,8 +15,4 @@ class Current < ActiveSupport::CurrentAttributes
     super
     Time.zone = user.time_zone if value
   end
-
-  def account
-    super || user&.accounts&.first || user&.create_personal_account
-  end
 end
