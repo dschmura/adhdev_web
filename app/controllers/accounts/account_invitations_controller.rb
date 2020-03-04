@@ -27,7 +27,6 @@ class Accounts::AccountInvitationsController < ApplicationController
     end
   end
 
-
   def destroy
     @account_invitation.destroy
     redirect_to @account

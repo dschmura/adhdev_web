@@ -5,7 +5,7 @@ class Jumpstart::AccountInvitationsTest < ActionDispatch::IntegrationTest
     @account_invitation = account_invitations(:one)
     @account = @account_invitation.account
     @inviter = @account.users.first
-    @invited = users(:noaccount)
+    @invited = users(:invited)
   end
 
   test "cannot view invitation when logged out" do

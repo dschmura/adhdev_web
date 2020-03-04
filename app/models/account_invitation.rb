@@ -25,8 +25,8 @@ class AccountInvitation < ApplicationRecord
     account_user = account.account_users.new(user: user, roles: roles)
     if account_user.valid?
       ApplicationRecord.transaction do
-        account_user.save
-        destroy
+        account_user.save!
+        destroy!
       end
       account_user
     else

@@ -77,9 +77,19 @@ admin:
   confirmed_at: <%= Time.current %>
   admin: true
 
+invited:
+  email: invited@example.com
+  first_name: Invited
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "America/Chicago"
+  confirmed_at: <%= Time.current %>
+
 noaccount:
   email: noaccount@example.com
-  first_name: No Team
+  first_name: No Account
   last_name: User
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>

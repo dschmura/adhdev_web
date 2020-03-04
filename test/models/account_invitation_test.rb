@@ -6,7 +6,7 @@ class AccountInvitationTest < ActiveSupport::TestCase
   end
 
   test "accept" do
-    user = users(:noaccount)
+    user = users(:invited)
     assert_difference "AccountUser.count" do
       account_user = @account_invitation.accept!(user)
       assert account_user.persisted?

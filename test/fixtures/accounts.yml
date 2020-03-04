@@ -46,3 +46,8 @@ company:
   owner: one
   name: "Company"
   personal: false
+
+invited:
+  owner: invited
+  name: "Invited User"
+  personal: true

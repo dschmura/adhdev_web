@@ -15,6 +15,7 @@ module Jumpstart
 
     def self.session?
       selected.include?("session")
+    end
 
     def self.selected
       # Default to session cookie account switching if none specified

@@ -41,3 +41,7 @@ company_admin:
 company_regular_user:
   account: company
   user: two
+
+invited_user:
+  account: invited
+  user: invited

@@ -1,8 +1,9 @@
-## Multitenant account middleware
+## Multitenant Account Middleware
 #
-# Used for setting the Account by the first ID in the URL like Basecamp 3
+# Included in the Rails engine if enabled.
 #
-# This means we don't have to include the Account ID in every URL helper
+# Used for setting the Account by the first ID in the URL like Basecamp 3.
+# This means we don't have to include the Account ID in every URL helper.
 
 module Jumpstart
   class AccountMiddleware
