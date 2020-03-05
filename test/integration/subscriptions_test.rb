@@ -12,7 +12,9 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
   class AdminUsers < Jumpstart::SubscriptionsTest
     setup do
       sign_in @admin
-      switch_account(@account)
+      Jumpstart::Multitenancy.stub :selected, [] do
+        switch_account(@account)
+      end
     end
 
     test "can subscribe account" do
@@ -26,7 +28,9 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
   class RegularUsers < Jumpstart::SubscriptionsTest
     setup do
       sign_in @regular_user
-      switch_account(@account)
+      Jumpstart::Multitenancy.stub :selected, [] do
+        switch_account(@account)
+      end
     end
 
     test "cannot navigate to new_subscription page" do

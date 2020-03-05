@@ -29,6 +29,9 @@
 class Account < ApplicationRecord
   include Pay::Billable
 
+  RESERVED_DOMAINS = [Jumpstart.config.domain]
+  RESERVED_SUBDOMAINS = %w(app help support)
+
   belongs_to :owner, class_name: "User"
   has_many :account_invitations, dependent: :destroy
   has_many :account_users, dependent: :destroy
@@ -42,6 +45,8 @@ class Account < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, presence: true
+  validates :domain, exclusion: { in: RESERVED_DOMAINS, message: "%{value} is reserved." }
+  validates :subdomain, exclusion: { in: RESERVED_SUBDOMAINS, message: "%{value} is reserved." }
 
   def email
     account_users.includes(:user).order(created_at: :asc).first.user.email

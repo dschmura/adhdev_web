@@ -56,7 +56,7 @@ class AccountsController < ApplicationController
     #if Jumpstart::Multitenancy.domain? && @account.domain
     #  redirect_to @account.domain
 
-    if Jumpstart::Multitenancy.subdomain? && @account.subdomain
+    if Jumpstart::Multitenancy.subdomain? && @account.subdomain?
       redirect_to root_url(subdomain: @account.subdomain)
 
     elsif Jumpstart::Multitenancy.path?
