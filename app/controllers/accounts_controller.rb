@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
   def switch
     # This is not enabled by default, because we can't guarantee the domain is configured properly.
     # Uncomment this if you would like to redirect to the custom domain when switching accounts.
-    #if Jumpstart::Multitenancy.domain? && @account.domain
+    #if Jumpstart::Multitenancy.domain? && @account.domain?
     #  redirect_to @account.domain
 
     if Jumpstart::Multitenancy.subdomain? && @account.subdomain?
@@ -76,7 +76,10 @@ class AccountsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def account_params
-      params.require(:account).permit(:name)
+      attributes = [:name]
+      attributes << :domain if Jumpstart::Multitenancy.domain?
+      attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
+      params.require(:account).permit(*attributes)
     end
 
     def set_active_account
