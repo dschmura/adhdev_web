@@ -17,6 +17,7 @@
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#integrations" role="tab" aria-controls="v-pills-settings" aria-selected="false">Integrations</a>
         <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#oauth" role="tab" aria-controls="v-pills-messages" aria-selected="false">Login & OAuth</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#payments" role="tab" aria-controls="v-pills-profile" aria-selected="false">Payments</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#multitenancy" role="tab" aria-controls="v-pills-profile" aria-selected="false">Multitenancy</a>
       </div>
 
       <hr />
@@ -163,6 +164,35 @@
 
         <div class="tab-pane fade" id="payments" role="tabpanel" aria-labelledby="v-pills-settings-tab">
           <%= render "payments", f: f %>
+        </div>
+
+        <div class="tab-pane fade" id="multitenancy" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <h4>Multitenancy</h4>
+          <p>Jumpstart Pro uses an Account model to separate resources. You can use this to make your application multitenant. By default, we switch accounts using a session cookie, but this can be extended to also use subdomains, paths, and custom domains</p>
+
+          <hr />
+
+          <div class="form-group">
+            <label>Switch accounts automatically by:</label>
+
+            <div class="custom-control custom-checkbox">
+              <%= check_box_tag "configuration[multitenancy][]", "path", Jumpstart::Multitenancy.path?, class: "custom-control-input", id: "multitenancy_path" %>
+              <%= label_tag "multitenancy_path", "Path", class: "custom-control-label" %>
+              <span class="text-sm text-muted">(prepends <code>/:account_id/</code> as the script_name before Rails routes)</span>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <%= check_box_tag "configuration[multitenancy][]", "subdomain", Jumpstart::Multitenancy.subdomain?, class: "custom-control-input", id: "multitenancy_subdomain" %>
+              <%= label_tag "multitenancy_subdomain", "Subdomain", class: "custom-control-label" %>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <%= check_box_tag "configuration[multitenancy][]", "domain", Jumpstart::Multitenancy.domain?, class: "custom-control-input", id: "multitenancy_domain" %>
+              <%= label_tag "multitenancy_domain", "Custom Domain", class: "custom-control-label" %>
+            </div>
+
+            <div class="text-sm text-muted mt-3"><i class="fas fa-info-circle"></i> Typically, custom domains should be combined with subdomain switching. This provides a fallback in case the customer's domain isn't configured properly.</div>
+          </div>
         </div>
 
       </div>

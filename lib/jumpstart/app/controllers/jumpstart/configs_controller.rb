@@ -32,6 +32,7 @@ module Jumpstart
           integrations: [],
           omniauth_providers: [],
           payment_processors: [],
+          multitenancy: [],
           plans: [:id, :name, features: [], month: [:amount, :stripe_id, :braintree_id], year: [:amount, :stripe_id, :braintree_id]]
         )
     end
