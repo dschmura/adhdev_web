@@ -60,7 +60,7 @@ class AccountsController < ApplicationController
       redirect_to root_url(subdomain: @account.subdomain)
 
     elsif Jumpstart::Multitenancy.path?
-      redirect_to root_url(script_path: @account.id)
+      redirect_to root_url(script_name: "/#{@account.id}")
 
     else
       session[:account_id] = @account.id

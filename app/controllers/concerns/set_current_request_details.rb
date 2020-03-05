@@ -2,6 +2,8 @@ module SetCurrentRequestDetails
   extend ActiveSupport::Concern
 
   included do
+    set_current_tenant_through_filter
+
     prepend_before_action do
       Current.request_id = request.uuid
       Current.user_agent = request.user_agent
@@ -27,6 +29,8 @@ module SetCurrentRequestDetails
         Current.account ||= current_user.accounts.order(created_at: :asc).first
         Current.account ||= current_user.create_personal_account
       end
+
+      set_current_tenant(Current.account)
     end
   end
 end
