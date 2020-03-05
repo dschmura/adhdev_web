@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/ErwinM/acts_as_tenant.git
+  revision: 1ba28d1354848fd422603efa343b145bae5c5fdf
+  specs:
+    acts_as_tenant (0.4.4)
+      rails (>= 4.0)
+      request_store (>= 1.0.5)
+
+GIT
   remote: https://github.com/excid3/administrate.git
   revision: aa1df6d8b294e2f9f8da7271b8ac68c5ca32970c
   branch: jumpstart
@@ -280,6 +288,8 @@ GEM
       ttfunk (~> 1.5.1)
     redis (4.1.3)
     regexp_parser (1.7.0)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -354,6 +364,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_tenant!
   administrate!
   administrate-field-active_storage (~> 0.2.0)
   annotate

@@ -51,8 +51,21 @@ class AccountsController < ApplicationController
   end
 
   def switch
-    set_active_account
-    redirect_to root_path
+    # This is not enabled by default, because we can't guarantee the domain is configured properly.
+    # Uncomment this if you would like to redirect to the custom domain when switching accounts.
+    #if Jumpstart::Multitenancy.domain? && @account.domain
+    #  redirect_to @account.domain
+
+    if Jumpstart::Multitenancy.subdomain? && @account.subdomain
+      redirect_to root_url(subdomain: @account.subdomain)
+
+    elsif Jumpstart::Multitenancy.path?
+      redirect_to root_url(script_path: @account.id)
+
+    else
+      session[:account_id] = @account.id
+      redirect_to root_path
+    end
   end
 
   private

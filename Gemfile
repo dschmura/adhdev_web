@@ -58,6 +58,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Jumpstart dependencies
 gem "jumpstart", path: "lib/jumpstart"
 
+gem "acts_as_tenant", github: "ErwinM/acts_as_tenant"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
 gem "administrate-field-active_storage", "~> 0.2.0"
 gem "attr_encrypted", "~> 3.1"
