@@ -71,9 +71,9 @@ gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "oj", "~> 3.8", ">= 3.8.1"
 gem "pagy", "~> 3.7"
-gem "pay", github: "excid3/pay", branch: "sca" # '~> 1.0.0.beta5'
+gem "pay", "~> 2.0.0"
 gem "pg_search", "~> 2.3"
-gem "receipts", "~> 0.2.2"
+gem "receipts", "~> 1.0.0"
 gem "ruby-oembed", "~> 0.12.0", require: "oembed"
 gem "turbolinks_render", "~> 0.9.12"
 
