@@ -221,7 +221,7 @@ GEM
     oj (3.10.5)
     orm_adapter (0.5.0)
     pagy (3.7.3)
-    pay (2.0.2)
+    pay (2.0.3)
       rails (>= 4.2)
     pdf-core (0.7.0)
     pg (1.2.2)
