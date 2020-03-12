@@ -17,7 +17,7 @@ class AccountInvitation < ApplicationRecord
 
   def save_and_send_invite
     if save
-      AccountInvitationsMailer.with(self).invite.deliver_later
+      AccountInvitationsMailer.with(account_invitation: self).invite.deliver_later
     end
   end
 

@@ -93,7 +93,8 @@ module Jumpstart
           domain: ''
 
         postmark:
-          # https://account.postmarkapp.com/servers -> Server -> Credentials
+          # https://account.postmarkapp.com/servers -> Server -> API Tokens
+          # Use token as both username and password
           username: ''
           password: ''
 
@@ -190,6 +191,8 @@ module Jumpstart
 
         skylight:
           # https://skylight.io
+          # This should be the long 40+ character token from Settings, _not_the short setup token
+          # You can click "create the application manually" when setting up a new Skylight app to skip the setup token step and get your auth_token
           auth_token: ''
 
         rollbar:

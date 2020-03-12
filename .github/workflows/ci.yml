@@ -12,9 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
+        image: postgres:12
         env:
           POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
         ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
@@ -29,17 +30,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - uses: actions/cache@v1
-        id: cache
+      - name: Setup Ruby 2.7
+        uses: ruby/setup-ruby@v1
         with:
-          path: ~/local/rubies
-          key: ruby-2.7.0
-
-      - uses: clupprich/ruby-build-action@master
-        id: ruby
-        with:
-          ruby-version: 2.7.0
-          cache-available: ${{ steps.cache.outputs.cache-hit == 'true' }}
+          ruby-version: 2.7
 
       - name: Setup Node 12
         uses: actions/setup-node@v1
@@ -75,7 +69,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          DATABASE_URL: postgres://postgres:password@localhost:5432/test
           REDIS_URL: redis://localhost:6379/0
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
@@ -83,3 +77,4 @@ jobs:
         run: |
           bin/rails db:test:prepare
           bin/rails test
+

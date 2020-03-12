@@ -373,13 +373,14 @@ DEPENDENCIES
   devise_masquerade!
   image_processing (~> 1.9, >= 1.9.2)
   inline_svg (~> 1.6)
-  invisible_captcha
+  invisible_captcha (~> 1.0)
   jbuilder (~> 2.5)
   jumpstart!
   letter_opener_web (~> 1.3, >= 1.3.4)
   listen (~> 3.2, >= 3.2.1)
   local_time (~> 2.1)
   name_of_person (~> 1.0)
+  nokogiri (>= 1.10.8)
   oj (~> 3.8, >= 3.8.1)
   omniauth!
   pagy (~> 3.7)
@@ -409,4 +410,4 @@ RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
