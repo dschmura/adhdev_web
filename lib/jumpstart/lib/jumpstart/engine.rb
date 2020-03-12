@@ -37,7 +37,7 @@ module Jumpstart
         config.assets.precompile << "jumpstart_manifest.js"
       end
 
-      if Jumpstart::Multitenancy.path?
+      if Jumpstart::Multitenancy.path? || Rails.env.test?
         app.config.middleware.use Jumpstart::AccountMiddleware
       end
     end
