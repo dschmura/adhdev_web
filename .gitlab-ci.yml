@@ -7,8 +7,8 @@ variables:
   RAILS_ENV: test
   POSTGRES_DB: jumpstart_test
   POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: ""
-  DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/jumpstart_test"
+  POSTGRES_PASSWORD: "password"
+  DATABASE_URL: "postgresql://postgres:password@postgres:5432/jumpstart_test"
 
 before_script:
   - apt-get update -qq && apt-get install -y -qq nodejs
