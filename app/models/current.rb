@@ -13,6 +13,6 @@ class Current < ActiveSupport::CurrentAttributes
 
   def user=(value)
     super
-    Time.zone = Time.find_zone(user.time_zone)
+    Time.zone = Time.find_zone(value&.time_zone)
   end
 end
