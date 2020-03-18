@@ -8,4 +8,13 @@ class Jumpstart::UsersTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_path
   end
+
+  test "invalid time zones are handled safely" do
+    user = users(:one)
+    user.update! time_zone: "invalid"
+
+    sign_in user
+    get root_path
+    assert_response :success
+  end
 end
