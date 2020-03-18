@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::AccountsAccountInvitationsTest < ActionDispatch::IntegrationTest
   setup do
@@ -20,7 +20,7 @@ class Jumpstart::AccountsAccountInvitationsTest < ActionDispatch::IntegrationTes
     test "can invite account members" do
       name, email = "Account Member", "new-member@example.com"
       assert_difference "@account.account_invitations.count" do
-        post account_account_invitations_path(@account), params: { account_invitation: { name: name, email: email, admin: "0" } }
+        post account_account_invitations_path(@account), params: {account_invitation: {name: name, email: email, admin: "0"}}
       end
       assert_not @account.account_invitations.last.admin?
     end
@@ -28,7 +28,7 @@ class Jumpstart::AccountsAccountInvitationsTest < ActionDispatch::IntegrationTes
     test "can invite account members with roles" do
       name, email = "Account Member", "new-member@example.com"
       assert_difference "@account.account_invitations.count" do
-        post account_account_invitations_path(@account), params: { account_invitation: { name: name, email: email, admin: "1" } }
+        post account_account_invitations_path(@account), params: {account_invitation: {name: name, email: email, admin: "1"}}
       end
       assert @account.account_invitations.last.admin?
     end
@@ -52,7 +52,7 @@ class Jumpstart::AccountsAccountInvitationsTest < ActionDispatch::IntegrationTes
 
     test "cannot invite account members" do
       assert_no_difference "@account.account_invitations.count" do
-        post account_account_invitations_path(@account), params: { account_invitation: { name: "test", email: "new-member@example.com", admin: "0" } }
+        post account_account_invitations_path(@account), params: {account_invitation: {name: "test", email: "new-member@example.com", admin: "0"}}
       end
     end
 

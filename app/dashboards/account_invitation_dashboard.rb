@@ -17,7 +17,7 @@ class AccountInvitationDashboard < Administrate::BaseDashboard
     email: Field::String,
     roles: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,38 +26,38 @@ class AccountInvitationDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  account
-  invited_by
-  id
-  invited_by_id
+    account
+    invited_by
+    id
+    invited_by_id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  account
-  invited_by
-  id
-  invited_by_id
-  token
-  name
-  email
-  roles
-  created_at
-  updated_at
+    account
+    invited_by
+    id
+    invited_by_id
+    token
+    name
+    email
+    roles
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  account
-  invited_by
-  invited_by_id
-  token
-  name
-  email
-  roles
+    account
+    invited_by
+    invited_by_id
+    token
+    name
+    email
+    roles
   ].freeze
 
   # COLLECTION_FILTERS

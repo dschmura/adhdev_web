@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class AccountTest < ActiveSupport::TestCase
   test "validates against reserved domains" do
@@ -40,7 +40,7 @@ class AccountTest < ActiveSupport::TestCase
       "a-9",
       "1-2",
       "1_2",
-      "a_3",
+      "a_3"
     ].each do |subdomain|
       account = Account.new(subdomain: subdomain)
       account.valid?

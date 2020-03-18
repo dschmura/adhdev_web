@@ -22,7 +22,7 @@ module Jumpstart
     end
 
     def subscription_params
-      { name: "default", processor: :jumpstart, processor_id: :free, processor_plan: :free, quantity: 1, status: :active }
+      {name: "default", processor: :jumpstart, processor_id: :free, processor_plan: :free, quantity: 1, status: :active}
     end
   end
 end

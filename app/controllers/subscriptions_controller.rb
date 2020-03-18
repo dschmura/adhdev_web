@@ -21,16 +21,15 @@ class SubscriptionsController < ApplicationController
     processor_id = @plan.processor_id(current_account.processor)
     current_account.subscribe(plan: processor_id)
     redirect_to root_path, notice: "Thanks for subscribing!"
-
   rescue Pay::ActionRequired => e
     redirect_to pay.payment_path(e.payment.id)
-
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :new
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     current_account.assign_attributes(subscription_params)

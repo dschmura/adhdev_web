@@ -1,10 +1,10 @@
-require 'rails/generators'
-require 'rails/generators/erb/scaffold/scaffold_generator'
+require "rails/generators"
+require "rails/generators/erb/scaffold/scaffold_generator"
 
 module Erb
   module Generators
     class ScaffoldGenerator
-      source_paths << File.expand_path('../templates', __FILE__)
+      source_paths << File.expand_path("../templates", __FILE__)
 
       def copy_view_files
         available_views.each do |view|
@@ -20,7 +20,6 @@ module Erb
           "<%= nav_link_to \"#{plural_name.titleize}\", #{name.tableize}_path, class: 'nav-link' %>\n"
         end
       end
-
     end
   end
 end

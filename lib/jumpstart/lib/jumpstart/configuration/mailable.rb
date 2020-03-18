@@ -3,13 +3,13 @@ module Jumpstart
     module Mailable
       AVAILABLE_PROVIDERS = {
         "Amazon SES" => :ses,
-        "Mailgun"    => :mailgun,
-        "Mailjet"    => :mailjet,
-        "Mandrill"   => :mandrill,
-        "Postmark"   => :postmark,
-        "Sendgrid"   => :sendgrid,
+        "Mailgun" => :mailgun,
+        "Mailjet" => :mailjet,
+        "Mandrill" => :mandrill,
+        "Postmark" => :postmark,
+        "Sendgrid" => :sendgrid,
         "SendinBlue" => :sendinblue,
-        "SparkPost"  => :sparkpost
+        "SparkPost" => :sparkpost
       }.freeze
 
       AVAILABLE_PROVIDERS.values.map(&:to_s).each do |name|

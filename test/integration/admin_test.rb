@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::AdminTest < ActionDispatch::IntegrationTest
   test "cannot access /admin logged out" do

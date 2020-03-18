@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::UsersTest < ActionDispatch::IntegrationTest
   test "user can delete their account" do

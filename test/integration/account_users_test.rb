@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
   setup do
@@ -28,7 +28,7 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
     test "can add account users" do
       name, email = "Account Member", "new-user@example.com"
       assert_difference "@account.account_users.count" do
-        post account_account_users_path(@account), params: { name: name, email: email, account_user: { admin: "0" } }
+        post account_account_users_path(@account), params: {name: name, email: email, account_user: {admin: "0"}}
       end
       assert_response :redirect
       account_user = @account.account_users.find_by(user: User.find_by(email: email))
@@ -39,7 +39,7 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
     test "can add account users with roles" do
       name, email = "Account Member", "new-user@example.com"
       assert_difference "@account.account_users.count" do
-        post account_account_users_path(@account), params: { name: name, email: email, account_user: { admin: "1" } }
+        post account_account_users_path(@account), params: {name: name, email: email, account_user: {admin: "1"}}
       end
       assert_response :redirect
       account_user = @account.account_users.find_by(user: User.find_by(email: email))
@@ -55,7 +55,7 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
 
     test "can update account user" do
       account_user = account_users(:company_regular_user)
-      put account_account_user_path(@account, account_user), params: { account_user: { admin: "1" }}
+      put account_account_user_path(@account, account_user), params: {account_user: {admin: "1"}}
       assert_response :redirect
       assert account_user.reload.admin?
     end
@@ -89,18 +89,18 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
       assert_redirected_to account_path(@account)
     end
 
-    test 'Regular user cannot view account user page' do
+    test "Regular user cannot view account user page" do
       get account_account_user_path(@account, @admin)
       assert_redirected_to account_path(@account)
     end
 
-    test 'Regular user cannot add account users' do
+    test "Regular user cannot add account users" do
       name, email = "Account Member", "new-user@example.com"
-      post account_account_users_path(@account), params: { name: name, email: email }
+      post account_account_users_path(@account), params: {name: name, email: email}
       assert_redirected_to account_path(@account)
     end
 
-    test 'Regular user cannot edit account users' do
+    test "Regular user cannot edit account users" do
       # Cannot edit themselves
       account_user = @account.account_users.find_by(user: @regular_user)
       get edit_account_account_user_path(@account, account_user)
@@ -112,15 +112,15 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
       assert_redirected_to account_path(@account)
     end
 
-    test 'Regular user cannot update account users' do
+    test "Regular user cannot update account users" do
       # Cannot edit themselves
       account_user = @account.account_users.find_by(user: @regular_user)
-      put account_account_user_path(@account, account_user), params: { admin: "1" }
+      put account_account_user_path(@account, account_user), params: {admin: "1"}
       assert_redirected_to account_path(@account)
 
       # Cannot edit admin user
       account_user = @account.account_users.find_by(user: @admin)
-      put account_account_user_path(@account, account_user), params: { admin: "0" }
+      put account_account_user_path(@account, account_user), params: {admin: "0"}
       assert_redirected_to account_path(@account)
     end
 

@@ -25,7 +25,7 @@
 class ApiToken < ApplicationRecord
   belongs_to :user
 
-  scope :sorted, ->{ order("last_used_at DESC NULLS LAST, created_at DESC") }
+  scope :sorted, -> { order("last_used_at DESC NULLS LAST, created_at DESC") }
 
   has_secure_token :token
 

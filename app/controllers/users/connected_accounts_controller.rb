@@ -13,7 +13,7 @@ class Users::ConnectedAccountsController < ApplicationController
 
   private
 
-    def set_connected_account
-      @connected_account = current_user.connected_accounts.find(params[:id])
-    end
+  def set_connected_account
+    @connected_account = current_user.connected_accounts.find(params[:id])
+  end
 end

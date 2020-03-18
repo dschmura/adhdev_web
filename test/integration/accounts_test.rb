@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::AccountsTest < ActionDispatch::IntegrationTest
   setup do
@@ -19,7 +19,7 @@ class Jumpstart::AccountsTest < ActionDispatch::IntegrationTest
     end
 
     test "can update account" do
-      put account_path(@account), params: { account: { name: "Test Account 2" } }
+      put account_path(@account), params: {account: {name: "Test Account 2"}}
       assert_redirected_to account_path(@account)
       follow_redirect!
       assert_select "h1", "Test Account 2"
@@ -33,7 +33,7 @@ class Jumpstart::AccountsTest < ActionDispatch::IntegrationTest
       assert_equal flash[:notice], "Account was successfully destroyed."
     end
 
-    test 'cannot delete personal account' do
+    test "cannot delete personal account" do
       account = @admin.personal_account
       assert_no_difference "Account.count" do
         delete account_path(account)
@@ -54,7 +54,7 @@ class Jumpstart::AccountsTest < ActionDispatch::IntegrationTest
 
     test "cannot update account" do
       name = @account.name
-      put account_path(@account), params: { account: { name: "Test Account Changed" } }
+      put account_path(@account), params: {account: {name: "Test Account Changed"}}
       assert_redirected_to account_path(@account)
       follow_redirect!
       assert_select "h1", name

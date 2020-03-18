@@ -11,9 +11,9 @@
 #
 
 class Announcement < ApplicationRecord
-  TYPES = %w{ new fix improvement update }
+  TYPES = %w[new fix improvement update]
 
   has_rich_text :description
 
-  validates :kind, :title, :description, :published_at, presence: :true
+  validates :kind, :title, :description, :published_at, presence: true
 end

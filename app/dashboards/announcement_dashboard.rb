@@ -14,7 +14,7 @@ class AnnouncementDashboard < Administrate::BaseDashboard
     description: Field::Text,
     published_at: Field::DateTime,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,7 +26,7 @@ class AnnouncementDashboard < Administrate::BaseDashboard
     :id,
     :kind,
     :title,
-    :published_at,
+    :published_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +38,7 @@ class AnnouncementDashboard < Administrate::BaseDashboard
     :description,
     :published_at,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -48,7 +48,7 @@ class AnnouncementDashboard < Administrate::BaseDashboard
     :kind,
     :title,
     :description,
-    :published_at,
+    :published_at
   ].freeze
 
   # Overwrite this method to customize how announcements are displayed

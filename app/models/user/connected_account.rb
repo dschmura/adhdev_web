@@ -39,7 +39,7 @@ class User::ConnectedAccount < ApplicationRecord
 
   # Helper scopes for each provider
   Devise.omniauth_configs.each do |provider, _|
-    scope provider, ->{ where(provider: provider) }
+    scope provider, -> { where(provider: provider) }
   end
 
   # Look up from Omniauth auth hash
@@ -76,25 +76,25 @@ class User::ConnectedAccount < ApplicationRecord
   end
 
   # Replace the dynamically defined attr_encrypted method with our own
-  alias_method :attr_encrypted_access_token_secret=, :access_token_secret=
-  alias_method :access_token_secret=, :safe_access_token_secret=
+  alias attr_encrypted_access_token_secret= access_token_secret=
+  alias access_token_secret= safe_access_token_secret=
 
   private
 
-    def current_token
-      OAuth2::AccessToken.new(
-        strategy.client,
-        access_token,
-        refresh_token: refresh_token
-      )
-    end
+  def current_token
+    OAuth2::AccessToken.new(
+      strategy.client,
+      access_token,
+      refresh_token: refresh_token
+    )
+  end
 
-    def strategy
-      provider_config = Jumpstart::Omniauth.enabled_providers[provider.to_sym]
-      OmniAuth::Strategies.const_get(provider.classify).new(
-        nil,
-        provider_config[:public_key], # client id
-        provider_config[:private_key], # client secret
-      )
-    end
+  def strategy
+    provider_config = Jumpstart::Omniauth.enabled_providers[provider.to_sym]
+    OmniAuth::Strategies.const_get(provider.classify).new(
+      nil,
+      provider_config[:public_key], # client id
+      provider_config[:private_key] # client secret
+    )
+  end
 end

@@ -4,10 +4,10 @@
 module Jumpstart
   module Omniauth
     AVAILABLE_PROVIDERS = {
-      'facebook'      => { name: "Facebook", scope: 'email', provider: :facebook, icon: :facebook },
-      'github'        => { name: "GitHub", scope: 'user:email', provider: :github, icon: :github },
-      'google-oauth2' => { name: "Google", provider: :google_oauth2, icon: :google },
-      'twitter'       => { name: "Twitter", provider: :twitter, icon: :twitter },
+      "facebook" => {name: "Facebook", scope: "email", provider: :facebook, icon: :facebook},
+      "github" => {name: "GitHub", scope: "user:email", provider: :github, icon: :github},
+      "google-oauth2" => {name: "Google", provider: :google_oauth2, icon: :google},
+      "twitter" => {name: "Twitter", provider: :twitter, icon: :twitter}
     }.freeze
 
     def self.all_providers

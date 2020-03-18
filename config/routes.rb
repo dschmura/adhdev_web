@@ -1,9 +1,8 @@
- # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-
   # Jumpstart views
   if Rails.env.development? || Rails.env.test?
-    mount Jumpstart::Engine, at: '/jumpstart'
+    mount Jumpstart::Engine, at: "/jumpstart"
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
@@ -11,8 +10,8 @@ Rails.application.routes.draw do
   authenticated :user, lambda { |u| u.admin? } do
     namespace :admin do
       if defined?(Sidekiq)
-        require 'sidekiq/web'
-        mount Sidekiq::Web => '/sidekiq'
+        require "sidekiq/web"
+        mount Sidekiq::Web => "/sidekiq"
       end
 
       resources :announcements
@@ -33,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   # API routes
-  namespace :api, defaults: { format: :json } do
+  namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resource :me, controller: :me
       resources :accounts
@@ -43,11 +42,11 @@ Rails.application.routes.draw do
 
   # User account
   devise_for :users,
-             controllers: {
-               masquerades: 'jumpstart/masquerades',
-               omniauth_callbacks: 'users/omniauth_callbacks',
-               registrations: 'users/registrations',
-             }
+    controllers: {
+      masquerades: "jumpstart/masquerades",
+      omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: "users/registrations"
+    }
 
   resources :announcements, only: [:index]
   resources :api_tokens
@@ -79,7 +78,7 @@ Rails.application.routes.draw do
     resources :connected_accounts
   end
 
-  resources :embeds, only: [:create], constraints: { id: /[^\/]+/ } do
+  resources :embeds, only: [:create], constraints: {id: /[^\/]+/} do
     collection do
       get :patterns
     end

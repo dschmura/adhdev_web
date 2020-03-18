@@ -9,13 +9,13 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      redirect_to '/', alert: 'Not authorized.' unless user_signed_in? && current_user.admin?
+      redirect_to "/", alert: "Not authorized." unless user_signed_in? && current_user.admin?
     end
 
     def order
       @order ||= Administrate::Order.new(
-        params.fetch(resource_name, {}).fetch(:order, 'created_at'),
-        params.fetch(resource_name, {}).fetch(:direction, 'desc'),
+        params.fetch(resource_name, {}).fetch(:order, "created_at"),
+        params.fetch(resource_name, {}).fetch(:direction, "desc")
       )
     end
 

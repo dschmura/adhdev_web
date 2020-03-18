@@ -28,7 +28,7 @@ class AccountDashboard < Administrate::BaseDashboard
     extra_billing_info: Field::Text,
     plan: Field::String,
     quantity: Field::Number,
-    card_token: Field::String,
+    card_token: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,7 +40,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :name,
     :personal,
     :processor,
-    :account_users,
+    :account_users
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -66,7 +66,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :extra_billing_info,
     :plan,
     :quantity,
-    :card_token,
+    :card_token
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -90,7 +90,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :extra_billing_info,
     :plan,
     :quantity,
-    :card_token,
+    :card_token
   ].freeze
 
   # Overwrite this method to customize how accounts are displayed

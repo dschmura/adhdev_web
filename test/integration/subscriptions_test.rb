@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
   setup do
@@ -41,7 +41,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
       end
     end
 
-    test 'cannot subscribe' do
+    test "cannot subscribe" do
       Jumpstart.config.stub(:payments_enabled?, true) do
         post subscription_path, params: {}
         assert_redirected_to root_path
@@ -49,7 +49,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
       end
     end
 
-    test 'cannot delete subscription' do
+    test "cannot delete subscription" do
       Jumpstart.config.stub(:payments_enabled?, true) do
         delete subscription_path
         assert_redirected_to root_path

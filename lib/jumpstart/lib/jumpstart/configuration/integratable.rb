@@ -4,20 +4,20 @@ module Jumpstart
       extend ActiveSupport::Concern
 
       AVAILABLE_PROVIDERS = {
-        "AirBrake"    => "airbrake",
-        "AppSignal"   => "appsignal",
-        "ConvertKit"  => "convertkit",
-        "Drip"        => "drip",
+        "AirBrake" => "airbrake",
+        "AppSignal" => "appsignal",
+        "ConvertKit" => "convertkit",
+        "Drip" => "drip",
         "Honeybadger" => "honeybadger",
-        "Intercom"    => "intercom",
-        "MailChimp"   => "mailchimp",
-        "Rollbar"     => "rollbar",
-        "Scout"       => "scout",
-        "Sentry"      => "sentry",
-        "Skylight"    => "skylight",
+        "Intercom" => "intercom",
+        "MailChimp" => "mailchimp",
+        "Rollbar" => "rollbar",
+        "Scout" => "scout",
+        "Sentry" => "sentry",
+        "Skylight" => "skylight"
       }.freeze
 
-      attr_accessor :integrations
+      attr_writer :integrations
 
       AVAILABLE_PROVIDERS.values.each do |provider|
         define_method(:"#{provider}?") do

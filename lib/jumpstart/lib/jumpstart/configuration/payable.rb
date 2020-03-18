@@ -2,9 +2,9 @@ module Jumpstart
   class Configuration
     module Payable
       attr_writer :payment_processors
-      attr_accessor :plans
-      attr_accessor :monthly_plans
-      attr_accessor :yearly_plans
+      attr_writer :plans
+      attr_writer :monthly_plans
+      attr_writer :yearly_plans
 
       def braintree?
         payment_processors.include? :braintree
@@ -40,11 +40,11 @@ module Jumpstart
 
       private
 
-        def filter_plans(frequency, default="month")
-          plans.select do |plan|
-            plan.fetch(frequency, default).present?
-          end
+      def filter_plans(frequency, default = "month")
+        plans.select do |plan|
+          plan.fetch(frequency, default).present?
         end
       end
+    end
   end
 end
