@@ -13,7 +13,7 @@
         <thead>
           <tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
-            <th class="p-3 uppercase text-left text-xs text-gray-700"><%= attribute.human_name %></th>
+            <th class="p-3 uppercase text-left text-xs"><%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, '<%= attribute.human_name %>', class: 'text-gray-700' %></th>
 <% end -%>
             <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
           </tr>

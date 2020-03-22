@@ -1,5 +1,5 @@
 <div class="container mx-auto my-8 px-4">
-  <div class="max-w-2xl mx-auto">
+  <div class="max-w-3xl mx-auto">
     <div class="flex justify-between items-center mb-4">
       <h1 class="h3"><%%= link_to '<%= plural_table_name.titleize %>', <%= index_helper %>_path %> > <%= singular_table_name.titleize %> #<%%= @<%= singular_table_name %>.id %></h1>
       <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-link" %>
