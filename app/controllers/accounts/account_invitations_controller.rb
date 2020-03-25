@@ -34,25 +34,25 @@ class Accounts::AccountInvitationsController < ApplicationController
 
   private
 
-    def set_account
-      @account = current_user.accounts.find(params[:account_id])
-    end
+  def set_account
+    @account = current_user.accounts.find(params[:account_id])
+  end
 
-    def set_account_invitation
-      @account_invitation = @account.account_invitations.find_by!(token: params[:id])
-    end
+  def set_account_invitation
+    @account_invitation = @account.account_invitations.find_by!(token: params[:id])
+  end
 
-    def invitation_params
-      params
-        .require(:account_invitation)
-        .permit(:name, :email, AccountUser::ROLES)
-        .merge(account: @account, invited_by: current_user)
-    end
+  def invitation_params
+    params
+      .require(:account_invitation)
+      .permit(:name, :email, AccountUser::ROLES)
+      .merge(account: @account, invited_by: current_user)
+  end
 
-    def require_account_admin
-      account_user = @account.account_users.find_by(user: current_user)
-      unless account_user && account_user.active_roles.include?(:admin)
-        redirect_to @account, alert: "Only account admins are allowed to do that."
-      end
+  def require_account_admin
+    account_user = @account.account_users.find_by(user: current_user)
+    unless account_user&.active_roles&.include?(:admin)
+      redirect_to @account, alert: "Only account admins are allowed to do that."
     end
+  end
 end

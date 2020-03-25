@@ -37,12 +37,11 @@ class ApiTokensController < ApplicationController
 
   private
 
-    def set_api_token
-      @api_token = current_user.api_tokens.find(params[:id])
-    end
+  def set_api_token
+    @api_token = current_user.api_tokens.find(params[:id])
+  end
 
-    def api_token_params
-      params.require(:api_token).permit(:name)
-    end
+  def api_token_params
+    params.require(:api_token).permit(:name)
+  end
 end
-

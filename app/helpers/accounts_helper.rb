@@ -1,5 +1,5 @@
 module AccountsHelper
-  def account_avatar(account, options={})
+  def account_avatar(account, options = {})
     size = options[:size] || 48
     classes = options[:class]
 
@@ -12,7 +12,7 @@ module AccountsHelper
         gravity: "center",
         extent: "#{size}x#{size}"
       }),
-      class: classes
+        class: classes
     else
       content = content_tag(:span, account.name.to_s.first, class: "initials")
 

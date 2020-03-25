@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 module Jumpstart
   class OmniauthControllerTest < ActionDispatch::IntegrationTest

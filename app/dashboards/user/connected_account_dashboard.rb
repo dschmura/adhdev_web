@@ -14,7 +14,7 @@ class User::ConnectedAccountDashboard < Administrate::BaseDashboard
     uid: Field::String,
     expires_at: Field::DateTime,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,7 +26,7 @@ class User::ConnectedAccountDashboard < Administrate::BaseDashboard
     :id,
     :user,
     :provider,
-    :uid,
+    :uid
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +38,7 @@ class User::ConnectedAccountDashboard < Administrate::BaseDashboard
     :uid,
     :expires_at,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -47,7 +47,7 @@ class User::ConnectedAccountDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :user,
     :provider,
-    :uid,
+    :uid
   ].freeze
 
   # Overwrite this method to customize how connected accounts are displayed

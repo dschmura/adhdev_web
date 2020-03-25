@@ -30,7 +30,7 @@ class Account < ApplicationRecord
   include Pay::Billable
 
   RESERVED_DOMAINS = [Jumpstart.config.domain]
-  RESERVED_SUBDOMAINS = %w(app help support)
+  RESERVED_SUBDOMAINS = %w[app help support]
 
   belongs_to :owner, class_name: "User"
   has_many :account_invitations, dependent: :destroy
@@ -39,14 +39,14 @@ class Account < ApplicationRecord
 
   has_one_attached :logo
 
-  scope :personal, ->{ where(personal: true) }
-  scope :impersonal, ->{ where(personal: false) }
+  scope :personal, -> { where(personal: true) }
+  scope :impersonal, -> { where(personal: false) }
 
   has_one_attached :avatar
 
   validates :name, presence: true
-  validates :domain, exclusion: { in: RESERVED_DOMAINS, message: "%{value} is reserved." }
-  validates :subdomain, exclusion: { in: RESERVED_SUBDOMAINS, message: "%{value} is reserved." }, format: { with: /\A[a-zA-Z0-9]+[a-zA-Z0-9-_]*[a-zA-Z0-9]+\Z/, message: "must be at least 2 characters and alphanumeric", allow_blank: true }
+  validates :domain, exclusion: {in: RESERVED_DOMAINS, message: "%{value} is reserved."}
+  validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: "%{value} is reserved."}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9-_]*[a-zA-Z0-9]+\Z/, message: "must be at least 2 characters and alphanumeric", allow_blank: true}
 
   def email
     account_users.includes(:user).order(created_at: :asc).first.user.email

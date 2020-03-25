@@ -1,6 +1,5 @@
 module Jumpstart
   module AdministrateHelpers
-
     def charge_processor_url(charge)
       case charge.processor
       when "stripe"
@@ -30,18 +29,18 @@ module Jumpstart
 
     private
 
-      def stripe_base_url
-        url = "https://dashboard.stripe.com"
-        url += "/test" if Pay::Stripe.public_key.start_with?("pk_test")
-        url
-      end
+    def stripe_base_url
+      url = "https://dashboard.stripe.com"
+      url += "/test" if Pay::Stripe.public_key.start_with?("pk_test")
+      url
+    end
 
-      def braintree_base_url
-        config      = Pay.braintree_gateway.config
-        merchant_id = config.merchant_id
-        environment = (config.environment.to_s == "sandbox" ? "sandbox" : "www")
+    def braintree_base_url
+      config = Pay.braintree_gateway.config
+      merchant_id = config.merchant_id
+      environment = (config.environment.to_s == "sandbox" ? "sandbox" : "www")
 
-        "https://#{environment}.braintreegateway.com/merchants/#{merchant_id}"
-      end
+      "https://#{environment}.braintreegateway.com/merchants/#{merchant_id}"
+    end
   end
 end

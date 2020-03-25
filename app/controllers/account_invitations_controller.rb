@@ -23,9 +23,9 @@ class AccountInvitationsController < ApplicationController
 
   private
 
-    def set_account_invitation
-      @account_invitation = AccountInvitation.find_by!(token: params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path, alert: "Whoops, we weren't able to find this invitation. Check with your account admin for a new invitation."
-    end
+  def set_account_invitation
+    @account_invitation = AccountInvitation.find_by!(token: params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Whoops, we weren't able to find this invitation. Check with your account admin for a new invitation."
+  end
 end

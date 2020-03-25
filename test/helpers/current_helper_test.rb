@@ -1,9 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class CurrentHelperTest < ActionView::TestCase
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 
   setup do
     @current_user = users(:one)
@@ -19,7 +17,7 @@ class CurrentHelperTest < ActionView::TestCase
     assert_not_nil current_account_user
   end
 
-  test 'current_account_admin? returns true for an admin' do
+  test "current_account_admin? returns true for an admin" do
     account_user = account_users(:two)
     @current_user = account_user.user
     Current.user = account_user.user
@@ -29,7 +27,7 @@ class CurrentHelperTest < ActionView::TestCase
     assert current_account_admin?
   end
 
-  test 'current_account_admin? returns false for a non admin' do
+  test "current_account_admin? returns false for a non admin" do
     account_user = account_users(:company_regular_user)
     @current_user = account_user.user
     Current.user = account_user.user

@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # Jumpstart: Skip email confirmation on registration.
     #   Require confirmation when user changes their email only
-    self.resource.skip_confirmation!
+    resource.skip_confirmation!
   end
 
   def update_resource(resource, params)

@@ -1,5 +1,5 @@
 module SortHelper
-  def sortable(relation, column, title, options={})
+  def sortable(relation, column, title, options = {})
     matching_column = column.to_s == sort_column(relation.klass)
     direction = sort_direction == "asc" ? "desc" : "asc"
 

@@ -34,6 +34,7 @@ group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
   gem "letter_opener_web", "~> 1.3", ">= 1.3.4"
+  gem "standard"
 end
 
 group :development do
@@ -68,7 +69,7 @@ gem "devise_invitable", "~> 2.0", ">= 2.0.1"
 gem "devise_masquerade", github: "excid3/devise_masquerade"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"
-gem 'invisible_captcha', '~> 1.0'
+gem "invisible_captcha", "~> 1.0"
 gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "oj", "~> 3.8", ">= 3.8.1"

@@ -21,13 +21,13 @@ class Api::V1::UsersController < Api::BaseController
       }
 
     else
-      render json: { errors: user.errors }
+      render json: {errors: user.errors}
     end
   end
 
   private
 
-    def devise_parameter_sanitizer
-      @devise_parameter_sanitizer ||= Devise::ParameterSanitizer.new(User, :user, params)
-    end
+  def devise_parameter_sanitizer
+    @devise_parameter_sanitizer ||= Devise::ParameterSanitizer.new(User, :user, params)
+  end
 end

@@ -20,7 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-require 'test_helper'
+require "test_helper"
 
 class AccountUserTest < ActiveSupport::TestCase
   test "converts roles to booleans" do

@@ -1,6 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
-class Jumpstart::MultitenancyTest< ActionDispatch::IntegrationTest
+class Jumpstart::MultitenancyTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @account = accounts(:company)
@@ -8,7 +8,7 @@ class Jumpstart::MultitenancyTest< ActionDispatch::IntegrationTest
   end
 
   test "domain multitenancy" do
-    Jumpstart::Multitenancy.stub :selected, ["domain"]  do
+    Jumpstart::Multitenancy.stub :selected, ["domain"] do
       get root_path
       assert_match "Signed in as <strong>#{@user.name}</strong>", response.body
 
@@ -21,7 +21,7 @@ class Jumpstart::MultitenancyTest< ActionDispatch::IntegrationTest
   end
 
   test "subdomain multitenancy" do
-    Jumpstart::Multitenancy.stub :selected, ["subdomain"]  do
+    Jumpstart::Multitenancy.stub :selected, ["subdomain"] do
       get root_path
       assert_match "Signed in as <strong>#{@user.name}</strong>", response.body
 
@@ -34,7 +34,7 @@ class Jumpstart::MultitenancyTest< ActionDispatch::IntegrationTest
   end
 
   test "script path multitenancy" do
-    Jumpstart::Multitenancy.stub :selected, ["path"]  do
+    Jumpstart::Multitenancy.stub :selected, ["path"] do
       get "/"
       assert_match "Signed in as <strong>#{@user.name}</strong>", response.body
 
@@ -44,7 +44,7 @@ class Jumpstart::MultitenancyTest< ActionDispatch::IntegrationTest
   end
 
   test "session multitenancy" do
-    Jumpstart::Multitenancy.stub :selected, []  do
+    Jumpstart::Multitenancy.stub :selected, [] do
       get root_path
       assert_match "Signed in as <strong>#{@user.name}</strong>", response.body
 
@@ -55,4 +55,3 @@ class Jumpstart::MultitenancyTest< ActionDispatch::IntegrationTest
     end
   end
 end
-

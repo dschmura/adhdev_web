@@ -1,6 +1,6 @@
 module SubscriptionsHelper
   def braintree_env
-    Rails.env.production? ? 'production' : 'sandbox'
+    Rails.env.production? ? "production" : "sandbox"
   end
 
   def payment_method_details(object)

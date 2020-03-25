@@ -21,12 +21,12 @@ module Jumpstart
 
   # https://stackoverflow.com/a/25615344/277994
   def self.bundle
-    Bundler.original_system('bundle')
+    Bundler.original_system("bundle")
   end
 
   def self.find_plan(id)
     return if id.nil?
-    config.plans.find{ |plan| plan["id"].to_s == id.to_s }
+    config.plans.find { |plan| plan["id"].to_s == id.to_s }
   end
 
   def self.processor_plan_id_for(id, interval, processor)

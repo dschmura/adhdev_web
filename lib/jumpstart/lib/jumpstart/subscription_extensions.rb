@@ -3,8 +3,8 @@ module Jumpstart
     extend ActiveSupport::Concern
 
     def plan
-      query = { :"#{processor}_id" => processor_plan }
-      Plan.where('details @> ?', query.to_json).first
+      query = {"#{processor}_id": processor_plan}
+      Plan.where("details @> ?", query.to_json).first
     end
 
     def plan_interval

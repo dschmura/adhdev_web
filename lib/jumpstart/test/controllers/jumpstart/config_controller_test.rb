@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 module Jumpstart
   class ConfigControllerTest < ActionDispatch::IntegrationTest
@@ -8,6 +8,5 @@ module Jumpstart
       get config_create_url
       assert_response :success
     end
-
   end
 end

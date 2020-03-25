@@ -13,7 +13,7 @@ class AccountUserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     admin: Field::Boolean,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,7 +25,7 @@ class AccountUserDashboard < Administrate::BaseDashboard
     :id,
     :account,
     :user,
-    :admin,
+    :admin
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,7 +36,7 @@ class AccountUserDashboard < Administrate::BaseDashboard
     :id,
     :admin,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,7 +45,7 @@ class AccountUserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :account,
     :user,
-    :admin,
+    :admin
   ].freeze
 
   # Overwrite this method to customize how account members are displayed

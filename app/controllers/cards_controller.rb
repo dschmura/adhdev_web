@@ -18,10 +18,10 @@ class CardsController < ApplicationController
   end
 
   def token
-    card_params.fetch('card_token')
+    card_params.fetch("card_token")
   end
 
   def processor
-    card_params.fetch('processor')
+    card_params.fetch("processor")
   end
 end

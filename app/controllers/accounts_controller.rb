@@ -29,7 +29,7 @@ class AccountsController < ApplicationController
 
     if @account.save
       set_active_account
-      redirect_to @account, notice: 'Account was successfully created.'
+      redirect_to @account, notice: "Account was successfully created."
     else
       render :new
     end
@@ -38,7 +38,7 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      redirect_to @account, notice: "Account was successfully updated."
     else
       render :edit
     end
@@ -47,13 +47,13 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1
   def destroy
     @account.destroy
-    redirect_to accounts_url, notice: 'Account was successfully destroyed.'
+    redirect_to accounts_url, notice: "Account was successfully destroyed."
   end
 
   def switch
     # This is not enabled by default, because we can't guarantee the domain is configured properly.
     # Uncomment this if you would like to redirect to the custom domain when switching accounts.
-    #if Jumpstart::Multitenancy.domain? && @account.domain?
+    # if Jumpstart::Multitenancy.domain? && @account.domain?
     #  redirect_to @account.domain
 
     if Jumpstart::Multitenancy.subdomain? && @account.subdomain?
@@ -69,33 +69,34 @@ class AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = current_user.accounts.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def account_params
-      attributes = [:name]
-      attributes << :domain if Jumpstart::Multitenancy.domain?
-      attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
-      params.require(:account).permit(*attributes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = current_user.accounts.find(params[:id])
+  end
 
-    def set_active_account
-      session[:account_id] = @account.id
-    end
+  # Only allow a trusted parameter "white list" through.
+  def account_params
+    attributes = [:name]
+    attributes << :domain if Jumpstart::Multitenancy.domain?
+    attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
+    params.require(:account).permit(*attributes)
+  end
 
-    def require_admin
-      account_user = @account.account_users.find_by(user: current_user)
-      if account_user.nil? || !account_user.admin?
-        redirect_to account_path(@account), alert: "You must be a account admin to do that."
-      end
-    end
+  def set_active_account
+    session[:account_id] = @account.id
+  end
 
-    def prevent_personal_account_deletion
-      if @account.personal?
-        redirect_to account_path(@account), alert: "You cannot delete your personal account."
-      end
+  def require_admin
+    account_user = @account.account_users.find_by(user: current_user)
+    if account_user.nil? || !account_user.admin?
+      redirect_to account_path(@account), alert: "You must be a account admin to do that."
     end
+  end
+
+  def prevent_personal_account_deletion
+    if @account.personal?
+      redirect_to account_path(@account), alert: "You cannot delete your personal account."
+    end
+  end
 end

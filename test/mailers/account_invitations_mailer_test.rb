@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class AccountInvitationsMailerTest < ActionMailer::TestCase
   test "invite" do
@@ -9,5 +9,4 @@ class AccountInvitationsMailerTest < ActionMailer::TestCase
     assert_equal [Jumpstart.config.support_email], mail.from
     assert_match "View invitation", mail.body.encoded
   end
-
 end

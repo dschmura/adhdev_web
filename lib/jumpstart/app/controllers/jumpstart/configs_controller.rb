@@ -18,8 +18,8 @@ module Jumpstart
     private
 
     def config_params
-      params.require(:configuration).
-        permit(
+      params.require(:configuration)
+        .permit(
           :application_name,
           :business_name,
           :business_address,
