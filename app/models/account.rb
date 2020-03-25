@@ -55,4 +55,10 @@ class Account < ApplicationRecord
   def personal_account_for?(user)
     personal? && owner_id == user.id
   end
+
+  # Uncomment this to add generic trials (without a card or plan)
+  #
+  # before_create do
+  #   self.trial_ends_at = 14.days.from_now
+  # end
 end

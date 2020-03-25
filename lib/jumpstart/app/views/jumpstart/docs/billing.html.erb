@@ -43,6 +43,10 @@
   <p class="mb-4">Plans can be defined in the <%= link_to "Plans Admin", main_app.admin_plans_path, target: :_blank, class: "text-blue-500" %> and allows for changes without deploying code. Each plan should be defined with the price amount in cents.</p>
   <p class="mb-4">The Stripe and Braintree IDs are used to subscribe the user to the matching plan defined inside Stripe or Braintree.</p>
 
+  <h3 class="pb-3 mb-6 border-b border-gray-400">Trials</h3>
+  <p class="mb-4">Generic trials are trials without a card or subscription plan. These can be configured in <code>app/models/account.rb</code> by uncommenting the <code>before_create</code> block. You can check if an account is on generic trial with <code>account.on_generic_trial?</code>.</p>
+  <p class="mb-4">Subscription trials are trials that require both a card upfront and a subscription plan selected. You can simply add <code>trial_period_days</code> when creating a Plan in the admin. When the subscription is created, the <code>trial_period_days</code> will be passed along to Stripe and Braintree for adding a trial to the subscription.</p>
+
   <h3 class="pb-3 mb-6 border-b border-gray-400">Stripe</h3>
   <p class="mb-2">Processing payments with Stripe is as simple as adding your Stripe credentials, enabling the Stripe configuration, and adding plans with Stripe IDs on them.</p>
 

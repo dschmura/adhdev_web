@@ -16,12 +16,12 @@ module Jumpstart
   @@config = {}
 
   def self.restart
-    Bundler.clean_system("rails restart")
+    Bundler.original_system("rails restart")
   end
 
   # https://stackoverflow.com/a/25615344/277994
   def self.bundle
-    Bundler.clean_system('bundle')
+    Bundler.original_system('bundle')
   end
 
   def self.find_plan(id)

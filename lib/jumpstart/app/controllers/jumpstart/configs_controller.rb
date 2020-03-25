@@ -29,6 +29,7 @@ module Jumpstart
           :background_job_processor,
           :cancel_immediately,
           :email_provider,
+          :personal_accounts,
           integrations: [],
           omniauth_providers: [],
           payment_processors: [],

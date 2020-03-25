@@ -22,6 +22,7 @@ module Jumpstart
     attr_accessor :support_email
     attr_accessor :omniauth_providers
     attr_accessor :multitenancy
+    attr_accessor :personal_accounts
 
     def self.load!
       if File.exists?(config_path)
@@ -49,6 +50,8 @@ module Jumpstart
       self.support_email ||= "support@example.com"
       self.default_from_email ||= "Jumpstart <support@example.com>"
       self.job_processor ||= "async"
+
+      self.personal_accounts = true if self.personal_accounts.nil?
     end
 
     def save
@@ -130,6 +133,11 @@ module Jumpstart
 
     def omniauth_providers
       Array.wrap(@omniauth_providers)
+    end
+
+    def personal_accounts
+      # Enabled by default
+      @personal_accounts.nil? ? true : @personal_accounts
     end
 
     def update_procfiles
