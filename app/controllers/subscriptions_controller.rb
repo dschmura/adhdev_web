@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
     current_account.assign_attributes(subscription_params)
     @plan = Plan.without_free.find(current_account.plan) # Get the Stripe or Braintree specific ID
     processor_id = @plan.processor_id(current_account.processor)
-    current_account.subscribe(plan: processor_id)
+    current_account.subscribe(plan: processor_id, trial_period_days: @plan.trial_period_days)
     redirect_to root_path, notice: "Thanks for subscribing!"
 
   rescue Pay::ActionRequired => e
