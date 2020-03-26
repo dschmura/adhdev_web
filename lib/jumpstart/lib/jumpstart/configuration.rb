@@ -22,7 +22,6 @@ module Jumpstart
     attr_accessor :support_email
     attr_accessor :multitenancy
     attr_writer :omniauth_providers
-    attr_writer :personal_accounts
 
     def self.load!
       if File.exist?(config_path)
@@ -135,9 +134,13 @@ module Jumpstart
       Array.wrap(@omniauth_providers)
     end
 
+    def personal_accounts=(value)
+      @personal_accounts = ActiveModel::Type::Boolean.new.cast(value)
+    end
+
     def personal_accounts
       # Enabled by default
-      @personal_accounts.nil? ? true : @personal_accounts
+      @personal_accounts.nil? ? true : ActiveModel::Type::Boolean.new.cast(@personal_accounts)
     end
 
     def update_procfiles
