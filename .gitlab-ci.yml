@@ -23,9 +23,7 @@ before_script:
   - gem install bundler --no-document
   - bundle install --jobs $(nproc)  "${FLAGS[@]}" --path /cache
   - yarn install
-
-  # Database setup
-  - bin/rails db:setup
+  - bin/rails db:test:prepare
 
 test:
   stage: test
@@ -33,6 +31,7 @@ test:
     paths:
       - node_modules/
       - .yarn
+      - /cache
   script:
   - bundle exec rails test
   only:
