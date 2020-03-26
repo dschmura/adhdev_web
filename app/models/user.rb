@@ -46,16 +46,17 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, andle :trackable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :invitable, :masqueradable,
-         :omniauthable
+    :recoverable, :rememberable, :validatable,
+    :confirmable, :invitable, :masqueradable,
+    :omniauthable
 
-  include UserAgreements, UserTeams
+  include UserAccounts
+  include UserAgreements
 
   has_person_name
 
   include PgSearch::Model
-  pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: { tsearch: { prefix: true } }
+  pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: {tsearch: {prefix: true}}
 
   # ActiveStorage Associations
   has_one_attached :avatar

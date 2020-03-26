@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::OmniauthCallbacksTest < ActionDispatch::IntegrationTest
   setup do
     OmniAuth.config.test_mode = true
-    OmniAuth.config.add_mock(:developer, uid: '12345', info: { email: "twitter@example.com" }, credentials: { token: 1 })
+    OmniAuth.config.add_mock(:developer, uid: "12345", info: {email: "twitter@example.com"}, credentials: {token: 1})
   end
 
   test "can register and login with a social account" do
@@ -36,7 +36,7 @@ class Jumpstart::OmniauthCallbacksTest < ActionDispatch::IntegrationTest
 
   test "Cannot login with social if email is taken but not connected yet" do
     user = users(:one)
-    OmniAuth.config.add_mock(:developer, uid: '12345', info: { email: user.email }, credentials: { token: 1 })
+    OmniAuth.config.add_mock(:developer, uid: "12345", info: {email: user.email}, credentials: {token: 1})
 
     get "/users/auth/developer/callback"
 

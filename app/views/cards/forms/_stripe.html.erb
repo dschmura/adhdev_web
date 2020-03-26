@@ -1,6 +1,6 @@
 <% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
 
-<%= form_with model: current_team,
+<%= form_with model: current_account,
   url: card_url,
   class: "mt-4",
   data: {

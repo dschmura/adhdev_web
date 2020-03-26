@@ -13,7 +13,7 @@ class Api::BaseController < ApplicationController
   end
 
   def token_from_header
-    request.headers.fetch('Authorization', '').split(' ').last
+    request.headers.fetch("Authorization", "").split(" ").last
   end
 
   def api_token

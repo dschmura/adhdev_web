@@ -16,13 +16,13 @@ class Plan < ApplicationRecord
   attribute :features, :string, array: true
 
   validates :name, :amount, :interval, presence: true
-  validates :interval, inclusion: %w{ month year }
-  validates :trial_period_days, numericality: { only_integer: true }
+  validates :interval, inclusion: %w[month year]
+  validates :trial_period_days, numericality: {only_integer: true}
 
-  scope :monthly, ->{ without_free.where(interval: :month) }
-  scope :yearly,  ->{ without_free.where(interval: :year) }
-  scope :sorted,  ->{ order(amount: :asc) }
-  scope :without_free, ->{ where.not(details: {jumpstart_id: :free}) }
+  scope :monthly, -> { without_free.where(interval: :month) }
+  scope :yearly, -> { without_free.where(interval: :year) }
+  scope :sorted, -> { order(amount: :asc) }
+  scope :without_free, -> { where.not(details: {jumpstart_id: :free}) }
 
   def features
     Array.wrap(super)

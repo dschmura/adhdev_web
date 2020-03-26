@@ -1,4 +1,4 @@
-require 'rollbar'
+require "rollbar"
 
 Rollbar.configure do |config|
   config.access_token = Rails.application.credentials.rollbar[:access_token]

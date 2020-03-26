@@ -8,7 +8,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    owner: Field::BelongsTo.with_options(class_name: "Team"),
+    owner: Field::BelongsTo.with_options(class_name: "Account"),
     id: Field::Number,
     name: Field::String,
     processor: Field::String,
@@ -21,7 +21,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     prorate: Field::Boolean,
     active?: Field::Boolean,
-    cancelled?: Field::Boolean,
+    cancelled?: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,7 +34,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
     :owner,
     :name,
     :active?,
-    :cancelled?,
+    :cancelled?
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -52,7 +52,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
     :ends_at,
     :created_at,
     :updated_at,
-    :prorate,
+    :prorate
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -67,7 +67,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
     :quantity,
     :trial_ends_at,
     :ends_at,
-    :prorate,
+    :prorate
   ].freeze
 
   # Overwrite this method to customize how subscriptions are displayed

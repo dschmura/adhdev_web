@@ -8,14 +8,14 @@ module Jumpstart
 
     # rubocop: disable Metrics/AbcSize
     def settings
-      return mailgun_settings    if config.mailgun?
-      return mailjet_settings    if config.mailjet?
-      return mandrill_settings   if config.mandrill?
-      return postmark_settings   if config.postmark?
-      return sendgrid_settings   if config.sendgrid?
+      return mailgun_settings if config.mailgun?
+      return mailjet_settings if config.mailjet?
+      return mandrill_settings if config.mandrill?
+      return postmark_settings if config.postmark?
+      return sendgrid_settings if config.sendgrid?
       return sendinblue_settings if config.sendinblue?
-      return ses_settings        if config.ses?
-      return sparkpost_settings  if config.sparkpost?
+      return ses_settings if config.ses?
+      return sparkpost_settings if config.sparkpost?
       {}
     end
     # rubocop: enable Metrics/AbcSize
@@ -39,71 +39,71 @@ module Jumpstart
       }
     end
 
-    #TODO: SEARCH RAILS ENV THEN NON RAILS ENV
+    # TODO: SEARCH RAILS ENV THEN NON RAILS ENV
 
     def mailgun_settings
       {
-        address: 'smtp.mailgun.org',
+        address: "smtp.mailgun.org",
         user_name: get_credential(:mailgun, :username),
-        password:  get_credential(:mailgun, :password),
+        password: get_credential(:mailgun, :password)
       }.merge(shared_settings)
     end
 
     def mailjet_settings
       {
-        address:   'in.mailjet.com',
+        address: "in.mailjet.com",
         user_name: get_credential(:mailjet, :username),
-        password:  get_credential(:mailjet, :password),
+        password: get_credential(:mailjet, :password)
       }.merge(shared_settings)
     end
 
     def mandrill_settings
       {
-        address:   'smtp.mandrillapp.com',
+        address: "smtp.mandrillapp.com",
         user_name: get_credential(:mandrill, :username),
-        password:  get_credential(:mandrill, :password),
+        password: get_credential(:mandrill, :password)
       }.merge(shared_settings)
     end
 
     def postmark_settings
       {
-        address:   'smtp.postmarkapp.com',
+        address: "smtp.postmarkapp.com",
         user_name: get_credential(:postmark, :username),
-        password:  get_credential(:postmark, :password),
+        password: get_credential(:postmark, :password)
       }.merge(shared_settings)
     end
 
     def sendinblue_settings
       shared_settings.merge({
-        address:        'smtp-relay.sendinblue.com',
-        authentication: 'login',
-        user_name:      get_credential(:sendinblue, :username),
-        password:       get_credential(:sendinblue, :password),
+        address: "smtp-relay.sendinblue.com",
+        authentication: "login",
+        user_name: get_credential(:sendinblue, :username),
+        password: get_credential(:sendinblue, :password)
       })
     end
 
     def sendgrid_settings
       {
-        address:   'smtp.sendgrid.net',
-        domain:    get_credential(:sendgrid, :domain),
+        address: "smtp.sendgrid.net",
+        domain: get_credential(:sendgrid, :domain),
         user_name: get_credential(:sendgrid, :username),
-        password:  get_credential(:sendgrid, :password),
+        password: get_credential(:sendgrid, :password)
       }.merge(shared_settings)
     end
 
     def ses_settings
       {
-        address:   get_credential(:ses, :address),
+        address: get_credential(:ses, :address),
         user_name: get_credential(:ses, :username),
-        password:  get_credential(:ses, :password),
+        password: get_credential(:ses, :password)
       }.merge(shared_settings)
     end
 
     def sparkpost_settings
       {
-        address:   'smtp.sparkpostmail.com',
-        user_name: 'SMTP_Injection',
-        password:  get_credential(:sparkpost, :password),
+        address: "smtp.sparkpostmail.com",
+        user_name: "SMTP_Injection",
+        password: get_credential(:sparkpost, :password)
       }.merge(shared_settings)
     end
   end

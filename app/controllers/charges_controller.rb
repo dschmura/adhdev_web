@@ -15,7 +15,7 @@ class ChargesController < ApplicationController
 
   private
 
-    def set_charge
-      @charge = current_team.charges.find(params[:id])
-    end
+  def set_charge
+    @charge = current_account.charges.find(params[:id])
+  end
 end

@@ -34,6 +34,7 @@ group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
   gem "letter_opener_web", "~> 1.3", ">= 1.3.4"
+  gem "standard"
 end
 
 group :development do
@@ -59,6 +60,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Jumpstart dependencies
 gem "jumpstart", path: "lib/jumpstart"
 
+gem "acts_as_tenant", github: "ErwinM/acts_as_tenant"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
 gem "administrate-field-active_storage", "~> 0.2.0"
 gem "attr_encrypted", "~> 3.1"
@@ -67,12 +69,12 @@ gem "devise_invitable", "~> 2.0", ">= 2.0.1"
 gem "devise_masquerade", github: "excid3/devise_masquerade"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"
-gem 'invisible_captcha', '~> 1.0'
+gem "invisible_captcha", "~> 1.0"
 gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "oj", "~> 3.8", ">= 3.8.1"
 gem "pagy", "~> 3.7"
-gem "pay", '~> 2.0.0'
+gem "pay", "~> 2.1.0"
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 1.0.0"
 gem "ruby-oembed", "~> 0.12.0", require: "oembed"

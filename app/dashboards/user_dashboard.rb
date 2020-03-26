@@ -15,7 +15,7 @@ class UserDashboard < Administrate::BaseDashboard
     email: Field::String,
     password: Field::Password.with_options(searchable: false),
     password_confirmation: Field::Password.with_options(searchable: false),
-    teams: Field::HasMany,
+    accounts: Field::HasMany,
     connected_accounts: Field::HasMany.with_options(class_name: "User::ConnectedAccount"),
     invited_by: Field::Polymorphic,
     avatar: Field::ActiveStorage,
@@ -38,7 +38,7 @@ class UserDashboard < Administrate::BaseDashboard
     invitations_count: Field::Number,
     terms_of_service: Field::Boolean,
     accepted_terms_at: Field::DateTime,
-    accepted_privacy_at: Field::DateTime,
+    accepted_privacy_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -50,8 +50,8 @@ class UserDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :email,
-    :teams,
-    :connected_accounts,
+    :accounts,
+    :connected_accounts
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -59,7 +59,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :email,
-    :teams,
+    :accounts,
     :connected_accounts,
     :time_zone,
     :invited_by,
@@ -81,7 +81,7 @@ class UserDashboard < Administrate::BaseDashboard
     :invitation_sent_at,
     :invitation_accepted_at,
     :invitation_limit,
-    :invitations_count,
+    :invitations_count
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -93,7 +93,7 @@ class UserDashboard < Administrate::BaseDashboard
     :password,
     :password_confirmation,
     :admin,
-    :terms_of_service,
+    :terms_of_service
   ].freeze
 
   # Overwrite this method to customize how users are displayed

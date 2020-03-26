@@ -7,7 +7,7 @@ module Jumpstart
 
       if user.save
         # Create a fake subscription for the admin user so they have access to everything by default
-        user.personal_team.subscriptions.create(subscription_params)
+        user.personal_account.subscriptions.create(subscription_params)
 
         redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin."
       else
@@ -22,7 +22,7 @@ module Jumpstart
     end
 
     def subscription_params
-      { name: "default", processor: :jumpstart, processor_id: :free, processor_plan: :free, quantity: 1, status: :active }
+      {name: "default", processor: :jumpstart, processor_id: :free, processor_plan: :free, quantity: 1, status: :active}
     end
   end
 end

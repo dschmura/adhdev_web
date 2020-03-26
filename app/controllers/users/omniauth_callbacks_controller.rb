@@ -1,5 +1,4 @@
 class Users::OmniauthCallbacksController < Jumpstart::OmniauthCallbacksController
-
   # Do any extra processing on the account that was just connected
   # The full oauth data is stored in the `auth` attribute on the
   # ConnectedAccount model.
@@ -11,5 +10,4 @@ class Users::OmniauthCallbacksController < Jumpstart::OmniauthCallbacksControlle
   # end
   #
   # etc...
-
 end

@@ -17,7 +17,7 @@ module Webhooks
     def notify_user(user, subscription)
       # We only want to notify yearly subscribers of their renewal.
       # Monthly renewals don't need a warning.
-      yearly_plan_ids = Jumpstart.config.yearly_plans.map{ |p| p["stripe_id"] }
+      yearly_plan_ids = Jumpstart.config.yearly_plans.map { |p| p["stripe_id"] }
       if yearly_plan_ids.include? subscription.stripe_id
         Pay::UserMailer.subscription_renewing(user, subscription).deliver_later
       end
@@ -27,7 +27,7 @@ end
 
 Rails.application.config.to_prepare do
   if defined?(StripeEvent) && Jumpstart.config.stripe?
-    require 'pay/stripe/webhooks'
+    require "pay/stripe/webhooks"
 
     class Pay::Stripe::Webhooks::ChargeSucceeded
       prepend Webhooks::ChargeSucceededExtension

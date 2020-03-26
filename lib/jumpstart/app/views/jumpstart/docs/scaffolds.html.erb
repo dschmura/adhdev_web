@@ -5,11 +5,12 @@
 </div>
 
 <div class="mb-10 pb-10 border-b border-gray-300">
-  <h3 class="h2 mb-2 pb-2">Team Resources</h3>
+  <h3 class="h2 mb-2 pb-2">Account Resources</h3>
 
-  <p class="mb-4 leading-normal">If you'd like a resource to be shared across a Team, you can scope your controllers to the current team so the resources are shared between users in the associated team.</p>
-  <p class="mb-4 leading-normal">Every user has a personal team that's only usable by themselves, so you can easily associate resources to teams and still have private resources to a user.</p>
-  <p class="mb-4 leading-normal">Make sure to add <code>team:references</code> when generating your models.</p>
+  <p class="mb-4 leading-normal">If you'd like a resource to be shared across a Account, you can scope your controllers to the current account so the resources are shared between users in the associated account.</p>
+  <p class="mb-4 leading-normal">Every user has a personal account that's only usable by themselves, so you can easily associate resources to accounts and still have private resources to a user.</p>
+  <p class="mb-4 leading-normal">Make sure to add <code>account:references</code> when generating your models.</p>
+  <p class="mb-4 leading-normal">You should also add <code>acts_as_tenant :account</code> to your model if you would like to have acts_as_tenant enforce multitenancy on the model. This is optional and you can read the <%= link_to "Multitancy docs", accounts_docs_path %> for more information on this.</p>
 </div>
 
 <div class="mb-10 pb-10 border-b border-gray-300">

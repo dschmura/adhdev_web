@@ -20,10 +20,11 @@ module Jumpstart
     attr_accessor :email_provider
     attr_accessor :default_from_email
     attr_accessor :support_email
-    attr_accessor :omniauth_providers
+    attr_accessor :multitenancy
+    attr_writer :omniauth_providers
 
     def self.load!
-      if File.exists?(config_path)
+      if File.exist?(config_path)
         config = YAML.load_file(config_path)
         return config if config.is_a?(Jumpstart::Configuration)
         new(config)
@@ -33,14 +34,14 @@ module Jumpstart
     end
 
     def self.config_path
-      Rails.root.join('config', 'jumpstart.yml')
+      Rails.root.join("config", "jumpstart.yml")
     end
 
     def self.create_default_config
-      FileUtils.cp File.join(File.dirname(__FILE__), '../templates/jumpstart.yml'), config_path
+      FileUtils.cp File.join(File.dirname(__FILE__), "../templates/jumpstart.yml"), config_path
     end
 
-    def initialize(options={})
+    def initialize(options = {})
       assign_attributes(options)
       self.application_name ||= "Jumpstart"
       self.business_name ||= "Jumpstart Company, LLC"
@@ -48,6 +49,8 @@ module Jumpstart
       self.support_email ||= "support@example.com"
       self.default_from_email ||= "Jumpstart <support@example.com>"
       self.job_processor ||= "async"
+
+      self.personal_accounts = true if personal_accounts.nil?
     end
 
     def save
@@ -82,45 +85,45 @@ module Jumpstart
     end
 
     def dependencies
-      gems = { main: [], test: [] }
-      gems[:main] += Array.wrap(omniauth_providers).map{ |provider| { name: "omniauth-#{provider}" } }
-      gems[:main] += [{ name: "airbrake"}] if airbrake?
-      gems[:main] += [{ name: "appsignal"}] if appsignal?
-      gems[:main] += [{ name: "convertkit-ruby", github: 'excid3/convertkit-ruby', require: 'convertkit'}] if convertkit?
-      gems[:main] += [{ name: "gibbon"}] if mailchimp?
-      gems[:main] += [{ name: "drip-ruby", require: 'drip'}] if drip?
-      gems[:main] += [{ name: "honeybadger"}] if honeybadger?
-      gems[:main] += [{ name: "intercom-rails"}] if intercom?
-      gems[:main] += [{ name: "rollbar"}] if rollbar?
-      gems[:main] += [{ name: "scout_apm" }] if scout?
-      gems[:main] += [{ name: "sentry-raven" }] if sentry?
-      gems[:main] += [{ name: "skylight" }] if skylight?
-      gems[:main] += [{ name: "stripe" }, { name: "stripe_event" }] if stripe?
-      gems[:main] << { name: "braintree" } if braintree? || paypal?
-      gems[:main] << { name: job_processor.to_s } unless job_processor.to_s == "async"
+      gems = {main: [], test: []}
+      gems[:main] += Array.wrap(omniauth_providers).map { |provider| {name: "omniauth-#{provider}"} }
+      gems[:main] += [{name: "airbrake"}] if airbrake?
+      gems[:main] += [{name: "appsignal"}] if appsignal?
+      gems[:main] += [{name: "convertkit-ruby", github: "excid3/convertkit-ruby", require: "convertkit"}] if convertkit?
+      gems[:main] += [{name: "gibbon"}] if mailchimp?
+      gems[:main] += [{name: "drip-ruby", require: "drip"}] if drip?
+      gems[:main] += [{name: "honeybadger"}] if honeybadger?
+      gems[:main] += [{name: "intercom-rails"}] if intercom?
+      gems[:main] += [{name: "rollbar"}] if rollbar?
+      gems[:main] += [{name: "scout_apm"}] if scout?
+      gems[:main] += [{name: "sentry-raven"}] if sentry?
+      gems[:main] += [{name: "skylight"}] if skylight?
+      gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
+      gems[:main] << {name: "braintree"} if braintree? || paypal?
+      gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
       gems
     end
 
     def format_dependencies(group, spacing: "")
-      group.map do |details|
-        name    = details.delete(:name)
-        options = details.map{ |k, v| "#{k}: '#{v}'" }.join(", ")
+      group.map { |details|
+        name = details.delete(:name)
+        options = details.map { |k, v| "#{k}: '#{v}'" }.join(", ")
         line = spacing + "gem '#{name}'"
         line += ", #{options}" if options.present?
         line
-      end.join("\n")
+      }.join("\n")
     end
 
     def verify_dependencies!
       content = File.read gemfile_path
 
       dependencies.each do |group, items|
-        return if items.all? { |dependency| content.include?(dependency[:name].to_s) }
+        unless items.all? { |dependency| content.include?(dependency[:name].to_s) }
+          save_gemfile
+          puts "It looks like your Jumpstart dependencies are out of sync. We've updated your Jumpstart Gemfile to match the dependencies you have selected.\nRun 'bundle' to install them and then restart your app."
+          exit 1
+        end
       end
-
-      save_gemfile
-      puts "It looks like your Jumpstart dependencies are out of sync. We've updated your Jumpstart Gemfile to match the dependencies you have selected.\nRun 'bundle' to install them and then restart your app."
-      exit 1
     end
 
     def job_processor
@@ -131,6 +134,15 @@ module Jumpstart
       Array.wrap(@omniauth_providers)
     end
 
+    def personal_accounts=(value)
+      @personal_accounts = ActiveModel::Type::Boolean.new.cast(value)
+    end
+
+    def personal_accounts
+      # Enabled by default
+      @personal_accounts.nil? ? true : ActiveModel::Type::Boolean.new.cast(@personal_accounts)
+    end
+
     def update_procfiles
       write_file Rails.root.join("Procfile"), procfile_content
       write_file Rails.root.join("Procfile.dev"), procfile_content(dev: true)
@@ -139,7 +151,7 @@ module Jumpstart
     def copy_configs
       if job_processor == :sidekiq
         path = Rails.root.join("config", "sidekiq.yml")
-        if !File.exist?(path)
+        unless File.exist?(path)
           write_file path, JobProcessor.sidekiq_config
         end
       end
@@ -190,7 +202,7 @@ module Jumpstart
     end
 
     def generate_credentials
-      %w{ test development staging production }.each do |env|
+      %w[test development staging production].each do |env|
         key_path = Pathname.new("config/credentials/#{env}.key")
         credentials_path = "config/credentials/#{env}.yml.enc"
 
@@ -217,7 +229,7 @@ module Jumpstart
       content << "webpack: bin/webpack-dev-server" if dev
 
       # Background workers
-      if worker_command = Jumpstart::JobProcessor.command(job_processor)
+      if (worker_command = Jumpstart::JobProcessor.command(job_processor))
         content << "worker: #{worker_command}"
       end
 
@@ -233,13 +245,13 @@ module Jumpstart
 
     def copy_template(filename)
       # Safely copy template, so we don't blow away any customizations you made
-      if !File.exists?(filename)
+      unless File.exist?(filename)
         FileUtils.cp(template_path(filename), Rails.root.join(filename))
       end
     end
 
     def template_path(filename)
-      File.join(File.dirname(__FILE__), '../templates/', filename)
+      File.join(File.dirname(__FILE__), "../templates/", filename)
     end
   end
 end

@@ -18,7 +18,7 @@ class PlanDashboard < Administrate::BaseDashboard
     braintree_id: Field::String,
     features: ArrayField,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -31,7 +31,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :name,
     :amount,
     :interval,
-    :trial_period_days,
+    :trial_period_days
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -46,7 +46,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :braintree_id,
     :features,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -59,7 +59,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :trial_period_days,
     :stripe_id,
     :braintree_id,
-    :features,
+    :features
   ].freeze
 
   # Overwrite this method to customize how plans are displayed

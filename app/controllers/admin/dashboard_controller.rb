@@ -4,10 +4,10 @@ module Admin
     # for more information
     def show
       @total_revenue = total_revenue
-      @last_12_mos   = last_12_mos
-      @last_month    = last_month
-      @this_month    = this_month
-      @users         = ::User.all.count
+      @last_12_mos = last_12_mos
+      @last_month = last_month
+      @this_month = this_month
+      @users = ::User.all.count
       @subscriptions = ::Pay::Subscription.active.count
     end
 

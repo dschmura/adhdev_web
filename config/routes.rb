@@ -1,9 +1,8 @@
- # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-
   # Jumpstart views
   if Rails.env.development? || Rails.env.test?
-    mount Jumpstart::Engine, at: '/jumpstart'
+    mount Jumpstart::Engine, at: "/jumpstart"
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
@@ -11,8 +10,8 @@ Rails.application.routes.draw do
   authenticated :user, lambda { |u| u.admin? } do
     namespace :admin do
       if defined?(Sidekiq)
-        require 'sidekiq/web'
-        mount Sidekiq::Web => '/sidekiq'
+        require "sidekiq/web"
+        mount Sidekiq::Web => "/sidekiq"
       end
 
       resources :announcements
@@ -20,8 +19,8 @@ Rails.application.routes.draw do
       namespace :user do
         resources :connected_accounts
       end
-      resources :teams
-      resources :team_members
+      resources :accounts
+      resources :account_users
       resources :plans
       namespace :pay do
         resources :charges
@@ -33,33 +32,33 @@ Rails.application.routes.draw do
   end
 
   # API routes
-  namespace :api, defaults: { format: :json } do
+  namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resource :me, controller: :me
-      resources :teams
+      resources :accounts
       resources :users
     end
   end
 
   # User account
   devise_for :users,
-             controllers: {
-               masquerades: 'jumpstart/masquerades',
-               omniauth_callbacks: 'users/omniauth_callbacks',
-               registrations: 'users/registrations',
-             }
+    controllers: {
+      masquerades: "jumpstart/masquerades",
+      omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: "users/registrations"
+    }
 
   resources :announcements, only: [:index]
   resources :api_tokens
-  resources :teams do
+  resources :accounts do
     member do
       patch :switch
     end
 
-    resources :team_members, path: :members
-    resources :team_invitations, path: :invitations, module: :teams
+    resources :account_users, path: :members
+    resources :account_invitations, path: :invitations, module: :accounts
   end
-  resources :team_invitations
+  resources :account_invitations
 
   # Payments
   resource :card
@@ -79,7 +78,7 @@ Rails.application.routes.draw do
     resources :connected_accounts
   end
 
-  resources :embeds, only: [:create], constraints: { id: /[^\/]+/ } do
+  resources :embeds, only: [:create], constraints: {id: /[^\/]+/} do
     collection do
       get :patterns
     end

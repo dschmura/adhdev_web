@@ -18,10 +18,10 @@
 Authorization: Bearer exampletoken</code></pre>
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">Controllers & Routes</h2>
-    <p class="mb-4">API controllers are defined in <code>app/controllers/api/v1/</code>. We provide a <code>/api/v1/me.json</code> and <code>/api/v1/teams.json</code> endpoint out of the box. You can use these controllers as examples to base your API endpoints off of.</p>
+    <p class="mb-4">API controllers are defined in <code>app/controllers/api/v1/</code>. We provide a <code>/api/v1/me.json</code> and <code>/api/v1/accounts.json</code> endpoint out of the box. You can use these controllers as examples to base your API endpoints off of.</p>
     <p class="mb-4">API controllers should inherit from <code>Api::BaseController</code> instead of <code>ApplicationController</code>. This enables API authentication. To skip authentication on an endpoint, add <code>skip_before_action :authenticate_api_token!</code> to your actions.</p>
     <p class="mb-4">Authentication works with Devise so you can access <code>current_user</code> just like normal.</p>
-    <p class="mb-4">Since APIs don't have sessions, there is no <code>current_team</code> equivalent like in the main app. You can use nested resources in the API to scope things under teams if you want to separate them. For example: <code>/api/v1/teams/2/projects/4.json</code>.</p>
+    <p class="mb-4">Since APIs don't have sessions, there is no <code>current_account</code> equivalent like in the main app. You can use nested resources in the API to scope things under accounts if you want to separate them. For example: <code>/api/v1/accounts/2/projects/4.json</code>.</p>
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">JSON Responses</h2>
     <p class="mb-4">API controllers are configured to return JSON by default.</p>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: company
+  invited_by: one
+  token: abcdef123456
+  name: Invited User
+  email: invited@example.com
+
+two:
+  account: company
+  invited_by: two
+  token: abcdef1234567
+  name: Second Invited User
+  email: invited2@example.com

@@ -15,9 +15,10 @@ require "rails/generators/rails/encrypted_file/encrypted_file_generator"
 
 Rails::Generators::EncryptedFileGenerator.class_eval do
   private
-    def encrypted_file_template
-      Jumpstart::Credentials.template
-    end
+
+  def encrypted_file_template
+    Jumpstart::Credentials.template
+  end
 end
 
 module Jumpstart

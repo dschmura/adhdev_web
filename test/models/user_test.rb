@@ -40,21 +40,21 @@
 #  index_users_on_reset_password_token               (reset_password_token) UNIQUE
 #
 
-require 'test_helper'
+require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  test "user has many teams" do
+  test "user has many accounts" do
     user = users(:one)
-    assert_includes user.teams, teams(:one)
-    assert_includes user.teams, teams(:company)
+    assert_includes user.accounts, accounts(:one)
+    assert_includes user.accounts, accounts(:company)
   end
 
-  test "user has a personal team" do
+  test "user has a personal account" do
     user = users(:one)
-    assert_equal teams(:one), user.personal_team
+    assert_equal accounts(:one), user.personal_account
   end
 
-  test "can delete user with teams" do
+  test "can delete user with accounts" do
     assert_difference "User.count", -1 do
       users(:one).destroy
     end

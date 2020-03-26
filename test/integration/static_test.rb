@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::StaticTest < ActionDispatch::IntegrationTest
   test "homepage" do

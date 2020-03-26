@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
   fixtures :plans
@@ -42,15 +42,15 @@ class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
       end
     end
 
-    test "can view subscribe page for a team plan" do
-      team = teams(:company)
-      user = team.owner
+    test "can view subscribe page for a account plan" do
+      account = accounts(:company)
+      user = account.owner
       plan = plans(:personal)
 
       sign_in user
       get "/subscription/new?plan=#{plan.id}"
 
-      assert response.body.include?(team.name)
+      assert response.body.include?(account.name)
       assert response.body.include?(plan.name)
       plan.features.each do |feature|
         assert response.body.include?(feature)

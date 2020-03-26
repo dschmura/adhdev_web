@@ -20,7 +20,7 @@ class Pay::ChargeDashboard < Administrate::BaseDashboard
     card_exp_month: Field::String,
     card_exp_year: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,7 +34,7 @@ class Pay::ChargeDashboard < Administrate::BaseDashboard
     :processor,
     :amount,
     :card_type,
-    :card_last4,
+    :card_last4
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -52,7 +52,7 @@ class Pay::ChargeDashboard < Administrate::BaseDashboard
     :card_exp_month,
     :card_exp_year,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -68,7 +68,7 @@ class Pay::ChargeDashboard < Administrate::BaseDashboard
     :card_type,
     :card_last4,
     :card_exp_month,
-    :card_exp_year,
+    :card_exp_year
   ].freeze
 
   # Overwrite this method to customize how charges are displayed
