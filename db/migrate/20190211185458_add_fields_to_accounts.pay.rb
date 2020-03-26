@@ -1,17 +1,13 @@
 # This migration comes from pay (originally 20170503131610)
 class AddFieldsToAccounts < ActiveRecord::Migration[4.2]
   def change
-    unless ActiveRecord::Base.connection.table_exists?(Pay.billable_table)
-      create_table Pay.billable_table.to_sym
-    end
-
-    add_column Pay.billable_table, :processor, :string
-    add_column Pay.billable_table, :processor_id, :string
-    add_column Pay.billable_table, :trial_ends_at, :datetime
-    add_column Pay.billable_table, :card_type, :string
-    add_column Pay.billable_table, :card_last4, :string
-    add_column Pay.billable_table, :card_exp_month, :string
-    add_column Pay.billable_table, :card_exp_year, :string
-    add_column Pay.billable_table, :extra_billing_info, :text
+    add_column :accounts, :processor, :string
+    add_column :accounts, :processor_id, :string
+    add_column :accounts, :trial_ends_at, :datetime
+    add_column :accounts, :card_type, :string
+    add_column :accounts, :card_last4, :string
+    add_column :accounts, :card_exp_month, :string
+    add_column :accounts, :card_exp_year, :string
+    add_column :accounts, :extra_billing_info, :text
   end
 end
