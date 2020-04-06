@@ -21,10 +21,11 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-  # If you'd like to use the docker development setup, uncomment the two
+  # If you'd like to use the docker development setup, uncomment the three
   # following lines. They will also be used for the test database.
-  #username: postgres
-  #password: password
+  # username: postgres
+  # password: password
+  # host: localhost
 
 development:
   <<: *default
