@@ -28,7 +28,7 @@ module UserAccounts
   def sync_personal_account_name
     if first_name_previously_changed? || last_name_previously_changed?
       # Accepting an invitation calls this when the user's name is updated
-      create_personal_account if personal_account.nil?
+      create_default_account if personal_account.nil?
 
       # Sync the personal account name with the user's name
       personal_account.update(name: name)

@@ -27,7 +27,7 @@ module SetCurrentRequestDetails
       # Fallback accounts
       if user_signed_in?
         Current.account ||= current_user.accounts.order(created_at: :asc).first
-        Current.account ||= current_user.create_personal_account
+        Current.account ||= current_user.create_default_account
       end
 
       set_current_tenant(Current.account)
