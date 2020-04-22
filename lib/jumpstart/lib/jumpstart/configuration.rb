@@ -79,13 +79,14 @@ module Jumpstart
       content = ""
       content += format_dependencies(gems[:main]) if gems[:main].any?
       content += "\n\ngroup :test do\n#{format_dependencies(gems[:test], spacing: "  ")}\nend" if gems[:test].any?
+      content += "\n\ngroup :development do\n#{format_dependencies(gems[:development], spacing: "  ")}\nend" if gems[:development].any?
 
       FileUtils.mkdir_p Rails.root.join("config/jumpstart")
       File.write(gemfile_path, content)
     end
 
     def dependencies
-      gems = {main: [], test: []}
+      gems = {main: [], test: [], development: []}
       gems[:main] += Array.wrap(omniauth_providers).map { |provider| {name: "omniauth-#{provider}"} }
       gems[:main] += [{name: "airbrake"}] if airbrake?
       gems[:main] += [{name: "appsignal"}] if appsignal?
@@ -101,15 +102,20 @@ module Jumpstart
       gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
+      gems[:development] += [{name: "guard"}, {name: "guard-livereload", version: "~> 2.5", require: false}, {name: "rack-livereload"}] if livereload
       gems
     end
 
     def format_dependencies(group, spacing: "")
       group.map { |details|
         name = details.delete(:name)
+        version = details.delete(:version)
+        require_gem = details.delete(:require)
         options = details.map { |k, v| "#{k}: '#{v}'" }.join(", ")
         line = spacing + "gem '#{name}'"
+        line += ", '#{version}'" if version.present?
         line += ", #{options}" if options.present?
+        line += ", #{require_gem}" if require_gem.present?
         line
       }.join("\n")
     end
@@ -132,6 +138,14 @@ module Jumpstart
 
     def omniauth_providers
       Array.wrap(@omniauth_providers)
+    end
+
+    def livereload=(value)
+      @livereload = ActiveModel::Type::Boolean.new.cast(value)
+    end
+
+    def livereload
+      @livereload.nil? ? false : ActiveModel::Type::Boolean.new.cast(@livereload)
     end
 
     def personal_accounts=(value)

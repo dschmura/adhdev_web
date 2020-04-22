@@ -11,6 +11,7 @@
     <div class="col-md-3">
       <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#application" role="tab" aria-controls="v-pills-home" aria-selected="true">Application</a>
+        <a class="nav-link" id="v-pills-dev-tab" data-toggle="pill" href="#development" role="tab" aria-controls="v-pills-dev" aria-selected="false">Development</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#multitenancy" role="tab" aria-controls="v-pills-profile" aria-selected="false">Accounts</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#workers" role="tab" aria-controls="v-pills-settings" aria-selected="false">Background Workers</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#integrations" role="tab" aria-controls="v-pills-settings" aria-selected="false">Integrations</a>
@@ -207,7 +208,20 @@
           </div>
         </div>
 
-      </div>
+        <div class="tab-pane fade" id="development" role="tabpanel" aria-labelledby="v-pills-dev-tab">
+          <h4>LiveReload</h4>
+
+          <div class="form-group">
+            <p>Checking this option will install guard, guard_livereload and rack_livereload</p>
+            <div class="custom-control custom-checkbox">
+              <%= f.check_box :livereload, value: true, class: "custom-control-input", id: "livereload" %>
+              <%= label_tag "livereload", "Enable Rack::LiveReload", class: "custom-control-label" %>
+            </div>
+            <div class="text-sm text-muted mt-3"><i class="fas fa-info-circle"></i> To enable LiveReload, you will also have to uncomment <pre class="mt-3"><code>config.middleware.insert_before ActionDispatch::DebugExceptions, Rack::LiveReload</code></pre> in <code>config/environments/development.rb</code>, add <pre class="mt-3"><code>policy.connect_src :self, :https, "http://localhost:3035 http://localhost:35729", "ws://localhost:3035 ws://localhost:35729" if Rails.env.development?</code></pre> in <code>config/intializers/content_security_policy.rb</code> and restart the server.</div>
+          </div>
+        </div>
+
+    </div>
     </div>
   </div>
 
