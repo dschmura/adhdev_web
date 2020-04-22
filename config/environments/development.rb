@@ -69,4 +69,7 @@ Rails.application.configure do
 
   # Allow accessing localhost on any domain. Important for testing multi-tenant apps
   config.hosts = nil
+
+  # Uncomment the following line if you want to enable Rack::LiveReload
+  # config.middleware.insert_before ActionDispatch::DebugExceptions, Rack::LiveReload
 end
