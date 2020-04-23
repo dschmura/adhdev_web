@@ -21,7 +21,7 @@ before_script:
   - ruby -v
   - which ruby
   - gem install bundler --no-document
-  - bundle install --jobs $(nproc)  "${FLAGS[@]}" --path /cache
+  - bundle install --jobs $(nproc)  "${FLAGS[@]}" --path vendor
   - yarn install
   - bundle exec rails db:test:prepare
 
@@ -31,7 +31,7 @@ test:
     paths:
       - node_modules/
       - .yarn
-      - /cache
+      - vendor
   script:
   - bundle exec rails test
   only:

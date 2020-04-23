@@ -30,6 +30,7 @@ module Jumpstart
           :cancel_immediately,
           :email_provider,
           :personal_accounts,
+          :livereload,
           integrations: [],
           omniauth_providers: [],
           payment_processors: [],

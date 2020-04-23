@@ -12,6 +12,7 @@ Rails.application.config.content_security_policy do |policy|
   #   policy.script_src  :self, :https
   #   policy.style_src   :self, :https
   # If you are using webpack-dev-server then specify webpack-dev-server host
+  # If you are using Rack::LiveReload, add "http://localhost:35729" and "ws://localhost:35729", respectively
   policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
 
   #   # Specify URI for violation reports
