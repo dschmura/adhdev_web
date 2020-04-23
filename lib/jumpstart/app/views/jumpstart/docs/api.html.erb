@@ -17,6 +17,14 @@
     <pre><code>GET /api/v1/me.json
 Authorization: Bearer exampletoken</code></pre>
 
+    <p class="mb-4">If you'd like to authenticate users through the API using their email and password to retrieve an API token, you can make a POST request to the auth endpoint with the user's email and password. This is handy for authenticating from a mobile app, etc.</p>
+
+    <pre><code>POST /api/v1/auth.json
+Params: { email: "steve@apple.com", password: "hunter2" }</code></pre>
+
+    <p>This will return a JSON response with a token you can use to access the API.</p>
+    <pre><code>{ token: "abcd1234" }</code></pre>
+
     <h2 class="pb-3 mb-6 border-b border-gray-400">Controllers & Routes</h2>
     <p class="mb-4">API controllers are defined in <code>app/controllers/api/v1/</code>. We provide a <code>/api/v1/me.json</code> and <code>/api/v1/accounts.json</code> endpoint out of the box. You can use these controllers as examples to base your API endpoints off of.</p>
     <p class="mb-4">API controllers should inherit from <code>Api::BaseController</code> instead of <code>ApplicationController</code>. This enables API authentication. To skip authentication on an endpoint, add <code>skip_before_action :authenticate_api_token!</code> to your actions.</p>
