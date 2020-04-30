@@ -12,7 +12,7 @@ gem "puma", "~> 4.3"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 6.0"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 4.2"
+gem "webpacker", "~> 5.1"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -62,7 +62,7 @@ gem "jumpstart", path: "lib/jumpstart"
 
 gem "acts_as_tenant", github: "ErwinM/acts_as_tenant"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
-gem "administrate-field-active_storage", "~> 0.2.0"
+gem "administrate-field-active_storage", "~> 0.3.0"
 gem "attr_encrypted", "~> 3.1"
 gem "devise", ">= 4.7.1"
 gem "devise_invitable", "~> 2.0", ">= 2.0.1"
@@ -77,7 +77,7 @@ gem "pagy", "~> 3.7"
 gem "pay", "~> 2.1.0"
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 1.0.0"
-gem "ruby-oembed", "~> 0.12.0", require: "oembed"
+gem "ruby-oembed", "~> 0.13.0", require: "oembed"
 gem "turbolinks_render", "~> 0.9.12"
 
 # We always want the latest versions of these gems, so no version numbers

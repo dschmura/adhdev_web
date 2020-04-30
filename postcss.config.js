@@ -21,7 +21,11 @@ if (process.env.RAILS_ENV === "production" || process.env.RAILS_ENV === "staging
 
   environment.plugins.push(
     require('@fullhuman/postcss-purgecss')({
-      content: ['./**/*.html.erb', './app/helpers/**/*.rb'],
+      content: [
+        './**/*.html.erb',
+        './app/helpers/**/*.rb',
+        './app/javascript/**/*.js',
+      ],
       defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
       whitelist: collectWhitelist(),
       whitelistPatterns: [],
