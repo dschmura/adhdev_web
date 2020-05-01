@@ -86,3 +86,8 @@ form.inline {
     @apply w-1/4;
   }
 }
+
+// Fix flatpickr
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  display: inline-block;
+}

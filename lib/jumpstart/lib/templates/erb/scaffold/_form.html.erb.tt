@@ -17,6 +17,12 @@
 <% elsif attribute.rich_text? -%>
     <%%= form.label :<%= attribute.column_name %> %>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, data: { controller: "mentions", target: "mentions.field" } %>
+<% elsif attribute.field_type == :date_select -%>
+    <%%= form.label :<%= attribute.column_name %> %>
+    <%%= form.text_field :<%= attribute.column_name %>, class: "form-control", data: { controller: :flatpickr, flatpickr_alt_input: true, flatpickr_alt_format: t("date.formats.long") } %>
+<% elsif attribute.field_type == :datetime_select -%>
+    <%%= form.label :<%= attribute.column_name %> %>
+    <%%= form.text_field :<%= attribute.column_name %>, class: "form-control", data: { controller: :flatpickr, flatpickr_enable_time: true, flatpickr_alt_input: true, flatpickr_alt_format: t("time.formats.long") } %>
 <% else -%>
     <%%= form.label :<%= attribute.column_name %> %>
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "form-control" %>

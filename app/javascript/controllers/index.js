@@ -12,3 +12,6 @@ import { Dropdown, Modal, Tabs } from "tailwindcss-stimulus-components"
 application.register('dropdown', Dropdown)
 application.register('modal', Modal)
 application.register('tabs', Tabs)
+
+import Flatpickr from 'stimulus-flatpickr'
+application.register('flatpickr', Flatpickr)

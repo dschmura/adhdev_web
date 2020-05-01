@@ -17,6 +17,7 @@
     "purgecss": "^2.1.0",
     "slim-select": "^1.23.1",
     "stimulus": "^1.1.0",
+    "stimulus-flatpickr": "^1.2.4",
     "tailwindcss": "^1.2.0",
     "tailwindcss-stimulus-components": "^1.0.0",
     "tippy.js": "^6.0.0",

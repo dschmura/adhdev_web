@@ -3057,7 +3057,7 @@ findup-sync@3.0.0:
     micromatch "^3.0.4"
     resolve-dir "^1.0.1"
 
-flatpickr@^4.6.1:
+flatpickr@>=4.6.0, flatpickr@^4.6.1:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.3.tgz#15a8b76b6e34e3a072861250503a5995b9d3bc60"
   integrity sha512-007VucCkqNOMMb9ggRLNuJowwaJcyOh4sKAFcdGfahfGc7JQbf94zSzjdBq/wVyHWUEs5o3+idhFZ0wbZMRmVQ==
@@ -6933,7 +6933,15 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-stimulus@^1.1.0:
+stimulus-flatpickr@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/stimulus-flatpickr/-/stimulus-flatpickr-1.2.4.tgz#86f2202e9610a83e693028326e6ab702007d8b2b"
+  integrity sha512-4wS+PEhRAu32ZS3D3wGOSt8h9rB8dE4EZ/gb8wIxVMB9eWQxKCIF5lBMRZ1qdlUpjKplesybgSqqykQNk1qqrw==
+  dependencies:
+    flatpickr ">=4.6.0"
+    stimulus ">=1.1.1"
+
+stimulus@>=1.1.1, stimulus@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-1.1.1.tgz#53c2fded6849e7b85eed3ed8dd76e33abd74bec5"
   integrity sha512-R0mBqKp48YnRDZOxZ8hiOH4Ilph3Yj78CIFTBkCwyHs4iGCpe7xlEdQ7cjIxb+7qVCSxFKgxO+mAQbsNgt/5XQ==
