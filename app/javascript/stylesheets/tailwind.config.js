@@ -2,7 +2,14 @@
 // https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 
 module.exports = {
-  // All the default values will be compiled unless they are overridden below 
+  plugins: [
+    // Uncomment the following if you'd like to use TailwindUI
+    //require('@tailwindcss/ui')({
+    //  layout: 'sidebar',
+    //})
+  ],
+
+  // All the default values will be compiled unless they are overridden below
   theme: {
     // Extend (add to) the default theme in the `extend` key
     extend: {
