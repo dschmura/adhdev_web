@@ -29,7 +29,7 @@ if (process.env.RAILS_ENV === "production" || process.env.RAILS_ENV === "staging
       defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
       whitelist: collectWhitelist(),
       whitelistPatterns: [],
-      whitelistPatternsChildren: [/trix/, /attachment/, /tribute/, /tippy/],
+      whitelistPatternsChildren: [/trix/, /attachment/, /tribute/, /tippy/, /flatpickr/],
     })
   )
 }
