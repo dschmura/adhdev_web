@@ -8,7 +8,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    owner: Field::BelongsTo.with_options(class_name: "Account"),
+    owner: Field::Polymorphic,
     id: Field::Number,
     name: Field::String,
     processor: Field::String,
