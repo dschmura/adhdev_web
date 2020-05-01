@@ -6,6 +6,9 @@ module Jumpstart
       user = User.new(user_params)
 
       if user.save
+        # Ensure Jumpstart free plan exists for admin users
+        Plan.create_with(name: "Free", interval: :month, trial_period_days: 0).find_or_create_by(details: { jumpstart_id: :free })
+
         # Create a fake subscription for the admin user so they have access to everything by default
         user.accounts.first.subscriptions.create(subscription_params)
 
