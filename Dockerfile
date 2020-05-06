@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine
+FROM ruby:2.7.1-alpine
 
 RUN apk add --update --virtual \
   runtime-deps \
@@ -18,6 +18,7 @@ RUN apk add --update --virtual \
   file \
   imagemagick \
   git \
+  tzdata \
   && rm -rf /var/cache/apk/*
 
 WORKDIR /app
