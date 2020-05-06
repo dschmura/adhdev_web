@@ -20,33 +20,6 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
       assert_select "a", text: "Invite A User", count: 1
     end
 
-    test "can view new account user form" do
-      get new_account_account_user_path(@account)
-      assert_select "button", "Send invitation"
-    end
-
-    test "can add account users" do
-      name, email = "Account Member", "new-user@example.com"
-      assert_difference "@account.account_users.count" do
-        post account_account_users_path(@account), params: {name: name, email: email, account_user: {admin: "0"}}
-      end
-      assert_response :redirect
-      account_user = @account.account_users.find_by(user: User.find_by(email: email))
-      assert account_user
-      assert_not account_user.admin?
-    end
-
-    test "can add account users with roles" do
-      name, email = "Account Member", "new-user@example.com"
-      assert_difference "@account.account_users.count" do
-        post account_account_users_path(@account), params: {name: name, email: email, account_user: {admin: "1"}}
-      end
-      assert_response :redirect
-      account_user = @account.account_users.find_by(user: User.find_by(email: email))
-      assert account_user
-      assert account_user.admin?
-    end
-
     test "can edit account user" do
       account_user = account_users(:company_regular_user)
       get edit_account_account_user_path(@account, account_user)
@@ -84,19 +57,8 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
       assert_select "a", text: "Invite A Account Member", count: 0
     end
 
-    test "can view new account user form" do
-      get new_account_account_user_path(@account)
-      assert_redirected_to account_path(@account)
-    end
-
     test "Regular user cannot view account user page" do
       get account_account_user_path(@account, @admin)
-      assert_redirected_to account_path(@account)
-    end
-
-    test "Regular user cannot add account users" do
-      name, email = "Account Member", "new-user@example.com"
-      post account_account_users_path(@account), params: {name: name, email: email}
       assert_redirected_to account_path(@account)
     end
 

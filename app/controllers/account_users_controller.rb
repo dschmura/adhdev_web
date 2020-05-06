@@ -15,24 +15,8 @@ class AccountUsersController < ApplicationController
     redirect_to @account
   end
 
-  # GET /account_users/new
-  def new
-    @account_user = AccountUser.new
-  end
-
   # GET /account_users/1/edit
   def edit
-  end
-
-  # POST /account_users
-  def create
-    user = User.invite!({name: params[:name], email: params[:email]}, current_user)
-    if user.persisted?
-      @account.account_users.create(account_user_params.merge(user: user))
-      redirect_to @account, notice: "Account member was successfully added."
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /account_users/1
