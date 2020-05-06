@@ -8,6 +8,7 @@ class AccountDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    owner: Field::BelongsTo.with_options(class_name: "User"),
     charges: Field::HasMany.with_options(class_name: "Pay::Charge"),
     subscriptions: Field::HasMany.with_options(class_name: "Pay::Subscription"),
     account_users: Field::HasMany,
@@ -37,6 +38,7 @@ class AccountDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :owner,
     :name,
     :personal,
     :processor,
@@ -46,12 +48,13 @@ class AccountDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :id,
+    :owner,
     :charges,
     :subscriptions,
     :account_users,
     :users,
     :avatar,
-    :id,
     :name,
     :personal,
     :created_at,
@@ -73,24 +76,10 @@ class AccountDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :charges,
-    :subscriptions,
-    :account_users,
-    :users,
-    :avatar,
+    :owner,
     :name,
     :personal,
-    :processor,
-    :processor_id,
-    :trial_ends_at,
-    :card_type,
-    :card_last4,
-    :card_exp_month,
-    :card_exp_year,
     :extra_billing_info,
-    :plan,
-    :quantity,
-    :card_token
   ].freeze
 
   # Overwrite this method to customize how accounts are displayed
