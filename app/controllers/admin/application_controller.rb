@@ -8,6 +8,11 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
 
+    helper all_helpers_from_path "app/helpers"
+
+    # Uncomment this to scope the admin by the current account
+    # include SetCurrentRequestDetails
+
     def authenticate_admin
       redirect_to "/", alert: "Not authorized." unless user_signed_in? && current_user.admin?
     end
