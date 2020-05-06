@@ -102,7 +102,7 @@ module Jumpstart
       gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
-      gems[:development] += [{name: "guard"}, {name: "guard-livereload", version: "~> 2.5", require: false}, {name: "rack-livereload"}] if livereload
+      gems[:development] += [{name: "guard"}, {name: "guard-livereload", version: "~> 2.5", require: false}, {name: "rack-livereload"}] if livereload?
       gems
     end
 
@@ -144,7 +144,7 @@ module Jumpstart
       @livereload = ActiveModel::Type::Boolean.new.cast(value)
     end
 
-    def livereload
+    def livereload?
       @livereload.nil? ? false : ActiveModel::Type::Boolean.new.cast(@livereload)
     end
 
@@ -249,6 +249,9 @@ module Jumpstart
 
       # Add the Stripe CLI
       content << "stripe: stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
+
+      # Guard LiveReload
+      content << "guard: guard" if dev && livereload?
 
       content.join("\n")
     end

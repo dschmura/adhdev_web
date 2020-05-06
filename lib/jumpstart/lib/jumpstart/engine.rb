@@ -40,6 +40,10 @@ module Jumpstart
       if Jumpstart::Multitenancy.path? || Rails.env.test?
         app.config.middleware.use Jumpstart::AccountMiddleware
       end
+
+      if Jumpstart.config.livereload?
+        app.config.middleware.insert_before ActionDispatch::DebugExceptions, Rack::LiveReload
+      end
     end
   end
 end
