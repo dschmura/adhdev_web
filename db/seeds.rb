@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Uncomment the following to create an Admin user for Production in Jumpstart Pro
+# User.create name: "name", email: "email", password: "password", password_confirmation: "password", admin: true, terms_of_service: true

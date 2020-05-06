@@ -39,5 +39,9 @@ heroku run rails db:migrate</code></pre>
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">Docker</h2>
     <p class="mb-4">We provide a sample Dockerfile and docker-compose.yml for you in case you'd like to deploy your application using Docker.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Creating An Admin User</h2>
+    <p class="mb-4">To create an admin user in production, you can either generate one using <code>db/seeds.rb</code> or run the following code in the rails console in production.</p>
+    <pre><code>User.create name: "Steve Jobs", email: "steve@apple.com", password: "password", password_confirmation: "password", admin: true, terms_of_service: true</code></pre>
   </div>
 </div>
