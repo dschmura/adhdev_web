@@ -214,7 +214,7 @@
           <div class="form-group">
             <p>Checking this option will install guard, guard_livereload and rack_livereload</p>
             <div class="custom-control custom-checkbox">
-              <%= f.check_box :livereload, value: true, class: "custom-control-input", id: "livereload" %>
+              <%= f.check_box :livereload, value: true, checked: Jumpstart.config.livereload?, class: "custom-control-input", id: "livereload" %>
               <%= label_tag "livereload", "Enable Rack::LiveReload", class: "custom-control-label" %>
             </div>
           </div>
