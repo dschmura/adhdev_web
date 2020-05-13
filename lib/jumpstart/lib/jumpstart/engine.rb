@@ -41,7 +41,7 @@ module Jumpstart
         app.config.middleware.use Jumpstart::AccountMiddleware
       end
 
-      if Jumpstart.config.livereload?
+      if Jumpstart.config.livereload? && Rails.env.development?
         app.config.middleware.insert_before ActionDispatch::DebugExceptions, Rack::LiveReload
       end
     end
