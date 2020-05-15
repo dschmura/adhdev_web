@@ -61,7 +61,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Set the default URL for ActionMailer in development.
-  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+  config.action_mailer.default_url_options = {host: "localhost", port: ENV.fetch("PORT", 3000).to_i}
   config.action_mailer.delivery_method = :letter_opener_web
 
   # Verifies that versions and hashed value of the package contents in the project's package.json
