@@ -179,7 +179,23 @@
             </div>
           </div>
 
-          <p class="text-sm text-muted">Disabling personal accounts will automatically create a regular account for each user instead.</p>
+          <p class="small text-muted">Disabling personal accounts will automatically create a regular account for each user instead.</p>
+
+          <hr />
+
+          <h5>Register with Account Details</h5>
+          <p>Account details may need to be collected when the user signs up or registers. This is especially useful if you By enabling this feature, users will be prompted for an Account name on the registration form.</p>
+          <p>You can add additional fields by adding fields to the Account model and permitting the params in <code>application_controller.rb</code> for the Devise sign_up action.</p>
+
+          <div class="form-group">
+            <div class="custom-control custom-checkbox">
+              <%= f.check_box :register_with_account, value: true, checked: Jumpstart.config.register_with_account?, class: "custom-control-input", id: "register_with_account" %>
+              <%= label_tag "register_with_account", "Include account fields in sign up / registration", class: "custom-control-label" %>
+            </div>
+          </div>
+
+          <p class="small text-muted">Users signing up through an invitation will <u>not</u> be prompted for account details.</p>
+
           <hr />
 
           <h4>Multitenancy</h4>

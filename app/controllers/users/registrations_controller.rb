@@ -9,10 +9,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # Jumpstart: Skip email confirmation on registration.
     #   Require confirmation when user changes their email only
     resource.skip_confirmation!
+
+    # Registering to accept an invitation should display the invitation on sign up
+    if params[:invite] && (invite = AccountInvitation.find_by(token: params[:invite]))
+      @account_invitation = invite
+
+    # Build and display account fields in registration form if enabled
+    elsif Jumpstart.config.register_with_account?
+      account = resource.owned_accounts.first
+      account ||= resource.owned_accounts.new
+      account.account_users.new(user: resource, admin: true)
+    end
   end
 
   def update_resource(resource, params)
     # Jumpstart: Allow user to edit their profile without password
     resource.update_without_password(params)
+  end
+
+  def sign_up(resource_name, resource)
+    sign_in(resource_name, resource)
+
+    # If user registered through an invitation, automatically accept it after signing in
+    if params[:invite] && (account_invitation = AccountInvitation.find_by(token: params[:invite]))
+      account_invitation.accept!(current_user)
+    end
   end
 end

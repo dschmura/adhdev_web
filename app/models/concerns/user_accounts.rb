@@ -11,6 +11,8 @@ module UserAccounts
     # Regular users should get their account created immediately
     after_create :create_default_account
     after_update :sync_personal_account_name, if: -> { Jumpstart.config.personal_accounts }
+
+    accepts_nested_attributes_for :owned_accounts
   end
 
   def create_default_account

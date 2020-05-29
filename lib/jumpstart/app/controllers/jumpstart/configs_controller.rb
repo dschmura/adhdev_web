@@ -31,6 +31,7 @@ module Jumpstart
           :email_provider,
           :personal_accounts,
           :livereload,
+          :register_with_account,
           integrations: [],
           omniauth_providers: [],
           payment_processors: [],

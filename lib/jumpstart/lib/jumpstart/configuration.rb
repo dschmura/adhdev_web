@@ -147,6 +147,14 @@ module Jumpstart
       Array.wrap(@omniauth_providers)
     end
 
+    def register_with_account=(value)
+      @register_with_account = ActiveModel::Type::Boolean.new.cast(value)
+    end
+
+    def register_with_account?
+      @register_with_account.nil? ? false : ActiveModel::Type::Boolean.new.cast(@register_with_account)
+    end
+
     def livereload=(value)
       @livereload = ActiveModel::Type::Boolean.new.cast(value)
     end
