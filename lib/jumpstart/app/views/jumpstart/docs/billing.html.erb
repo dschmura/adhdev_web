@@ -55,7 +55,8 @@
 
   <h4 class="pb-3 mb-6 mt-6 border-b border-gray-400 tracking-wider font-semibold uppercase text-gray-700">Stripe CLI</h4>
   <p class="mb-4">Jumpstart now requires webhooks to support SCA. You must use <%= link_to "the Stripe CLI", "https://stripe.com/docs/stripe-cli", target: :_blank %> to forward webhooks to your local Rails server to process subscriptions and payments with SCA.</p>
-  <pre><code>stripe listen --forward-to localhost:5000/webhooks/stripe</code></pre>
+  <pre><code>stripe login</code><br /><code>stripe listen --forward-to localhost:5000/webhooks/stripe</code></pre>
+  <p class="mb-4">Once stripe CLI is running it should display your signing secret. Add it to your credentials to make sure your server can receive stripe events.</p>
   <p class="mb-4">Alternatively, you can use ngrok or localtunnel to expose your Rails server to the internet so it can receive webhooks.</p>
 
   <h3 class="pb-3 mb-6 mt-6 border-b border-gray-400">Braintree</h3>
