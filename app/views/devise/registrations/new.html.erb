@@ -8,7 +8,7 @@
     <div class="text-center mb-4 flex items-center justify-center">
       <%= image_tag avatar_url_for(@account_invitation.account), class: "h-5 w-5 rounded-full inline-block mr-1" %>
       <div>
-        <strong><%= @account_invitation.invited_by.name %></strong> invited you to join <strong><%= @account_invitation.account.name %>
+        <strong><%= @account_invitation.invited_by.name %></strong> invited you to join <strong><%= @account_invitation.account.name %></strong>
       </div>
     </div>
   <% end %>
