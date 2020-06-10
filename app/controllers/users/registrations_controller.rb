@@ -33,6 +33,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # If user registered through an invitation, automatically accept it after signing in
     if params[:invite] && (account_invitation = AccountInvitation.find_by(token: params[:invite]))
       account_invitation.accept!(current_user)
+
+      # Clear redirect to account invitation since it's already been accepted
+      stored_location_for(:user)
     end
   end
 end
