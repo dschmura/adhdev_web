@@ -26,12 +26,6 @@ module Jumpstart
       # Set ActiveJob from Jumpstart
       ActiveJob::Base.queue_adapter = Jumpstart.config.job_processor
 
-      if Rails.env.production?
-        ActionMailer::Base.default_options = {from: Jumpstart.config.default_from_email}
-        ActionMailer::Base.default_url_options.merge!(host: Jumpstart.config.domain)
-        ActionMailer::Base.smtp_settings.merge!(Jumpstart::Mailer.new(Jumpstart.config).settings)
-      end
-
       if Rails.env.development?
         # This makes sure we can load the Jumpstart assets in development
         config.assets.precompile << "jumpstart_manifest.js"
