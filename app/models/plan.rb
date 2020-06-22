@@ -22,7 +22,7 @@ class Plan < ApplicationRecord
   scope :monthly, -> { without_free.where(interval: :month) }
   scope :yearly, -> { without_free.where(interval: :year) }
   scope :sorted, -> { order(amount: :asc) }
-  scope :without_free, -> { where.not(details: {jumpstart_id: :free}) }
+  scope :without_free, -> { where.not("details @> ?", {jumpstart_id: :free}.to_json) }
 
   def features
     Array.wrap(super)
