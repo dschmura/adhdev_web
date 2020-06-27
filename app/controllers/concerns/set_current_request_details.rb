@@ -16,7 +16,7 @@ module SetCurrentRequestDetails
         Current.account ||= Account.find_by(domain: request.domain)
       end
 
-      if Jumpstart::Multitenancy.subdomain?
+      if Jumpstart::Multitenancy.subdomain? && request.subdomains.size > 0
         Current.account ||= Account.find_by(subdomain: request.subdomains.first)
       end
 
