@@ -15,7 +15,7 @@ class ApiTokensController < ApplicationController
     if @api_token.save
       redirect_to @api_token, notice: "Successfully created API token"
     else
-      render :index
+      render :new
     end
   end
 
