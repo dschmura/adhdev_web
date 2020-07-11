@@ -5,7 +5,7 @@
   <div class="form-group">
     <% AccountUser::ROLES.each do |role| %>
       <label>
-        <%= form.check_box role, class: "mr-1" %>
+        <%= form.check_box role, class: "mr-1", disabled: role == :admin && account_user.account_owner? %>
         <%= role.to_s.humanize %>
       </label>
     <% end %>

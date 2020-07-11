@@ -41,6 +41,12 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
       end
       assert_response :redirect
     end
+
+    test "disables admin role checkbox when editing owner" do
+      account_user = account_users(:company_admin)
+      get edit_account_account_user_path(@account, account_user)
+      assert_select "input[type=checkbox][name='account_user[admin]'][disabled]", 1
+    end
   end
 
   class RegularUsers < Jumpstart::AccountUsersTest
