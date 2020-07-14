@@ -9,6 +9,10 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   def index
     @pagy, @<%= plural_table_name %> = pagy(<%= class_name %>.sort_by_params(params[:sort], sort_direction))
+
+    # We explicitly load the records to avoid triggering multiple DB calls in the views when checking if records exist and iterating over them.
+    # Calling @<%= plural_table_name %>.any? in the view will use the loaded records to check existence instead of making an extra DB call.
+    @<%= plural_table_name %>.load
   end
 
   # GET <%= route_url %>/1
