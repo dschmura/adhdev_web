@@ -2,12 +2,12 @@
   <div class="flex justify-between items-center mb-4">
     <h1 class="h3"><%= plural_table_name.titleize %></h1>
 
-    <%% if @<%= plural_table_name %>.exists? %>
+    <%% if @<%= plural_table_name %>.any? %>
       <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
     <%% end %>
   </div>
 
-  <%% if @<%= plural_table_name %>.exists? %>
+  <%% if @<%= plural_table_name %>.any? %>
     <div class="bg-white rounded shadow table-responsive">
       <table class="table">
         <thead>

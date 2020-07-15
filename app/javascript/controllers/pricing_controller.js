@@ -1,52 +1,86 @@
+// Options:
+//
+// Use data-pricing-active="yearly" to select yearly by default
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "toggle", "monthlyToggle", "yearlyToggle", "monthlyPlans", "yearlyPlans" ]
+  static targets = [ "toggle", "frequency", "plans" ]
 
   connect() {
-    this.plansClass     = (this.data.get("plansClass") || "hidden").split(" ")
-    this.frequencyClass = (this.data.get("frequency-class") || "bg-white text-black").split(" ")
+    // Classes toggle on the plan switcher items
+    this.activeFrequencyClass   = (this.data.get("active-frequency-class") || "bg-white text-black hover:text-black").split(" ")
+    this.inactiveFrequencyClass = (this.data.get("inactive-frequency-class") || "text-white hover:text-gray-300").split(" ")
 
-    let monthly_plans = this.monthlyPlansTarget.children.length
-    let yearly_plans = this.yearlyPlansTarget.children.length
+    // Classes toggle on the plans
+    this.activePlansClass   = (this.data.get("activePlansClass") || "flex").split(" ")
+    this.inactivePlansClass = (this.data.get("inactivePlansClass") || "hidden").split(" ")
 
-    // Hide toggle if no plans in one section
-    if (monthly_plans > 0 && yearly_plans == 0) {
-      this._hideToggle()
-    } else if (monthly_plans == 0 && yearly_plans > 0) {
-      this._toggle("yearly")
-      this._hideToggle()
-    }
+    // Remove any targets without plans in them
+    this.frequencyTargets.forEach(target => {
+      let frequency = target.dataset.frequency
+      let index = this.plansTargets.findIndex((element) => element.dataset.frequency == frequency && element.childElementCount > 0)
+      if (index == -1) target.remove()
+    })
+
+    // Hide frequency toggle if we have less than 2 frequencies with plans
+    if (this.frequencyTargets.length < 2) this._hideFrequencyToggle()
+
+    let frequency = this.data.get("active") || this.frequencyTargets[0].dataset.frequency
+    this._toggle(frequency)
   }
 
+  // Switches visible plans
   switch(event) {
     event.preventDefault()
-    this._toggle(event.target.dataset.show)
+    this._toggle(event.target.dataset.frequency)
   }
 
-  _hideToggle() {
+  // Hides frequency toggle
+  _hideFrequencyToggle() {
     this.toggleTarget.classList.add("hidden")
   }
 
+  // Toggles visible plans and selected frequency
+  // Expects: "monthly", "yearly", etc
   _toggle(frequency) {
-    if (frequency === this.data.get("current")) {
-      return
-    }
+    // Keep track of active frequency on a data attribute
+    this.data.set("active", frequency)
 
-    this.data.set("current", frequency)
-
-    if (frequency == "monthly") {
-      this.monthlyToggleTarget.classList.add(...this.frequencyClass)
-      this.yearlyToggleTarget.classList.remove(...this.frequencyClass)
-
-    } else {
-      this.monthlyToggleTarget.classList.remove(...this.frequencyClass)
-      this.yearlyToggleTarget.classList.add(...this.frequencyClass)
-    }
-
-    this.plansClass.forEach(klass => {
-      this.monthlyPlansTarget.classList.toggle(klass)
-      this.yearlyPlansTarget.classList.toggle(klass)
+    this.frequencyTargets.forEach(target => {
+      if (target.dataset.frequency == frequency) {
+        this.showFrequency(target)
+      } else {
+        this.hideFrequency(target)
+      }
     })
+
+    this.plansTargets.forEach(target => {
+      if (target.dataset.frequency == frequency) {
+        this.showPlans(target)
+      } else {
+        this.hidePlans(target)
+      }
+    })
+  }
+
+  showFrequency(element) {
+    element.classList.add(...this.activeFrequencyClass)
+    element.classList.remove(...this.inactiveFrequencyClass)
+  }
+
+  hideFrequency(element) {
+    element.classList.remove(...this.activeFrequencyClass)
+    element.classList.add(...this.inactiveFrequencyClass)
+  }
+
+  showPlans(element) {
+    element.classList.add(...this.activePlansClass)
+    element.classList.remove(...this.inactivePlansClass)
+  }
+
+  hidePlans(element) {
+    element.classList.remove(...this.activePlansClass)
+    element.classList.add(...this.inactivePlansClass)
   }
 }
