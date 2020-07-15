@@ -27,11 +27,11 @@ ActionView::Base.field_error_proc = proc do |html_tag, instance|
       elsif instance.error_message.is_a?(Array)
         # Add a hint error after the field
         # If there were multiple errors on an element, we'll combine them into one string
-        %(#{e}<p class="form-hint error">&nbsp;#{instance.send(:sanitized_method_name).humanize} #{instance.error_message.uniq.join(", ")}</p>)
+        %(#{e}<p class="form-hint error">&nbsp;#{instance.object.class.human_attribute_name(instance.send(:sanitized_method_name))} #{instance.error_message.uniq.to_sentence}</p>)
 
       else
         # Add a hint error after the field
-        %(#{e}<p class="form-hint error">&nbsp;#{instance.send(:sanitized_method_name).humanize} #{instance.error_message}</p>)
+        %(#{e}<p class="form-hint error">&nbsp;#{instance.object.class.human_attribute_name(instance.send(:sanitized_method_name))} #{instance.error_message}</p>)
       end
 
     else
