@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :bigint(8)        not null, primary key
+#  id                     :bigint           not null, primary key
 #  accepted_privacy_at    :datetime
 #  accepted_terms_at      :datetime
 #  admin                  :boolean
@@ -21,6 +21,7 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string
+#  preferred_language     :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -28,7 +29,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  invited_by_id          :bigint(8)
+#  invited_by_id          :bigint
 #
 # Indexes
 #
