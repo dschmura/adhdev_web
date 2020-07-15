@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SetCurrentRequestDetails
+  include SetLocale
   include Jumpstart::Controller
   include Accounts::SubscriptionStatus
   include Users::TimeZone
