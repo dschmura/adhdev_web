@@ -20,7 +20,7 @@
 
         <div>
           <%= link_to t(".invite"), new_account_account_invitation_path(@account), class: "btn btn-primary outline no-underline" if !@account.personal? && account_admin?(@account, current_user) %>
-          <%= link_to t(".edit"), edit_account_path(@account), class: "btn btn-primary outline" if account_admin?(@account, current_user) %>
+          <%= link_to t(".edit_account"), edit_account_path(@account), class: "btn btn-primary outline" if account_admin?(@account, current_user) %>
         </div>
       </div>
 
