@@ -7,11 +7,11 @@
     <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
 
       <div class="flex justify-between items-center mb-3">
-        <h1 class="h2 flex-1">Accounts</h1>
+        <h1 class="h2 flex-1"><%= t(".title") %></h1>
 
         <% if @accounts.exists? %>
           <div>
-            <%= link_to 'Create a Account', new_account_path, class: "btn btn-primary" %>
+            <%= link_to t(".create"), new_account_path, class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
@@ -21,7 +21,7 @@
         <table class="w-full">
           <thead>
             <tr>
-              <th class="p-3 uppercase text-left text-xs text-gray-700">Name</th>
+              <th class="p-3 uppercase text-left text-xs text-gray-700"><%= Account.human_attribute_name(:name) %></th>
               <th></th>
             </tr>
           </thead>
@@ -46,9 +46,9 @@
 
                 <td class="p-3 w-32 text-center">
                   <% if current_account != account %>
-                    <%= link_to "Switch", switch_account_path(account), method: :patch, class: "btn btn-link no-underline" %>
+                    <%= link_to t(".switch"), switch_account_path(account), method: :patch, class: "btn btn-link no-underline" %>
                   <% else %>
-                    <span class="text-sm text-gray-600">Current Account</span>
+                    <span class="text-sm text-gray-600"><%= t(".current") %></span>
                   <% end %>
                 </td>
               </tr>

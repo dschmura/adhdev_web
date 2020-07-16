@@ -6,6 +6,6 @@ class PaymentsController < ApplicationController
   def update
     @payment = Pay::Payment.from_id(params[:id])
     @payment.confirm
-    redirect_to root_path, notice: "Thanks for subscribing!"
+    redirect_to root_path, notice: t(".success")
   end
 end

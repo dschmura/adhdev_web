@@ -29,7 +29,7 @@ class AccountInvitation < ApplicationRecord
   has_secure_token
 
   validates :name, :email, presence: true
-  validates :email, uniqueness: {scope: :account_id, message: "has already been invited"}
+  validates :email, uniqueness: {scope: :account_id, message: :invited}
 
   # Store the roles in the roles json column and cast to booleans
   store_accessor :roles, *AccountUser::ROLES

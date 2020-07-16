@@ -5,7 +5,7 @@
 
   <div class="lg:w-3/4 w-full p-4">
     <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
-      <h2 class="mb-4">Edit Profile</h2>
+      <h2 class="mb-4"><%= t('.title', resource: resource.model_name.human) %></h2>
 
       <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "mb-16") do |f| %>
       <%= render "shared/error_messages", resource: resource %>
@@ -22,7 +22,7 @@
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
             <% end %>
 
             <div class="form-group">
@@ -35,11 +35,11 @@
             </div>
           </div>
           <div class="lg:pl-16 lg:w-1/2 w-full">
-            <label class="label">Avatar</label>
+            <%= f.label :avatar %>
             <div class="form-group">
               <%= f.file_field :avatar, accept:'image/*', class: "form-control form-file" %>
               <label for="avatar" class="cursor-pointer">
-                <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span>Upload Avatar</span>
+                <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span><%= t("users.avatar.upload") %></span>
               </label>
             </div>
             <div class="form-group">
@@ -48,13 +48,14 @@
           </div>
         </div>
           <div class="form-group mt-2">
-            <%= f.button "Update", class: "btn btn-primary", data: { disable_with: disable_with("Saving...") } %>
+            <%= f.button t('.update'), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving")) } %>
           </div>
         <% end %>
 
       <div class="flex flex-wrap flex-end">
-        <div class="flex-1"></div>
-         <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-white primary" %>
+        <div class="flex-1">
+          <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t("are_you_sure") }, method: :delete, class: "btn btn-white primary" %>
+        </div>
       </div>
 
     </div>

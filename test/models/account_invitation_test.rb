@@ -28,6 +28,12 @@ require "test_helper"
 class AccountInvitationTest < ActiveSupport::TestCase
   setup do
     @account_invitation = account_invitations(:one)
+    @account = @account_invitation.account
+  end
+
+  test "cannot invite same email twice" do
+    invitation = @account.account_invitations.create(name: "whatever", email: @account_invitation.email)
+    assert_not invitation.valid?
   end
 
   test "accept" do

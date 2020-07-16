@@ -65,6 +65,7 @@ gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.1
 gem "administrate-field-active_storage", "~> 0.3.0"
 gem "attr_encrypted", "~> 3.1"
 gem "devise", ">= 4.7.1"
+gem "devise-i18n", "~> 1.9"
 gem "devise_masquerade", github: "excid3/devise_masquerade"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"

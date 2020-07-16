@@ -38,28 +38,23 @@
             </div>
             <div data-target="dropdown.menu" class="lg:absolute lg:right-0 mt-2 hidden z-20">
               <div class="bg-white shadow rounded border overflow-hidden">
-                <%= link_to current_account, class: 'border-b text-sm no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' do %>
-                  Signed in as <strong><%= current_account.name %></strong>
-                <% end %>
-
-                <%= link_to 'Profile',  edit_user_registration_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
-                <%= link_to 'Password', account_password_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' %>
-                <%= link_to 'Accounts', user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Devise.omniauth_configs.any? %>
-                <%= link_to 'Billing',  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
-                <%#= link_to 'API',  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
-
+                <%= link_to t(".signed_in_as_html", user: current_account.name), current_account, class: 'border-b text-sm no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".password"), account_password_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".connected_accounts"), user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Devise.omniauth_configs.any? %>
+                <%= link_to t(".billing"),  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
+                <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
                 <!--
                 <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Accounts</div>
                 -->
-                <%= link_to "Accounts", accounts_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".accounts"), accounts_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
                 <% current_user.accounts.each do |account| %>
                   <%= link_to account.name, switch_account_path(account), remote: true, method: :patch, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
                 <% end %>
 
-
                 <% if current_user.admin? %>
-                  <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Admin</div>
-                  <%= link_to 'Dashboard', admin_root_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
+                  <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase"><%= t(".admin") %></div>
+                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
                   <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
                 <% end %>
 
@@ -70,15 +65,15 @@
                   <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
                 <% end %>
 
-                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
               </div>
             </div>
           </div>
         </div>
 
       <% else %>
-        <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
+        <%= link_to t(".log_in"), new_user_session_path, class: 'nav-link' %>
+        <%= link_to t(".sign_up"), new_user_registration_path, class: 'btn btn-primary' %>
       <% end %>
 
     </div>

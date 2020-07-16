@@ -8,7 +8,7 @@ class CardsController < ApplicationController
   def update
     current_account.assign_attributes(processor: processor)
     current_account.update_card(token)
-    redirect_to subscription_path, notice: "Your card was updated successfully."
+    redirect_to subscription_path, notice: t(".updated")
   end
 
   private

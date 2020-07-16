@@ -20,7 +20,7 @@ class SubscriptionsController < ApplicationController
     @plan = Plan.without_free.find(current_account.plan) # Get the Stripe or Braintree specific ID
     processor_id = @plan.processor_id(current_account.processor)
     current_account.subscribe(plan: processor_id, trial_period_days: @plan.trial_period_days)
-    redirect_to root_path, notice: "Thanks for subscribing!"
+    redirect_to root_path, notice: t(".created")
   rescue Pay::ActionRequired => e
     redirect_to pay.payment_path(e.payment.id)
   rescue Pay::Error => e
@@ -47,7 +47,7 @@ class SubscriptionsController < ApplicationController
 
   def resume
     current_account.subscription.resume
-    redirect_to subscription_path, notice: "Your subscription has been resumed."
+    redirect_to subscription_path, notice: t(".resumed")
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :show
@@ -67,7 +67,7 @@ class SubscriptionsController < ApplicationController
 
   def info
     current_account.update(subscription_params)
-    redirect_to subscription_path, notice: "Extra billing info saved sucessfully."
+    redirect_to subscription_path, notice: t(".info_updated")
   end
 
   private

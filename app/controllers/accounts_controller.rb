@@ -1,7 +1,7 @@
-class AccountsController < ApplicationController
+class AccountsController < Accounts::BaseController
   before_action :authenticate_user!
   before_action :set_account, only: [:show, :edit, :update, :destroy, :switch]
-  before_action :require_admin, only: [:edit, :update, :destroy]
+  before_action :require_account_admin, only: [:edit, :update, :destroy]
   before_action :prevent_personal_account_deletion, only: [:destroy]
 
   # GET /accounts
@@ -29,7 +29,7 @@ class AccountsController < ApplicationController
 
     if @account.save
       set_active_account
-      redirect_to @account, notice: "Account was successfully created."
+      redirect_to @account, notice: t(".created")
     else
       render :new
     end
@@ -38,7 +38,7 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: "Account was successfully updated."
+      redirect_to @account, notice: t(".updated")
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1
   def destroy
     @account.destroy
-    redirect_to accounts_url, notice: "Account was successfully destroyed."
+    redirect_to accounts_url, notice: t(".destroyed")
   end
 
   def switch
@@ -87,16 +87,9 @@ class AccountsController < ApplicationController
     session[:account_id] = @account.id
   end
 
-  def require_admin
-    account_user = @account.account_users.find_by(user: current_user)
-    if account_user.nil? || !account_user.admin?
-      redirect_to account_path(@account), alert: "You must be a account admin to do that."
-    end
-  end
-
   def prevent_personal_account_deletion
     if @account.personal?
-      redirect_to account_path(@account), alert: "You cannot delete your personal account."
+      redirect_to account_path(@account), alert: t(".personal.cannot_delete")
     end
   end
 end

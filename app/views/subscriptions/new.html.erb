@@ -1,6 +1,6 @@
 <div class="shadow-lg rounded-lg flex flex-col sm:flex-row lg:w-1/2 mx-auto my-8 bg-white">
   <div class="sm:w-2/3 p-8">
-    <h1>Checkout</h1>
+    <h1><%= t(".title") %></h1>
 
     <hr class="border-b my-8" />
 
@@ -14,15 +14,15 @@
         <div data-target="toggle.toggleable">
           <div class="flex mb-8">
             <div class="flex-1">
-              <label>Payment Method</label>
+              <label><%= t(".payment_method") %></label>
               <i class="fab fa-cc-<%= current_account.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(current_account) %>
             </div>
-            <%= link_to "Change", "#", class: "text-primary text-sm mt-6", data: { action: "click->toggle#toggle" } %>
+            <%= link_to t(".change"), "#", class: "text-primary text-sm mt-6", data: { action: "click->toggle#toggle" } %>
           </div>
 
           <%= form_with model: current_account, url: subscription_url, method: :post do |f| %>
             <%= f.hidden_field :plan, value: @plan.id if @plan.present? %>
-            <%= f.button 'Subscribe', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
+            <%= f.button t(".subscribe"), id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with(t(".processing")) } %>
           <% end %>
         </div>
       <% end %>
@@ -36,7 +36,10 @@
 
     <div class="text-sm text-center mt-8">
       <%= render_svg "icons/question", styles: "fill-current text-gray-500 w-4 h-4 inline-block" %>
-      Need any help? <span class="text-gray-600">Don't hesitate to <%= mail_to Jumpstart.config.support_email, "contact support", subject: "I have a question about #{Jumpstart.config.application_name}", class: "text-gray-800 underline" %>.</span>
+      <%= t(".help") %>
+      <span class="text-gray-600">
+        <%= t(".contact_html", link: mail_to(Jumpstart.config.support_email, t(".contact_support"), subject: t(".contact_subject", product: Jumpstart.config.application_name), class: "text-gray-800 underline")) %>
+      </span>
     </div>
   </div>
 
@@ -48,7 +51,7 @@
       <span class="text-5xl"><%= @plan.amount / 100 %></span>
       <span class="text-lg">/ <%= @plan.interval %></span>
     </div>
-    <div>Automatically renews<br/> after 1 <%= @plan.interval %></div>
+    <div><%= t(".renews_html", interval: @plan.interval) %></div>
 
     <br />
 
@@ -58,7 +61,7 @@
 
     <hr class="my-8 border-b border-blue-600" />
 
-    <div class="mb-1">I've never found anything easier to use than <%= Jumpstart.config.application_name %>!</div>
+    <div class="mb-1"><%= t(".testimonial", product: Jumpstart.config.application_name) %></div>
     <div class="flex items-center pt-2">
       <img class="block h-8 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://avatars1.githubusercontent.com/u/67093?s=40&v=4" alt="">
       <p class="leading-tight">Chris Oliver</p>

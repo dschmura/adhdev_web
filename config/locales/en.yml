@@ -28,9 +28,320 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
+#
+# https://mikerogers.io/2016/01/10/i18n-rails-internationalisation-i18n-cheatsheet.html
 
 en:
   hello: "Hello world"
+
+  something_went_wrong: "Somethign went wrong"
+  create_an_account_first: "Please create an account first."
+  must_be_an_admin: "You must be an admin to do that."
+  are_you_sure: "Are you sure?"
+  delete: "Delete"
+  back: "Back"
+
   account_invitations_mailer:
     invite:
       subject: "%{inviter} invited you to %{account}"
+      header_html: "%{inviter} has invited you to collaborate on <strong>%{account}</strong>"
+      description_html: "You can %{link} this invitation."
+      accept_or_decline: "accept or decline"
+      view_invitation: "View invitation"
+
+  account_invitations:
+    invite_user: "Invite User"
+    authenticate: "Please login or create an account to accept this invitation"
+    not_found: "Whoops, we weren't able to find this invitation. Check with your account admin for a new invitation."
+    show:
+      invited_you_to_join_html: "<strong>%{inviter}</strong> invited you to join <strong>%{account}</strong>"
+      accept: "Accept Invitation"
+      decline: "Decline"
+
+  account_users:
+    updated: "Account member was successfully updated."
+    destroyed: "Account member was successfully removed."
+    edit:
+      description: "Editing account permissions for %{user}."
+
+  accounts:
+    index:
+      title: "Accounts"
+      create: "Create an Account"
+      switch: "Switch"
+      current: "Current Account"
+    show:
+      invite: "Invite A User"
+      edit: "Edit Account"
+      copy_link: "Copy link"
+
+    new:
+      breadcrumb: "New Account"
+      title: "New Account"
+    edit:
+      breadcrumb: "Edit"
+      title: "Edit Account"
+    created: "Account was successfully created."
+    updated: "Account was successfully updated."
+    destroyed: "Account was successfully destroyed."
+    admin_required: "Only account admins are allowed to do that."
+    personal:
+      cannot_delete: "You cannot delete your personal account."
+    all: "All Accounts"
+    users: "Users"
+    roles: "Roles"
+    account_invitations:
+      new:
+        description: "Invite a user to your join account."
+        send: "Send invitation"
+        cancel: "Cancel"
+      edit:
+        description: "Edit or cancel account invitation."
+        back: "Back"
+        update: "Update invitation"
+        destroy: "Cancel Invite"
+
+  announcements:
+    index:
+      title: "What's New"
+      empty_placeholder: "Exciting stuff coming very soon!"
+
+  api_tokens:
+    created: "Successfully created API token"
+    updated: "Successfully updated API token"
+    destroyed: "Your API token has been revoked"
+    all: "All API Tokens"
+
+    index:
+      title: "API Tokens"
+      create: "Create an API Token"
+      revoke: "Revoke"
+    new:
+      breadcrumb: "New"
+      title: "New API Token"
+    edit:
+      breadcrumb: "Edit"
+      title: "Edit API Token"
+    show:
+      edit: "Edit Token"
+      revoke: "Revoke Token"
+      confirm: "Are you sure you want to revoke this API token?"
+      auth_header: "Authenticate using Header"
+
+  cards:
+    updated: "Your card was updated successfully."
+    edit:
+      billing: "Billing"
+      payment_details: "Payment Details"
+    forms:
+      braintree:
+        button: "Update Card"
+        processing: "Processing..."
+      stripe:
+        credit_or_debit_card: "Credit or Debit Card"
+        button: "Update Card"
+        processing: "Processing..."
+
+  dashboard:
+    show:
+      title: "Dashboard"
+
+  payments:
+    success: "Thanks for subscribing!"
+    show:
+      successful: "Payment Successful"
+      successful_description: "This payment was already successfully confirmed."
+      cancelled: "Payment Cancelled"
+      cancelled_description: "This payment was cancelled."
+      confirm: "Confirm your %{amount} payment"
+      confirm_description: "Extra confirmation is needed to process your payment. Please confirm your payment by filling out your payment details below."
+      back: "Go back"
+      confirm_button: "Confirm Payment"
+
+  static:
+    no_plans: "There are no pricing plans configured."
+    pricing:
+      heading: "Pricing"
+      subhead: "Simple, straightforward pricing to get your online business up and running"
+      monthly: "Monthly"
+      yearly: "Yearly"
+      get_started: "Get Started"
+
+    about:
+      title: "About Us"
+    privacy:
+      title: "Privacy Policy"
+    terms:
+      title: "Terms Of Service"
+
+  shared:
+    footer:
+      about: "About Us"
+      privacy: "Privacy Policy"
+      terms: "Terms of Service"
+    account_navbar:
+      profile: "Profile"
+      password: "Password"
+      connected_accounts: "Connected Accounts"
+      billing: "Billing"
+      accounts: "Accounts"
+      api_tokens: "API"
+    flash:
+      confirm_payment: "Confirm your latest payment"
+    navbar:
+      signed_in_as_html: "Signed in as <strong>%{user}</strong>"
+      profile: "Profile"
+      password: "Password"
+      connected_accounts: "Connected Accounts"
+      billing: "Billing"
+      api_tokens: "API"
+      accounts: "Accounts"
+      admin: "Admin"
+      dashboard: "Dashboard"
+      sign_out: "Sign Out"
+      log_in: "Log In"
+      sign_up: "Sign Up"
+    right_nav:
+      pricing: "Pricing"
+      announcements: "What's New"
+
+  subscriptions:
+    created: "Thanks for subscribing!"
+    resumed: "Your subscription has been resumed."
+    info_updated: "Extra billing info saved sucessfully."
+
+    new:
+      title: "Checkout"
+      payment_method: "Payment Method"
+      change: "Change"
+      subscribe: "Subscribe"
+      processing: "Processing..."
+      help: "Need any help?"
+      contact_html: "Don't hesitate to %{link}."
+      renews_html: "Automatically renews<br/>after 1 %{interval}"
+      contact_support: "contact support"
+      contact_subject: "I have a question about %{product}"
+      testimonial: "I've never found anything easier to use than %{product}!"
+
+    edit:
+      trial_ends: "Your trial ends in %{days}."
+      title: "Change Your Plan"
+      description: "Simple, straightforward pricing to get your online business up and running"
+      monthly: "Monthly"
+      yearly: "Yearly"
+      current_plan: "Current Plan"
+      change_plan: "Change Plan"
+      processing: "Processing..."
+
+    show:
+      title: "Billing"
+      contact_admin: "Contact an admin to change the %{account} subscription."
+
+    current_plan:
+      title: "Current Plan"
+      trial_ends: "Your trial ends in %{days}."
+      subscription_ends_html: "Your subscription ends <strong>%{date}</strong>"
+      resume: "Resume Subscription"
+      resuming: "Resuming..."
+      resubscribe_html: "Your subscription has ended. Would you like to %{link}?"
+      resubscribe: "resubscribe"
+      current_plan_html: "You are currently subscribed to the <strong>%{plan}</strong> plan."
+      change_plan: "Change my plan"
+      not_subscribed: "You are not currently subscribed."
+      choose_plan: "Choose a plan"
+      payment_method: "Payment Method"
+      no_card: "You have no card on file."
+      update_payment_method: "Update payment method"
+      extra_billing_info: "Extra Billing Information"
+      additional_information: "Add any additional information to all of your receipts such as your VAT ID, full business name, and address."
+      save_info: "Save information"
+      saving: "Saving..."
+      add_info: "Add information"
+      invoices: "Invoices"
+      invoices_description: "Your history of transactions and payments."
+      date: "Date"
+      amount: "Amount"
+      receipt: "Receipt"
+      cancel:
+        title: "Cancel Your Subscription"
+        description: "You can cancel anytime, but you'll lose access to %{product}."
+        help_html: "Need to talk to someone? %{link} -- we'd love to help."
+        contact_us: "Contact us"
+        subject: "Question about %{product}"
+        button: "Cancel Subscription"
+        cancelling: "Cancelling..."
+
+
+    forms:
+      stripe:
+        credit_or_debit_card: "Credit or debit card"
+
+  account:
+    passwords:
+      updated: "Your password was changed successfully."
+      edit:
+        update_password: "Update Password"
+        update: "Update"
+
+  users:
+    avatar:
+      upload: "Upload Avatar"
+    connected_accounts:
+      index:
+        title: "Connected Accounts"
+        description: "Connecting your social media accounts makes logging in easier."
+        remove: "Remove"
+        redirecting: "Redirecting..."
+        none: "You don't have any connected accounts."
+
+  layouts:
+    mailer:
+      copyright_html: "Copyright &copy; %{year}, All rights reserved."
+      mailing_address: "Our mailing address is:"
+      view_in_browser: "View this in your browser"
+      unsubscribe: "Unsubscribe from this list"
+      preferences: "Update subscription preferences"
+
+  activerecord:
+    attributes:
+      api_token:
+        last_used_at: "Last Used"
+        created_at: "Created"
+      account:
+        name_on_card: "Name on Card"
+
+    errors:
+      models:
+        account:
+          attributes:
+            domain:
+              reserved: "%{value} is reserved."
+            subdomain:
+              reserved: "%{value} is reserved."
+              format: "must be at least 2 characters and alphanumeric"
+        account_invitation:
+          attributes:
+            email:
+              invited: "has already been invited"
+        account_user:
+          attributes:
+            admin:
+              cannot_be_removed: "role cannot be removed for the account owner"
+
+  helpers:
+    placeholder:
+      account_invitation:
+        name: "Full name"
+        email: "example@domain.com"
+      account:
+        name: "Account Name"
+        domain: "example.com"
+        subdomain: "example"
+        name_on_card: "Full Name"
+        extra_billing_info: "VAT ID, Business name, address, etc..."
+      api_token:
+        name: "Token Name"
+      user:
+        name: "Steve Jobs"
+        email: "you@example.com"
+        password: "password"

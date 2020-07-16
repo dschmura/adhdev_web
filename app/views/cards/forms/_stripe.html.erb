@@ -11,16 +11,16 @@
   } do |f| %>
 
   <div class="form-group">
-    <label for="card-element">Credit or debit card</label>
+    <label for="card-element"><%= t(".credit_or_debit_card") %></label>
     <div data-target="stripe.card" class="form-control"></div>
     <div data-target="stripe.error" role="alert" class="text-red-600 text-sm mt-2"></div>
   </div>
 
   <div class="form-group">
     <%= f.label :name_on_card %>
-    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: "Full Name", required: true, data: { target: "stripe.name" } %>
+    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { target: "stripe.name" } %>
   </div>
 
   <%= f.hidden_field :processor, value: :stripe %>
-  <%= f.button 'Update Card', id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with("Processing...") } %>
+  <%= f.button t(".button"), id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with(t("processing")) } %>
 <% end %>

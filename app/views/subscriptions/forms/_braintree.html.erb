@@ -13,11 +13,11 @@
   <%= f.hidden_field :plan, value: @plan.id %>
 
   <div class="my-8 text-center">
-    <%= f.button 'Subscribe',
+    <%= f.button t("subscriptions.new.subscribe"),
       class: "btn btn-primary",
       data: {
         action: "click->braintree#submit",
-        disable_with: disable_with("Processing...")
+        disable_with: disable_with(t("subscriptions.new.processing"))
       } %>
   </div>
 <% end %>

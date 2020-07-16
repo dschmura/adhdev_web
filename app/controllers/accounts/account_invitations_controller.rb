@@ -1,4 +1,4 @@
-class Accounts::AccountInvitationsController < ApplicationController
+class Accounts::AccountInvitationsController < Accounts::BaseController
   before_action :set_account
   before_action :require_account_admin
   before_action :set_account_invitation, only: [:edit, :update, :destroy]
@@ -47,12 +47,5 @@ class Accounts::AccountInvitationsController < ApplicationController
       .require(:account_invitation)
       .permit(:name, :email, AccountUser::ROLES)
       .merge(account: @account, invited_by: current_user)
-  end
-
-  def require_account_admin
-    account_user = @account.account_users.find_by(user: current_user)
-    unless account_user&.active_roles&.include?(:admin)
-      redirect_to @account, alert: "Only account admins are allowed to do that."
-    end
   end
 end

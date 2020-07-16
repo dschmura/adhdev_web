@@ -13,7 +13,7 @@ class ApiTokensController < ApplicationController
   def create
     @api_token = current_user.api_tokens.new(api_token_params)
     if @api_token.save
-      redirect_to @api_token, notice: "Successfully created API token"
+      redirect_to @api_token, notice: t(".created")
     else
       render :new
     end
@@ -24,7 +24,7 @@ class ApiTokensController < ApplicationController
 
   def update
     if @api_token.update(api_token_params)
-      redirect_to api_tokens_path, notice: "Successfully updated API token"
+      redirect_to api_tokens_path, notice: t(".updated")
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class ApiTokensController < ApplicationController
 
   def destroy
     @api_token.destroy
-    redirect_to api_tokens_path, notice: "Your API token has been revoked"
+    redirect_to api_tokens_path, notice: t(".destroyed")
   end
 
   private

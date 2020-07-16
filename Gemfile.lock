@@ -153,6 +153,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.1)
+      devise (>= 4.7.1)
     encryptor (3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
@@ -397,6 +399,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (>= 4.7.1)
+  devise-i18n (~> 1.9)
   devise_masquerade!
   image_processing (~> 1.9, >= 1.9.2)
   inline_svg (~> 1.6)

@@ -1,9 +1,9 @@
-class AccountUsersController < ApplicationController
+class AccountUsersController < Accounts::BaseController
   before_action :authenticate_user!
   before_action :set_account
   before_action :require_non_personal_account!
   before_action :set_account_user, only: [:edit, :update, :destroy, :switch]
-  before_action :require_admin, except: [:index, :show]
+  before_action :require_account_admin, except: [:index, :show]
 
   # GET /accounts
   def index
@@ -22,7 +22,7 @@ class AccountUsersController < ApplicationController
   # PATCH/PUT /account_users/1
   def update
     if @account_user.update(account_user_params)
-      redirect_to @account, notice: "Account member was successfully updated."
+      redirect_to @account, notice: t(".updated")
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class AccountUsersController < ApplicationController
   # DELETE /account_users/1
   def destroy
     @account_user.destroy
-    redirect_to @account, notice: "Account member was successfully removed."
+    redirect_to @account, notice: t(".destroyed")
   end
 
   private
@@ -52,12 +52,5 @@ class AccountUsersController < ApplicationController
 
   def require_non_personal_account!
     redirect_to accounts_path if @account.personal?
-  end
-
-  def require_admin
-    account_user = @account.account_users.find_by(user: current_user)
-    if account_user.nil? || !account_user.admin?
-      redirect_to account_path(@account), notice: "You must be a account admin to do that."
-    end
   end
 end

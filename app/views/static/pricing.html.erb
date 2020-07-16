@@ -1,23 +1,27 @@
 <div class="container m-auto my-10">
   <div class="flex flex-wrap justify-center">
     <div class="text-center">
-      <h1>Pricing</h1>
-      <p class="text-xl">Simple, straightforward pricing to get your online business up and running</p>
+      <h1><%= t(".heading") %></h1>
+      <p class="text-xl"><%= t(".subhead") %></p>
     </div>
   </div>
 
   <div data-controller="pricing" class="flex flex-wrap items-center justify-center">
 
     <div data-target="pricing.toggle" class="inline-block rounded-full bg-tertiary-500 py-2 px-1 text-white my-8">
-      <a data-action="click->pricing#switch" data-target="pricing.frequency" data-frequency="monthly" class="cursor-pointer py-2 px-4 rounded-full">Monthly</a>
-      <a data-action="click->pricing#switch" data-target="pricing.frequency" data-frequency="yearly" class="cursor-pointer py-2 px-4 rounded-full"> Yearly</a>
+      <a data-action="click->pricing#switch" data-target="pricing.frequency" data-frequency="monthly" class="cursor-pointer py-2 px-4 rounded-full">
+        <%= t(".monthly") %>
+      </a>
+      <a data-action="click->pricing#switch" data-target="pricing.frequency" data-frequency="yearly" class="cursor-pointer py-2 px-4 rounded-full">
+        <%= t(".yearly") %>
+      </a>
     </div>
 
     <div class="w-full lg:px-0 px-2">
       <div data-target="pricing.plans" data-frequency="monthly" class="flex flex-wrap items-center justify-center -mx-4">
         <% Plan.monthly.sorted.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
-            <%= link_to "Get Started", new_subscription_path(plan: plan.id), class: "btn btn-tertiary" %>
+            <%= link_to t(".get_started"), new_subscription_path(plan: plan.id), class: "btn btn-tertiary" %>
           <% end %>
         <% end %>
       </div>
@@ -25,7 +29,7 @@
       <div data-target="pricing.plans" data-frequency="yearly" class="hidden flex-wrap items-center justify-center -mx-4">
         <% Plan.yearly.sorted.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
-            <%= link_to "Get Started", new_subscription_path(plan: plan.id), class: "btn btn-tertiary" %>
+            <%= link_to t(".get_started"), new_subscription_path(plan: plan.id), class: "btn btn-tertiary" %>
           <% end %>
         <% end %>
       </div>

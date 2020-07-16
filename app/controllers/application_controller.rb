@@ -32,13 +32,13 @@ class ApplicationController < ActionController::Base
   def authenticate_user_with_sign_up!
     unless user_signed_in?
       store_location_for(:user, request.fullpath)
-      redirect_to new_user_registration_path, alert: "Please create an account first"
+      redirect_to new_user_registration_path, alert: t("create_an_account_first")
     end
   end
 
   def require_current_account_admin
     unless current_account_admin?
-      redirect_to root_path, alert: "You must be an admin to do that."
+      redirect_to root_path, alert: t("must_be_an_admin")
     end
   end
 end

@@ -5,12 +5,12 @@
 
   <div class="lg:w-3/4 w-full p-4">
     <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
-      <h1 class="h2 mb-2">Billing</h2>
+      <h1 class="h2 mb-2"><%= t(".title") %></h2>
 
       <% if account_admin?(current_account, current_user) %>
         <%= render "current_plan" %>
       <% else %>
-        <p>Contact an admin to change the <%= current_account.name %> subscription.</p>
+        <p><%= t(".contact_admin", account: current_account.name) %></p>
       <% end %>
     </div>
   </div>

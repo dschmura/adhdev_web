@@ -4,12 +4,18 @@
   </div>
 
   <div class="lg:w-3/4 w-full p-4">
+    <div class="mb-5 text-sm text-gray-600">
+      <%= link_to t("api_tokens.all"), api_tokens_path, class: "hover:text-black" %>
+      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+      <%= t(".breadcrumb") %>
+    </div>
+
     <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
-      <h1>New API Token</h1>
+      <h1><%= t(".title") %></h1>
 
-      <%= render 'form', api_token: @api_token %>
+      <%= render "form", api_token: @api_token %>
 
-      <%= link_to 'Back', api_tokens_path %>
+      <%= link_to t("back"), api_tokens_path %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
 
   <div class="lg:w-3/4 w-full p-4">
     <div class="text-sm text-gray-600 mb-5">
-      <%= link_to "All Accounts", accounts_path, class: "hover:text-black" %>
+      <%= link_to t("accounts.all"), accounts_path, class: "hover:text-black" %>
       <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
       <%= link_to @account.name, @account, class: "hover:text-black" %>
     </div>
@@ -19,16 +19,16 @@
         </div>
 
         <div>
-          <%= link_to 'Invite A User', new_account_account_invitation_path(@account), class: "btn btn-primary outline no-underline" if !@account.personal? && account_admin?(@account, current_user) %>
-          <%= link_to 'Edit Account', edit_account_path(@account), class: "btn btn-primary outline" if account_admin?(@account, current_user) %>
+          <%= link_to t(".invite"), new_account_account_invitation_path(@account), class: "btn btn-primary outline no-underline" if !@account.personal? && account_admin?(@account, current_user) %>
+          <%= link_to t(".edit"), edit_account_path(@account), class: "btn btn-primary outline" if account_admin?(@account, current_user) %>
         </div>
       </div>
 
       <table class="w-full">
         <thead>
           <tr>
-            <th class="p-3 uppercase text-left text-xs text-gray-600">Account Member</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-600">Roles</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-600"><%= AccountUser.human_attribute_name(:user) %></th>
+            <th class="p-3 uppercase text-left text-xs text-gray-600"><%= AccountUser.human_attribute_name(:roles) %></th>
             <th></th>
           </tr>
         </thead>
@@ -42,7 +42,7 @@
                 <%= user.name || user.email %>
               </td>
               <td class="p-3"><%= account_user_roles(@account, account_user).join(", ") %></td>
-              <td class="p-3 w-32 text-center"><%= link_to "Edit", edit_account_account_user_path(@account, account_user), class: "text-sm text-blue-600 no-underline" if account_admin?(@account, current_user) %></td>
+              <td class="p-3 w-32 text-center"><%= link_to t(".edit"), edit_account_account_user_path(@account, account_user), class: "text-sm text-blue-600 no-underline" if account_admin?(@account, current_user) %></td>
             </tr>
           <% end %>
 
@@ -55,11 +55,11 @@
 
                 <div class="ml-2 rounded-full py-1 px-4 bg-gray-400 text-xs inline-block text-gray-700 font-bold leading-normal uppercase">Awaiting response</div>
 
-                <%= tag.button "Copy link", class: "btn btn-link", data: { clipboard_text: account_invitation_url(account_invitation) } if account_admin?(@account, current_user) %>
+                <%= tag.button t(".copy_link"), class: "btn btn-link", data: { clipboard_text: account_invitation_url(account_invitation) } if account_admin?(@account, current_user) %>
               </td>
               <td class="p-3"><%= account_user_roles(@account, account_invitation).join(", ") %></td>
               <td class="p-3 w-32 text-center">
-                <%= link_to "Edit", edit_account_account_invitation_path(@account, account_invitation), class: "text-sm text-blue-600 no-underline" if account_admin?(@account, current_user) %>
+                <%= link_to t(".edit"), edit_account_account_invitation_path(@account, account_invitation), class: "text-sm text-blue-600 no-underline" if account_admin?(@account, current_user) %>
               </td>
             </tr>
           <% end %>

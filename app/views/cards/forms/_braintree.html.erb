@@ -11,5 +11,5 @@
   <%= tag.div nil, data: { target: "braintree.dropin" } %>
 
   <%= f.hidden_field :processor, value: :braintree %>
-  <%= f.button 'Update Card', class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with("Processing...") } %>
+  <%= f.button t(".button"), class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with(t(".processing")) } %>
 <% end %>

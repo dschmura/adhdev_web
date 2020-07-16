@@ -1,7 +1,7 @@
 <%= form_with(model: [@account, account_user]) do |form| %>
   <%= render "shared/error_messages", resource: form.object %>
 
-  <h5 class="mb-2">Roles</h5>
+  <h5 class="mb-2"><%= t("accounts.roles") %></h5>
   <div class="form-group">
     <% AccountUser::ROLES.each do |role| %>
       <label>
@@ -15,7 +15,7 @@
     <%= form.button class: "btn btn-primary" %>
 
     <% if form.object.persisted? %>
-      <%= link_to 'Delete', account_account_user_path(@account, form.object), class: "btn btn-danger outline", method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+      <%= link_to t("delete"), account_account_user_path(@account, form.object), class: "btn btn-danger outline", method: :delete, remote: true, data: { confirm: t("are_you_sure") } %>
     <% end %>
   </div>
 <% end %>

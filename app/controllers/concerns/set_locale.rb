@@ -1,3 +1,6 @@
+# Check out the Rails guides for setting locale by domain or subdomain
+# https://guides.rubyonrails.org/i18n.html#setting-the-locale-from-the-domain-name
+
 module SetLocale
   extend ActiveSupport::Concern
 
@@ -40,4 +43,3 @@ module SetLocale
     I18n.config.available_locales_set.include?(stripped_locale) ? stripped_locale : nil
   end
 end
-

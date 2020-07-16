@@ -5,7 +5,7 @@
 
   <div class="lg:w-3/4 w-full p-4">
     <div class="text-sm text-gray-600 mb-5">
-      <%= link_to "All API Tokens", api_tokens_path, class: "hover:text-black" %>
+      <%= link_to t("api_tokens.all"), api_tokens_path, class: "hover:text-black" %>
       <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
       <%= link_to @api_token.name, @api_token, class: "hover:text-black" %>
     </div>
@@ -18,28 +18,28 @@
         </div>
 
         <div>
-          <%= link_to 'Edit API Token', edit_api_token_path(@api_token), class: "btn btn-primary outline" %>
-          <%= link_to "Revoke Token", @api_token, method: :delete, class: "btn btn-danger outline", data: { confirm: "Are you sure you want to revoke this API token?" } %>
+          <%= link_to t(".edit"), edit_api_token_path(@api_token), class: "btn btn-primary outline" %>
+          <%= link_to t(".revoke"), @api_token, method: :delete, class: "btn btn-danger outline", data: { confirm: t(".confirm") } %>
         </div>
       </div>
 
       <div class="mb-4">
-        <div class="text-gray-600 text-xs uppercase font-bold">Token</div>
+        <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:token) %></div>
         <%= @api_token.token %>
       </div>
 
       <div class="mb-4">
-        <div class="text-gray-600 text-xs uppercase font-bold">Created</div>
+        <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:created_at) %></div>
         <%= @api_token.created_at.strftime("%b %e, %Y") %>
       </div>
 
       <div class="mb-4">
-        <div class="text-gray-600 text-xs uppercase font-bold">Last Used</div>
+        <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:last_used_at) %></div>
         <%= @api_token.last_used_at? ? local_time_ago(@api_token.last_used_at) : "—" %>
       </div>
 
       <div class="mb-4">
-        <div class="text-gray-600 text-xs uppercase font-bold">Authenticate using Header</div>
+        <div class="text-gray-600 text-xs uppercase font-bold"><%= t(".auth_header") %></div>
         <pre><code>GET /api/v1/me.json
 Authorization: Bearer <%= @api_token.token %></code></pre>
       </div>

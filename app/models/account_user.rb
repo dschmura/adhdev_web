@@ -51,7 +51,7 @@ class AccountUser < ApplicationRecord
 
   def owner_must_be_admin
     unless admin?
-      errors.add(:admin, 'role cannot be removed for the account owner')
+      errors.add :admin, :cannot_be_removed
     end
   end
 end

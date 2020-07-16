@@ -15,7 +15,7 @@ class AccountInvitationsMailer < ApplicationMailer
     mail(
       to: "#{name} <#{email}>",
       from: "#{@invited_by.name} <#{Jumpstart.config.support_email}>",
-      subject: I18n.t("account_invitations_mailer.invite.subject", inviter: @invited_by.name, account: @account.name)
+      subject: t(".subject", inviter: @invited_by.name, account: @account.name)
     )
   end
 end

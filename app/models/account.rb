@@ -45,8 +45,8 @@ class Account < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, presence: true
-  validates :domain, exclusion: {in: RESERVED_DOMAINS, message: "%{value} is reserved."}
-  validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: "%{value} is reserved."}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\-_]*[a-zA-Z0-9]+\Z/, message: "must be at least 2 characters and alphanumeric", allow_blank: true}
+  validates :domain, exclusion: {in: RESERVED_DOMAINS, message: :reserved}
+  validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: :reserved}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\-_]*[a-zA-Z0-9]+\Z/, message: :format, allow_blank: true}
 
   def email
     account_users.includes(:user).order(created_at: :asc).first.user.email

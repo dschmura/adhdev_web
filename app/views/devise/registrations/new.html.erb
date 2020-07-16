@@ -1,7 +1,7 @@
 <% content_for :form_block do %>
   <div class="text-center mb-4">
-    <h2>Sign up</h2>
-    <span class="text-sm">or <%= link_to "log in to your account", new_session_path(resource_name), class: "btn-link" %></span>
+    <h2><%= t('.sign_up') %></h2>
+    <span class="text-sm"><%= t(".login_html", link: link_to("log in to your account", new_session_path(resource_name), class: "btn-link")) %></span>
   </div>
 
   <% if @account_invitation %>
@@ -20,25 +20,25 @@
     <%= f.fields_for :owned_accounts do |a| %>
       <div class="form-group">
         <%= a.label :name, "Account name" %>
-        <%= a.text_field :name, autofocus: true, placeholder: "Account Name", class: "form-control" %>
+        <%= a.text_field :name, autofocus: true, placeholder: true, class: "form-control" %>
       </div>
     <% end %>
 
     <div class="form-group">
       <%= f.label :name, "Full name" %>
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: true, class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= f.label :email %>
-      <%= f.email_field :email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
+      <%= f.email_field :email, autocomplete: "email", placeholder: true, class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: true, class: "form-control" %>
       <% if @minimum_password_length %>
-        <p class="text-sm text-gray-600 mt-3">(<%= @minimum_password_length %> characters minimum)</p>
+        <p class="text-sm text-gray-600 mt-3"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></p>
       <% end %>
     </div>
 
@@ -58,12 +58,12 @@
     <div class="form-group">
       <label>
         <%= f.check_box :terms_of_service, class: "mr-1" %>
-        I accept the <%= link_to "terms of service", terms_path, target: "_blank", class: "btn-link" %> &amp; <%= link_to "privacy policy", privacy_path, target: "_blank", class: "btn-link" %>
+        <%= t ".terms_html", terms: link_to("terms of service", terms_path, target: "_blank", class: "btn-link"), privacy: link_to("privacy policy", privacy_path, target: "_blank", class: "btn-link") %>
       </label>
     </div>
 
     <div class="form-group">
-      <%= f.button "Sign up", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+      <%= f.button t('.sign_up'), class: "btn btn-primary", data: { disable_with: t(".submitting") } %>
     </div>
   <% end %>
 
