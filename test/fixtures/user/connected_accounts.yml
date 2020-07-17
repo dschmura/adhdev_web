@@ -31,20 +31,18 @@
 
 one:
   user: one
-  provider: MyString
+  provider: test
   encrypted_access_token: "<%= @secret = User::ConnectedAccount.new(access_token: '0000'); @secret.encrypted_access_token.gsub(/\n/, '\\\\n') %>"
   encrypted_access_token_iv: "<%= @secret.encrypted_access_token %>"
-  refresh_token: MyString
-  expires_at: MyString
-  auth: MyString
-  uid: MyString
+  refresh_token: ABCDEFG
+  expires_at: <%= 1.year.from_now.to_s(:db) %>
+  uid: one
 
 two:
   user: one
-  provider: MyString
+  provider: test
   encrypted_access_token: "<%= @secret = User::ConnectedAccount.new(access_token: '0000'); @secret.encrypted_access_token.gsub(/\n/, '\\\\n') %>"
   encrypted_access_token_iv: "<%= @secret.encrypted_access_token_iv %>"
-  refresh_token: MyString
-  expires_at: MyString
-  auth: MyString
-  uid: MyString
+  refresh_token: ABCDEFG
+  expires_at: <%= 1.year.from_now.to_s(:db) %>
+  uid: two
