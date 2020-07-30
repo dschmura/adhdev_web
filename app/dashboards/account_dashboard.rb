@@ -79,7 +79,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :owner,
     :name,
     :personal,
-    :extra_billing_info,
+    :extra_billing_info
   ].freeze
 
   # Overwrite this method to customize how accounts are displayed

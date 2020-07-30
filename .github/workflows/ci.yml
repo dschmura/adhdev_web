@@ -67,6 +67,9 @@ jobs:
           bundle install --path vendor/bundle --jobs 4 --retry 3
           yarn install --frozen-lockfile
 
+      - name: Standardrb Check
+        run: bundle exec standardrb
+
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test

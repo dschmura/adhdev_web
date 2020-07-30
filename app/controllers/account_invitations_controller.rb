@@ -29,7 +29,6 @@ class AccountInvitationsController < ApplicationController
     redirect_to root_path, alert: t(".not_found")
   end
 
-
   def authenticate_user_with_invite!
     unless user_signed_in?
       store_location_for(:user, request.fullpath)

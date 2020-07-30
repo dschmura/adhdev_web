@@ -34,6 +34,7 @@ test:
       - .yarn
       - vendor
   script:
+  - bundle exec standardrb
   - bundle exec rails test
   only:
   - master

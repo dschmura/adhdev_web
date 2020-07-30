@@ -9,9 +9,11 @@ class RenameTeamsToAccounts < ActiveRecord::Migration[6.0]
         # Delete this exception when you're finished
         raise StandardError, "To upgrade your Jumpstart Pro version to support Multitenancy, we've renamed Teams to Accounts. You'll need to edit this migration to rename the 'team_id' column on your models to 'account_id'."
 
+        # rubocop:disable Lint/UnreachableCode
         rename_table :teams, :accounts
         rename_table :team_members, :account_users
         rename_table :team_invitations, :account_invitations
+        # rubocop:enable Lint/UnreachableCode
       end
     end
   end

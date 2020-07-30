@@ -13,7 +13,7 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
     # With this feature enabled, we also need to submit an account
     if Jumpstart.config.register_with_account?
-      @user_params[:user][:owned_accounts_attributes] = [{ name: "Test Account" }]
+      @user_params[:user][:owned_accounts_attributes] = [{name: "Test Account"}]
     end
   end
 
@@ -58,14 +58,14 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
     test "doesn't prompt for account details on sign up if disabled" do
       Jumpstart.config.stub(:register_with_account?, false) do
         get new_user_registration_path
-        assert_no_match 'Account name', response.body
+        assert_no_match "Account name", response.body
       end
     end
 
     test "prompts for account details on sign up if enabled" do
       Jumpstart.config.stub(:register_with_account?, true) do
         get new_user_registration_path
-        assert_select 'label', text: 'Account name'
+        assert_select "label", text: "Account name"
       end
     end
   end
