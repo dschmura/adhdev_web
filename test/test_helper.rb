@@ -3,6 +3,9 @@ require_relative "../config/environment"
 require "rails/test_help"
 require "minitest/mock"
 
+# Uncomment to view full stack trace in tests
+# Rails.backtrace_cleaner.remove_silencers!
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all

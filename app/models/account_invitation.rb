@@ -53,6 +53,11 @@ class AccountInvitation < ApplicationRecord
         account_user.save!
         destroy!
       end
+
+      [account.owner, invited_by].uniq.each do |recipient|
+        AcceptedInvite.with(account: account, user: user).deliver_later(recipient)
+      end
+
       account_user
     else
       errors.add(:base, account_user.errors.full_messages.first)

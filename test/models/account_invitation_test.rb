@@ -54,4 +54,12 @@ class AccountInvitationTest < ActiveSupport::TestCase
       @account_invitation.reject!
     end
   end
+
+  test "accept sends notifications account owner and inviter" do
+    assert_difference "Notification.count", 2 do
+      account_invitations(:two).accept!(users(:invited))
+    end
+    assert_equal @account, Notification.last.params[:account]
+    assert_equal users(:invited), Notification.last.params[:user]
+  end
 end

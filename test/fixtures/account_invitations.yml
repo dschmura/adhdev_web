@@ -27,13 +27,13 @@
 one:
   account: company
   invited_by: one
-  token: abcdef123456
+  token: <%= AccountInvitation.generate_unique_secure_token %>
   name: Invited User
   email: invited@example.com
 
 two:
   account: company
   invited_by: two
-  token: abcdef1234567
+  token: <%= AccountInvitation.generate_unique_secure_token %>
   name: Second Invited User
   email: invited2@example.com

@@ -1,0 +1,7 @@
+<%= link_to notification.url, class: "block p-4 hover:bg-gray-300", data: { target: "notifications.notification", id: notification.record&.id, read_at: notification.record&.read_at } do %>
+  <p class="mb-2 text-sm leading-5 font-medium text-gray-900">
+    <%= notification.message %>
+  </p>
+
+  <p class="text-sm text-gray-600"><%= local_time_ago notification.record&.created_at %></p>
+<% end %>

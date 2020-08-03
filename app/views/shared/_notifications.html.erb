@@ -1,0 +1,25 @@
+<div data-controller="notifications" class="z-10 mr-4 inline-flex items-center align-middle leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white">
+  <div class="relative" data-controller="dropdown">
+    <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide click->notifications#open touch->notifications#open" role="button" class="inline-block select-none">
+      <span class="appearance-none flex items-center inline-block relative text-gray-700">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+        </svg>
+        <span data-target="notifications.badge" class="hidden absolute top-0 right-0 block h-2 w-2 transform -translate-y-1/2 translate-x-1/2 rounded-full text-white shadow-solid bg-red-400"></span>
+      </span>
+    </div>
+
+    <div data-target="dropdown.menu" class="lg:absolute lg:right-0 mt-2 hidden z-20">
+      <div data-target="notifications.list" class="bg-white shadow rounded border overflow-hidden sm:w-64">
+        <% if @notifications.any? %>
+          <%= render partial: "notifications/notification", collection: @notifications, cached: true %>
+        <% else %>
+          <div class="p-4 text-center" data-target="notifications.placeholder">
+            <div class="mb-2"><%= t("notifications.empty") %></div>
+            <div class="text-gray-600"><%= t("notifications.empty_description") %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

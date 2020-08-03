@@ -34,7 +34,7 @@
 en:
   hello: "Hello world"
 
-  something_went_wrong: "Somethign went wrong"
+  something_went_wrong: "Something went wrong"
   create_an_account_first: "Please create an account first."
   must_be_an_admin: "You must be an admin to do that."
   are_you_sure: "Are you sure?"
@@ -302,6 +302,11 @@ en:
       view_in_browser: "View this in your browser"
       unsubscribe: "Unsubscribe from this list"
       preferences: "Update subscription preferences"
+
+  notifications:
+    invite_accepted: "%{user} accepted your invitation."
+    empty: "Nothing to see here — yet."
+    empty_description: "We'll let you know when you have new notifications."
 
   activerecord:
     attributes:

@@ -1,0 +1,39 @@
+# To deliver this notification:
+#
+# <%= class_name %>.with(post: @post).deliver_later(current_user)
+# <%= class_name %>.with(post: @post).deliver(current_user)
+
+class <%= class_name %> < ApplicationNotification
+  # Database delivery is already added in ApplicationNotification
+  deliver_by :action_cable, to: :to_websocket
+
+  # Add your delivery methods
+  #
+  # deliver_by :email, mailer: "UserMailer"
+  # deliver_by :slack
+  # deliver_by :custom, class: "MyDeliveryMethod"
+
+  # Add required params
+  #
+  # param :post
+
+  # Define helper methods to make rendering easier.
+  #
+  # `message` and `url` are used for rendering in the navbar
+
+  def message
+    t("hello")
+  end
+
+  def url
+    # You can use any URL helpers here such as:
+    # posts_path(params[:post])
+    root_path
+  end
+
+  def to_websocket
+    {
+      html: ApplicationController.render(partial: "notifications/notification", locals: {notification: self})
+    }
+  end
+end

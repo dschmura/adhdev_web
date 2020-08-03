@@ -26,6 +26,7 @@ Jumpstart::Engine.routes.draw do
     get :development
     get :email
     get :i18n
+    get :notifications
     get :oauth
     get :scaffolds
     get :accounts

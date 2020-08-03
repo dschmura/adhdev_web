@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SetLocale
   include Jumpstart::Controller
   include Accounts::SubscriptionStatus
+  include Users::NavbarNotifications
   include Users::TimeZone
   include Pagy::Backend
   include CurrentHelper
