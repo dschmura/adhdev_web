@@ -24,7 +24,7 @@ export default class extends Controller {
   _received(data) {
     // Regular notifications get added to the navbar
     if (data.html) {
-      this.removePlaceholder()
+      this.hidePlaceholder()
       this.listTarget.insertAdjacentHTML('afterbegin', data.html)
       this.showUnreadBadge()
     }
@@ -62,8 +62,12 @@ export default class extends Controller {
     return this.notificationTargets.length == 0
   }
 
-  removePlaceholder() {
-    if (this.hasPlaceholderTarget) this.placeholderTarget.remove()
+  showPlaceholder() {
+    if (this.hasPlaceholderTarget) this.placeholderTarget.classList.remove("hidden")
+  }
+
+  hidePlaceholder() {
+    if (this.hasPlaceholderTarget) this.placeholderTarget.classList.add("hidden")
   }
 
   // Browser notifications
