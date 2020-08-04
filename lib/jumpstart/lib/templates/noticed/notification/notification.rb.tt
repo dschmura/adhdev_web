@@ -27,7 +27,7 @@ class <%= class_name %> < ApplicationNotification
 
   def url
     # You can use any URL helpers here such as:
-    # posts_path(params[:post])
+    # post_path(params[:post])
     root_path
   end
 
