@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["badge", "list", "placeholder", "notification"]
 
   connect() {
-    this.subscription = consumer.subscriptions.create({ channel: "Noticed::NotificationChannel" }, {
+    this.subscription = consumer.subscriptions.create({ channel: "NotificationChannel" }, {
       connected: this._connected.bind(this),
       disconnected: this._disconnected.bind(this),
       received: this._received.bind(this)
@@ -53,9 +53,27 @@ export default class extends Controller {
     this.badgeTarget.classList.add("hidden")
   }
 
-  markAsRead() {
+  markAllAsRead() {
     let ids = this.notificationTargets.map((target) => target.dataset.id)
     this.subscription.perform("mark_as_read", {ids: ids})
+  }
+
+  markAsRead(event) {
+    let id = event.currentTarget.dataset.id
+    if (id == null) return
+    this.subscription.perform("mark_as_read", {ids: [id]})
+
+    // Uncomment to visual mark notification read
+    // event.currentTarget.dataset.readAt= new Date()
+  }
+
+  markAsInteracted(event) {
+    let id = event.currentTarget.dataset.id
+    if (id == null) return
+    this.subscription.perform("mark_as_interacted", {ids: [id]})
+
+    // Uncomment to visual mark notification as interacted
+    // event.currentTarget.dataset.interactedAt = new Date()
   }
 
   empty() {
@@ -91,3 +109,4 @@ export default class extends Controller {
     new Notification(data.title, data.options)
   }
 }
+

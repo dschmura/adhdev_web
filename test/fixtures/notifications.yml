@@ -3,6 +3,7 @@
 # Table name: notifications
 #
 #  id             :bigint           not null, primary key
+#  interacted_at  :datetime
 #  params         :jsonb
 #  read_at        :datetime
 #  recipient_type :string           not null

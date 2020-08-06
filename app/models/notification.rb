@@ -3,6 +3,7 @@
 # Table name: notifications
 #
 #  id             :bigint           not null, primary key
+#  interacted_at  :datetime
 #  params         :jsonb
 #  read_at        :datetime
 #  recipient_type :string           not null
@@ -22,4 +23,12 @@ class Notification < ApplicationRecord
 
   belongs_to :account
   acts_as_tenant :account
+
+  def self.mark_as_interacted!
+    update(interacted_at: Time.current, updated_at: Time.current)
+  end
+
+  def mark_as_interacted!
+    update(interacted_at: Time.current)
+  end
 end
