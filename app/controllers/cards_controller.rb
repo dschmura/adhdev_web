@@ -2,8 +2,8 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
 
   def edit
-    if current_account.stripe?
-      @setup_intent = current_account.create_setup_intent
+    if Jumpstart.config.stripe?
+      @setup_intent = current_account.braintree? ? Stripe::SetupIntent.create : current_account.create_setup_intent
     end
   end
 

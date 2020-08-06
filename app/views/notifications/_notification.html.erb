@@ -1,17 +1,18 @@
-<%= link_to notification.url, data: {
+<% instance = notification.to_notification %>
+<%= link_to instance.url, data: {
     action: "click->notifications#markAsInteracted touch->notifications#markAsInteracted",
     target: "notifications.notification",
-    id: notification.record&.id,
-    read_at: notification.record&.read_at,
-    interacted_at: notification.record&.interacted_at,
+    id: notification&.id,
+    read_at: notification&.read_at,
+    interacted_at: notification&.interacted_at,
   },
   class: "flex items-center px-4 py-3 hover:bg-gray-300 border-b last: border-b-0" do %>
   <div>
     <p class="mb-2 text-sm leading-5 font-medium text-gray-900">
-      <%= notification.message %>
+      <%= instance.message %>
     </p>
 
-    <p class="text-sm text-gray-600"><%= local_time_ago notification.record&.created_at %></p>
+    <p class="text-sm text-gray-600"><%= local_time_ago notification&.created_at %></p>
   </div>
 
   <%# blue dot is toggled by CSS from the parent's data-interacted-at attribute presence %>

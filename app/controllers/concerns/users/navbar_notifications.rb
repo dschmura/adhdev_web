@@ -7,7 +7,7 @@ module Users
     end
 
     def set_notifications
-      @notifications = current_user.notifications.newest_first.limit(10).map(&:to_notification)
+      @notifications = current_user.notifications.newest_first.limit(10)
     end
   end
 end
