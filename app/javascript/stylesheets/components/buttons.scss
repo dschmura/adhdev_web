@@ -30,11 +30,11 @@
 }
 
 .btn-primary {
-  @apply bg-primary-500 text-white;
+  @apply bg-primary-600 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-primary-600 text-white;
+    @apply bg-primary-500 text-white;
   }
 
   &.outline {
@@ -48,11 +48,11 @@
 }
 
 .btn-secondary {
-  @apply bg-secondary-500 text-white;
+  @apply bg-secondary-600 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-secondary-600 text-white;
+    @apply bg-secondary-500 text-white;
   }
 
   &.outline {
@@ -66,11 +66,11 @@
 }
 
 .btn-tertiary {
-  @apply bg-tertiary-500 text-white;
+  @apply bg-tertiary-600 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-tertiary-600 text-white;
+    @apply bg-tertiary-500 text-white;
   }
 
   &.outline {
@@ -84,11 +84,11 @@
 }
 
 .btn-danger {
-  @apply bg-danger-500 text-white;
+  @apply bg-danger-600 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-danger-600 text-white;
+    @apply bg-danger-500 text-white;
   }
 
   &.outline {
@@ -110,15 +110,15 @@
   }
 
   &.primary {
-    @apply text-primary-500;
+    @apply text-primary-600;
   }
 
   &.secondary {
-    @apply text-secondary-500;
+    @apply text-secondary-600;
   }
 
   &.tertiary {
-    @apply text-tertiary-500;
+    @apply text-tertiary-600;
   }
 
   &.gray {
