@@ -259,9 +259,9 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.10.4", "@babel/parser@^7.11.0", "@babel/parser@^7.11.1":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.1.tgz#d91a387990b21e5d20047b336bb19b0553f02ff5"
-  integrity sha512-u9QMIRdKVF7hfEkb3nu2LgZDIzCQPv+yHD9Eg6ruoJLjkrQ9fFz4IBSlF/9XwoNri9+2F1IY+dYuOfZrXq8t3w==
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.2.tgz#0882ab8a455df3065ea2dcb4c753b2460a24bead"
+  integrity sha512-Vuj/+7vLo6l1Vi7uuO+1ngCDNeVmNbTngcJFKCR/oEtz8tKz0CJxZEGmPt9KcIloZhOZ3Zit6xbpXT2MDlS9Vw==
 
 "@babel/plugin-proposal-async-generator-functions@^7.10.4":
   version "7.10.5"
@@ -801,9 +801,9 @@
     esutils "^2.0.2"
 
 "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.1.tgz#087afc57e7bf1073e792fe54f8fb3cfa752f9230"
-  integrity sha512-nH5y8fLvVl3HAb+ezbgcgwrH8QbClWo8xzkOu7+oyqngo3EVorwpWJQaqXPjGRpfj7mQvsJCl/S8knkfkPWqrw==
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
+  integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1838,9 +1838,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001109:
-  version "1.0.30001110"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001110.tgz#9003e3c7f5a43ea6f1193d4d5acba0bfb152c71a"
-  integrity sha512-KqJWeat4rhSHF0ito4yz9q/JuZHkvn71SsBnxge4azjPDbowIjOUnS8i1xpKGxZxU6BFiPqO2hSV2eiCpFQVRw==
+  version "1.0.30001111"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001111.tgz#dd0ce822c70eb6c7c068e4a55c22e19ec1501298"
+  integrity sha512-xnDje2wchd/8mlJu8sXvWxOGvMgv+uT3iZ3bkIAynKOzToCssWCmkz/ZIkQBs/2pUB4uwnJKVORWQ31UkbVjOg==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.3.0"
@@ -1900,9 +1900,9 @@ chokidar@^2.1.8:
     fsevents "^1.2.7"
 
 chokidar@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.1.tgz#e905bdecf10eaa0a0b1db0c664481cc4cbc22ba1"
-  integrity sha512-TQTJyr2stihpC4Sya9hs2Xh+O2wf+igjL36Y75xx2WdHuiICcn/XJza46Jwt0eT5hVpQOzo3FpY3cj3RVYLX0g==
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.2.tgz#38dc8e658dec3809741eb3ef7bb0a47fe424232d"
+  integrity sha512-IZHaDeBeI+sZJRX7lGcXsdzgvZqKv6sECqsbErJA4mHWfpRrD8B97kSFN4cQz6nGBGiuFia1MKR4d6c1o8Cv7A==
   dependencies:
     anymatch "~3.1.1"
     braces "~3.0.2"
@@ -2734,9 +2734,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.488:
-  version "1.3.519"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.519.tgz#d1da9c8a8a96ee7f60c32b2ca2593533a970c210"
-  integrity sha512-2r/p/9YOjIpX10KxcH1HcAGz1oadSD9Cwwotoek8wNJx/SRpklea14qdAMzCTTZlIezvsJ8sNsBQN05bJ/ZjhA==
+  version "1.3.523"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.523.tgz#494080b318ba929614eebd04405b94c359ea9333"
+  integrity sha512-D4/3l5DpciddD92IDRtpLearQSGzly8FwBJv+nITvLH8YJrFabpDFe4yuiOJh2MS4/EsXqyQTXyw1toeYPtshQ==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -7132,9 +7132,9 @@ svgo@^1.0.0:
     util.promisify "~1.0.0"
 
 tailwindcss-stimulus-components@^2.0.0:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-2.0.5.tgz#81b51dbc3f9517fb8885a369d80c0732d8dd875a"
-  integrity sha512-P5TDSBM/FEw/E9bEQ/lVRkdQkHFLYeu6ZeYjFPIJi+E3O+DlOft3159bCDzB42diXQjlMZfyHkn4QRU4jVHqOg==
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-2.0.7.tgz#f47174d2f49864022da94d3775b78c6099a6ab01"
+  integrity sha512-tqsYJi67ryhOAd4qRifUgVBPnLRdp1qj2AnGw6/UlZqY60mmAu3AqlCJttpjOkPOMpWjuhQg4CWNPqQXiT+MMw==
 
 tailwindcss@^1.4.0:
   version "1.6.2"
