@@ -59,7 +59,7 @@ class AccountInvitationTest < ActiveSupport::TestCase
     assert_difference "Notification.count", 2 do
       account_invitations(:two).accept!(users(:invited))
     end
-    assert_equal @account, Notification.last.params[:account]
+    assert_equal @account, Notification.last.account
     assert_equal users(:invited), Notification.last.params[:user]
   end
 end
