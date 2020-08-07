@@ -1,4 +1,4 @@
-<% content_form :form_block do %>
+<% content_for :form_block do %>
 <h2 class="mb-4"><%= t('.resend_unlock_instructions') %></h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
