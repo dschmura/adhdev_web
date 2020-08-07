@@ -5,7 +5,7 @@
 
 class <%= class_name %> < ApplicationNotification
   # Database delivery is already added in ApplicationNotification
-  deliver_by :action_cable, format: :to_websocket
+  deliver_by :action_cable, format: :to_websocket, channel: "NotificationChannel"
 
   # Add your delivery methods
   #
