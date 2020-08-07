@@ -1,5 +1,5 @@
 class AcceptedInvite < ApplicationNotification
-  deliver_by :action_cable, format: :to_websocket
+  deliver_by :action_cable, format: :to_websocket, channel: "NotificationChannel"
 
   def to_websocket
     {
