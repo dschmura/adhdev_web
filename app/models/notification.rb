@@ -22,7 +22,6 @@ class Notification < ApplicationRecord
   include Noticed::Model
 
   belongs_to :account
-  acts_as_tenant :account
 
   def self.mark_as_interacted!
     update(interacted_at: Time.current, updated_at: Time.current)

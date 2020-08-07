@@ -1,4 +1,4 @@
-<div data-controller="notifications" class="z-10 mr-4 inline-flex items-center align-middle leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white">
+<%= tag.div data: { controller: "notifications", notifications_account_id: current_account.id }, class: "z-10 mr-4 inline-flex items-center align-middle leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white" do %>
   <div class="relative" data-controller="dropdown">
 
     <%# Marks all notifications as read when menu opens by default. Remove the notifications Stimulus actions to disable this. %>
@@ -26,4 +26,4 @@
     </div>
 
   </div>
-</div>
+<% end %>

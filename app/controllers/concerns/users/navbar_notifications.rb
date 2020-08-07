@@ -7,7 +7,8 @@ module Users
     end
 
     def set_notifications
-      @notifications = current_user.notifications.newest_first.limit(10)
+      # Remove the where clause to show notifications for all accounts instead
+      @notifications = current_user.notifications.where(account: current_account).newest_first.limit(10)
     end
   end
 end

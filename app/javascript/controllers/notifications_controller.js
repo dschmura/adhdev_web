@@ -22,6 +22,11 @@ export default class extends Controller {
   }
 
   _received(data) {
+    // Ignore if user is signed in to a different account
+    if (data.account_id && data.account_id != this.data.get("accountId")) {
+      return
+    }
+
     // Regular notifications get added to the navbar
     if (data.html) {
       this.hidePlaceholder()
@@ -72,7 +77,7 @@ export default class extends Controller {
     if (id == null) return
     this.subscription.perform("mark_as_interacted", {ids: [id]})
 
-    // Uncomment to visual mark notification as interacted
+    // Uncomment to visually mark notification as interacted
     // event.currentTarget.dataset.interactedAt = new Date()
   }
 

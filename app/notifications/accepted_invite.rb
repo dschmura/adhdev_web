@@ -3,7 +3,8 @@ class AcceptedInvite < ApplicationNotification
 
   def to_websocket
     {
-      html: ApplicationController.render(partial: "notifications/notification", locals: {notification: self})
+      account_id: record.account_id,
+      html: ApplicationController.render(partial: "notifications/notification", locals: {notification: record})
     }
   end
 

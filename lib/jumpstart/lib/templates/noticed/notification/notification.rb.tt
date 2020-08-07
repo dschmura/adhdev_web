@@ -31,8 +31,10 @@ class <%= class_name %> < ApplicationNotification
     root_path
   end
 
+  # Include account_id to make sure notification only triggers if user is signed in to that account
   def to_websocket
     {
+      account_id: record.account_id,
       html: ApplicationController.render(partial: "notifications/notification", locals: {notification: self})
     }
   end

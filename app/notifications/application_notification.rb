@@ -3,9 +3,11 @@ class ApplicationNotification < Noticed::Base
 
   deliver_by :database, format: :to_database
 
+  # Include the user's personal account by default, but allow overriding with params
+  # Useful if you want to enable acts_as_tenant on the notification model
   def to_database
     {
-      account: params[:account],
+      account: params.delete(:account) || recipient.personal_account,
       type: self.class.name,
       params: params
     }
