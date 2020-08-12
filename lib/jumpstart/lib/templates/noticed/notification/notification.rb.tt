@@ -35,7 +35,7 @@ class <%= class_name %> < ApplicationNotification
   def to_websocket
     {
       account_id: record.account_id,
-      html: ApplicationController.render(partial: "notifications/notification", locals: {notification: self})
+      html: ApplicationController.render(partial: "notifications/notification", locals: {notification: record})
     }
   end
 end
