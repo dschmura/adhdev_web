@@ -17,33 +17,38 @@
     <%# Replace this with your FontAwesome Pro Kit code %>
     <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
 
-    <!--
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    -->
 
+    <script>
+      document.addEventListener("turbolinks:load", function() {
+        var snippets = document.querySelectorAll('pre code')
+        snippets.forEach(function(snippet) {
+          hljs.highlightBlock(snippet);
+        })
+      });
+    </script>
     <%= render "shared/favicons" %>
   </head>
 
-  <body class="bg-offwhite font-sans font-normal leading-normal h-full overflow-x-hidden">
+  <body class="h-full overflow-x-hidden font-sans font-normal leading-normal bg-offwhite">
     <%= render partial: "shared/flash" %>
 
-    <div class="flex flex-wrap justify-between items-start main">
+    <div class="flex flex-wrap items-start justify-between main">
 
-      <div class="flex md:w-1/5 w-full pt-4 lg:px-8 px-4">
+      <div class="flex w-full px-4 pt-4 md:w-1/5 lg:px-8">
         <%= render partial: "jumpstart/docs/nav" %>
       </div>
 
-      <div class="flex flex-col md:w-4/5 w-full bg-white h-full border-l border-gray-400 docs-main">
+      <div class="flex flex-col w-full h-full bg-white border-l border-gray-400 md:w-4/5 docs-main">
 
         <% if content_for :section_title %>
-          <div class="bg-primary-500 md:px-20 lg:px-40 xl:px-56 px-4 py-10 text-white mb-6">
+          <div class="px-4 py-10 mb-6 text-white bg-primary-500 md:px-20 lg:px-40 xl:px-56">
             <h1><%= yield :section_title %></h1>
           </div>
         <% end %>
 
-        <div class="pt-4 md:px-20 lg:px-40 xl:px-56 px-4">
+        <div class="px-4 pt-4 md:px-20 lg:px-40 xl:px-56">
           <%= yield %>
         </div>
       </div>

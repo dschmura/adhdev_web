@@ -23,8 +23,8 @@
   </div>
 
   <div class="form-group">
-    <span class="label">Avatar</span>
-    <input type="file" name="avatar" class="form-control form-file" data-multiple-caption="{count} files selected" multiple>
+    <p class="label">Example avatar upload</p>
+    <input type="file" id="avatar" name="avatar" class="input-file" data-multiple-caption="{count} files selected" multiple>
     <label for="avatar">
       <%= render_svg "icons/photo", styles: "fill-current icon-sm mr-2" %> <span>Upload Avatar</span>
     </label>
@@ -54,37 +54,37 @@
 
     <%= render "jumpstart/docs/snippet" do %>
 <form action="#">
-  <div class="form-group flex flex-wrap items-center justify-start">
+  <div class="flex flex-wrap items-center justify-start form-group">
     <label for="name" class="lg:w-1/6 lg:text-right lg:pr-4 lg:mt-2">Name</label>
     <input type="text" name="name" class="form-control lg:flex-1">
   </div>
 
-  <div class="form-group flex flex-wrap items-center justify-start">
+  <div class="flex flex-wrap items-center justify-start form-group">
     <label for="email" class="lg:w-1/6 lg:text-right lg:pr-4 lg:mt-2">Email</label>
     <input type="email" name="email" class="form-control lg:flex-1">
   </div>
 
-  <div class="form-group flex flex-wrap items-center justify-start">
+  <div class="flex flex-wrap items-center justify-start form-group">
     <label for="website" class="lg:w-1/6 lg:text-right lg:pr-4 lg:-mt-4">Website</label>
-    <div class="lg:flex-1 w-full">
+    <div class="w-full lg:flex-1">
       <input type="url" name="website" class="form-control error" value="My Website">
-      <p class="form-hint w-full error">Please enter a valid URL</p>
+      <p class="w-full form-hint error">Please enter a valid URL</p>
     </div>
   </div>
 
-  <div class="form-group flex flex-wrap items-center justify-start">
+  <div class="flex flex-wrap items-center justify-start form-group">
     <span class="label lg:w-1/6 lg:text-right lg:pr-4 lg:mt-2">Avatar</span>
-    <div class="lg:flex-1 w-full">
-      <input type="file" name="avatar" class="form-control form-file" data-multiple-caption="{count} files selected" multiple>
-      <label for="avatar">
+    <div class="w-full lg:flex-1">
+      <input type="file" id="avatar2" name="avatar2" class="input-file" data-multiple-caption="{count} files selected" multiple>
+      <label for="avatar2">
         <%= render_svg "icons/photo", styles: "fill-current icon-sm mr-2" %> <span>Upload Avatar</span>
       </label>
     </div>
   </div>
 
-  <div class="form-group flex flex-wrap items-center justify-start">
+  <div class="flex flex-wrap items-center justify-start form-group">
     <label for="industry" class="label lg:w-1/6 lg:text-right lg:pr-4 lg:mt-2">Industry</label>
-    <div class="relative lg:flex-1 w-full">
+    <div class="relative w-full lg:flex-1">
       <select name="industry" class="select">
         <option value="" selected>Choose an industry</option>
         <option value="tech">Tech</option>
@@ -103,7 +103,7 @@
 
 <div class="mb-20">
   <h2 class="pb-3 mb-6 border-b border-gray-300">Flatpickr</h2>
-  <p>We're using <%= link_to "stimulus-flatpickr", "https://github.com/adrienpoly/stimulus-flatpickr", target: :_blank %> to enable this functionality. You can customize this to whatever you need as it supports everything Flatpickr does.</p>
+  <p class="mb-3">We're using <%= link_to "stimulus-flatpickr", "https://github.com/adrienpoly/stimulus-flatpickr", target: :_blank %> to enable this functionality. You can customize this to whatever you need as it supports everything Flatpickr does.</p>
 
   <div class="form-group">
     <label for="name">Date</label>

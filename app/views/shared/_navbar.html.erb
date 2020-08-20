@@ -1,11 +1,11 @@
 <% if user_masquerade? %>
-  <div class="bg-blue-600 text-blue-200 text-sm text-center font-brand-semibold px-4 py-3" role="alert">
+  <div class="px-4 py-3 text-center text-blue-200 bg-blue-600 font-brand-semibold" role="alert">
     You're logged in as <b>User #<%= current_user.id %></b> (<%= current_user.email %>)</b>
-    <%= link_to "Logout", back_masquerade_path(current_user), class: "text-blue-100 hover:no-underline font-semibold underline" %>
-  </div>
+  <%= link_to "Logout", back_masquerade_path(current_user), class: "text-blue-100 hover:no-underline font-semibold underline" %>
+</div>
 <% end %>
 
-<nav class="flex items-center justify-between flex-wrap bg-white border-b px-4 py-2" data-controller="toggle">
+<nav class="flex flex-wrap items-center justify-between px-4 py-2 bg-white border-b" data-controller="toggle">
   <div class="flex items-center flex-shrink-0 mr-6">
     <%= link_to root_path do %>
       <%= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
@@ -14,60 +14,60 @@
   </div>
 
   <div class="block lg:hidden">
-    <button type="button" id="sidebar-open" class="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700" data-action="click->toggle#toggle touch->toggle#toggle">
-      <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
+    <button type="button" id="sidebar-open" class="flex items-center p-3 text-gray-500 lg:hidden focus:outline-none focus:text-gray-700" data-action="click->toggle#toggle touch->toggle#toggle">
+      <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
     </button>
   </div>
 
-  <div class="w-full block flex-grow hidden lg:flex lg:items-center lg:w-auto" data-target="toggle.toggleable" >
-    <div class="text-sm lg:flex-grow">
+  <div class="flex-grow hidden w-full pb-6 text-center lg:text-left lg:flex lg:items-center lg:w-auto lg:pb-0" data-target="toggle.toggleable" >
+    <div class="lg:flex-grow">
       <%= render "shared/left_nav" %>
     </div>
 
-    <div class="text-sm">
+    <div>
       <%= render "shared/right_nav" %>
 
       <% if user_signed_in? %>
         <%= render "shared/notifications" %>
 
-        <div class="z-10 inline-flex items-center align-middle leading-none rounded no-underline text-gray-700 hover:text-gray-800 hover:bg-white">
+        <div class="z-10 inline-flex items-center leading-none text-gray-700 no-underline align-middle rounded hover:text-gray-800 hover:bg-white">
           <div class="relative" data-controller="dropdown">
             <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" role="button" class="inline-block select-none">
-              <span class="appearance-none flex items-center inline-block text-gray-700">
+              <span class="flex items-center text-gray-700 appearance-none">
                 <%= account_avatar current_account, include_user: true, class: "rounded-full h-8 w-8" %>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1rem" height="1rem" class="h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1rem" height="1rem" class="w-4 h-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
               </span>
             </div>
-            <div data-target="dropdown.menu" class="lg:absolute lg:right-0 mt-2 hidden z-20">
-              <div class="bg-white shadow rounded border overflow-hidden">
-                <%= link_to t(".signed_in_as_html", user: current_account.name), current_account, class: 'border-b text-sm no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
-                <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
-                <%= link_to t(".password"), account_password_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' %>
-                <%= link_to t(".connected_accounts"), user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Devise.omniauth_configs.any? %>
-                <%= link_to t(".billing"),  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
-                <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
+            <div data-target="dropdown.menu" class="z-20 hidden mt-2 lg:absolute lg:right-0 dropdown-menu">
+              <div class="overflow-hidden bg-white border rounded shadow-sm">
+                <%= link_to t(".signed_in_as_html", user: current_account.name), current_account, class: 'border-b no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
+                <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
+                <%= link_to t(".password"), account_password_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
+                <%= link_to t(".connected_accounts"), user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' if Devise.omniauth_configs.any? %>
+                <%= link_to t(".billing"),  subscription_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
+                <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
                 <!--
-                <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Accounts</div>
+                <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t">Accounts</div>
                 -->
-                <%= link_to t(".accounts"), accounts_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".accounts"), accounts_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
                 <% current_user.accounts.each do |account| %>
-                  <%= link_to account.name, switch_account_path(account), remote: true, method: :patch, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                  <%= link_to account.name, switch_account_path(account), remote: true, method: :patch, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
                 <% end %>
 
                 <% if current_user.admin? %>
-                  <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase"><%= t(".admin") %></div>
-                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
+                  <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t"><%= t(".admin") %></div>
+                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', data: { turbolinks: false } %>
+                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
                 <% end %>
 
                 <% if Rails.env.development? %>
-                  <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Development</div>
-                  <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
-                  <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
+                  <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t">Development</div>
+                  <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', data: { turbolinks: false } %>
+                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
+                  <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
                 <% end %>
 
-                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
+                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
               </div>
             </div>
           </div>

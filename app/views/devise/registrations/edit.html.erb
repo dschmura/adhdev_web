@@ -1,16 +1,16 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="lg:w-1/4 w-full p-4">
+  <div class="w-full p-4 lg:w-1/4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="lg:w-3/4 w-full p-4">
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+  <div class="w-full p-4 lg:w-3/4">
+    <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
       <h2 class="mb-4"><%= t('.title', resource: resource.model_name.human) %></h2>
 
       <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "mb-16") do |f| %>
-      <%= render "shared/error_messages", resource: resource %>
+        <%= render "shared/error_messages", resource: resource %>
         <div class="flex flex-wrap items-start justify-between">
-          <div class="lg:w-1/2 w-full">
+          <div class="w-full lg:w-1/2">
             <div class="form-group">
               <%= f.label :name, "Full name" %>
               <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
@@ -30,27 +30,32 @@
 
               <div class="relative form-group">
                 <%= f.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "select" } %>
-                <div class="caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></div>
+                <div class="caret"><svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></div>
               </div>
             </div>
           </div>
-          <div class="lg:pl-16 lg:w-1/2 w-full">
-            <%= f.label :avatar %>
-            <div class="form-group">
-              <%= f.file_field :avatar, accept:'image/*', class: "form-control form-file" %>
-              <label for="avatar" class="cursor-pointer">
-                <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span><%= t("users.avatar.upload") %></span>
-              </label>
+          <div class="w-full lg:pl-16 lg:w-1/2">
+
+            <div class="flex flex-wrap items-center justify-start">
+              <div class="form-group">
+                <%= image_tag avatar_url_for(f.object), class: "rounded-full ml-4 w-16" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.file_field :avatar, accept:'image/*', class: "input-file" %>
+
+                <label for="user_avatar" class="ml-4">
+                  <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span><%= t("users.avatar.upload") %></span>
+                </label>
+              </div>
             </div>
-            <div class="form-group">
-              <%= image_tag avatar_url_for(f.object), class: "rounded-full ml-4 w-16" %>
-            </div>
+
           </div>
         </div>
-          <div class="form-group mt-2">
-            <%= f.button t('.update'), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving")) } %>
-          </div>
-        <% end %>
+        <div class="mt-2 form-group">
+          <%= f.button t('.update'), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving")) } %>
+        </div>
+      <% end %>
 
       <div class="flex flex-wrap flex-end">
         <div class="flex-1">

@@ -1,5 +1,5 @@
 .btn {
-  @apply inline-flex font-bold text-sm text-center px-4 py-0 rounded no-underline items-center justify-between;
+  @apply inline-flex text-sm font-semibold text-center px-4 py-0 rounded no-underline items-center justify-between;
 
   height: 40px;
   line-height: 40px;
@@ -9,10 +9,6 @@
   &:focus {
     @apply cursor-pointer;
   }
-
-  //@media screen and (max-width: 767px) {
-    //@apply block w-full mb-4;
-  //}
 }
 
 .btn-small {
@@ -135,4 +131,8 @@
 
     transform: none;
   }
+}
+
+.btn-expanded {
+  @apply block w-full;
 }
