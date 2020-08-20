@@ -1,10 +1,10 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="lg:w-1/4 w-full p-4">
+  <div class="w-full p-4 lg:w-1/4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="lg:w-3/4 w-full p-4">
-    <div class="text-sm text-gray-600 mb-5">
+  <div class="w-full p-4 lg:w-3/4">
+    <div class="mb-5 text-sm text-gray-600">
       <%= link_to t("accounts.all"), accounts_path, class: "hover:text-black" %>
       <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
       <%= link_to @account.name, @account, class: "hover:text-black" %>
@@ -12,7 +12,7 @@
       <%= t("account_invitations.invite_user") %>
     </div>
 
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+    <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
 
       <div class="flex items-center">
         <%= account_avatar @account, class: "rounded-full mr-4 h-12 w-12" %>
@@ -32,10 +32,10 @@
         <h5 class="mb-2"><%= t("accounts.roles") %></h5>
         <div class="form-group">
           <% AccountUser::ROLES.each do |role| %>
-            <label>
-              <%= form.check_box role, class: "mr-1" %>
-              <%= role.to_s.humanize %>
-            </label>
+            <div class="input-checkbox">
+              <%= form.check_box role, id: role.to_s.parameterize,  class: "mr-1" %>
+              <label for=<%= role.to_s.parameterize %>"><%= role.to_s.humanize %></label>
+            </div>
           <% end %>
         </div>
 
@@ -52,4 +52,3 @@
     </div>
   </div>
 </div>
-

@@ -24,12 +24,13 @@
     <%# Replace this with your FontAwesome Pro Kit code %>
     <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <%#<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> %>
 
     <%= yield :head %>
   </head>
 
-  <body class="bg-gray-100 font-sans font-normal leading-normal h-full antialiased">
+  <body class="h-full font-sans antialiased font-normal leading-normal bg-gray-100">
     <div class="main">
       <%= render partial: "shared/flash" %>
       <%= render partial: "shared/navbar" %>

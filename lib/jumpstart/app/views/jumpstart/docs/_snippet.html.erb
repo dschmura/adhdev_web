@@ -1,8 +1,8 @@
 <%= content = yield %>
 
-<div data-controller="toggle" class="py-2 my-4 shadow-inner-sm rounded bg-white overflow-x-auto">
-  <button class="btn btn-link btn-small text-gray-700 mb-0" data-action="click->toggle#toggle">
+<div data-controller="toggle" class="py-2 my-4 overflow-x-auto bg-white rounded shadow-inner-sm">
+  <button class="mb-0 text-gray-700 btn btn-link btn-small" data-action="click->toggle#toggle">
    <%= render_svg "icons/code", styles: "fill-current icon-sm mr-2" %> Toggle Source
   </button>
-  <div data-target="toggle.toggleable" class="hidden"><pre><code><%= content.to_param.strip %></code></pre></div>
+  <div data-target="toggle.toggleable" class="hidden"><pre class="example-code"><code><%= content.to_param.strip %></code></pre></div>
 </div>

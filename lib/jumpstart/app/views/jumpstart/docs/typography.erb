@@ -1,35 +1,31 @@
 <% content_for :section_title, "Typography" %>
 
 <div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Sans Serif</h4>
+  <h4 class="pb-3 mb-3 text-sm font-semibold tracking-wide text-gray-700 uppercase border-b border-gray-400">Sans Serif</h4>
 
-  <div class="bg-offwhite p-6">
+  <div class="p-6 bg-offwhite">
     <%= render "jumpstart/docs/snippet" do %>
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-display-lg">Display Large Heading</h1>
+<div class="pb-4 mb-4 border-b border-gray-400">
+  <h1 class="mb-4 font-display">Display Heading</h1>
 </div>
 
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-display mb-4">Display Heading</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
+<div class="pb-4 mb-4 border-b border-gray-400">
   <h1>Heading 1</h1>
 </div>
 
-<div class="mb-4 pb-4 border-b border-gray-400">
+<div class="pb-4 mb-4 border-b border-gray-400">
   <h2>Heading 2</h2>
 </div>
 
-<div class="mb-4 pb-4 border-b border-gray-400">
+<div class="pb-4 mb-4 border-b border-gray-400">
   <h3>Heading 3</h3>
 </div>
 
-<div class="mb-4 pb-4 border-b border-gray-400">
+<div class="pb-4 mb-4 border-b border-gray-400">
   <h4>Heading 4</h4>
 </div>
 
-<div class="mb-4 pb-4">
+<div class="pb-4 mb-4">
   <h5>Heading 5</h5>
 </div>
     <% end %>
@@ -37,120 +33,8 @@
 </div>
 
 <div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Serif</h4>
-
-  <div class="bg-offwhite p-6">
-    <%= render "jumpstart/docs/snippet" do %>
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-display-lg font-serif">Display Large Heading</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-display mb-4 font-serif">Display Heading</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-serif">Heading 1</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h2 class="font-serif">Heading 2</h2>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h3 class="font-serif">Heading 3</h3>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h4 class="font-serif">Heading 4</h4>
-</div>
-
-<div class="mb-4 pb-4">
-  <h5 class="font-serif">Heading 5</h5>
-</div>
-    <% end %>
-  </div>
-</div>
-
-<div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Mono</h4>
-
-  <div class="bg-offwhite p-6">
-    <%= render "jumpstart/docs/snippet" do %>
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-display-lg font-mono">Display Large Heading</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-display mb-4 font-mono">Display Heading</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h1 class="font-mono">Heading 1</h1>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h2 class="font-mono">Heading 2</h2>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h3 class="font-mono">Heading 3</h3>
-</div>
-
-<div class="mb-4 pb-4 border-b border-gray-400">
-  <h4 class="font-mono">Heading 4</h4>
-</div>
-
-<div class="mb-4 pb-4">
-  <h5 class="font-mono">Heading 5</h5>
-</div>
-    <% end %>
-  </div>
-</div>
-
-<div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Code - 400</h4>
-
-  <%= render "jumpstart/docs/snippet" do %>
-<pre class="bg-code-400 text-black"><code class="nohighlight">class User < ApplicationRecord
-
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, andle :trackable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :invitable, :masqueradable,
-         :omniauthable
-end</code>
-</pre>
-  <% end %>
-</div>
-
-<div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-light pb-3 mb-3">Code - 600</h4>
-
-  <%= render "jumpstart/docs/snippet" do %>
-<pre class="bg-code-600 text-gray-200"><code class="nohighlight">class User < ApplicationRecord
-
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, andle :trackable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :invitable, :masqueradable,
-         :omniauthable
-end</code>
-</pre>
-  <% end %>
-</div>
-
-<div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Base Styles</h4>
-
-  <a href="#">Example anchor</a>
-</div>
-
-<div class="mb-10">
-  <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Lists</h4>
-
+  <h4 class="pb-3 mb-3 text-sm font-semibold tracking-wide text-gray-700 uppercase border-b border-gray-400">Lists</h4>
+<%= render "jumpstart/docs/snippet" do %>
   <ul class="mb-4">
     <li>Unordered list</li>
     <li>Unordered list</li>
@@ -168,4 +52,5 @@ end</code>
     <li>Unstyled list</li>
     <li>Unstyled list</li>
   </ul>
+<% end %>
 </div>

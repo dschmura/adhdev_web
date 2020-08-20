@@ -1,13 +1,13 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="lg:w-1/4 w-full p-4">
+  <div class="w-full p-4 lg:w-1/4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="lg:w-3/4 w-full p-4">
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+  <div class="w-full p-4 lg:w-3/4">
+    <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
 
-      <div class="flex justify-between items-center mb-3">
-        <h1 class="h2 flex-1"><%= t(".title") %></h1>
+      <div class="flex items-center justify-between mb-3">
+        <h1 class="flex-1 h2"><%= t(".title") %></h1>
 
         <% if @accounts.exists? %>
           <div>
@@ -21,7 +21,7 @@
         <table class="w-full">
           <thead>
             <tr>
-              <th class="p-3 uppercase text-left text-xs text-gray-700"><%= Account.human_attribute_name(:name) %></th>
+              <th class="p-3 text-xs text-left text-gray-700 uppercase"><%= Account.human_attribute_name(:name) %></th>
               <th></th>
             </tr>
           </thead>
@@ -30,25 +30,25 @@
             <% @accounts.impersonal.each do |account| %>
               <% next if account.personal? # Skip display personal accounts to reduce confusion %>
 
-              <tr class="group border-t border-gray-400 hover:bg-gray-200">
+              <tr class="border-t border-gray-400 group">
                 <td class="p-3">
                   <%= link_to account, class: "inline-block mr-4 align-middle" do %>
-                    <span class="appearance-none flex items-center text-gray-700">
+                    <span class="flex items-center text-gray-700 appearance-none">
                       <%= account_avatar account, class: "rounded-full h-10 w-10" %>
                     </span>
                   <% end %>
 
                   <%= link_to account.name, account, class: "text-gray-900 no-underline hover:text-primary" %>
                   <% if account.personal_account_for?(current_user) %>
-                    <div class="ml-2 rounded-full py-1 px-3 bg-gray-300 text-xs inline-block text-gray-600 font-brand-semibold leading-normal uppercase mr-2 leading-normal">Personal</div>
+                    <div class="inline-block px-3 py-1 ml-2 mr-2 text-xs leading-normal text-gray-600 uppercase bg-gray-300 rounded-full font-brand-semibold">Personal</div>
                   <% end %>
                 </td>
 
-                <td class="p-3 w-32 text-center">
+                <td class="w-48 p-3 text-sm text-center">
                   <% if current_account != account %>
                     <%= link_to t(".switch"), switch_account_path(account), method: :patch, class: "btn btn-link no-underline" %>
                   <% else %>
-                    <span class="text-sm text-gray-600"><%= t(".current") %></span>
+                    <span class="text-gray-600"><%= t(".current") %></span>
                   <% end %>
                 </td>
               </tr>
@@ -57,17 +57,16 @@
         </table>
 
         <% if @pagy.pages > 1 %>
-          <div class="text-center my-6">
+          <div class="my-6 text-center">
             <%%== pagy_nav(@pagy) %>
           </div>
         <% end %>
 
       <% else %>
-        <div class="text-center p-8">
+        <div class="p-8 text-center">
           <%= image_tag "empty.svg", class: "w-1/3 mb-4 m-auto" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
