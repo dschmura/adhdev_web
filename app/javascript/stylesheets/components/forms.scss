@@ -73,7 +73,7 @@ form.inline {
   @apply flex items-center justify-start;
 
   input[type="checkbox"] {
-    @apply hidden appearance-none;
+    @apply hidden appearance-none #{!important};
 
     &:checked ~ label:before {
       content: "";
