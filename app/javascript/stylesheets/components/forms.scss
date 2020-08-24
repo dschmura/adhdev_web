@@ -25,7 +25,7 @@
 
 label,
 .label {
-  @apply block  text-gray-800 mb-1 cursor-pointer;
+  @apply block text-sm font-medium leading-5 text-gray-700 mb-1 cursor-pointer;
 }
 
 .form-hint {
@@ -69,44 +69,34 @@ form.inline {
   display: inline-block;
 }
 
-.input-checkbox {
-  @apply flex items-center justify-start;
+.form-checkbox {
+  @apply text-primary-500 hidden appearance-none inline-block h-4 w-4 align-middle select-none flex-shrink-0 bg-white rounded;
 
-  input[type="checkbox"] {
-    @apply hidden appearance-none #{!important};
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  background-origin: border-box;
+  border: 1px solid rgb(209, 209, 209);
+  box-shadow: inset 0 1px 1px rgba(#ddd, 0.8);
+  background-size: 10px 10px;
 
-    &:checked ~ label:before {
-      content: "";
-      background-image: url("../images/icons/checkmark.svg");
-      background-size: 10px 10px;
-      border-radius: 2px;
-      @apply bg-primary-500 border-transparent text-white bg-no-repeat bg-center ease-in-out duration-100 shadow-none;
-    }
+  &:checked {
+    @apply border-transparent bg-current bg-center bg-no-repeat shadow-none;
+    background-image: url("../images/icons/checkmark.svg");
+    background-size: 10px 10px;
 
-    &:disabled {
-      @apply pointer-events-none opacity-50;
+    &:focus {
+      @apply border-transparent;
     }
   }
 
-  label {
-    @apply cursor-pointer appearance-none;
+  &:disabled {
+    @apply bg-gray-400;
+  }
 
-    &:before {
-      border-radius: 2px;
-      border: 1px solid rgb(209, 209, 209);
-      box-shadow: inset 0 1px 1px rgba(#ddd, 0.8);
-      content: "";
-      height: 16px;
-      margin-right: 10px;
-      top: -5px;
-      width: 16px;
-
-      @apply bg-white inline-flex items-center justify-center relative;
-    }
-
-    &:hover::before {
-      @apply bg-gray-100 border-gray-500;
-    }
+  &:focus {
+    @apply outline-none;
+    box-shadow: 0 0 0 3px rgba(164,202,254,.45);
+    border-color: theme("colors.primary.300");
   }
 }
 

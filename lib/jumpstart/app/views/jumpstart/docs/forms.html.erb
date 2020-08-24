@@ -45,6 +45,10 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <input type="checkbox" id="checkbox" class="form-checkbox" />
+    <label for="checkbox" class="inline-block">Styled checkbox</label>
+  </div>
 </form>
     <% end %>
 </div>
@@ -95,6 +99,18 @@
         <%= render_svg "icons/caret", styles: "fill-current h-4 w-4" %>
       </div>
     </div>
+  </div>
+
+  <p class="mb-4 text-gray-700 text-sm">Checkboxes labels can be either on the left or right.</p>
+  <div class="flex flex-wrap items-center justify-start form-group">
+    <label for="admin" class="label lg:w-1/6 lg:text-right lg:pr-4">Admin</label>
+    <input type="checkbox" id="admin" class="form-checkbox" />
+  </div>
+
+  <div class="flex flex-wrap items-center justify-start form-group">
+    <div class="lg:w-1/6 lg:pr-4"></div>
+    <input type="checkbox" id="admin2" class="form-checkbox mr-2" />
+    <label for="admin2" class="inline-block mb-0">Member</label>
   </div>
 </form>
     <% end %>

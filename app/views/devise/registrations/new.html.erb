@@ -55,9 +55,9 @@
       <%= invisible_captcha %>
     </div>
 
-    <div class="form-group input-checkbox">
-      <%= f.check_box :terms_of_service, id: "tos", class: "mr-1" %>
-      <label for="tos" class="text-sm"><%= t ".terms_html", terms: link_to("terms of service", terms_path, target: "_blank", class: "btn-link"), privacy: link_to("privacy policy", privacy_path, target: "_blank", class: "btn-link") %></label>
+    <div class="form-group">
+      <%= f.check_box :terms_of_service, id: "tos", class: "form-checkbox mr-1" %>
+      <label for="tos" class="inline-block text-sm"><%= t ".terms_html", terms: link_to("terms of service", terms_path, target: "_blank", class: "btn-link"), privacy: link_to("privacy policy", privacy_path, target: "_blank", class: "btn-link") %></label>
     </div>
 
     <div class="form-group">
