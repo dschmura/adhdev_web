@@ -13,7 +13,7 @@ class AcceptedInvite < ApplicationNotification
   end
 
   def url
-    account_path(params[:account])
+    account_path(record.account)
   end
 
   def user
