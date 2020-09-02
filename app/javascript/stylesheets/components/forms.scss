@@ -80,7 +80,8 @@ form.inline {
   background-size: 10px 10px;
 
   &:checked {
-    @apply border-transparent bg-current bg-center bg-no-repeat shadow-none;
+    @apply border-transparent bg-center bg-no-repeat shadow-none;
+    background-color: currentColor;
     background-image: url("../images/icons/checkmark.svg");
     background-size: 10px 10px;
 
