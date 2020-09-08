@@ -15,6 +15,10 @@ export default class extends Controller {
     if (this.empty()) this.showPlaceholder()
   }
 
+  disconnect() {
+    this.subscription.unsubscribe()
+  }
+
   _connected() {
   }
 

@@ -4,33 +4,38 @@ module SetCurrentRequestDetails
   included do
     set_current_tenant_through_filter
 
-    before_action do
-      Current.request_id = request.uuid
-      Current.user_agent = request.user_agent
-      Current.ip_address = request.ip
-      Current.user = current_user
+    before_action :set_request_details
+  end
 
-      # Account may already be set by the AccountMiddleware
+  def set_request_details
+    Current.request_id = request.uuid
+    Current.user_agent = request.user_agent
+    Current.ip_address = request.ip
+    Current.user = current_user
 
-      if Jumpstart::Multitenancy.domain?
-        Current.account ||= Account.find_by(domain: request.domain)
-      end
+    # Account may already be set by the AccountMiddleware
+    Current.account ||= account_from_domain || account_from_subdomain || account_from_session || fallback_account
 
-      if Jumpstart::Multitenancy.subdomain? && request.subdomains.size > 0
-        Current.account ||= Account.find_by(subdomain: request.subdomains.first)
-      end
+    set_current_tenant(Current.account)
+  end
 
-      if Jumpstart::Multitenancy.session? && user_signed_in?
-        Current.account ||= current_user.accounts.find_by(id: session[:account_id])
-      end
+  def account_from_domain
+    return unless Jumpstart::Multitenancy.domain?
+    Account.find_by(domain: request.domain)
+  end
 
-      # Fallback accounts
-      if user_signed_in?
-        Current.account ||= current_user.accounts.order(created_at: :asc).first
-        Current.account ||= current_user.create_default_account
-      end
+  def account_from_subdomain
+    return unless Jumpstart::Multitenancy.subdomain? && request.subdomains.size > 0
+    Account.find_by(subdomain: request.subdomains.first)
+  end
 
-      set_current_tenant(Current.account)
-    end
+  def account_from_session
+    return unless Jumpstart::Multitenancy.session? && user_signed_in?
+    current_user.accounts.find_by(id: session[:account_id])
+  end
+
+  def fallback_account
+    return unless user_signed_in?
+    current_user.accounts.order(created_at: :asc).first || current_user.create_default_account
   end
 end
