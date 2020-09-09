@@ -75,8 +75,8 @@ class User::ConnectedAccount < ApplicationRecord
   end
 
   # Replace the dynamically defined attr_encrypted method with our own
-  alias attr_encrypted_access_token_secret= access_token_secret=
-  alias access_token_secret= safe_access_token_secret=
+  alias_method :attr_encrypted_access_token_secret=, :access_token_secret=
+  alias_method :access_token_secret=, :safe_access_token_secret=
 
   private
 
