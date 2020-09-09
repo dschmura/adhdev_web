@@ -93,4 +93,15 @@ end</code></pre>
   <p class="mb-4 leading-normal"><em>Path</em> switching prepends all routes with the current account ID. This is called the <code>script_name</code> and is filtered out in a Rails middleware automatically. To change accounts, you must provide the script name in the URL helpers: <code>link_to "Home", root_url(script_name: "/#{account.id}"</code></p>
   <p class="mb-4 leading-normal"><em>Subdomain</em> switching uses the first subdomain to determine the account. This requires wildcard DNS records to point <code>*.example.com</code> to your app and additional setup in your test suite to configure the host when making requests.</p>
   <p class="mb-4 leading-normal"><em>Custom Domain</em> allows your users to provide their own domain to use your app. This requires customers to setup DNS records to point to your server. You'll also have to respond to these and make sure you generate SSL certificates for these domains. Since you cannot guarantee the user will setup their DNS records correctly, this option often is used in conjunction with subdomain switching to provide a fallback method of accessing the account.</p>
+
+  <h4>Single log in across all sub domains</h4>
+  <p class="mb-4 leading-normal>By default, users will be required to enter their credentials for each of their subdomains. If instead you want them to log a single time and have access to all their subdomains, add these two lines:</p>
+  <pre><code>
+    # config/application.rb
+    config.session_store :cookie_store, :key => '_some_key', :domain => '.lvh.me'
+    # config/environments/test.rb 
+    config.session_store :cookie_store, :key => '_some_key', :domain => '.example.com'
+  </code></pre>
+  
+
 </div>
