@@ -57,6 +57,6 @@ Capybara.default_max_wait_time = 10
 
 # Add a route for easily switching accounts in system tests
 Rails.application.routes.append do
-  get '/accounts/:id/switch', to: 'accounts#switch', as: :test_switch_account
+  get "/accounts/:id/switch", to: "accounts#switch", as: :test_switch_account
 end
 Rails.application.reload_routes!
