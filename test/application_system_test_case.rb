@@ -21,7 +21,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     find_frame("body > div > iframe") do
       sleep 1
       find_frame("#challengeFrame") do
-        click_on "Complete authentication"
+        find_frame("iframe[name='acsFrame']") do
+          click_on "Complete authentication"
+        end
       end
     end
   end
@@ -30,7 +32,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     find_frame("body > div > iframe") do
       sleep 1
       find_frame("#challengeFrame") do
-        click_on "Fail authentication"
+        find_frame("iframe[name='acsFrame']") do
+          click_on "Fail authentication"
+        end
       end
     end
   end
@@ -43,6 +47,16 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
       end
     end
   end
+
+  def switch_account(account)
+    visit test_switch_account_url(account)
+  end
 end
 
 Capybara.default_max_wait_time = 10
+
+# Add a route for easily switching accounts in system tests
+Rails.application.routes.append do
+  get '/accounts/:id/switch', to: 'accounts#switch', as: :test_switch_account
+end
+Rails.application.reload_routes!

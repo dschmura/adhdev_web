@@ -34,7 +34,7 @@ business:
     features:
       - Unlimited access
 
-personal-annual:
+personal_annual:
   name: Personal
   amount: 19000
   interval: year
@@ -42,7 +42,7 @@ personal-annual:
     stripe_id: personal-annual
     braintree_id: personal-annual
 
-business-annual:
+business_annual:
   name: Business
   amount: 79000
   interval: year
@@ -54,7 +54,7 @@ business-annual:
       - Business Feature
 
 personal_with_trial:
-  name: Personal
+  name: Personal with Trial
   amount: 1900
   interval: month
   details:
