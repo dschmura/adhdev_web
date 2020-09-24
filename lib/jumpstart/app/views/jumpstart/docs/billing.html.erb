@@ -44,6 +44,29 @@
   <p class="mb-4">The Stripe and Braintree IDs are used to subscribe the user to the matching plan defined inside Stripe or Braintree.</p>
   <p class="mb-4">Stripe IDs may either be a Plan ID or a Price ID.</p>
 
+  <h4 class="pb-3 mb-6 border-b border-gray-400">Free Plans</h4>
+  <p class="mb-4">There are two types of "free" plans:</p>
+  <ol class="mb-4">
+    <li>Users who don't pay for your app</li>
+    <li>Users who get free access to paid features</li>
+  </ol>
+
+  <p class="mb-4">For users who use your app for free, they don't need a plan or a subscription. These are just regular users of your app. If they're subscribed, they can access the premium features. If not, they can have access to any free features you want. Technically, they're not subscribed to a "free plan", but you can make the app look and feel like it.</p>
+  <p class="mb-4">For users who get free access to paid features, you can assign them a subscription to a free plan. Jumpstart Pro comes with a free plan that can be used for this purpose and is applied automatically to Admin users who are created in the Jumpstart Config area.</p>
+
+  <pre class="lang-ruby"><code># Ensure Jumpstart free plan exists for admin users
+Plan.create_with(name: "Free", interval: :month, trial_period_days: 0).find_or_create_by(details: {jumpstart_id: :free})
+
+# Create a fake subscription for the admin user so they have access to everything by default
+user.accounts.first.subscriptions.create(
+  name: "default",
+  processor: :jumpstart,
+  processor_id: :free,
+  processor_plan: :free,
+  quantity: 1,
+  status: :active
+)</code></pre>
+
   <h3 class="pb-3 mb-6 border-b border-gray-400">Trials</h3>
   <p class="mb-4">Generic trials are trials without a card or subscription plan. These can be configured in <code>app/models/account.rb</code> by uncommenting the <code>before_create</code> block. You can check if an account is on generic trial with <code>account.on_generic_trial?</code>.</p>
   <p class="mb-4">Subscription trials are trials that require both a card upfront and a subscription plan selected. You can simply add <code>trial_period_days</code> when creating a Plan in the admin. When the subscription is created, the <code>trial_period_days</code> will be passed along to Stripe and Braintree for adding a trial to the subscription.</p>
