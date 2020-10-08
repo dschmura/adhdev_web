@@ -52,4 +52,6 @@ Rails.application.configure do
 
   # Reduce key stretching for performance in tests
   config.stretches = 1
+
+  config.require_master_key = true
 end
