@@ -11,7 +11,7 @@ module Sortable
     klass.sortable_columns.include?(params[:sort]) ? params[:sort] : "created_at"
   end
 
-  def sort_direction
-    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
+  def sort_direction(default: "asc")
+    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : default
   end
 end
