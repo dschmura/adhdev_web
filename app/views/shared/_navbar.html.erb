@@ -1,6 +1,6 @@
 <% if user_masquerade? %>
   <div class="px-4 py-3 text-center text-blue-200 bg-blue-600 font-brand-semibold" role="alert">
-    You're logged in as <b>User #<%= current_user.id %></b> (<%= current_user.email %>)</b>
+    You're logged in as <b>User #<%= current_user.id %> (<%= current_user.email %>)</b>
   <%= link_to "Logout", back_masquerade_path(current_user), class: "text-blue-100 hover:no-underline font-semibold underline" %>
 </div>
 <% end %>
