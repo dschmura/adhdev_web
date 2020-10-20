@@ -42,20 +42,10 @@ class ActionText::Embed < ApplicationRecord
     :html
   )
 
-  def link?
-    type == "link"
-  end
-
-  def photo?
-    type == "photo"
-  end
-
-  def rich?
-    type == "rich"
-  end
-
-  def video?
-    type == "video"
+  %w[link photo rich video].each do |embed_type|
+    define_method "#{embed_type}?" do
+      type == embed_type
+    end
   end
 
   def to_trix_content_attachment_partial_path
