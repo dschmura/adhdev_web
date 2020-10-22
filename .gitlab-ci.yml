@@ -35,7 +35,8 @@ test:
       - vendor
   script:
   - bundle exec standardrb
-  - bundle exec brakeman
+# Uncomment to enable Brakeman checks in CI
+# - bundle exec brakeman
   - bundle exec rails test
   only:
   - master
