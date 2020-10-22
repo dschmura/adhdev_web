@@ -35,6 +35,7 @@ test:
       - vendor
   script:
   - bundle exec standardrb
+  - bundle exec brakeman
   - bundle exec rails test
   only:
   - master
