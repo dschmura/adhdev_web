@@ -14,7 +14,7 @@ module Jumpstart
       # @post.body_mentions #=> [User, User]
       # @post.body_mentions(Discussion) #=> [Discussion, Discussion]
       def has_rich_text_mentions(rich_text)
-        define_method "#{rich_text}_mentions" do |type=User|
+        define_method "#{rich_text}_mentions" do |type = User|
           send(rich_text).body.attachables.grep(type)
         end
       end
