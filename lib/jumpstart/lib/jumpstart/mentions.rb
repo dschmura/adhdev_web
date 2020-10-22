@@ -15,7 +15,7 @@ module Jumpstart
         define_method "#{name}_mentions" do
           content = send(rich_text)
           content.body.attachments.filter_map do |attachment|
-            attachment.attachable if attachment.attachable.class == klass
+            attachment.attachable if attachment.attachable.instance_of?(klass)
           end
         end
       end
