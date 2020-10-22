@@ -1,17 +1,19 @@
-require "jumpstart/account_middleware"
-require "jumpstart/clients"
-require "jumpstart/configuration"
-require "jumpstart/controller"
 require "jumpstart/credentials_generator"
 require "jumpstart/engine"
-require "jumpstart/job_processor"
-require "jumpstart/mailer"
-require "jumpstart/multitenancy"
-require "jumpstart/omniauth"
-require "jumpstart/subscription_extensions"
-require "jumpstart/administrate_helpers"
 
 module Jumpstart
+  autoload :AccountMiddleware, "jumpstart/account_middleware"
+  autoload :Clients, "jumpstart/clients"
+  autoload :Configuration, "jumpstart/configuration"
+  autoload :Controller, "jumpstart/controller"
+  autoload :JobProcessor, "jumpstart/job_processor"
+  autoload :Mailer, "jumpstart/mailer"
+  autoload :Mentions, "jumpstart/mentions"
+  autoload :Multitenancy, "jumpstart/multitenancy"
+  autoload :Omniauth, "jumpstart/omniauth"
+  autoload :SubscriptionExtensions, "jumpstart/subscription_extensions"
+  autoload :AdministrateHelpers, "jumpstart/administrate_helpers"
+
   mattr_accessor :config
   @@config = {}
 
