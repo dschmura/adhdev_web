@@ -10,7 +10,14 @@ module.exports = {
   ],
 
   // Only purge Tailwind styles
-  purge: true,
+  purge: {
+    enabled: true,
+    content: [
+      './**/*.html.erb',
+      './app/helpers/**/*.rb',
+      './app/javascript/**/*.js',
+    ],
+  },
 
   // All the default values will be compiled unless they are overridden below
   theme: {
