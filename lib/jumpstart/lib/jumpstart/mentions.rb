@@ -6,17 +6,16 @@ module Jumpstart
       # Searches a rich text content object for attachments matching class
       #
       # For example:
-      #   has_mentions :user, rich_text: :body, class: User
+      #   has_rich_text_mentions :body
       #
-      # Defines `user_mentions` and returns all the User objects attached in the ActionText content
-      def has_mentions(name, rich_text:, **options)
-        klass = options.fetch(:class, User)
-
-        define_method "#{name}_mentions" do
-          content = send(rich_text)
-          content.body.attachments.filter_map do |attachment|
-            attachment.attachable if attachment.attachable.instance_of?(klass)
-          end
+      # Defines `body_mentions(type=User)`
+      #   `type` - Class to search for, defaults to `User` class
+      #
+      # @post.body_mentions #=> [User, User]
+      # @post.body_mentions(Discussion) #=> [Discussion, Discussion]
+      def has_rich_text_mentions(rich_text)
+        define_method "#{rich_text}_mentions" do |type=User|
+          send(rich_text).body.attachables.grep(type)
         end
       end
     end
