@@ -2,7 +2,7 @@
   "name": "jumpstart-app",
   "private": true,
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^2.0.0",
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -14,7 +14,6 @@
     "js-cookie": "^2.2.0",
     "jstz": "^2.0.0",
     "local-time": "^2.1.0",
-    "purgecss": "^2.1.0",
     "slim-select": "^1.23.1",
     "stimulus": "^1.1.0",
     "stimulus-flatpickr": "^1.2.4",
