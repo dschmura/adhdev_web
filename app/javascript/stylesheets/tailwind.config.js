@@ -9,6 +9,9 @@ module.exports = {
     //})
   ],
 
+  // Only purge Tailwind styles
+  purge: true,
+
   // All the default values will be compiled unless they are overridden below
   theme: {
     // Extend (add to) the default theme in the `extend` key
