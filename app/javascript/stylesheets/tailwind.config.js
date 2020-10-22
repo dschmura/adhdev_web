@@ -9,7 +9,7 @@ module.exports = {
     //})
   ],
 
-  // Only purge Tailwind styles
+  // Purge unused TailwindCSS styles
   purge: {
     enabled: true,
     content: [
