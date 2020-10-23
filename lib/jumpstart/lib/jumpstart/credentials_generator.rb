@@ -155,6 +155,10 @@ module Jumpstart
           # https://appsignal.com App -> App Settings -> Push & deploy -> Push key
           api_key: ''
 
+        bugsnag:
+          # https://app.bugsnag.com/settings -> Projects -> API Key
+          api_key: ''
+
         convertkit:
           # https://app.convertkit.com/account/edit#account_info
           api_key: ''

@@ -6,6 +6,7 @@ module Jumpstart
       AVAILABLE_PROVIDERS = {
         "AirBrake" => "airbrake",
         "AppSignal" => "appsignal",
+        "BugSnag" => "bugsnag",
         "ConvertKit" => "convertkit",
         "Drip" => "drip",
         "Honeybadger" => "honeybadger",

@@ -97,6 +97,7 @@ module Jumpstart
       gems[:main] += [{name: "intercom-rails"}] if intercom?
       gems[:main] += [{name: "rollbar"}] if rollbar?
       gems[:main] += [{name: "scout_apm"}] if scout?
+      gems[:main] += [{name: "bugsnag"}] if bugsnag?
       gems[:main] += [{name: "sentry-raven"}] if sentry?
       gems[:main] += [{name: "skylight"}] if skylight?
       gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
@@ -191,6 +192,10 @@ module Jumpstart
 
       if appsignal?
         copy_template("config/appsignal.yml")
+      end
+
+      if bugsnag?
+        copy_template("config/initializers/bugsnag.rb")
       end
 
       if convertkit?
