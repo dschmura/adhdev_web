@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MeControllerTest < ActionDispatch::IntegrationTest
+class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "returns current user accounts" do
     user = users(:one)
     get api_v1_accounts_url, headers: {Authorization: "token #{user.api_tokens.first.token}"}
