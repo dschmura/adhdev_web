@@ -79,9 +79,11 @@ Rails.application.routes.draw do
     resources :connected_accounts
   end
 
-  resources :embeds, only: [:create], constraints: {id: /[^\/]+/} do
-    collection do
-      get :patterns
+  namespace :action_text do
+    resources :embeds, only: [:create], constraints: {id: /[^\/]+/} do
+      collection do
+        get :patterns
+      end
     end
   end
 

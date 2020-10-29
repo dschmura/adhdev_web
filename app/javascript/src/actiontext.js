@@ -90,7 +90,7 @@ class EmbedController {
   loadPatterns(value) {
     Rails.ajax({
       type: "get",
-      url: "/embeds/patterns.json",
+      url: "/action_text/embeds/patterns.json",
       success: (response) => {
         this.patterns = response.map(pattern => new RegExp(pattern.source, pattern.options))
         if (this.match(value)) {
@@ -107,7 +107,7 @@ class EmbedController {
 
   fetch(value) {
     Rails.ajax({
-      url: `/embeds?id=${encodeURIComponent(value)}`,
+      url: `/action_text/embeds?id=${encodeURIComponent(value)}`,
       type: 'post',
       error: this.reset.bind(this),
       success: this.showEmbed.bind(this)
