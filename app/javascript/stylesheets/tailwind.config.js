@@ -2,6 +2,14 @@
 // https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 
 module.exports = {
+  // Opt-in to TailwindCSS future changes
+  future: {
+    defaultLineHeights: true,
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+    standardFontWeights: true,
+  },
+
   plugins: [
     // Uncomment the following if you'd like to use TailwindUI
     //require('@tailwindcss/ui')({
