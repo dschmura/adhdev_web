@@ -40,7 +40,7 @@
   <p class="mb-4">For more information on how accounts work in Jumpstart Pro, check out <%= link_to "the Accounts documentation", accounts_docs_path, target: :_blank, class: "text-blue-500" %>.</p>
 
   <h3 class="pb-3 mb-6 border-b border-gray-400">Defining Plans</h3>
-  <p class="mb-4">Plans can be defined in the <%= link_to "Plans Admin", main_app.admin_plans_path, target: :_blank, class: "text-blue-500" %> and allows for changes without deploying code. Each plan should be defined with the price amount in cents.</p>
+  <p class="mb-4">Plans can be defined in the <%= link_to "Plans Admin", main_app.admin_plans_path, target: :_blank, class: "text-blue-500", data: { tippy_content: "You must be logged in as an Admin to view this" } %> and allows for changes without deploying code. Each plan should be defined with the price amount in cents.</p>
   <p class="mb-4">The Stripe and Braintree IDs are used to subscribe the user to the matching plan defined inside Stripe or Braintree.</p>
   <p class="mb-4">Stripe IDs may either be a Plan ID or a Price ID.</p>
 
