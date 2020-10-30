@@ -1,4 +1,4 @@
-class EmbedsController < ApplicationController
+class ActionText::EmbedsController < ApplicationController
   before_action :authenticate_user!
 
   def create
