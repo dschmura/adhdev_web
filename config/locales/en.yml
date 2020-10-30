@@ -272,7 +272,6 @@ en:
         button: "Cancel Subscription"
         cancelling: "Cancelling..."
 
-
     forms:
       stripe:
         credit_or_debit_card: "Credit or debit card"
@@ -294,6 +293,8 @@ en:
         remove: "Remove"
         redirecting: "Redirecting..."
         none: "You don't have any connected accounts."
+    omniauth_callbacks:
+      account_exists: "We already have an account with this email. Login with your previous account before connecting this one."
 
   layouts:
     mailer:
