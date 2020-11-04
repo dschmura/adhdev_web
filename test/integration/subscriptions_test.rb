@@ -37,7 +37,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
       Jumpstart.config.stub(:payments_enabled?, true) do
         get new_subscription_path(plan: @plan.id)
         assert_redirected_to root_path
-        assert_equal "You must be an admin to do that.", flash[:alert]
+        assert_equal I18n.t("must_be_an_admin"), flash[:alert]
       end
     end
 
@@ -45,7 +45,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
       Jumpstart.config.stub(:payments_enabled?, true) do
         post subscription_path, params: {}
         assert_redirected_to root_path
-        assert_equal "You must be an admin to do that.", flash[:alert]
+        assert_equal I18n.t("must_be_an_admin"), flash[:alert]
       end
     end
 
@@ -53,7 +53,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
       Jumpstart.config.stub(:payments_enabled?, true) do
         delete subscription_path
         assert_redirected_to root_path
-        assert_equal "You must be an admin to do that.", flash[:alert]
+        assert_equal I18n.t("must_be_an_admin"), flash[:alert]
       end
     end
   end

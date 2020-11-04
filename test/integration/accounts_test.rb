@@ -30,7 +30,7 @@ class Jumpstart::AccountsTest < ActionDispatch::IntegrationTest
         delete account_path(@account)
       end
       assert_redirected_to accounts_path
-      assert_equal flash[:notice], "Account was successfully destroyed."
+      assert_equal flash[:notice], I18n.t("accounts.destroyed")
     end
 
     test "cannot delete personal account" do
@@ -38,7 +38,7 @@ class Jumpstart::AccountsTest < ActionDispatch::IntegrationTest
       assert_no_difference "Account.count" do
         delete account_path(account)
       end
-      assert_equal flash[:alert], "You cannot delete your personal account."
+      assert_equal flash[:alert], I18n.t("accounts.personal.cannot_delete")
     end
   end
 

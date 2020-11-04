@@ -15,9 +15,9 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
     test "can view account users" do
       get account_path(@account)
       assert_select "h1", @account.name
-      assert_select "a", text: "Edit Account", count: 1
-      assert_select "a", text: "Edit", count: @account.account_users.count + @account.account_invitations.count
-      assert_select "a", text: "Invite A User", count: 1
+      assert_select "a", text: I18n.t("accounts.show.edit_account"), count: 1
+      assert_select "a", text: I18n.t("accounts.show.edit"), count: @account.account_users.count + @account.account_invitations.count
+      assert_select "a", text: I18n.t("accounts.show.invite"), count: 1
     end
 
     test "can edit account user" do
@@ -58,8 +58,8 @@ class Jumpstart::AccountUsersTest < ActionDispatch::IntegrationTest
       get account_path(@account)
       assert_select "h1", @account.name
 
-      assert_select "a", text: "Edit Account", count: 0
-      assert_select "a", text: "Edit", count: 0
+      assert_select "a", text: I18n.t("accounts.show.edit_account"), count: 0
+      assert_select "a", text: I18n.t("accounts.show.edit"), count: 0
       assert_select "a", text: "Invite A Account Member", count: 0
     end
 
