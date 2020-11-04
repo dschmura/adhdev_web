@@ -21,14 +21,15 @@
 #
 
 class AccountUser < ApplicationRecord
+  # Add account roles to this line
+  # Do NOT to use any reserved words like `user` or `account`
+  ROLES = [:admin, :member]
+
   belongs_to :account
   belongs_to :user
 
   validates :user_id, uniqueness: {scope: :account_id}
   validate :owner_must_be_admin, on: :update, if: -> { admin_changed? && account_owner? }
-
-  # Add account roles to this line
-  ROLES = [:admin, :member]
 
   # Store the roles in the roles json column and cast to booleans
   store_accessor :roles, *ROLES
