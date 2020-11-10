@@ -85,3 +85,5 @@ jobs:
           bin/rails db:test:prepare
           bin/rails test
 
+# Uncomment to run system tests in CI
+#          bin/rails test:system
