@@ -1,9 +1,9 @@
 <% if notice %>
-  <div class="alert alert-info"><%= notice %></div>
+  <div class="alert alert-info"><%= sanitize notice %></div>
 <% end %>
 
 <% if alert %>
-  <div class="alert alert-warning"><%= alert %></div>
+  <div class="alert alert-warning"><%= sanitize alert %></div>
 <% end %>
 
 <%= form_with model: @config, url: config_path do |f| %>

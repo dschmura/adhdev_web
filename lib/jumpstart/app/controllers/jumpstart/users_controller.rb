@@ -12,7 +12,7 @@ module Jumpstart
         # Create a fake subscription for the admin user so they have access to everything by default
         user.accounts.first.subscriptions.create(subscription_params)
 
-        redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin."
+        redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin. #{view_context.link_to("Login", main_app.new_user_session_path)}"
       else
         redirect_to root_path(anchor: :users), alert: "Unable to save user. Make sure to fill out all fields and have a strong enough password."
       end
