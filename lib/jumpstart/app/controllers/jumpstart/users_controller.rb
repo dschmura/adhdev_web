@@ -14,7 +14,7 @@ module Jumpstart
 
         redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin. #{view_context.link_to("Login", main_app.new_user_session_path)}"
       else
-        redirect_to root_path(anchor: :users), alert: "Unable to save user. Make sure to fill out all fields and have a strong enough password."
+        redirect_to root_path(anchor: :users), alert: user.errors.full_messages.first
       end
     end
 
