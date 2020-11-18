@@ -60,7 +60,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Jumpstart dependencies
 gem "jumpstart", path: "lib/jumpstart"
 
-gem "acts_as_tenant", github: "excid3/acts_as_tenant"
+gem "acts_as_tenant", github: "ErwinM/acts_as_tenant"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
 gem "administrate-field-active_storage", "~> 0.3.0"
 gem "attr_encrypted", "~> 3.1"
@@ -78,7 +78,7 @@ gem "pagy", "~> 3.7"
 gem "pay", "~> 2.2.0"
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 1.0.0"
-gem "ruby-oembed", "~> 0.13.0", require: "oembed"
+gem "ruby-oembed", "~> 0.14.0", require: "oembed"
 gem "turbolinks_render", "~> 0.9.12"
 
 # We always want the latest versions of these gems, so no version numbers
