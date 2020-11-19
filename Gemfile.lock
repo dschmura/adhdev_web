@@ -32,6 +32,17 @@ GIT
       railties (>= 5.2.0)
 
 GIT
+  remote: https://github.com/excid3/webpacker.git
+  revision: d06d2955c4736d35751a9197c10a917bb479ef07
+  branch: fix-webpack-dev-server-v4
+  specs:
+    webpacker (5.1.1)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
+
+GIT
   remote: https://github.com/omniauth/omniauth.git
   revision: c95a5a0a50e012b3ba34401a19d589fcdf02afdf
   specs:
@@ -387,11 +398,6 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (5.2.1)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -452,7 +458,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 5.1)
+  webpacker!
   whenever
 
 RUBY VERSION
