@@ -23,7 +23,8 @@ before_script:
   - ruby -v
   - which ruby
   - gem install bundler --no-document
-  - bundle install --jobs $(nproc)  "${FLAGS[@]}" --path vendor
+  - bundle config path vendor
+  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
   - yarn install
   - bundle exec rails db:test:prepare
 
