@@ -32,23 +32,22 @@ GIT
       railties (>= 5.2.0)
 
 GIT
-  remote: https://github.com/excid3/webpacker.git
-  revision: d06d2955c4736d35751a9197c10a917bb479ef07
-  branch: fix-webpack-dev-server-v4
-  specs:
-    webpacker (5.1.1)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
-
-GIT
   remote: https://github.com/omniauth/omniauth.git
   revision: c95a5a0a50e012b3ba34401a19d589fcdf02afdf
   specs:
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
+
+GIT
+  remote: https://github.com/rails/webpacker.git
+  revision: 31b7a6f31e38d0d45b0e2ab162f28db1afc5ffac
+  specs:
+    webpacker (5.1.1)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
 
 GIT
   remote: https://github.com/rubysec/bundler-audit.git
