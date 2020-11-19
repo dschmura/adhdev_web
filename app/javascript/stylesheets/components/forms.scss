@@ -116,7 +116,8 @@ form.inline {
     transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
     @extend .btn;
-    @extend .btn-tertiary.outline;
+    @extend .btn-tertiary;
+    @extend .outline;
 
     &:focus {
       outline: 1px dotted #000;

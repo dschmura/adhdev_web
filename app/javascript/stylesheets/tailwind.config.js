@@ -11,10 +11,10 @@ module.exports = {
   },
 
   plugins: [
-    // Uncomment the following if you'd like to use TailwindUI
-    //require('@tailwindcss/ui')({
-    //  layout: 'sidebar',
-    //})
+    // You can enable the forms plugin if you use Tailwind UI
+    // require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio')
   ],
 
   // Purge unused TailwindCSS styles
