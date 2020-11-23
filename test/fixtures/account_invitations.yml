@@ -3,8 +3,8 @@
 # Table name: account_invitations
 #
 #  id            :bigint           not null, primary key
-#  email         :string
-#  name          :string
+#  email         :string           not null
+#  name          :string           not null
 #  roles         :jsonb            not null
 #  token         :string
 #  created_at    :datetime         not null
