@@ -40,34 +40,34 @@
             </div>
             <div data-target="dropdown.menu" class="z-20 hidden mt-2 lg:absolute lg:right-0 dropdown-menu">
               <div class="overflow-hidden bg-white border rounded shadow-sm">
-                <%= link_to t(".signed_in_as_html", user: current_account.name), current_account, class: 'border-b no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
-                <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
-                <%= link_to t(".password"), account_password_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
-                <%= link_to t(".connected_accounts"), user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' if Devise.omniauth_configs.any? %>
-                <%= link_to t(".billing"),  subscription_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
-                <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
+                <%= link_to t(".signed_in_as_html", user: current_account.name), current_account, class: 'border-b no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
+                <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
+                <%= link_to t(".password"), account_password_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
+                <%= link_to t(".connected_accounts"), user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' if Devise.omniauth_configs.any? %>
+                <%= link_to t(".billing"),  subscription_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
+                <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
                 <!--
                 <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t">Accounts</div>
                 -->
-                <%= link_to t(".accounts"), accounts_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
+                <%= link_to t(".accounts"), accounts_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
                 <% current_user.accounts.each do |account| %>
-                  <%= link_to account.name, switch_account_path(account), remote: true, method: :patch, data: { controller: :accounts, action: "ajax:success->accounts#reconnect" }, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
+                  <%= link_to account.name, switch_account_path(account), remote: true, method: :patch, data: { controller: :accounts, action: "ajax:success->accounts#reconnect" }, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
                 <% end %>
 
                 <% if current_user.admin? %>
                   <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t"><%= t(".admin") %></div>
-                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
+                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', data: { turbolinks: false } %>
+                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
                 <% end %>
 
                 <% if Rails.env.development? %>
                   <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t">Development</div>
-                  <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', data: { turbolinks: false } %>
-                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
-                  <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
+                  <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', data: { turbolinks: false } %>
+                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbolinks: false } %>
+                  <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbolinks: false } %>
                 <% end %>
 
-                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-no-wrap' %>
+                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
               </div>
             </div>
           </div>
