@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2020_08_06_001403) do
     t.bigint "account_id", null: false
     t.bigint "invited_by_id"
     t.string "token"
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.jsonb "roles", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
