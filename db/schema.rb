@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_001403) do
   create_table "account_invitations", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "invited_by_id"
-    t.string "token"
+    t.string "token", null: false
     t.string "name", null: false
     t.string "email", null: false
     t.jsonb "roles", default: {}, null: false

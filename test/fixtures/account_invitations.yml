@@ -6,7 +6,7 @@
 #  email         :string           not null
 #  name          :string           not null
 #  roles         :jsonb            not null
-#  token         :string
+#  token         :string           not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  account_id    :bigint           not null
