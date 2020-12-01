@@ -48,6 +48,7 @@ class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
       plan = plans(:personal)
 
       sign_in user
+      switch_account(account)
       get "/subscription/new?plan=#{plan.id}"
 
       assert response.body.include?(account.name)
