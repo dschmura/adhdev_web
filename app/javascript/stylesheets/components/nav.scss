@@ -1,5 +1,5 @@
 .nav-link {
-  @apply block no-underline text-primary-500 px-2 py-1 text-base;
+  @apply flex-shrink-0 block no-underline text-primary-500 px-2 py-1 text-base;
   line-height: 30px;
 
   &:hover,
