@@ -1,7 +1,7 @@
 <% instance = notification.to_notification %>
 <%= link_to instance.url, data: {
     action: "click->notifications#markAsInteracted touch->notifications#markAsInteracted",
-    target: "notifications.notification",
+    notifications: { target: "notification" },
     id: notification&.id,
     read_at: notification&.read_at,
     interacted_at: notification&.interacted_at,

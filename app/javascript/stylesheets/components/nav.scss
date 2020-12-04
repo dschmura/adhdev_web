@@ -20,12 +20,12 @@
 }
 
 /* Highlights unread notifications with background color */
-[data-target="notifications.notification"]:not([data-read-at]) {
+[data-notifications-target="notification"]:not([data-read-at]) {
   @apply bg-gray-100;
 }
 
 /* Highlights uninteracted notifications with blue dot */
-[data-target="notifications.notification"]:not([data-interacted-at]) {
+[data-notifications-target="notification"]:not([data-interacted-at]) {
   [uninteracted] {
     @apply block;
   }

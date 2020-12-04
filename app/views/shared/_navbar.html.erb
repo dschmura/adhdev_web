@@ -19,7 +19,7 @@
     </button>
   </div>
 
-  <div class="flex-grow hidden w-full pb-6 text-center lg:text-left lg:flex lg:items-center lg:w-auto lg:pb-0" data-target="toggle.toggleable" >
+  <div class="flex-grow hidden w-full pb-6 text-center lg:text-left lg:flex lg:items-center lg:w-auto lg:pb-0" data-toggle-target="toggleable" >
     <div class="lg:flex-grow">
       <%= render "shared/left_nav" %>
     </div>
@@ -38,7 +38,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1rem" height="1rem" class="w-4 h-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
               </span>
             </div>
-            <div data-target="dropdown.menu" class="z-20 hidden mt-2 lg:absolute lg:right-0 dropdown-menu">
+            <div data-dropdown-target="menu" class="z-20 hidden mt-2 lg:absolute lg:right-0 dropdown-menu">
               <div class="overflow-hidden bg-white border rounded shadow-sm">
                 <%= link_to t(".signed_in_as_html", user: current_account.name), current_account, class: 'border-b no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
                 <%= link_to t(".profile"), edit_user_registration_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
