@@ -19,7 +19,7 @@
     "local-time": "^2.1.0",
     "postcss": "^8.1.7",
     "slim-select": "^1.23.1",
-    "stimulus": "^1.1.0",
+    "stimulus": "^2.0.0",
     "stimulus-flatpickr": "^1.2.4",
     "tailwindcss": "^2.0.1",
     "tailwindcss-stimulus-components": "^2.0.0",
