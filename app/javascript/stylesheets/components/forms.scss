@@ -2,6 +2,23 @@
   @apply mb-6 relative;
 }
 
+/* non-input elements (like the Stripe card form) can be styled to look like an input */
+div.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-width: 1px;
+  padding-top: .5rem;
+  padding-right: .75rem;
+  padding-bottom: .5rem;
+  padding-left: .75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+}
+
 .form-control {
   @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
 
