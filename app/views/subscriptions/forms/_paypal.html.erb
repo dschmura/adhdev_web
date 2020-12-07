@@ -3,7 +3,7 @@
   method: :post,
   data: {
     controller: "paypal",
-    paypal_client_token: Pay.braintree_gateway.client_token.generate
+    paypal_client_token: Pay.braintree_gateway.client_token.generate,
     paypal_env: braintree_env,
     paypal_target: "form",
   } do |f| %>
