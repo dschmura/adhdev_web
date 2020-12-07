@@ -5,10 +5,10 @@
   class: "mt-4",
   data: {
     controller: "stripe",
-    stripe: { target: "form" },
-    toggle: { target: "toggleable" },
     action: "keydown->stripe#keydown",
     stripe_setup_intent: setup_intent.client_secret,
+    stripe_target: "form",
+    toggle_target: "toggleable",
   } do |f| %>
 
   <div class="form-group">
@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :name_on_card %>
-    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { stripe: { target: "name" }} %>
+    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { stripe_target: "name" } %>
   </div>
 
   <%= f.hidden_field :processor, value: :stripe %>

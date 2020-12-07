@@ -5,7 +5,7 @@
   method: local_assigns.fetch(:method, :post),
   data: {
     controller: "stripe",
-    stripe: { target: "form" },
+    stripe_target: "form",
     action: "keydown->stripe#keydown",
     stripe_setup_intent: @setup_intent.try(:client_secret),
     stripe_payment_intent: @payment.try(:client_secret)
@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :name_on_card %>
-    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { stripe: { target: "name" } } %>
+    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { stripe_target: "name" } %>
   </div>
 
   <%= f.hidden_field :plan, value: @plan.try(:id) %>

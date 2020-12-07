@@ -16,7 +16,7 @@
     <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, multiple: true, class: "form-control" %>
 <% elsif attribute.rich_text? -%>
     <%%= form.label :<%= attribute.column_name %> %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, data: { controller: "mentions", target: "mentions.field" } %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, data: { controller: "mentions", mentions_target: "field" } %>
 <% elsif attribute.field_type == :date_select -%>
     <%%= form.label :<%= attribute.column_name %> %>
     <%%= form.text_field :<%= attribute.column_name %>, class: "form-control", data: { controller: :flatpickr, flatpickr_alt_input: true, flatpickr_alt_format: t("date.formats.long") } %>

@@ -27,7 +27,7 @@
         </div>
       <% end %>
 
-      <%= content_tag :div, class: ("hidden" if current_account.card_last4?), data: { target: "toggle.toggleable" } do %>
+      <%= content_tag :div, class: ("hidden" if current_account.card_last4?), data: { toggle_target: "toggleable" } do %>
         <%= render 'subscriptions/forms/stripe'    if Jumpstart.config.stripe? %>
         <%= render 'subscriptions/forms/braintree' if Jumpstart.config.braintree? %>
         <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>

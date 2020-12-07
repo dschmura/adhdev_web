@@ -3,12 +3,12 @@
   method: :post,
   data: {
     controller: "braintree",
-    braintree: { target: "form" },
+    braintree_target: "form",
     braintree_env: braintree_env,
     braintree_client_token: Pay.braintree_gateway.client_token.generate
   } do |f| %>
 
-  <%= tag.div nil, data: { braintree: { target: "dropin" } } %>
+  <%= tag.div nil, data: { braintree_target: "dropin" } %>
 
   <%= f.hidden_field :plan, value: @plan.id %>
 

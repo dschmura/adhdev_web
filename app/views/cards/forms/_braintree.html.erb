@@ -3,13 +3,13 @@
   class: "hidden mt-4",
   data: {
     controller: "braintree",
-    braintree: { target: "form" },
-    toggle: { target: "toggleable" },
-    braintree_env: braintree_env,
     braintree_client_token: Pay.braintree_gateway.client_token.generate
+    braintree_env: braintree_env,
+    braintree_target: "form",
+    toggle_target: "toggleable",
   } do |f| %>
 
-  <%= tag.div nil, data: { braintree: { target: "dropin" } } %>
+  <%= tag.div nil, data: { braintree_target: "dropin" } %>
 
   <%= f.hidden_field :processor, value: :braintree %>
   <%= f.button t(".button"), class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with(t(".processing")) } %>

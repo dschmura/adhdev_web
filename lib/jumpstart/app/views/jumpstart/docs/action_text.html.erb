@@ -20,7 +20,7 @@
     <p class="mb-4">Scaffolds have been modified to automatically enable this feature for <code>rich_text_area</code> fields.</p>
     <p class="mb-4">You can add it to your own rich_text_area by simply adding the following Stimulus data attributes:</p>
 
-    <pre><code>&lt;%= form.rich_text_area :body, data: { controller: "mentions", target: "mentions.field" } %&gt;</code></pre>
+    <pre><code>&lt;%= form.rich_text_area :body, data: { controller: "mentions", mentions_target: "field" } %&gt;</code></pre>
 
     <p class="mb-4">To disable mentions for a field, simply remove the data attributes.</p>
   </div>
