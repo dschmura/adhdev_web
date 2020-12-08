@@ -1,7 +1,7 @@
 module StripeSystemTestHelper
   extend ActiveSupport::Concern
 
-  def fill_stripe_elements(card:, expiry: "1234", cvc: "123", postal: "12345", selector: '[data-target="stripe.card"] > div > iframe')
+  def fill_stripe_elements(card:, expiry: "1234", cvc: "123", postal: "12345", selector: '[data-stripe-target="card"] > div > iframe')
     find_frame(selector) do
       card.to_s.chars.each do |piece|
         find_field("cardnumber").send_keys(piece)
