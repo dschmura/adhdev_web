@@ -5,11 +5,11 @@ module ApplicationHelper
     size = opts[:size] || 48
 
     if user.respond_to?(:avatar) && user.avatar.attached? && user.avatar.variable?
-      user.avatar.variant(combine_options: {
+      user.avatar.variant(
         thumbnail: "#{size}x#{size}^",
         gravity: "center",
         extent: "#{size}x#{size}"
-      })
+      )
     else
       hash = Digest::MD5.hexdigest(user.email.downcase)
       "https://secure.gravatar.com/avatar/#{hash}.png?height=#{size}&width=#{size}"
