@@ -18,4 +18,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
   #
   # etc...
+
+  # Use this method to override the path to which a user is redirected after successful account connection
+  # def after_connect_redirect_path
+  # end
 end

@@ -39,7 +39,7 @@ module Jumpstart
 
         if user_signed_in?
           # Already connected account, we can just update the data
-          redirect_to user_connected_accounts_path
+          redirect_to after_connect_redirect_path
         else
           # Account was already connected, so we can sign in the user
           sign_in_and_redirect connected_account.user, event: :authentication
@@ -68,7 +68,7 @@ module Jumpstart
         connected_account = current_user.connected_accounts.create(connected_account_params)
         run_connected_callback(connected_account)
 
-        redirect_to user_connected_accounts_path
+        redirect_to after_connect_redirect_path
         success_message!(kind: auth.provider.to_s.titleize)
       end
 
@@ -96,6 +96,10 @@ module Jumpstart
 
       def connected_account
         @connected_account ||= User::ConnectedAccount.for_auth(auth)
+      end
+
+      def after_connect_redirect_path
+        user_connected_accounts_path
       end
 
       def connected_account_params
