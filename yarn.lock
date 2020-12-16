@@ -876,16 +876,16 @@
   version "5.1.1"
   resolved "https://codeload.github.com/rails/webpacker/tar.gz/ce597a5d167062c4a74eb93067afbee0dd946ec9"
   dependencies:
-    "@babel/core" "^7.12.9"
+    "@babel/core" "^7.12.3"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
     "@babel/plugin-transform-runtime" "^7.12.1"
-    "@babel/preset-env" "^7.12.7"
+    "@babel/preset-env" "^7.12.1"
     "@babel/runtime" "^7.12.5"
-    babel-loader "^8.2.2"
-    babel-plugin-macros "^3.0.0"
+    babel-loader "^8.1.0"
+    babel-plugin-macros "^2.8.0"
     case-sensitive-paths-webpack-plugin "^2.3.0"
     compression-webpack-plugin "^6.0.3"
-    core-js "^3.8.0"
+    core-js "^3.7.0"
     css-loader "^5.0.0"
     file-loader "^6.1.1"
     flatted "^3.1.0"
@@ -6596,10 +6596,12 @@ table-layout@^1.0.1:
     typical "^5.2.0"
     wordwrapjs "^4.0.0"
 
-tailwindcss-stimulus-components@^2.0.0:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-2.0.12.tgz#6c13b54005f04f0d04a7870450abdb6ec3c682ee"
-  integrity sha512-LHO8LB+LNAsehm36edB9tpwc0Qj2vbN7urYHdo9agGXGqA4n+sJg0E0UPaQY/FegqvuCK7CHVcYA/3fijNQ4UQ==
+tailwindcss-stimulus-components@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-stimulus-components/-/tailwindcss-stimulus-components-2.1.0.tgz#abb418ac9095e43cda325d8d7c5401a985ec7e4b"
+  integrity sha512-6JpQ7ZZJAhVIcIUdq5UZC+P90OwK8XeimaWks8iCqxuCPOQrzAAUPmIG8OTGPPdt8hTq71ej7q6nJ1uwxwanuQ==
+  dependencies:
+    stimulus "^2.0.0"
 
 tailwindcss@^2.0.1:
   version "2.0.2"

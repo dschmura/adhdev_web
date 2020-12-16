@@ -22,7 +22,7 @@
     "stimulus": "^2.0.0",
     "stimulus-flatpickr": "^1.2.4",
     "tailwindcss": "^2.0.1",
-    "tailwindcss-stimulus-components": "^2.0.0",
+    "tailwindcss-stimulus-components": "^2.1.0",
     "tippy.js": "^6.0.0",
     "tributejs": "^5.0.0",
     "trix": "^1.2.0",
