@@ -22,8 +22,13 @@
           <%= form.label :password %>
           <%= form.password_field :password, class: "form-control" %>
         </div>
-        <%= form.hidden_field :terms_of_service, value: '1' %>
+
+        <div class="form-group">
+          <%= form.label :time_zone %>
+          <%= form.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "form-control" } %>
+        </div>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
         <%= form.submit "Add User", class: "btn btn-primary" %>

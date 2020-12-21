@@ -21,7 +21,7 @@ module Jumpstart
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :terms_of_service).merge(admin: true)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :time_zone).merge(admin: true, terms_of_service: true)
     end
 
     def subscription_params
