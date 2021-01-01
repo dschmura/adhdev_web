@@ -53,7 +53,7 @@ rails credentials:edit --environment production</code></pre>
 <h5>Stripe CLI</h5>
 <p>To properly generate charges and subscription updates for SCA payments, you'll need to install and run the Stripe CLI in development to forward these webhooks to the local server.</p>
 
-<pre><code>stripe listen --forward-to localhost:3000/pay/webhooks/stripe</code></pre>
+<pre><code>stripe listen --forward-to localhost:3000/webhooks/stripe</code></pre>
 
 <hr />
 
