@@ -98,7 +98,7 @@ module Jumpstart
       gems[:main] += [{name: "rollbar"}] if rollbar?
       gems[:main] += [{name: "scout_apm"}] if scout?
       gems[:main] += [{name: "bugsnag"}] if bugsnag?
-      gems[:main] += [{name: "sentry-raven"}] if sentry?
+      gems[:main] += [{name: "sentry-ruby"}, {name: "sentry-rails"}, {name: "sentry-sidekiq"}] if sentry?
       gems[:main] += [{name: "skylight"}] if skylight?
       gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
