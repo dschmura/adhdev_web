@@ -33,12 +33,12 @@
 #
 # Indexes
 #
-#  index_users_on_email                              (email) UNIQUE
-#  index_users_on_invitation_token                   (invitation_token) UNIQUE
-#  index_users_on_invitations_count                  (invitations_count)
-#  index_users_on_invited_by_id                      (invited_by_id)
-#  index_users_on_invited_by_type_and_invited_by_id  (invited_by_type,invited_by_id)
-#  index_users_on_reset_password_token               (reset_password_token) UNIQUE
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_invitation_token      (invitation_token) UNIQUE
+#  index_users_on_invitations_count     (invitations_count)
+#  index_users_on_invited_by            (invited_by_type,invited_by_id)
+#  index_users_on_invited_by_id         (invited_by_id)
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
 class User < ApplicationRecord
