@@ -23,7 +23,7 @@ import "src/actiontext"
 import "src/direct_uploads"
 import "src/forms"
 import "src/timezone"
-import "src/tooltips"
+import "src/trix_additions"
 
 import LocalTime from "local-time"
 LocalTime.start()

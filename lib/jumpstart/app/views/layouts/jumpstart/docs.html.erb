@@ -11,8 +11,8 @@
 
     <%= yield :head %>
 
-    <%= javascript_pack_tag    'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%# Replace this with your FontAwesome Pro Kit code %>
     <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>

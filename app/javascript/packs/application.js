@@ -22,12 +22,8 @@ import "stylesheets/application.scss"
 import "controllers"
 
 // Jumpstart Pro & other Functionality
-import "src/actiontext"
-import "src/confirm"
-import "src/direct_uploads"
-import "src/forms"
-import "src/timezone"
-import "src/tooltips"
+const components = require.context("src", true)
+components.keys().forEach(components)
 
 import LocalTime from "local-time"
 LocalTime.start()

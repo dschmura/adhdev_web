@@ -55,7 +55,7 @@
 
                 <div class="inline-block px-4 py-1 ml-2 text-xs font-bold leading-normal text-gray-700 uppercase bg-gray-400 rounded-full">Awaiting response</div>
 
-                <%= tag.button t(".copy_link"), class: "btn btn-link", data: { clipboard_text: account_invitation_url(account_invitation) } if account_admin?(@account, current_user) %>
+                <%= tag.button t(".copy_link"), class: "btn btn-link", data: { controller: "clipboard", clipboard_text: account_invitation_url(account_invitation) } if account_admin?(@account, current_user) %>
               </td>
               <td class="p-3"><%= account_user_roles(@account, account_invitation).join(", ") %></td>
               <td class="w-32 p-3 text-center">
