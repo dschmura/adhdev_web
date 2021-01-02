@@ -16,7 +16,7 @@ require("trix")
 require("@rails/actiontext")
 
 // Tailwind CSS
-import "stylesheets/application"
+import "stylesheets/application.scss"
 
 // Stimulus controllers
 import "controllers"
