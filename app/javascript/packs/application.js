@@ -15,7 +15,7 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 
-// Tailwind CSS
+// TailwindCSS
 import "stylesheets/application.scss"
 
 // Stimulus controllers
