@@ -1,6 +1,12 @@
 import Trix from "trix"
 
 let lang = Trix.config.lang;
+
+Trix.config.textAttributes.inlineCode = {
+  tagName: "code",
+  inheritable: true
+}
+
 Trix.config.toolbar = {
   getDefaultHTML: function() {
     return `
@@ -132,6 +138,44 @@ class EmbedController {
     this.currentEmbed = null
   }
 }
+
+class InlineCode {
+  constructor(element) {
+    this.element = element
+    this.editor = element.editor
+    this.toolbar = element.toolbarElement
+
+    this.installEventHandlers()
+  }
+
+  installEventHandlers() {
+    const blockCodeButton = this.toolbar.querySelector("[data-trix-attribute=code]")
+    const inlineCodeButton = blockCodeButton.cloneNode(true)
+
+    inlineCodeButton.hidden = true
+    inlineCodeButton.dataset.trixAttribute = "inlineCode"
+    blockCodeButton.insertAdjacentElement("afterend", inlineCodeButton)
+
+    this.element.addEventListener("trix-selection-change", _ => {
+      const type = this.getCodeFormattingType()
+      blockCodeButton.hidden = type == "inline"
+      inlineCodeButton.hidden = type == "block"
+    })
+  }
+
+  getCodeFormattingType() {
+    if (this.editor.attributeIsActive("code")) return "block"
+    if (this.editor.attributeIsActive("inlineCode")) return "inline"
+
+    const range = this.editor.getSelectedRange()
+    if (range[0] == range[1]) return "block"
+
+    const text = this.editor.getSelectedDocument().toString().trim()
+    return /\n/.test(text) ? "block" : "inline"
+  }
+}
+
 document.addEventListener("trix-initialize", function(event) {
   new EmbedController(event.target)
+  new InlineCode(event.target)
 })
