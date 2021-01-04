@@ -13,7 +13,7 @@ const createConfirmModal = (element) => {
   var confirm = element.dataset.confirm
 
   var content = `
-    <div id="${id}" class="animated fadeIn fixed top-0 left-0 w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
+    <div id="${id}" class="z-50 animated fadeIn fixed top-0 left-0 w-full h-full table" style="background-color: rgba(0, 0, 0, 0.8);">
       <div class="table-cell align-middle">
 
         <div class="bg-white mx-auto rounded shadow p-8 max-w-sm">
