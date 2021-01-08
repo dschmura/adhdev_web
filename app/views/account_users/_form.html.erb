@@ -15,7 +15,7 @@
     <%= form.button class: "btn btn-primary" %>
 
     <% if form.object.persisted? %>
-      <%= link_to t("delete"), account_account_user_path(@account, form.object), class: "btn btn-danger outline", method: :delete, remote: true, data: { confirm: t("are_you_sure") } %>
+      <%= link_to t("delete"), account_account_user_path(@account, form.object), class: "btn btn-danger outline", method: :delete, data: { confirm: t("are_you_sure") } %>
     <% end %>
   </div>
 <% end %>
