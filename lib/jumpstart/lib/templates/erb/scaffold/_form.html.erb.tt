@@ -34,7 +34,7 @@
     <%%= form.button class: "btn btn-primary" %>
 
     <%% if form.object.persisted? %>
-      <%%= link_to 'Cancel', @<%= singular_table_name %>, class: "btn btn-link" %>
+      <%%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
     <%% end %>
   </div>
 <%% end %>

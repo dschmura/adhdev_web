@@ -2,7 +2,7 @@
   <div class="max-w-3xl mx-auto">
     <div class="flex justify-between items-center mb-4">
       <h1 class="h3">Edit <%= singular_table_name.titleize %></h1>
-      <%%= button_to 'Delete', @<%= singular_table_name %>, class: "btn btn-danger outline", method: :delete, data: { confirm: "Are you sure?" } %>
+      <%%= link_to 'Cancel', @<%= singular_table_name %>, class: "btn btn-link" %>
     </div>
 
     <div class="bg-white rounded shadow p-8">
