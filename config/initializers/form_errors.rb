@@ -24,7 +24,7 @@ ActionView::Base.field_error_proc = proc do |html_tag, instance|
         # Checkboxes can't have a border, so we'll need to skip these for now unless we make them more complicated
         e.to_s
 
-      elsif instance.error_message.is_a?(Array)
+      elsif instance.error_message.respond_to? :each
         # Add a hint error after the field
         # If there were multiple errors on an element, we'll combine them into one string
         %(#{e}<p class="form-hint error">&nbsp;#{instance.object.class.human_attribute_name(instance.send(:sanitized_method_name))} #{instance.error_message.uniq.to_sentence}</p>)

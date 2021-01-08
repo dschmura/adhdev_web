@@ -1,5 +1,7 @@
 // See the Tailwind default theme values here:
 // https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
+const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   // Opt-in to TailwindCSS future changes
@@ -28,6 +30,7 @@ module.exports = {
     extend: {
       // Create your own at: https://javisperez.github.io/tailwindcolorshades
       colors: {
+        //orange: colors.orange,
         'primary': {
           50: '#F6F7FF',
           100: '#EDF0FE',
@@ -82,21 +85,7 @@ module.exports = {
     },
     // override the default theme using the key directly
     fontFamily: {
-      sans: [
-        "Inter",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        '"Segoe UI"',
-        "Roboto",
-        '"Helvetica Neue"',
-        "Arial",
-        '"Noto Sans"',
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
+      sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
   },
   variants: {

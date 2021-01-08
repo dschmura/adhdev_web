@@ -21,13 +21,10 @@ By default, it renders:
     <title>
       <%= content_for(:title) || 'Dashboard' %> - <%= Jumpstart.config.application_name %>
     </title>
-    <%= javascript_pack_tag 'administrate', 'data-turbolinks-track': 'reload' %>
-
+    <%= javascript_packs_with_chunks_tag 'administrate', 'data-turbo-track': 'reload' %>
     <%= render "stylesheet" %>
     <%= csrf_meta_tags %>
-
-
-    <meta name="turbolinks-root" content="/admin">
+    <meta name="turbo-root" content="/admin">
   </head>
   <body>
     <div class="app-container">

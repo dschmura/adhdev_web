@@ -1,11 +1,11 @@
 <% if user_masquerade? %>
-  <div class="px-4 py-3 text-center text-blue-200 bg-blue-600 font-brand-semibold" role="alert">
+  <div class="px-4 py-3 text-center text-blue-200 bg-blue-600 font-semibold" role="alert">
     You're logged in as <b>User #<%= current_user.id %> (<%= current_user.email %>)</b>
   <%= link_to "Logout", back_masquerade_path(current_user), class: "text-blue-100 hover:no-underline font-semibold underline" %>
 </div>
 <% end %>
 
-<nav class="flex flex-wrap items-center justify-between px-4 py-2 bg-white border-b" data-controller="toggle">
+<nav class="flex flex-wrap items-center justify-between px-4 py-2 bg-white border-b text-sm" data-controller="toggle">
   <div class="flex items-center flex-shrink-0 mr-6">
     <%= link_to root_path do %>
       <%= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
@@ -56,18 +56,18 @@
 
                 <% if current_user.admin? %>
                   <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t"><%= t(".admin") %></div>
-                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', data: { turbolinks: false } %>
-                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
+                  <%= link_to t(".dashboard"), admin_root_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', data: { turbo: false } %>
+                  <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } if defined?(::Sidekiq) %>
                 <% end %>
 
                 <% if Rails.env.development? %>
                   <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t">Development</div>
-                  <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', data: { turbolinks: false } %>
-                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbolinks: false } %>
-                  <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbolinks: false } %>
+                  <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', data: { turbo: false } %>
+                  <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } %>
+                  <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } %>
                 <% end %>
 
-                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'no-underline block px-6 py-3 border-t text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
+                <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, class: 'w-full text-left cursor-pointer px-6 py-3 border-t text-gray-800 bg-white hover:bg-primary-100 transition ease-in-out duration-200 whitespace-nowrap' %>
               </div>
             </div>
           </div>

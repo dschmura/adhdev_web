@@ -15,7 +15,7 @@ class ApiTokensController < ApplicationController
     if @api_token.save
       redirect_to @api_token, notice: t(".created")
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,7 @@ class ApiTokensController < ApplicationController
     if @api_token.update(api_token_params)
       redirect_to api_tokens_path, notice: t(".updated")
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

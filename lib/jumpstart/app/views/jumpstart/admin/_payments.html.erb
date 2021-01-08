@@ -1,37 +1,29 @@
 <div class="form-group">
-  <label>Payment Processors</label>
-  <li>
+  <h5 class="mb-3">Payment Processors</h5>
+
+  <div>
     <label>
-      <%= check_box_tag "configuration[payment_processors][]",
-        :stripe,
-        @config.stripe? %>
-      <i class="fab fa-stripe"></i>
+      <%= check_box_tag "configuration[payment_processors][]", :stripe, @config.stripe?, class: "form-checkbox", id: :stripe %>
       Stripe
-      <small class="text-muted">SCA payments supported</small>
+      <small class="text-gray-600">SCA payments supported</small>
     </label>
-  </li>
+  </div>
 
-  <li>
+  <div>
     <label>
-      <%= check_box_tag "configuration[payment_processors][]",
-        :paypal,
-        @config.paypal? %>
-      <i class="fab fa-paypal"></i>
+      <%= check_box_tag "configuration[payment_processors][]", :paypal, @config.paypal?, class: "form-checkbox", id: :paypal %>
       Paypal
-      <small class="text-muted">Uses Braintree behind the scenes</small>
+      <small class="text-gray-600">Uses Braintree behind the scenes</small>
     </label>
-  </li>
+  </div>
 
-  <li>
+  <div>
     <label>
-      <%= check_box_tag "configuration[payment_processors][]",
-        :braintree,
-        @config.braintree? %>
-      <i class="fab fa-braintree"></i>
+      <%= check_box_tag "configuration[payment_processors][]", :braintree, @config.braintree?, class: "form-checkbox", id: :braintree %>
       Braintree
-      <small class="text-muted">Accepts both credit cards and PayPal</small>
+      <small class="text-gray-600">Accepts both credit cards and PayPal</small>
     </label>
-  </li>
+  </div>
 </div>
 
 <hr />
@@ -46,7 +38,7 @@ rails credentials:edit --environment production</code></pre>
 
 <h5>Plans</h5>
 <p>To add plans, visit <%= link_to "the Plans page", main_app.admin_plans_path, target: :blank %> in the admin.</p>
-<p class="small text-muted"><strong>Don't forget!</strong> You need to be <%= link_to "signed in", main_app.new_user_session_path %> as an admin to view the Plans page in the admin area. <%= link_to "Create an admin user.", "#users", data: { toggle: "pill" } %></p>
+<p class="small text-gray-600"><strong>Don't forget!</strong> You need to be <%= link_to "signed in", main_app.new_user_session_path %> as an admin to view the Plans page in the admin area. <%= link_to "Create an admin user.", "#users", data: { toggle: "pill" } %></p>
 
 <hr />
 

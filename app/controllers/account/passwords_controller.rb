@@ -2,7 +2,7 @@ class Account::PasswordsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    redirect_to action: :edit
+    redirect_to edit_account_password_path
   end
 
   def edit
@@ -13,7 +13,7 @@ class Account::PasswordsController < ApplicationController
       bypass_sign_in current_user
       redirect_to account_password_path, notice: t(".updated")
     else
-      render action: :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

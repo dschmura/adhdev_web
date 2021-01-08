@@ -40,6 +40,6 @@ function bindTableLinks() {
   })
 }
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbo:load", function() {
   bindTableLinks()
 })

@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html class="h-full antialiased">
   <head>
-    <title>Jumpstart</title>
+    <title>Jumpstart Docs</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%# All assets are defined in Webpacker app/javascripts now %>
 
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <%= yield :head %>
-
-    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_packs_with_chunks_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
 
     <%# Replace this with your FontAwesome Pro Kit code %>
     <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
@@ -20,8 +16,9 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
+    <%# Be sure to add your own custom favicons %>
     <script>
-      document.addEventListener("turbolinks:load", function() {
+      document.addEventListener("turbo:load", function() {
         var snippets = document.querySelectorAll('pre code')
         snippets.forEach(function(snippet) {
           hljs.highlightBlock(snippet);
@@ -29,7 +26,11 @@
       });
     </script>
     <%= render "shared/favicons" %>
+    <%= render "shared/payments_dependencies" %>
+
+    <%= yield :head %>
   </head>
+
 
   <body class="h-full overflow-x-hidden font-sans font-normal leading-normal bg-offwhite">
     <%= render partial: "shared/flash" %>

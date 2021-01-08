@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
     redirect_to pay.payment_path(e.payment.id)
   rescue Pay::Error => e
     flash[:alert] = e.message
-    render :new
+    render :new, status: :unprocessable_entity
   end
 
   def edit
@@ -42,7 +42,7 @@ class SubscriptionsController < ApplicationController
     redirect_to subscription_path
   rescue Pay::Error => e
     flash[:alert] = e.message
-    render :edit
+    render :edit, status: :unprocessable_entity
   end
 
   def resume
@@ -50,7 +50,7 @@ class SubscriptionsController < ApplicationController
     redirect_to subscription_path, notice: t(".resumed")
   rescue Pay::Error => e
     flash[:alert] = e.message
-    render :show
+    render :show, status: :unprocessable_entity
   end
 
   def destroy
@@ -62,7 +62,7 @@ class SubscriptionsController < ApplicationController
     redirect_to subscription_path
   rescue Pay::Error => e
     flash[:alert] = e.message
-    render :show
+    render :show, status: :unprocessable_entity
   end
 
   def info

@@ -22,6 +22,6 @@ function bindDateTimePickers() {
   })
 }
 
-document.addEventListener("turbolinks:load", function () {
+document.addEventListener("turbo:load", function () {
   bindDateTimePickers()
 })

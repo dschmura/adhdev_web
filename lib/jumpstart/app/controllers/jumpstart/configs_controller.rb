@@ -9,10 +9,7 @@ module Jumpstart
       Jumpstart.bundle
       Jumpstart.restart
 
-      respond_to do |format|
-        format.html { redirect_to root_path, notice: "Restart your Rails app to load the new Jumpstart configuration." }
-        format.js
-      end
+      redirect_to root_path(reload: true), notice: "Your app is restarting with the new configuration..."
     end
 
     private

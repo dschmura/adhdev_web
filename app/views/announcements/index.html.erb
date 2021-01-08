@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-  <h1 class="h2 my-6"><%= t(".title") %></h1>
+  <h1 class="h2 my-6 text-center"><%= t(".title") %></h1>
 
   <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
     <% @announcements.each_with_index do |announcement, index| %>
@@ -8,14 +8,14 @@
       <% end %>
 
       <div class="flex" id="<%= dom_id(announcement) %>">
-        <div>
-          <%= link_to announcements_path(anchor: dom_id(announcement)), class: "text-gray-700" do %>
-            <%= local_time_ago announcement.published_at %>
+        <div class="w-32">
+          <%= link_to announcements_path(anchor: dom_id(announcement)), class: "text-gray-400" do %>
+            <%= local_relative_time announcement.published_at, 'weekday-or-date' %>
           <% end %>
         </div>
 
         <div class="flex-1 ml-8">
-          <h2 class="text-xl mb-2"><%= announcement.title %></h2>
+          <h2 class="font-semibold text-gray-900 text-lg mb-2"><%= announcement.title %></h2>
           <%= badge announcement.kind.humanize.titleize, class: "mb-2", color: announcement_color(announcement) %>
 
           <div class="text-gray-700">

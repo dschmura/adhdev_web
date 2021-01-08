@@ -5,7 +5,7 @@
 
 // Rails functionality
 window.Rails = require("@rails/ujs")
-require("turbolinks").start()
+require("@hotwired/turbo-rails")
 require("@rails/activestorage").start()
 require("channels")
 require("trix")

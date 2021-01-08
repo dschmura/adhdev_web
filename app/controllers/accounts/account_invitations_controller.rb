@@ -12,7 +12,7 @@ class Accounts::AccountInvitationsController < Accounts::BaseController
     if @account_invitation.save_and_send_invite
       redirect_to @account
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +23,7 @@ class Accounts::AccountInvitationsController < Accounts::BaseController
     if @account_invitation.update(invitation_params)
       redirect_to @account
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

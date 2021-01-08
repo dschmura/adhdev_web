@@ -1,10 +1,11 @@
-<div>
-  <%= link_to docs_path do %>
-    <%= image_tag "jumpstart-docs-logo.svg" %>
-  <% end %>
+<div class="text-sm">
+  <%= link_to image_tag("jumpstart-docs-logo.svg"), root_path, class: "block" %>
 
-  <h4 class="mt-6 font-semibold mb-1 text-gray-800">Get Started</h4>
-  <ul class="list-none leading-loose pb-6">
+  <%= link_to "Back to the app", main_app.root_path, class: "block text-sm mt-4 py-1 text-gray-900" %>
+  <%= link_to "Configuration", root_path, class: "block text-sm py-1 text-gray-900", target: :_blank %>
+
+  <h4 class="mt-4 font-semibold mb-1 text-gray-800">Get Started</h4>
+  <ul class="list-none leading-loose">
     <li><%= link_to "Installation", installation_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Configuration", configuration_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Upgrades", upgrading_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
@@ -12,8 +13,8 @@
     <li><%= link_to "Screencasts", screencasts_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
   </ul>
 
-  <h4 class="mt-6 font-semibold mb-1 text-gray-800">Backend</h4>
-  <ul class="list-none leading-loose pb-6">
+  <h4 class="mt-4 font-semibold mb-1 text-gray-800">Backend</h4>
+  <ul class="list-none leading-loose">
     <li><%= link_to "Accounts & Multitenancy", accounts_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Action Cable", action_cable_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Action Mailbox", action_mailbox_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
@@ -37,9 +38,9 @@
     <li><%= link_to "Webpacker", webpacker_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
   </ul>
 
-  <h4 class="mt-6 font-semibold mb-1 text-gray-800">Frontend</h4>
-  <ul class="list-none leading-loose pb-6">
-    <li><%= link_to "Alerts", alerts_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
+  <h4 class="mt-4 font-semibold mb-1 text-gray-800">Frontend</h4>
+  <ul class="list-none leading-loose">
+    <li><%= link_to "Alerts & Notices", alerts_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Branding", branding_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Buttons", buttons_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
     <li><%= link_to "Cards", cards_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
@@ -52,8 +53,8 @@
     <li><%= link_to "Wells", wells_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
   </ul>
 
-  <h4 class="mt-6 font-semibold mb-1 text-gray-800">Extras</h4>
-  <ul class="list-none leading-loose pb-6">
+  <h4 class="mt-4 font-semibold mb-1 text-gray-800">Extras</h4>
+  <ul class="list-none leading-loose">
     <li><%= link_to "Integrations", integrations_docs_path, class: "text-gray-700 no-underline hover:text-primary" %></li>
   </ul>
 </div>

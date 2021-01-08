@@ -5,7 +5,7 @@ require "application_system_test_case"
 
 class StripeTest < ApplicationSystemTestCase
   setup do
-    @user = users(:one)
+    @user = users(:two)
     @account = @user.personal_account
     login_as @user, scope: :user
     switch_account(@account)

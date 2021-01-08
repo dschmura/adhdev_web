@@ -3,18 +3,23 @@ require_dependency "jumpstart/application_controller"
 module Jumpstart
   class UsersController < ApplicationController
     def create
-      user = User.new(user_params)
+      @user = User.new(user_params)
 
-      if user.save
+      if @user.save
         # Ensure Jumpstart free plan exists for admin users
         Plan.create_with(name: "Free", interval: :month, trial_period_days: 0).find_or_create_by(details: {jumpstart_id: :free})
 
         # Create a fake subscription for the admin user so they have access to everything by default
-        user.accounts.first.subscriptions.create(subscription_params)
+        @user.accounts.first.subscriptions.create(subscription_params)
 
-        redirect_to root_path(anchor: :users), notice: "#{user.name} (#{user.email}) has been added as an admin. #{view_context.link_to("Login", main_app.new_user_session_path)}"
+        @notice = "#{@user.name} (#{@user.email}) has been added as an admin. #{view_context.link_to("Login", main_app.new_user_session_path)}"
+
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to root_path(anchor: :users), notice: @notice }
+        end
       else
-        redirect_to root_path(anchor: :users), alert: user.errors.full_messages.first
+        render partial: "jumpstart/admin/admin_user_modal", locals: {user: @user}
       end
     end
 

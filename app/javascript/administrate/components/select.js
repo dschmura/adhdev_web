@@ -8,6 +8,6 @@ function bindSelects() {
   });
 }
 
-document.addEventListener("turbolinks:load", function () {
+document.addEventListener("turbo:load", function () {
   bindSelects()
 })

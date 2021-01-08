@@ -31,7 +31,7 @@ class AccountsController < Accounts::BaseController
       set_active_account
       redirect_to @account, notice: t(".created")
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -40,7 +40,7 @@ class AccountsController < Accounts::BaseController
     if @account.update(account_params)
       redirect_to @account, notice: t(".updated")
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -24,7 +24,7 @@ class AccountUsersController < Accounts::BaseController
     if @account_user.update(account_user_params)
       redirect_to @account, notice: t(".updated")
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
