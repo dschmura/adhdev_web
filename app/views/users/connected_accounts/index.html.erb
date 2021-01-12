@@ -18,10 +18,10 @@
               <% connected_accounts.each do |connected_account| %>
                 <div class="flex border-top align-middle">
                   <div class="flex-1">
-                    <%= image_tag connected_account.auth["info"]["image"], class: "inline-block h-10 w-10 rounded shadow mr-2" %>
+                    <%= image_tag connected_account.image_url, class: "inline-block h-10 w-10 rounded shadow mr-2" %>
                     <div class="inline-block align-middle">
-                      <div><%= connected_account.auth["info"]["name"] %></div>
-                      <div class="text-sm text-gray-700">
+                      <div><%= connected_account.name %></div>
+                      <div class="font-semibold text-sm text-gray-700">
                         <%= social_icon connected_account.provider %>
                         <%= provider_config(connected_account.provider)[:name] %>
                       </div>

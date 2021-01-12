@@ -78,6 +78,18 @@ class User::ConnectedAccount < ApplicationRecord
   alias_method :attr_encrypted_access_token_secret=, :access_token_secret=
   alias_method :access_token_secret=, :safe_access_token_secret=
 
+  def name
+    auth&.dig("info", "name")
+  end
+
+  def email
+    auth&.dig("info", "email")
+  end
+
+  def image_url
+    auth&.dig("info", "image") || GravatarHelper.gravatar_url_for(email)
+  end
+
   private
 
   def current_token

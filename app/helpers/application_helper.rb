@@ -11,8 +11,7 @@ module ApplicationHelper
         extent: "#{size}x#{size}"
       )
     else
-      hash = Digest::MD5.hexdigest(user.email.downcase)
-      "https://secure.gravatar.com/avatar/#{hash}.png?height=#{size}&width=#{size}"
+      gravatar_url_for(user.email, size: size)
     end
   end
 
