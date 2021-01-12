@@ -32,9 +32,7 @@ function bindTableLinks() {
     }
   }
 
-  const tables = [...document.getElementsByTagName("table")]
-  tables.forEach(
-    /** @type {HTMLTableElement} */ (table) => {
+  document.querySelectorAll("table").forEach(table => {
     table.addEventListener("click", visitDataUrl)
     table.addEventListener("keydown", visitDataUrl)
   })
