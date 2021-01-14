@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { Turbo } from "@hotwired/turbo-rails"
 
 export default class extends Controller {
   static targets = [ "card", "name", "error", "form" ]
@@ -108,8 +109,8 @@ export default class extends Controller {
         this.errorTarget.textContent = result.error.message
 
       } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-        Turbolinks.clearCache()
-        Turbolinks.visit("/")
+        Turbo.clearCache()
+        Turbo.visit("/")
       }
     })
   }
