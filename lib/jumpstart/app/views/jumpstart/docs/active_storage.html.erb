@@ -19,5 +19,10 @@
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">User Avatars</h2>
     <p class="mb-4">Users have default avatars using Gravatar, but they may override this by uploading their own avatar. These avatars are uploaded and processed using Active Storage.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Orphaned Uploads</h2>
+    <p class="mb-4">Sometimes a user might upload a file but close the tab leaving an orphaned file in storage. To clean these up, we need to run a cron job regularly to purge any unattached blobs from ActiveStorage.</p>
+    <p class="mb-4">Jumpstart Pro comes with a Rake task you can run nightly to purge any orphaned, unattached blobs. Simply add this to cron or as a scheduled job:</p>
+    <pre><code>rails active_storage:cleanup</code></pre>
   </div>
 </div>
