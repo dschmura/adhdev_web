@@ -1,6 +1,6 @@
 module LanguageHelper
   LANGUAGES = {
-    :"es-co" => "Spanish (Columbia)",
+    "es-co": "Spanish (Columbia)",
     en: "English",
     fr: "French",
     nl: "Dutch"
