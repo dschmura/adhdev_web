@@ -9,7 +9,7 @@
 #  card_type          :string
 #  domain             :string
 #  extra_billing_info :text
-#  name               :string
+#  name               :string           not null
 #  personal           :boolean          default(FALSE)
 #  processor          :string
 #  subdomain          :string
