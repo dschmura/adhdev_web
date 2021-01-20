@@ -81,7 +81,7 @@ gem "ruby-oembed", "~> 0.14.0", require: "oembed"
 
 # We always want the latest versions of these gems, so no version numbers
 gem "omniauth", "~> 1.9", ">= 1.9.1"
-gem "strong_migrations"
+gem "strong_migrations", "~> 0.7.6"
 gem "whenever", require: false
 
 # Jumpstart manages a few gems for us, so install them from the extra Gemfile
