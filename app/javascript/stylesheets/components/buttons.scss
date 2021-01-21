@@ -9,6 +9,10 @@
   &:focus {
     @apply cursor-pointer;
   }
+
+  &:disabled {
+    @apply bg-tertiary-200 text-white cursor-not-allowed;
+  }
 }
 
 .btn-small {
