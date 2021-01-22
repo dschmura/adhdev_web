@@ -209,6 +209,8 @@ es-co:
       title: "Plan actual"
       trial_ends: "Tu periodo de prueba termina en %{days}."
       subscription_ends_html: "Tu suscripción termina el <strong>%{date}</strong>"
+      subscription_pauses_html: "Your subscription pauses <strong>%{date}</strong>"
+      subscription_paused_html: "Your subscription is <strong>paused</strong>"
       resume: "Reactiva suscripción"
       resuming: "Reactivando..."
       resubscribe_html: "Tu suscripción ha terminado. ¿Quisieras %{link}?"
@@ -230,6 +232,13 @@ es-co:
       date: "Fecha"
       amount: "Candidad"
       receipt: "Recibo"
+      view: "Ver"
+      pause:
+        title: "Pause Your Subscription"
+        description: "You can pause your subscription and resume at a later time."
+        note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
+        button: "Pause Subscription"
+        pausing: "Pausing..."
       cancel:
         title: "Cancela tu suscripción"
         description: "Puedes cancelar en cualquier momento pero perderás acceso a %{product}."

@@ -1,0 +1,30 @@
+
+<h3><%= t ".invoices" %></h3>
+<p class="mt-2 text-gray-700"><%= t ".invoices_description" %></p>
+
+<% if current_account.charges.exists? %>
+  <table class="w-full">
+    <thead>
+      <tr>
+        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".date" %></th>
+        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".payment_method" %></th>
+        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".amount" %></th>
+        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".receipt" %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% current_account.charges.each do |charge| %>
+        <tr class="group border-t border-gray-400 hover:bg-gray-200">
+          <td class="p-3"><%= charge.created_at.strftime("%B %e, %Y") %></td>
+          <td class="p-3"><i class="fab fa-cc-<%= charge.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(charge) %></td>
+          <td class="p-3"><%= number_to_currency charge.amount / 100.0 %></td>
+          <td class="p-3">
+            <%= link_to t(".view"), charge.paddle_receipt_url, target: "_blank" if Jumpstart.config.paddle? %>
+            <%= link_to render_svg("icons/download"), charge_path(charge, format: :pdf) unless Jumpstart.config.paddle? %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

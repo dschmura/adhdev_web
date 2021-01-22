@@ -16,6 +16,7 @@ class PlanDashboard < Administrate::BaseDashboard
     details: Field::String.with_options(searchable: false),
     stripe_id: Field::String,
     braintree_id: Field::String,
+    paddle_id: Field::String,
     features: ArrayField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -44,6 +45,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :trial_period_days,
     :stripe_id,
     :braintree_id,
+    :paddle_id,
     :features,
     :created_at,
     :updated_at
@@ -59,6 +61,7 @@ class PlanDashboard < Administrate::BaseDashboard
     :trial_period_days,
     :stripe_id,
     :braintree_id,
+    :paddle_id,
     :features
   ].freeze
 

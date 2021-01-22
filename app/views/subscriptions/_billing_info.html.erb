@@ -1,0 +1,24 @@
+<h3><%= t ".extra_billing_info" %></h3>
+<div class="flex" data-controller="toggle">
+  <div class="flex-1">
+    <div class="text-gray-700 mt-2"><%= t ".additional_information" %></div>
+
+    <%= form_with model: current_account, url: info_subscription_path, html: { class: "hidden mt-4", data: { toggle_target: "toggleable" }} do |f| %>
+      <div class="form-group">
+        <%= f.label :extra_billing_info %>
+        <%= f.text_area :extra_billing_info, class: "form-control", placeholder: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.button t(".save_info"), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving"))} %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to t(".add_info"), "#", class: "btn btn-link text-gray-700", data: { action: "click->toggle#toggle" } %>
+  </div>
+</div>
+<div class="text-gray-600">
+  <%= current_account.extra_billing_info %>
+</div>

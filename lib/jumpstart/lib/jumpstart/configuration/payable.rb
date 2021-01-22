@@ -18,8 +18,12 @@ module Jumpstart
         payment_processors.include? :stripe
       end
 
+      def paddle?
+        payment_processors.include? :paddle
+      end
+
       def payments_enabled?
-        stripe? || braintree? || paypal?
+        payment_processors.any?
       end
 
       def payment_processors

@@ -13,6 +13,7 @@
       <% else %>
         <%= render 'cards/forms/stripe', button: "Update Card", url: card_path, method: :put, setup_intent: @setup_intent if Jumpstart.config.stripe? %>
         <%= render 'cards/forms/braintree' if Jumpstart.config.braintree? %>
+        <%= render 'cards/forms/paddle' if Jumpstart.config.paddle? %>
       <% end %>
     </div>
   </div>

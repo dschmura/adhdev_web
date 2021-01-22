@@ -24,6 +24,14 @@
       <small class="text-gray-600">Accepts both credit cards and PayPal</small>
     </label>
   </div>
+
+  <div>
+    <label>
+      <%= check_box_tag "configuration[payment_processors][]", :paddle, @config.paddle?, class: "form-checkbox", id: :paddle %>
+      Paddle
+      <small class="text-muted">SCA supported, Merchant of Record, accepts both credit cards and PayPal</small>
+    </label>
+  </div>
 </div>
 
 <hr />

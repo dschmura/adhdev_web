@@ -1,0 +1,14 @@
+<h3><%= t ".payment_method" %></h3>
+
+<div class="flex">
+  <div class="flex-1 mt-2">
+    <% if current_account.card_type? %>
+      <i class="fab fa-cc-<%= current_account.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(current_account) %>
+    <% else %>
+      <p class="text-gray-700"><%= t ".no_card" %></p>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to t(".update_payment_method"), edit_card_path, class: "btn btn-link text-gray-700" %>
+  </div>
+</div>

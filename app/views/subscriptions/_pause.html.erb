@@ -1,0 +1,18 @@
+<%# Pause is only available with Paddle subscriptions %>
+<% if Jumpstart.config.paddle? && current_account.subscription && !current_account.subscription.paused? %>
+  <hr class="border-b my-8" />
+  <h3><%= t ".pause.title" %></h3>
+  <div class="flex">
+    <div class="flex-1 mt-2 text-gray-700">
+      <div class="font-bold"><%= t ".pause.description" %></div>
+      <div><%= t ".pause.note" %></div>
+    </div>
+
+    <div>
+      <%= form_for current_account, url: pause_subscription_url, method: :patch do |f| %>
+        <%= f.button t(".pause.button"), class: "btn btn-link text-gray-700", data: { disable_with: disable_with(t(".pause.pausing")) } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

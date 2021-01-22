@@ -31,6 +31,7 @@
         <%= render 'subscriptions/forms/stripe'    if Jumpstart.config.stripe? %>
         <%= render 'subscriptions/forms/braintree' if Jumpstart.config.braintree? %>
         <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>
+        <%= render 'subscriptions/forms/paddle'    if Jumpstart.config.paddle? %>
       <% end %>
     </div>
 
@@ -46,9 +47,13 @@
   <div class="sm:w-1/3 p-8 bg-blue-700 text-white rounded-b-lg sm:rounded-b-none sm:rounded-r-lg">
     <div class="text-lg"><%= @plan.name %></div>
 
-    <div>
+    <div class="my-3">
       <sup class="text-xl">$</sup>
-      <span class="text-5xl"><%= @plan.amount / 100 %></span>
+      <% if Jumpstart.config.paddle? %>
+        <span class="text-5xl" id="recurringTotal"><i class="fas fa-circle-notch fa-spin"></i></span>
+      <% else %>
+        <span class="text-5xl"><%= @plan.amount / 100 %></span>
+      <% end %>
       <span class="text-lg">/ <%= @plan.interval %></span>
     </div>
     <div><%= t(".renews_html", interval: @plan.interval) %></div>

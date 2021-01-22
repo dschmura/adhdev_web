@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2021_01_15_211740) do
   create_table "account_invitations", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "invited_by_id"
-    t.string "token", null: false
-    t.string "name", null: false
-    t.string "email", null: false
+    t.string "token"
+    t.string "name"
+    t.string "email"
     t.jsonb "roles", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_211740) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "owner_type"
+    t.jsonb "data"
     t.index ["owner_id"], name: "index_pay_charges_on_owner_id"
   end
 
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_211740) do
     t.datetime "updated_at"
     t.string "status"
     t.string "owner_type"
+    t.jsonb "data"
   end
 
   create_table "plans", force: :cascade do |t|

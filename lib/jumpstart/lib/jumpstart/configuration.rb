@@ -102,6 +102,7 @@ module Jumpstart
       gems[:main] += [{name: "skylight"}] if skylight?
       gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
+      gems[:main] << {name: "paddle_pay"} if paddle?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
       gems[:development] += [{name: "guard"}, {name: "guard-livereload", version: "~> 2.5", require: false}, {name: "rack-livereload"}] if livereload?
       gems

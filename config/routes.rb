@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   resource :card
   resource :subscription do
     patch :info
+    patch :pause
     patch :resume
   end
   resources :charges

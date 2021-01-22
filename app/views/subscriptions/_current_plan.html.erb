@@ -1,14 +1,11 @@
 <h3><%= t(".title") %></h3>
 
-<% if current_account.subscription && current_account.subscription.on_trial? %>
-  <div class="flex items-center bg-orange-200 text-orange-600 text-sm font-bold px-4 py-3 my-4" role="alert">
-    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
-    <p><%= t ".trial_ends", days: time_ago_in_words(current_account.subscription.trial_ends_at) %></p>
-  </div>
+<% if current_account.subscription&.on_trial? %>
+  <%= render partial: "subscriptions/trial_details" %>
 <% end %>
 
-<% if current_account.subscription && current_account.subscription.cancelled? %>
-  <% if current_account.subscription.on_grace_period? %>
+<% if current_account.subscription&.cancelled? %>
+  <% if current_account.subscription.on_grace_period? && !Jumpstart.config.paddle? %>
     <div class="flex">
       <div class="flex-1 mt-2">
         <%= t ".subscription_ends_html", date: current_account.subscription.ends_at.strftime("%B %d, %Y") %>
@@ -25,7 +22,24 @@
     <p><%= t ".resubscribe_html", link: link_to(t(".resubscribe"), new_subscription_path, class: "underline text-blue-500") %></p>
   <% end %>
 
-<% elsif current_account.subscription && current_account.subscription.active? %>
+<% elsif current_account.subscription&.paused? %>
+  <div class="flex">
+    <div class="flex-1 mt-2">
+      <% if current_account.subscription.on_grace_period? %>
+        <%= t ".subscription_pauses_html", date: current_account.subscription.paddle_paused_from.strftime("%B %d, %Y") %>
+      <% else %>
+        <%= t ".subscription_paused_html" %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form_for current_account, url: resume_subscription_url, method: :patch do |f| %>
+        <%= f.button t(".resume"), class: "btn btn-tertiary", data: { disable_with: disable_with(t(".resuming")) } %>
+      <% end %>
+    </div>
+  </div>
+
+<% elsif current_account.subscription&.active? %>
 
   <div class="flex">
     <div class="flex-1 mt-2">
@@ -44,88 +58,17 @@
 
 <hr class="border-b my-8" />
 
-<h3><%= t ".payment_method" %></h3>
-
-<div class="flex">
-  <div class="flex-1 mt-2">
-    <% if current_account.card_type? %>
-      <i class="fab fa-cc-<%= current_account.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(current_account) %>
-    <% else %>
-      <p class="text-gray-700"><%= t ".no_card" %></p>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to t(".update_payment_method"), edit_card_path, class: "btn btn-link text-gray-700" %>
-  </div>
-</div>
+<%= render partial: "subscriptions/payment_method" %>
 
 <hr class="border-b my-8" />
 
-<h3><%= t ".extra_billing_info" %></h3>
-<div class="flex" data-controller="toggle">
-  <div class="flex-1">
-    <div class="text-gray-700 mt-2"><%= t ".additional_information" %></div>
-
-    <%= form_with model: current_account, url: info_subscription_path, html: { class: "hidden mt-4", data: { toggle_target: "toggleable" } } do |f| %>
-      <div class="form-group">
-        <%= f.label :extra_billing_info %>
-        <%= f.text_area :extra_billing_info, class: "form-control", placeholder: true %>
-      </div>
-
-      <div class="form-group">
-        <%= f.button t(".save_info"), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving"))} %>
-      </div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= link_to t(".add_info"), "#", class: "btn btn-link text-gray-700", data: { action: "click->toggle#toggle" } %>
-  </div>
-</div>
-<div class="text-gray-600">
-  <%= current_account.extra_billing_info %>
-</div>
+<%# Paddle: Extra payment details live in Paddle, not our app %>
+<% unless current_account.subscription&.paddle? %>
+  <%= render partial: "subscriptions/billing_info" %>
+<% end %>
 
 <hr class="border-b my-8" />
 
-<h3><%= t ".invoices" %></h3>
-<p class="mt-2 text-gray-700"><%= t ".invoices_description" %></p>
-
-<% if current_account.charges.exists? %>
-  <table class="w-full">
-    <thead>
-      <tr>
-        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".date" %></th>
-        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".payment_method" %></th>
-        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".amount" %></th>
-        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= t ".receipt" %></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% current_account.charges.each do |charge| %>
-        <tr class="group border-t border-gray-400 hover:bg-gray-200">
-          <td class="p-3"><%= charge.created_at.strftime("%B %e, %Y") %></td>
-          <td class="p-3"><i class="fab fa-cc-<%= charge.card_type.downcase %> text-gray-700"></i> <%= payment_method_details(charge) %></td>
-          <td class="p-3"><%= number_to_currency charge.amount / 100.0 %></td>
-          <td class="p-3"><%= link_to render_svg("icons/download"), charge_path(charge, format: :pdf) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<% if current_account.subscription && !current_account.subscription.cancelled? %>
-  <hr class="border-b my-8" />
-  <h3><%= t ".cancel.title" %></h3>
-  <div class="flex">
-    <div class="flex-1 mt-2 text-gray-700">
-      <div class="font-bold"><%= t ".cancel.description", product: Jumpstart.config.application_name %></div>
-      <div><%= t ".cancel.help_html", link: mail_to(Jumpstart.config.support_email, t(".cancel.contact_us"), subject: t(".cancel.subject", product: Jumpstart.config.application_name), class: "underline text-blue-600") %></div>
-    </div>
-
-    <div>
-      <%= link_to t(".cancel.button"), subscription_url, method: :delete, class: "btn btn-link text-gray-700", data: { confirm: t("are_you_sure"), disable_with: disable_with(t(".cancel.cancelling")) } %>
-    </div>
-  </div>
-<% end %>
+<%= render partial: "subscriptions/charges" %>
+<%= render partial: "subscriptions/pause" %>
+<%= render partial: "subscriptions/cancel" %>

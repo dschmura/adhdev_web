@@ -53,8 +53,18 @@ class SubscriptionsController < ApplicationController
     render :show, status: :unprocessable_entity
   end
 
+  def pause
+    current_account.subscription.pause
+    redirect_to subscription_path
+  rescue Pay::Error => e
+    flash[:alert] = e.message
+    render :show
+  end
+
   def destroy
     current_account.subscription.cancel
+
+    current_account.update(card_type: nil, card_last4: nil, card_exp_month: nil, card_exp_year: nil) if current_account.subscription.paddle?
 
     # Optionally, you can cancel immediately
     # current_account.subscription.cancel_now!
