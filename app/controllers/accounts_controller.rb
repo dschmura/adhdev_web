@@ -28,8 +28,15 @@ class AccountsController < Accounts::BaseController
     @account.account_users.new(user: current_user, admin: true)
 
     if @account.save
-      set_active_account
-      redirect_to @account, notice: t(".created")
+      flash[:notice] = t(".created")
+
+      # Add any after-create functionality here
+      # ActsAsTenant.with_tenant(@account) do
+      #   # Create default records here...
+      # end
+
+      # Switch to the new account on the next request
+      switch
     else
       render :new, status: :unprocessable_entity
     end
@@ -50,9 +57,11 @@ class AccountsController < Accounts::BaseController
     redirect_to accounts_url, notice: t(".destroyed")
   end
 
+  # Current account will not change until the next request
   def switch
-    # This is not enabled by default, because we can't guarantee the domain is configured properly.
     # Uncomment this if you would like to redirect to the custom domain when switching accounts.
+    # This is not enabled by default because we can't guarantee the domain is configured properly.
+    #
     # if Jumpstart::Multitenancy.domain? && @account.domain?
     #  redirect_to @account.domain
 
@@ -81,10 +90,6 @@ class AccountsController < Accounts::BaseController
     attributes << :domain if Jumpstart::Multitenancy.domain?
     attributes << :subdomain if Jumpstart::Multitenancy.subdomain?
     params.require(:account).permit(*attributes)
-  end
-
-  def set_active_account
-    session[:account_id] = @account.id
   end
 
   def prevent_personal_account_deletion
