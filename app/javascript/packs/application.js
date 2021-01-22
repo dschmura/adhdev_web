@@ -15,9 +15,6 @@ require("channels")
 require("trix")
 require("@rails/actiontext")
 
-// TailwindCSS
-import "stylesheets/application.scss"
-
 // Stimulus controllers
 import "controllers"
 
@@ -32,3 +29,10 @@ LocalTime.start()
 
 // Start Rails UJS
 Rails.start()
+
+// Styles
+// These are imported separately for faster Webpack recompilation
+// https://rubyyagi.com/solve-slow-webpack-compilation/
+import "stylesheets/base.scss"
+import "stylesheets/components.scss"
+import "stylesheets/utilities.scss"

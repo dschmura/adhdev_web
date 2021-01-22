@@ -1,0 +1,14 @@
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ */
+@import 'tailwindcss/utilities';
+
+/**
+ * Include vendor css.
+ *
+ */
+
+@import "tippy.js/dist/tippy.css";
+@import "flatpickr/dist/flatpickr.css";
