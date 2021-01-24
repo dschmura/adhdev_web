@@ -101,7 +101,7 @@ module Jumpstart
 
         sendgrid:
           # https://app.sendgrid.com/settings/api_keys
-          username: 'apikey'
+          username: 'apikey' # Leave this alone, the username is actually 'apikey'
           password: ''
           domain: example.com
 
@@ -143,7 +143,7 @@ module Jumpstart
           # https://dashboard.stripe.com/account/webhooks
           # Webhooks should be pointed to https://domain.com/webhooks/stripe
           signing_secret: ''
-          
+
         # Paddle Payments
         # https://vendors.paddle.com/authentication
         paddle:
