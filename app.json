@@ -1,0 +1,35 @@
+{
+  "name": "Jumpstart Pro",
+  "description": "A Ruby on Rails template for SaaS apps and more",
+  "website": "https://jumpstartrails.com",
+  "scripts": {
+    "postdeploy": "bundle exec rake bootstrap"
+  },
+  "env": {
+    "RAILS_MASTER_KEY": {
+      "description": "Secret key for decrypting Rails credentials. You can find it at: config/credentials/production.key"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev",
+    "scheduler:standard"
+  ],
+  "buildpacks": [
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rails test"
+      }
+    }
+  }
+}
+
