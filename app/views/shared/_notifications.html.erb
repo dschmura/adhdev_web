@@ -4,6 +4,7 @@
     <%# Marks all notifications as read when menu opens by default. Remove the notifications Stimulus actions to disable this. %>
     <%= tag.div class: "inline-block select-none",
       role: "button",
+      aria: { label: "Notifications" },
       data: {
         action: "click->notifications#markAllAsRead touch->notifications#markAllAsRead click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide"
       } do %>

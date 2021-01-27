@@ -4,12 +4,17 @@ module AccountsHelper
     classes = options[:class]
 
     if account.personal? && account.owner_id == current_user&.id
-      image_tag avatar_url_for(account.users.first, options), class: classes
+      image_tag(
+        avatar_url_for(account.users.first, options),
+        class: classes,
+        alt: account.name
+      )
 
     elsif account.avatar.attached?
       image_tag(
         account.avatar.variant(thumbnail: "#{size}x#{size}^", gravity: "center", extent: "#{size}x#{size}"),
-        class: classes
+        class: classes,
+        alt: account.name
       )
     else
       content = content_tag(:span, account.name.to_s.first, class: "initials")
