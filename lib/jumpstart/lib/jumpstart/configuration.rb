@@ -1,6 +1,7 @@
 require "jumpstart/configuration/mailable"
 require "jumpstart/configuration/integratable"
 require "jumpstart/configuration/payable"
+require "open-uri"
 require "thor"
 
 module Jumpstart
@@ -242,6 +243,14 @@ module Jumpstart
 
       if skylight?
         copy_template("config/skylight.yml")
+      end
+
+      if solargraph?
+        URI.open "https://gist.githubusercontent.com/castwide/28b349566a223dfb439a337aea29713e/raw/715473535f11cf3eeb9216d64d01feac2ea37ac0/rails.rb" do |gist|
+          File.open(Rails.root.join("config/definitions.rb"), "w") do |file|
+            file.write(gist.read)
+          end
+        end
       end
     end
 
