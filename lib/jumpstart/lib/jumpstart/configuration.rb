@@ -105,6 +105,7 @@ module Jumpstart
       gems[:main] << {name: "paddle_pay"} if paddle?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
       gems[:development] += [{name: "guard"}, {name: "guard-livereload", version: "~> 2.5", require: false}, {name: "rack-livereload"}] if livereload?
+      gems[:development] += [{name: "solargraph-rails", version: "0.2.0.pre"}] if solargraph?
       gems
     end
 
@@ -163,6 +164,14 @@ module Jumpstart
 
     def livereload?
       @livereload.nil? ? false : ActiveModel::Type::Boolean.new.cast(@livereload)
+    end
+
+    def solargraph=(value)
+      @solargraph = ActiveModel::Type::Boolean.new.cast(value)
+    end
+
+    def solargraph?
+      @solargraph.nil? ? false : ActiveModel::Type::Boolean.new.cast(@solargraph)
     end
 
     def personal_accounts=(value)
