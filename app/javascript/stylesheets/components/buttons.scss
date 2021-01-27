@@ -48,19 +48,19 @@
 }
 
 .btn-secondary {
-  @apply bg-secondary-600 text-white;
+  @apply bg-secondary-700 text-white;
 
   &:hover,
   &:focus {
-    @apply bg-secondary-500 text-white;
+    @apply bg-secondary-600 text-white;
   }
 
   &.outline {
-    @apply bg-transparent border border-secondary-600 text-secondary-600 shadow-none;
+    @apply bg-transparent border border-secondary-700 text-secondary-700 shadow-none;
 
     &:hover,
     &:focus {
-      @apply bg-secondary-500 text-white;
+      @apply bg-secondary-600 text-white;
     }
   }
 }
