@@ -9,6 +9,9 @@ module Jumpstart
       Jumpstart.bundle
       Jumpstart.restart
 
+      # prepare solargraph if requested
+      Jumpstart.prepare_solargraph if Jumpstart.config.solargraph?
+
       redirect_to root_path(reload: true), notice: "Your app is restarting with the new configuration..."
     end
 
@@ -28,6 +31,7 @@ module Jumpstart
           :email_provider,
           :personal_accounts,
           :livereload,
+          :solargraph,
           :register_with_account,
           integrations: [],
           omniauth_providers: [],
