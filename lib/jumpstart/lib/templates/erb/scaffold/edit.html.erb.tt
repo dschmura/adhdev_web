@@ -1,12 +1,12 @@
 <div class="container mx-auto my-8 px-4">
   <div class="max-w-3xl mx-auto">
     <div class="flex justify-between items-center mb-4">
-      <h1 class="h3">Edit <%= singular_table_name.titleize %></h1>
-      <%%= link_to 'Cancel', @<%= singular_table_name %>, class: "btn btn-link" %>
+      <h1 class="h3"><%%= t("shared.scaffold.edit.title", model: "<%= singular_table_name.titleize %>") %></h1>
+      <%%= link_to t("cancel"), @<%= singular_table_name %>, class: "btn btn-link" %>
     </div>
 
     <div class="bg-white rounded shadow p-8">
-      <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
+      <%%= render "form", <%= singular_table_name %>: @<%= singular_table_name %> %>
     </div>
   </div>
 </div>
