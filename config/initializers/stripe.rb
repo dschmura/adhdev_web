@@ -2,24 +2,24 @@
 
 module Webhooks
   module ChargeSucceededExtension
-    def notify_user(user, charge)
-      Pay::UserMailer.receipt(user, charge).deliver_later
+    def notify_user(billable, charge)
+      Pay::UserMailer.receipt(billable, charge).deliver_later
     end
   end
 
   module ChargeRefundedExtension
-    def notify_user(user, charge)
-      Pay::UserMailer.refund(user, charge).deliver_later
+    def notify_user(billable, charge)
+      Pay::UserMailer.refund(billable, charge).deliver_later
     end
   end
 
   module SubscriptionRenewingExtension
-    def notify_user(user, subscription)
+    def notify_user(billable, subscription, date)
       # We only want to notify yearly subscribers of their renewal.
       # Monthly renewals don't need a warning.
       yearly_plan_ids = Jumpstart.config.yearly_plans.map { |p| p["stripe_id"] }
       if yearly_plan_ids.include? subscription.stripe_id
-        Pay::UserMailer.subscription_renewing(user, subscription).deliver_later
+        Pay::UserMailer.with(billable: billable, subscription: subscription, date: date).subscription_renewing.deliver_later
       end
     end
   end
