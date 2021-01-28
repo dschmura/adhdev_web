@@ -32,7 +32,7 @@
 
         <div class="z-10 inline-flex items-center leading-none text-gray-700 no-underline align-middle rounded hover:text-gray-800 hover:bg-white">
           <div class="relative" data-controller="dropdown">
-            <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" role="button" class="inline-block select-none">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" role="button" class="inline-block select-none" aria-label="Profile Menu">
               <span class="flex items-center text-gray-700 appearance-none">
                 <%= account_avatar current_account, include_user: true, class: "rounded-full h-8 w-8" %>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="1rem" height="1rem" class="w-4 h-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
