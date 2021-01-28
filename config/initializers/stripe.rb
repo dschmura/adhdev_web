@@ -18,7 +18,7 @@ module Webhooks
       # We only want to notify yearly subscribers of their renewal.
       # Monthly renewals don't need a warning.
       yearly_plan_ids = Jumpstart.config.yearly_plans.map { |p| p["stripe_id"] }
-      if yearly_plan_ids.include? subscription.stripe_id
+      if yearly_plan_ids.include? subscription.processor_id
         Pay::UserMailer.with(billable: billable, subscription: subscription, date: date).subscription_renewing.deliver_later
       end
     end
