@@ -3,13 +3,13 @@
 module Webhooks
   module ChargeSucceededExtension
     def notify_user(billable, charge)
-      Pay::UserMailer.receipt(billable, charge).deliver_later
+      Pay::UserMailer.with(billable, charge).receipt.deliver_later
     end
   end
 
   module ChargeRefundedExtension
     def notify_user(billable, charge)
-      Pay::UserMailer.refund(billable, charge).deliver_later
+      Pay::UserMailer.with(billable, charge).refund.deliver_later
     end
   end
 
