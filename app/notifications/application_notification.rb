@@ -7,9 +7,9 @@ class ApplicationNotification < Noticed::Base
   # Useful if you want to enable acts_as_tenant on the notification model
   def to_database
     {
-      account: params.delete(:account) || recipient.personal_account,
+      account: params[:account] || recipient.personal_account,
       type: self.class.name,
-      params: params
+      params: params.except(:account)
     }
   end
 end
