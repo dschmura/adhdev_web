@@ -40,6 +40,8 @@ en:
   are_you_sure: "Are you sure?"
   delete: "Delete"
   back: "Back"
+  cancel: "Cancel"
+  edit: "Edit"
 
   account_invitations_mailer:
     invite:
@@ -205,6 +207,13 @@ en:
     right_nav:
       pricing: "Pricing"
       announcements: "What's New"
+    scaffold:
+      edit:
+        title: "Edit %{model}"
+      new:
+        title: "New %{model}"
+      actions: "Actions"
+      view: "View"
 
   subscriptions:
     created: "Thanks for subscribing!"
