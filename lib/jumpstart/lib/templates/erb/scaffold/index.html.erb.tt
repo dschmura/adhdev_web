@@ -3,7 +3,7 @@
     <h1 class="h3"><%= plural_table_name.titleize %></h1>
 
     <%% if @<%= plural_table_name %>.any? %>
-      <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+      <%%= link_to t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>"), new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
     <%% end %>
   </div>
 
@@ -13,9 +13,9 @@
         <thead>
           <tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
-            <th class="p-3 uppercase text-left text-xs"><%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, '<%= attribute.human_name %>', class: 'text-gray-700' %></th>
+            <th class="p-3 uppercase text-left text-xs"><%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, "<%= attribute.human_name %>", class: "text-gray-700" %></th>
 <% end -%>
-            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20"><%%= t("shared.scaffold.actions") %></th>
           </tr>
         </thead>
 
@@ -26,7 +26,7 @@
             <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
           <% end %>
             <td>
-              <%%= link_to "View", <%= singular_table_name %>, class: "btn btn-link no-underline" %>
+              <%%= link_to t("shared.scaffold.view"), <%= singular_table_name %>, class: "btn btn-link no-underline" %>
             </td>
           </tr>
         <%% end %>
@@ -45,7 +45,7 @@
       <%%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
       <div class="flex-1 text-center">
         <p class="h3 mb-4">Create your first <%= singular_table_name.titleize %></p>
-        <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
+        <%%= link_to t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>"), new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
       </div>
     </div>
   <%% end %>
