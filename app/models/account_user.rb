@@ -42,14 +42,11 @@ class AccountUser < ApplicationRecord
     define_method(:"#{role}?") { send(role) }
   end
 
-  # You can use Postgres' array operators to query the roles array column
-  # https://www.postgresql.org/docs/current/functions-array.html
-  #
-  # Query where arrays overlap:
-  # scope :managers, -> { where("roles && ?", "{manager, supervisor}") }
+  # You can use Postgres' jsonb operators to query the roles jsonb column
+  # https://www.postgresql.org/docs/current/functions-json.html
   #
   # Query where roles contains:
-  # scope :managers, -> { where("roles @> ?", "{manager}") }
+  # scope :managers, -> { where("roles @> ?", {manager: true}.to_json) }
 
   def active_roles
     ROLES.select { |role| send(:"#{role}?") }.compact
