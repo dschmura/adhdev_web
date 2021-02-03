@@ -54,4 +54,13 @@ class Jumpstart::MultitenancyTest < ActionDispatch::IntegrationTest
       assert_match I18n.t("shared.navbar.signed_in_as_html", user: @account.name), response.body
     end
   end
+
+  test "switches to root domain by default" do
+    Jumpstart::Multitenancy.stub :selected, [] do
+      user = users(:one)
+      host! "company.example.com"
+      patch switch_account_path(user.personal_account)
+      assert_redirected_to "http://example.com/"
+    end
+  end
 end
