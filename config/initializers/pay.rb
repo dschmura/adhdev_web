@@ -6,3 +6,19 @@ Pay.setup do |config|
 
   config.routes_path = "/"
 end
+
+module SubscriptionExtensions
+  extend ActiveSupport::Concern
+
+  def jumpstart_paused?
+    false
+  end
+
+  def jumpstart_on_grace_period?
+    false
+  end
+end
+
+Rails.configuration.to_prepare do
+  Pay.subscription_model.include SubscriptionExtensions
+end
