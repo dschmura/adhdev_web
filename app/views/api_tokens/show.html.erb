@@ -12,18 +12,18 @@
 
     <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
 
-      <div class="flex justify-between items-end mb-5">
+      <div class="sm:flex justify-between items-center mb-5">
         <div class="flex items-center">
-          <h1 class="h2"><%= @api_token.name %></h1>
+          <h1 class="text-xl"><%= @api_token.name %></h1>
         </div>
 
-        <div>
+        <div class="flex-shrink-0">
           <%= link_to t(".edit"), edit_api_token_path(@api_token), class: "btn btn-primary outline" %>
           <%= link_to t(".revoke"), @api_token, method: :delete, class: "btn btn-danger outline", data: { confirm: t(".confirm") } %>
         </div>
       </div>
 
-      <div class="mb-4">
+      <div class="mb-4 overflow-scroll">
         <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:token) %></div>
         <%= @api_token.token %>
       </div>
@@ -38,7 +38,7 @@
         <%= @api_token.last_used_at? ? local_time_ago(@api_token.last_used_at) : "—" %>
       </div>
 
-      <div class="mb-4">
+      <div class="overflow-scroll">
         <div class="text-gray-600 text-xs uppercase font-bold"><%= t(".auth_header") %></div>
         <pre><code>GET /api/v1/me.json
 Authorization: Bearer <%= @api_token.token %></code></pre>

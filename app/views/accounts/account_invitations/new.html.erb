@@ -15,8 +15,8 @@
     <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
 
       <div class="flex items-center">
-        <%= account_avatar @account, class: "rounded-full mr-4 h-12 w-12" %>
-        <h1 class="h2"><%= @account.name %></h1>
+        <%= account_avatar @account, class: "flex-shrink-0 rounded-full mr-4 h-12 w-12" %>
+        <h1 class="text-xl"><%= @account.name %></h1>
       </div>
 
       <p class="my-4"><%= t(".description") %></p>

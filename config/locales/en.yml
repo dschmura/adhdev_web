@@ -323,6 +323,9 @@ en:
       preferences: "Update subscription preferences"
 
   notifications:
+    index:
+      title: "Notifications"
+      empty_placeholder: "Nothing to see here — yet."
     invite_accepted: "%{user} accepted your invitation."
     empty: "Nothing to see here — yet."
     empty_description: "We'll let you know when you have new notifications."
