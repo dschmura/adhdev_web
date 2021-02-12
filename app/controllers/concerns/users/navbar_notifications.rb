@@ -8,7 +8,7 @@ module Users
 
     def set_notifications
       # Remove the where clause to show notifications for all accounts instead
-      @notifications = current_user.notifications.where(account: current_account).newest_first.limit(10)
+      @navbar_notifications = current_user.notifications.where(account: current_account).newest_first.limit(10)
     end
   end
 end

@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     resource :password
   end
 
+  resources :notifications, only: [:index, :show]
   namespace :users do
     resources :mentions, only: [:index]
   end
