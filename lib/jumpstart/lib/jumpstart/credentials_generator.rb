@@ -56,6 +56,7 @@ module Jumpstart
             # https://developers.facebook.com/apps/
             public_key: ''
             private_key: ''
+            # scope: 'email'
 
           google_oauth2:
             # https://code.google.com/apis/console/
@@ -66,6 +67,7 @@ module Jumpstart
             # https://github.com/settings/developers
             public_key: ''
             private_key: ''
+            # scope: 'user:email'
 
           twitter:
             # https://apps.twitter.com
