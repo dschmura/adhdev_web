@@ -101,7 +101,12 @@ class User::ConnectedAccount < ApplicationRecord
   end
 
   def strategy
+    # First check the Jumpstart providers for credentials
     provider_config = Jumpstart::Omniauth.enabled_providers[provider.to_sym]
+
+    # Fallback to the Rails credentials
+    provider_config ||= Rails.application.credentials.dig(:omniauth, provider.to_sym)
+
     OmniAuth::Strategies.const_get(provider.classify).new(
       nil,
       provider_config[:public_key], # client id
