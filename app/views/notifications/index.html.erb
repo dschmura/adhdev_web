@@ -2,8 +2,10 @@
   <h1 class="h2 my-6 text-center"><%= t(".title") %></h1>
 </div>
 
-<div class="bg-white rounded-md p-4">
-  <%= render partial: "notifications/notification", collection: @notifications, cached: true %>
+<div class="bg-white sm:rounded-md sm:max-w-2xl sm:mx-auto">
+  <ul>
+    <%= render partial: "notifications/notification", collection: @notifications, cached: true %>
+  </ul>
 
   <% if @notifications.empty? %>
     <div><%= t(".empty_placeholder") %></div>
