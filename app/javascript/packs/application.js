@@ -8,8 +8,13 @@
 // layout file, like app/views/layouts/application.html.erb
 
 // Rails functionality
-window.Rails = require("@rails/ujs")
-require("@hotwired/turbo-rails")
+import Rails from "@rails/ujs"
+import { Turbo } from "@hotwired/turbo-rails"
+
+// Make accessible for Electron and Mobile adapters
+window.Rails = Rails
+window.Turbo = Turbo
+
 require("@rails/activestorage").start()
 require("channels")
 require("trix")
