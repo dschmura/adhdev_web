@@ -19,8 +19,9 @@
         </div>
 
         <div class="flex-shrink-0 mt-3 text-center sm:mt-0 sm:text-right">
+          <%= switch_account_button @account, label: t(".switch"), class: "btn btn-primary outline no-underline", form_class: "inline-block" unless current_account == @account %>
           <%= link_to t(".invite"), new_account_account_invitation_path(@account), class: "btn btn-primary outline no-underline" if !@account.personal? && account_admin?(@account, current_user) %>
-          <%= link_to t(".edit_account"), edit_account_path(@account), class: "btn btn-primary outline lg:ml-2" if account_admin?(@account, current_user) %>
+          <%= link_to t(".edit_account"), edit_account_path(@account), class: "btn btn-primary outline" if account_admin?(@account, current_user) %>
         </div>
       </div>
 

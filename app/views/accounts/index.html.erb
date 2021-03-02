@@ -23,6 +23,7 @@
             <tr>
               <th class="p-3 text-xs text-left text-gray-700 uppercase"><%= Account.human_attribute_name(:name) %></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
 
@@ -44,12 +45,16 @@
                   <% end %>
                 </td>
 
-                <td class="w-48 p-3 text-sm text-center">
+                <td class="p-3 text-sm text-center">
                   <% if current_account != account %>
-                    <%= link_to t(".switch"), switch_account_path(account), method: :patch, class: "btn btn-link no-underline" %>
+                    <%= switch_account_button account, label: t(".switch"), class: "btn btn-link no-underline" %>
                   <% else %>
                     <span class="text-gray-600"><%= t(".current") %></span>
                   <% end %>
+                </td>
+
+                <td>
+                  <%= link_to "View", account, class: "btn btn-link" %>
                 </td>
               </tr>
             <% end %>

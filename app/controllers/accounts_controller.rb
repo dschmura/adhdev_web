@@ -28,15 +28,21 @@ class AccountsController < Accounts::BaseController
     @account.account_users.new(user: current_user, admin: true)
 
     if @account.save
-      flash[:notice] = t(".created")
-
       # Add any after-create functionality here
       # ActsAsTenant.with_tenant(@account) do
       #   # Create default records here...
       # end
 
-      # Switch to the new account on the next request
-      switch
+      # Fetch requests / pushState doesn't work between (sub)domains
+      # so we'll just link to switch to the new account in the notice instead
+      if request.format == :turbo_stream && Jumpstart::Multitenancy.subdomain? && @account.subdomain?
+        redirect_to @account, notice: t(".created_and_switch_html", link: root_url(subdomain: @account.subdomain))
+
+      else
+        # Automatically switch to the new account on the next request
+        flash[:notice] = t(".created")
+        switch
+      end
     else
       render :new, status: :unprocessable_entity
     end
