@@ -5,12 +5,12 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
-#   policy.default_src :self, :https
-#   policy.font_src    :self, :https, :data
-#   policy.img_src     :self, :https, :data
-#   policy.object_src  :none
-#   policy.script_src  :self, :https
-#   policy.style_src   :self, :https
+  #   policy.default_src :self, :https
+  #   policy.font_src    :self, :https, :data
+  #   policy.img_src     :self, :https, :data
+  #   policy.object_src  :none
+  #   policy.script_src  :self, :https
+  #   policy.style_src   :self, :https
 
   # If you are using webpack-dev-server then specify webpack-dev-server host
   if Rails.env.development?
@@ -22,8 +22,8 @@ Rails.application.config.content_security_policy do |policy|
   # For subdomains, add your domain:
   # policy.connect_src :self, :https, "*.domain.com"
 
-#   # Specify URI for violation reports
-#   # policy.report_uri "/csp-violation-report-endpoint"
+  #   # Specify URI for violation reports
+  #   # policy.report_uri "/csp-violation-report-endpoint"
 end
 
 # If you are using UJS then enable automatic nonce generation
