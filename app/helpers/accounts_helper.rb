@@ -52,7 +52,7 @@ module AccountsHelper
     if Jumpstart::Multitenancy.subdomain? && account.subdomain?
       link_to options.fetch(:label, account.name), root_url(subdomain: account.subdomain), options
     elsif Jumpstart::Multitenancy.path?
-      link_to options.fetch(:label, account.name), root_url(script_name: "/#{@account.id}"), options
+      link_to options.fetch(:label, account.name), root_url(script_name: "/#{account.id}"), options
     else
       button_to options.fetch(:label, account.name), switch_account_path(account), options.merge(method: :patch)
     end
