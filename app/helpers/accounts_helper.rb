@@ -42,7 +42,8 @@ module AccountsHelper
 
   # A link to switch the account
   #
-  # For session and path switching, we'll use a button_to and submit to the server
+  # For session switching, we'll use a button_to and submit to the server
+  # For path switching, we'll link to the path
   # For subdomains, we can simply link to the subdomain
   # For domains, we can link to the domain (assuming it's configured correctly)
   def switch_account_button(account, **options)
@@ -50,6 +51,8 @@ module AccountsHelper
     #   link_to options.fetch(:label, account.name), account.domain, options
     if Jumpstart::Multitenancy.subdomain? && account.subdomain?
       link_to options.fetch(:label, account.name), root_url(subdomain: account.subdomain), options
+    elsif Jumpstart::Multitenancy.path?
+      redirect_to root_url(script_name: "/#{@account.id}")
     else
       button_to options.fetch(:label, account.name), switch_account_path(account), options.merge(method: :patch)
     end
