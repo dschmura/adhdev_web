@@ -1,7 +1,7 @@
 <% content_for :form_block do %>
   <div class="mb-4 text-center">
     <h2 class="mb-1"><%= t('.sign_up') %></h2>
-    <span><%= t(".login_html", link: link_to("log in to your account", new_session_path(resource_name), class: "btn-link")) %></span>
+    <%= t(".login_html", link: link_to("log in to your account", new_session_path(resource_name), class: "font-semibold")) %>
   </div>
 
   <% if @account_invitation %>

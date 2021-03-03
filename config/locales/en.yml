@@ -205,6 +205,13 @@ en:
       sign_out: "Sign Out"
       log_in: "Log In"
       sign_up: "Sign Up"
+    oauth:
+      apple: "Apple"
+      facebook: "Facebook"
+      github: "GitHub"
+      google_oauth2: "Google"
+      stripe: "Stripe"
+      twitter: "Twitter"
     right_nav:
       pricing: "Pricing"
       announcements: "What's New"

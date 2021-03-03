@@ -1,7 +1,7 @@
 <% content_for :form_block do %>
   <div class="mb-4 text-center">
     <h2 class="mb-px"><%= t('.sign_in') %></h2>
-    <%= t ".sign_up_html", link: link_to("sign up for an account", new_registration_path(resource_name), class: "btn-link") %><br />
+    <%= t ".sign_up_html", link: link_to("sign up for an account", new_registration_path(resource_name), class: "font-semibold") %>
   </div>
 
   <%= form_with(model: resource, as: resource_name, url: session_path(resource_name)) do |f| %>

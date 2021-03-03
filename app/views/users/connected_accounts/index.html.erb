@@ -37,7 +37,7 @@
             <% else %>
               <%= button_to omniauth_authorize_path(:user, provider), class: "btn btn-#{provider}", data: { turbo: false, disable_with: t(".redirecting") } do %>
                 <%= social_icon provider, class: "mr-2" %>
-                <%= provider.to_s.titleize %>
+                <%= t("shared.oauth.#{provider}") %>
               <% end %>
             <% end %>
           </div>
