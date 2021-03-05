@@ -17,7 +17,7 @@ module Erb
 
       def add_to_navigation
         append_to_file "app/views/shared/_left_nav.html.erb" do
-          "<%= nav_link_to \"#{plural_name.titleize}\", #{name.tableize}_path, class: 'nav-link' %>\n"
+          "<%= nav_link_to \"#{plural_name.titleize}\", #{plural_route_name}_path, class: 'nav-link' %>\n"
         end
       end
     end
