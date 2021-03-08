@@ -35,7 +35,7 @@ module Jumpstart
         # Update connected account attributes
         connected_account.update(connected_account_params)
         run_connected_callback(connected_account)
-        success_message!(kind: auth.provider.to_s.titleize)
+        success_message!(kind: auth.provider)
 
         if user_signed_in?
           # Already connected account, we can just update the data
@@ -61,7 +61,7 @@ module Jumpstart
         run_connected_callback(user.connected_accounts.last)
 
         sign_in_and_redirect(user, event: :authentication)
-        success_message!(kind: auth.provider.to_s.titleize)
+        success_message!(kind: auth.provider)
       end
 
       def attach_account
@@ -69,7 +69,7 @@ module Jumpstart
         run_connected_callback(connected_account)
 
         redirect_to after_connect_redirect_path
-        success_message!(kind: auth.provider.to_s.titleize)
+        success_message!(kind: auth.provider)
       end
 
       def run_connected_callback(connected_account)
@@ -91,7 +91,7 @@ module Jumpstart
 
       def success_message!(kind:)
         return unless is_navigational_format?
-        set_flash_message(:notice, :success, kind: kind)
+        set_flash_message(:notice, :success, kind: t("shared.oauth.#{kind}"))
       end
 
       def connected_account
