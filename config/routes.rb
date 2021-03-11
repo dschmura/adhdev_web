@@ -96,6 +96,8 @@ Rails.application.routes.draw do
     get :pricing
   end
 
+  post :sudo, to: "users/sudo#create"
+
   match "/404", via: :all, to: "errors#not_found"
   match "/500", via: :all, to: "errors#internal_server_error"
 

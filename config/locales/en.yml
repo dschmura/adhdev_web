@@ -321,6 +321,11 @@ en:
         none: "You don't have any connected accounts."
     omniauth_callbacks:
       account_exists: "We already have an account with this email. Login with your previous account before connecting this one."
+    sudo:
+      header: "Confirm password to continue"
+      submit: "Confirm password"
+      forgot_password: "Forgot password?"
+      invalid_password: "Invalid password"
 
   layouts:
     mailer:

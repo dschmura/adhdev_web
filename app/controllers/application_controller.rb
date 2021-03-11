@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include Jumpstart::Controller
   include Accounts::SubscriptionStatus
   include Users::NavbarNotifications
+  include Users::Sudo
   include Users::TimeZone
   include Pagy::Backend
   include CurrentHelper
