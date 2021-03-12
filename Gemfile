@@ -77,6 +77,7 @@ gem "pagy", "~> 3.7"
 gem "pay", "~> 2.4.0"
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 1.0.0"
+gem "rotp", "~> 6.2"
 gem "ruby-oembed", "~> 0.14.0", require: "oembed"
 
 # We always want the latest versions of these gems, so no version numbers

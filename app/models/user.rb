@@ -21,6 +21,8 @@
 #  invitations_count      :integer          default(0)
 #  invited_by_type        :string
 #  last_name              :string
+#  last_otp_timestep      :integer
+#  otp_required_for_login :boolean
 #  preferred_language     :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -43,17 +45,17 @@
 
 class User < ApplicationRecord
   include ActionText::Attachable
+  include PgSearch::Model
+  include TwoFactorAuthentication
+  include UserAccounts
+  include UserAgreements
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, andle :trackable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable, :masqueradable, :omniauthable
 
-  include UserAccounts
-  include UserAgreements
-
   has_person_name
 
-  include PgSearch::Model
   pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: {tsearch: {prefix: true}}
 
   # ActiveStorage Associations

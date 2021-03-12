@@ -326,6 +326,9 @@ en:
       submit: "Confirm password"
       forgot_password: "Forgot password?"
       invalid_password: "Invalid password"
+    two_factor:
+      header: "Two-step authentication"
+      submit: "Continue"
 
   layouts:
     mailer:
