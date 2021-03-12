@@ -305,7 +305,7 @@ module Jumpstart
             Rails.logger.warn "\n'#{name}' already exists in #{path}, skipping. \nOld: `#{old_line}`\nNew: `#{new_line}`\n"
           end
         else
-          File.open(path, 'a') { |f| f.write("#{name}: #{command}\n") }
+          File.open(path, "a") { |f| f.write("#{name}: #{command}\n") }
         end
       end
     end
