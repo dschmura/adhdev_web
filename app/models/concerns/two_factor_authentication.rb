@@ -8,14 +8,22 @@
 module TwoFactorAuthentication
   extend ActiveSupport::Concern
 
-  SECRET = "6H3KG36KY3TFTF3REKGZGCV6SZBKVO7U"
+  def enable_two_factor!
+    args = { otp_required_for_login: true }
+    args[:otp_secret] = ROTP::Base32.random unless otp_secret?
+    update!(args)
+  end
+
+  def disable_two_factor!
+    update!(otp_required_for_login: false, otp_secret: nil)
+  end
 
   def otp_required_for_login?
     true
   end
 
   def otp
-    ROTP::TOTP.new(SECRET, issuer: Jumpstart.config.application_name)
+    ROTP::TOTP.new(otp_secret, issuer: Jumpstart.config.application_name)
   end
 
   def otp_provisioning_uri

@@ -23,6 +23,7 @@
 #  last_name              :string
 #  last_otp_timestep      :integer
 #  otp_required_for_login :boolean
+#  otp_secret             :string
 #  preferred_language     :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime

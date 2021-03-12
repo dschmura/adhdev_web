@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(version: 2021_03_12_034326) do
     t.integer "invitations_count", default: 0
     t.string "preferred_language"
     t.boolean "otp_required_for_login"
+    t.string "otp_secret"
     t.integer "last_otp_timestep"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
