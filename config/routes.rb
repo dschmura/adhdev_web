@@ -50,7 +50,7 @@ Rails.application.routes.draw do
       sessions: "users/sessions"
     }
   devise_scope :user do
-    get 'session/otp', to: 'sessions#otp'
+    get "session/otp", to: "sessions#otp"
   end
 
   resources :announcements, only: [:index]

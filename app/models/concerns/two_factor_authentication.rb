@@ -9,7 +9,7 @@ module TwoFactorAuthentication
   extend ActiveSupport::Concern
 
   def enable_two_factor!
-    args = { otp_required_for_login: true }
+    args = {otp_required_for_login: true}
     args[:otp_secret] = ROTP::Base32.random unless otp_secret?
     update!(args)
   end
