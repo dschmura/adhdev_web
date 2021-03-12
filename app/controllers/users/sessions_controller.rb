@@ -20,6 +20,7 @@ class Users::SessionsController < Devise::SessionsController
     elsif session[:otp_user_id] && params[:otp_attempt]
       if resource.verify_and_consume_otp!(params[:otp_attempt])
         session.delete(:otp_user_id)
+        set_flash_message!(:notice, :signed_in)
         sign_in(resource, event: :authentication)
         respond_with resource, location: after_sign_in_path_for(resource)
       else
