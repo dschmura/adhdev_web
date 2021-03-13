@@ -50,7 +50,6 @@ class User < ApplicationRecord
 
   include UserAccounts
   include UserAgreements
-  include UserNotifications
 
   has_person_name
 
