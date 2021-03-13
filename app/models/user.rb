@@ -51,6 +51,7 @@ class User < ApplicationRecord
   include UserAccounts
   include UserAgreements
 
+  has_noticed_notifications
   has_person_name
 
   include PgSearch::Model
