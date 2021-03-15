@@ -191,10 +191,7 @@ module Jumpstart
 
     def copy_configs
       if job_processor == :sidekiq
-        path = Rails.root.join("config", "sidekiq.yml")
-        unless File.exist?(path)
-          write_file path, JobProcessor.sidekiq_config
-        end
+        copy_template("config/sidekiq.yml")
       end
 
       if airbrake?
