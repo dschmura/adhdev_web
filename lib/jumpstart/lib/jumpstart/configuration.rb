@@ -315,7 +315,7 @@ module Jumpstart
     end
 
     def template_path(filename)
-      File.join(File.dirname(__FILE__), "../templates/", filename)
+      Rails.root.join("lib/templates", filename)
     end
   end
 end
