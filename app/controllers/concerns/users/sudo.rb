@@ -2,7 +2,7 @@
 #
 # Usage:
 #
-# Simple include `before_action :sudo` on the controller actions you want to protect
+# Simply include `before_action :sudo` on the controller actions you want to protect
 #
 module Users
   module Sudo
@@ -26,7 +26,7 @@ module Users
     end
 
     def extend_sudo_session!
-      session[:sudo] = Time.zone.now.to_s
+      session[:sudo] = Time.current.to_s
     end
   end
 end
