@@ -4,7 +4,8 @@ class Users::SudoController < ActionController::Base
   def create
     if current_user.valid_password?(params[:password])
       session[:sudo] = Time.current.to_s
-      redirect_to params[:redirect_to]
+      # Enforce that we stay on the same host
+      redirect_to URI.parse(params[:redirect_to]).path
     else
       flash[:alert] = I18n.t("users.sudo.invalid_password")
       render :new, status: :unprocessable_entity
