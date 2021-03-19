@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 2.7"
+ruby "~> 3.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.1.0"
@@ -68,12 +68,12 @@ gem "devise_masquerade", github: "excid3/devise_masquerade"
 gem "hotwire-rails", "~> 0.1.2"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"
-gem "invisible_captcha", "~> 1.0"
+gem "invisible_captcha", "~> 2.0"
 gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "noticed", "~> 1.3"
 gem "oj", "~> 3.8", ">= 3.8.1"
-gem "pagy", "~> 3.7"
+gem "pagy", "~> 4.1"
 gem "pay", "~> 2.4.0"
 gem "pg_search", "~> 2.3"
 gem "receipts", "~> 1.0.0"
