@@ -246,7 +246,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
-    pay (2.4.4)
+    pay (2.6.4)
       rails (>= 4.2)
     pdf-core (0.9.0)
     pg (1.2.3)
@@ -436,7 +436,7 @@ DEPENDENCIES
   oj (~> 3.8, >= 3.8.1)
   omniauth (~> 1.9, >= 1.9.1)
   pagy (~> 4.1)
-  pay (~> 2.4.0)
+  pay (~> 2.6.0)
   pg
   pg_search (~> 2.3)
   pry-rails

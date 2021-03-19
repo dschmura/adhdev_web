@@ -101,7 +101,7 @@ module Jumpstart
       gems[:main] += [{name: "bugsnag"}] if bugsnag?
       gems[:main] += [{name: "sentry-ruby"}, {name: "sentry-rails"}, {name: "sentry-sidekiq"}] if sentry?
       gems[:main] += [{name: "skylight"}] if skylight?
-      gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
+      gems[:main] += [{name: "stripe"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
       gems[:main] << {name: "paddle_pay"} if paddle?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
