@@ -75,5 +75,5 @@ Rails.application.configure do
   config.hosts = nil
 
   # ActiveStorage / ActionText need this set to include the correct URLs from Turbo, etc
-  config.action_controller.default_url_options = {host: "lvh.me", port: ENV.fetch("PORT", 3000).to_i}
+  config.action_controller.default_url_options = {host: "localhost", port: ENV.fetch("PORT", 3000).to_i}
 end
