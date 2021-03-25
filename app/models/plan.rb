@@ -13,7 +13,7 @@
 #
 
 class Plan < ApplicationRecord
-  store_accessor :details, :features, :stripe_id, :braintree_id, :paddle_id, :jumpstart_id
+  store_accessor :details, :features, :stripe_id, :braintree_id, :paddle_id, :jumpstart_id, :fake_processor_id
   attribute :features, :string, array: true
 
   validates :name, :amount, :interval, presence: true
