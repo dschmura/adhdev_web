@@ -3,7 +3,7 @@ class CardsController < ApplicationController
 
   def edit
     if Jumpstart.config.stripe?
-      @setup_intent = current_account.braintree? ? Stripe::SetupIntent.create : current_account.create_setup_intent
+      @setup_intent = current_account.stripe? ? current_account.create_setup_intent : Stripe::SetupIntent.create
     end
   end
 
