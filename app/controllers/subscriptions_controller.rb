@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
 
   def new
     if Jumpstart.config.stripe? && @plan.trial_period_days.to_i > 0
-      @setup_intent = current_account.create_setup_intent
+      @setup_intent = current_account.processor&.stripe? ? current_account.payment_processor.create_setup_intent : Stripe::SetupIntent.create
     end
   end
 
