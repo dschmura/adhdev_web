@@ -289,14 +289,14 @@ en:
         note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
         button: "Pause Subscription"
         pausing: "Pausing..."
-      cancel:
-        title: "Cancel Your Subscription"
-        description: "You can cancel anytime, but you'll lose access to %{product}."
-        help_html: "Need to talk to someone? %{link} -- we'd love to help."
-        contact_us: "Contact us"
-        subject: "Question about %{product}"
-        button: "Cancel Subscription"
-        cancelling: "Cancelling..."
+    cancel:
+      title: "Cancel Your Subscription"
+      description: "You can cancel anytime, but you'll lose access to %{product}."
+      help_html: "Need to talk to someone? %{link} -- we'd love to help."
+      contact_us: "Contact us"
+      subject: "Question about %{product}"
+      button: "Cancel Subscription"
+      cancelling: "Cancelling..."
 
     forms:
       stripe:

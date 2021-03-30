@@ -1,6 +1,6 @@
 <%= form_with model: current_account,
-  url: subscription_url,
-  method: :post,
+  url: local_assigns.fetch(:url, subscription_path),
+  method: local_assigns.fetch(:method, :post),
   data: {
     controller: "braintree",
     braintree_target: "form",

@@ -239,14 +239,14 @@ es-co:
         note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
         button: "Pause Subscription"
         pausing: "Pausing..."
-      cancel:
-        title: "Cancela tu suscripción"
-        description: "Puedes cancelar en cualquier momento pero perderás acceso a %{product}."
-        help_html: "¿Necesitas hablar con alguien? %{link} -- nos encantaría ayudar."
-        contact_us: "Contáctanos"
-        subject: "Tengo preguntas sobre %{product}"
-        button: "Cancelar suscripcion"
-        cancelling: "Cancelando..."
+    cancel:
+      title: "Cancela tu suscripción"
+      description: "Puedes cancelar en cualquier momento pero perderás acceso a %{product}."
+      help_html: "¿Necesitas hablar con alguien? %{link} -- nos encantaría ayudar."
+      contact_us: "Contáctanos"
+      subject: "Tengo preguntas sobre %{product}"
+      button: "Cancelar suscripcion"
+      cancelling: "Cancelando..."
 
 
     forms:

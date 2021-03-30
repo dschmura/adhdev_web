@@ -1,7 +1,7 @@
 <% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
 
 <%= form_with model: current_account,
-  url: local_assigns.fetch(:url, subscription_url),
+  url: local_assigns.fetch(:url, subscription_path),
   method: local_assigns.fetch(:method, :post),
   data: {
     controller: "stripe",

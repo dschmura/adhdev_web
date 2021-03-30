@@ -226,15 +226,15 @@ nl:
         note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
         button: "Pause Subscription"
         pausing: "Pausing..."
-      cancel:
-        title: Annuleer uw abonnement
-        description: Je kunt op elk moment annuleren, maar je verliest de toegang
-          tot %{product}.
-        help_html: Wil je met iemand praten? %{link} - we helpen u graag.
-        contact_us: Neem contact op
-        subject: Vragen over %{product}?
-        button: Annuleer abonnement
-        cancelling: Annuleren ...
+    cancel:
+      title: Annuleer uw abonnement
+      description: Je kunt op elk moment annuleren, maar je verliest de toegang
+        tot %{product}.
+      help_html: Wil je met iemand praten? %{link} - we helpen u graag.
+      contact_us: Neem contact op
+      subject: Vragen over %{product}?
+      button: Annuleer abonnement
+      cancelling: Annuleren ...
     forms:
       stripe:
         credit_or_debit_card: Creditcard

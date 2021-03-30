@@ -272,15 +272,14 @@ fr:
         note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
         button: "Pause Subscription"
         pausing: "Pausing..."
-      cancel:
-        title: "Annuler votre souscription"
-        description: "Vous pouvez annuler à tout moment, mais vous perdrez l’accès à %{product}."
-        help_html: "Besoin de parler à quelqu’un ? %{link} − on peut vous aider."
-        contact_us: "Contactez-nous"
-        subject: "Questions à propos de %{product}"
-        button: "Annuler la souscription"
-        cancelling: "Annulation…"
-
+    cancel:
+      title: "Annuler votre souscription"
+      description: "Vous pouvez annuler à tout moment, mais vous perdrez l’accès à %{product}."
+      help_html: "Besoin de parler à quelqu’un ? %{link} − on peut vous aider."
+      contact_us: "Contactez-nous"
+      subject: "Questions à propos de %{product}"
+      button: "Annuler la souscription"
+      cancelling: "Annulation…"
 
     forms:
       stripe:
