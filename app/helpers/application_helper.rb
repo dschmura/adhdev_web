@@ -32,7 +32,7 @@ module ApplicationHelper
   def fa_icon(name, options = {})
     weight = options.delete(:weight) || "far"
     options[:class] = [weight, "fa-#{name}", options.delete(:class)]
-    content_tag :i, nil, options
+    tag.i(nil, options)
   end
 
   def badge(text, options = {})
@@ -41,7 +41,7 @@ module ApplicationHelper
 
     options[:class] = Array.wrap(options[:class]) + [base, color]
 
-    content_tag :div, text, options
+    tag.div(text, options)
   end
 
   def title(page_title)
