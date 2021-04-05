@@ -33,7 +33,7 @@
     "stimulus": "^2.0.0",
     "stimulus-flatpickr": "^1.4.0",
     "style-loader": "^2.0.0",
-    "tailwindcss": "^2.0.4",
+    "tailwindcss": "^2.1.0",
     "tailwindcss-stimulus-components": "^2.1.2",
     "tippy.js": "^6.3.1",
     "tributejs": "^5.1.3",
