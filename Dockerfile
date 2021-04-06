@@ -1,4 +1,4 @@
-FROM ruby:3.0.0-alpine
+FROM ruby:3.0.1-alpine
 
 RUN apk add --update --virtual \
   runtime-deps \
