@@ -9,7 +9,7 @@ module.exports = {
   },
 
   // https://tailwindcss.com/docs/just-in-time-mode
-  // mode: 'jit',
+  mode: 'jit',
 
   plugins: [
     require('@tailwindcss/aspect-ratio'),

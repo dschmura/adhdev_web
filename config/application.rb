@@ -32,3 +32,6 @@ module JumpstartApp
     config.i18n.fallbacks = true
   end
 end
+
+# Makes sure the TailwindCSS JIT doesn't run forever
+Webpacker::Compiler.env["TAILWIND_MODE"] = "build"
