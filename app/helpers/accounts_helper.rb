@@ -17,13 +17,13 @@ module AccountsHelper
         alt: account.name
       )
     else
-      content = content_tag(:span, account.name.to_s.first, class: "initials")
+      content = tag.span(account.name.to_s.first, class: "initials")
 
       if options[:include_user]
         content += image_tag(avatar_url_for(current_user), class: "avatar-small")
       end
 
-      content_tag :span, content, class: "avatar bg-blue-500 #{classes}"
+      tag.span(content, class: "avatar bg-blue-500 #{classes}")
     end
   end
 
