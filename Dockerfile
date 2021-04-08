@@ -18,7 +18,6 @@ RUN apk add --update --virtual \
   file \
   imagemagick \
   git \
-  tzdata \
   && rm -rf /var/cache/apk/*
 
 WORKDIR /app
