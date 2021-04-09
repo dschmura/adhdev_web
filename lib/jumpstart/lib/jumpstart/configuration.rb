@@ -99,7 +99,10 @@ module Jumpstart
       gems[:main] += [{name: "rollbar"}] if rollbar?
       gems[:main] += [{name: "scout_apm"}] if scout?
       gems[:main] += [{name: "bugsnag"}] if bugsnag?
-      gems[:main] += [{name: "sentry-ruby"}, {name: "sentry-rails"}, {name: "sentry-sidekiq"}] if sentry?
+      if sentry?
+        gems[:main] += [{name: "sentry-ruby"}, {name: "sentry-rails"}]
+        gems[:main] += [{name: "sentry-sidekiq"}] if job_processor == :sidekiq
+      end
       gems[:main] += [{name: "skylight"}] if skylight?
       gems[:main] += [{name: "stripe"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
