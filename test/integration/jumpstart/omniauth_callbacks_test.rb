@@ -41,6 +41,6 @@ class Jumpstart::OmniauthCallbacksTest < ActionDispatch::IntegrationTest
     get "/users/auth/developer/callback"
 
     assert user.connected_accounts.developer.none?
-    assert_equal "We already have an account with this email. Login with your previous account before connecting this one.", flash[:alert]
+    assert_equal I18n.t("users.omniauth_callbacks.account_exists"), flash[:alert]
   end
 end
