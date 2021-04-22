@@ -103,6 +103,8 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root to: "dashboard#show", as: :user_root
+    # Alternate route to use if logged in users should still see public root
+    # get "/dashboard", to: "dashboard#show", as: :user_root   
   end
 
   # Public marketing homepage
