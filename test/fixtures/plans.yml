@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  amount            :integer          default(0), not null
 #  details           :jsonb            not null
+#  hidden            :boolean
 #  interval          :string           not null
 #  name              :string           not null
 #  trial_period_days :integer          default(0)

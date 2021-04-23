@@ -55,7 +55,7 @@
   <p class="mb-4">For users who get free access to paid features, you can assign them a subscription to a free plan. Jumpstart Pro comes with a free plan that can be used for this purpose and is applied automatically to Admin users who are created in the Jumpstart Config area.</p>
 
   <pre class="lang-ruby"><code># Ensure Jumpstart free plan exists for admin users
-Plan.create_with(name: "Free", interval: :month, trial_period_days: 0).find_or_create_by(details: {jumpstart_id: :free})
+Plan.create_with(name: "Free", interval: :month, trial_period_days: 0, hidden: true).find_or_create_by(details: {jumpstart_id: :free})
 
 # Create a fake subscription for the admin user so they have access to everything by default
 user.accounts.first.subscriptions.create(

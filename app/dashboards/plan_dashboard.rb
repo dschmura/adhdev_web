@@ -18,6 +18,7 @@ class PlanDashboard < Administrate::BaseDashboard
     braintree_id: Field::String,
     paddle_id: Field::String,
     features: ArrayField,
+    hidden: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -30,6 +31,7 @@ class PlanDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :name,
+    :hidden,
     :amount,
     :interval,
     :trial_period_days
@@ -40,6 +42,7 @@ class PlanDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
+    :hidden,
     :amount,
     :interval,
     :trial_period_days,
@@ -56,6 +59,7 @@ class PlanDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :hidden,
     :amount,
     :interval,
     :trial_period_days,

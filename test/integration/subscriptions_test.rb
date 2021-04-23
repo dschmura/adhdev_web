@@ -19,7 +19,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
 
     test "can subscribe account" do
       Jumpstart.config.stub(:payments_enabled?, true) do
-        get new_subscription_path(@plan.id)
+        get new_subscription_path(plan: @plan)
         assert_redirected_to pricing_path
       end
     end
@@ -35,7 +35,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
 
     test "cannot navigate to new_subscription page" do
       Jumpstart.config.stub(:payments_enabled?, true) do
-        get new_subscription_path(plan: @plan.id)
+        get new_subscription_path(plan: @plan)
         assert_redirected_to root_path
         assert_equal I18n.t("must_be_an_admin"), flash[:alert]
       end

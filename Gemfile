@@ -75,6 +75,7 @@ gem "oj", "~> 3.8", ">= 3.8.1"
 gem "pagy", "~> 4.1"
 gem "pay", "~> 2.6.0"
 gem "pg_search", "~> 2.3"
+gem "prefixed_ids", "~> 1.2"
 gem "receipts", "~> 1.0.0"
 gem "ruby-oembed", "~> 0.14.0", require: "oembed"
 

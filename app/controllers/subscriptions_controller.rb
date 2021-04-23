@@ -97,8 +97,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_plan
-    @plan = Plan.without_free.find_by(id: params[:plan])
-    redirect_to pricing_path if @plan.nil?
+    @plan = Plan.without_free.find(params[:plan])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to pricing_path
   end
 
   def set_subscription
