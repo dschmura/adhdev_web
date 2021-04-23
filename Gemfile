@@ -55,7 +55,7 @@ end
 gem "tzinfo-data"
 
 # Jumpstart dependencies
-gem "jumpstart", path: "lib/jumpstart"
+gem "jumpstart", path: "lib/jumpstart", group: :omit
 
 gem "acts_as_tenant"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
