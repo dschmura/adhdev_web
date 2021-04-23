@@ -35,7 +35,7 @@ PATH
   remote: lib/jumpstart
   specs:
     jumpstart (0.1.0)
-      rails (>= 5.2.1)
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -245,7 +245,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.1.0)
       ast (~> 2.4.1)
-    pay (2.6.7)
+    pay (2.6.9)
       rails (>= 4.2)
     pdf-core (0.9.0)
     pg (1.2.3)
@@ -466,4 +466,4 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.15
+   2.2.16
