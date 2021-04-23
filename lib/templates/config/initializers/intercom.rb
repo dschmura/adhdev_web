@@ -1,7 +1,7 @@
 IntercomRails.config do |config|
   # == Intercom app_id
   #
-  config.app_id = ENV["INTERCOM_APP_ID"] || Rails.application.credentials.intercom[:app_id]
+  config.app_id = ENV["INTERCOM_APP_ID"] || Rails.application.credentials.dig(:intercom, :app_id)
 
   # == Intercom session_duration
   #
@@ -10,7 +10,7 @@ IntercomRails.config do |config|
   # This is required to enable Identity Verification, you can find it on your Setup
   # guide in the "Identity Verification" step.
   #
-  config.api_secret = Rails.application.credentials.intercom[:api_secret]
+  config.api_secret = Rails.application.credentials.dig(:intercom, :api_secret)
 
   # == Enabled Environments
   # Which environments is auto inclusion of the Javascript enabled for
