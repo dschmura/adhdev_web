@@ -17,15 +17,38 @@ class AuthsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil response.parsed_body["token"]
   end
 
-  test "creates a new api token if one didn't exist" do
+  test "creates a new default api token if one didn't exist" do
     user = users(:one)
-    tokens_count = user.api_tokens.count
+    assert_difference "user.api_tokens.count" do
+      post api_v1_auth_url, params: {email: user.email, password: "password"}
+      assert_response :success
+    end
+    assert_equal user.api_tokens.find_by(name: ApiToken::DEFAULT_NAME).token, response.parsed_body["token"]
+  end
 
-    post api_v1_auth_url, params: {email: user.email, password: "password"}
+  test "creates a new turbo app api token if one didn't exist" do
+    user = users(:one)
+    assert_difference "user.api_tokens.count" do
+      post api_v1_auth_url, params: {email: user.email, password: "password"}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
+      assert_response :success
+    end
+    assert_equal user.api_tokens.find_by(name: ApiToken::APP_NAME).token, response.parsed_body["token"]
+  end
+
+  test "sets Devise cookie during turbo app login" do
+    user = users(:one)
+    post api_v1_auth_url, params: {email: user.email, password: "password"}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
     assert_response :success
-    assert_equal user.api_tokens.find_by(name: "default").token, response.parsed_body["token"]
 
-    # It should create a new API token with the name of the application
-    assert_equal tokens_count + 1, user.api_tokens.count
+    # Set Devise cookies for Turbo Native apps
+    assert_not_nil session["warden.user.user.key"]
+  end
+
+  test "returns token and location during turbo app login" do
+    user = users(:one)
+    post api_v1_auth_url, params: {email: user.email, password: "password"}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
+    assert_response :success
+    assert_not_nil json_response["token"]
+    assert_not_nil json_response["location"]
   end
 end

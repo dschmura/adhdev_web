@@ -16,6 +16,10 @@ class ActiveSupport::TestCase
   def switch_account(account)
     patch "/accounts/#{account.id}/switch"
   end
+
+  def json_response
+    JSON.parse(response.body)
+  end
 end
 
 class ActionDispatch::IntegrationTest

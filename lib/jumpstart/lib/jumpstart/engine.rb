@@ -22,6 +22,12 @@ module Jumpstart
       Administrate::ApplicationController.helper Jumpstart::AdministrateHelpers
     end
 
+    initializer "turbo.native.navigation.helper" do
+      ActiveSupport.on_load(:action_controller_base) do
+        helper Turbo::Native::Navigation
+      end
+    end
+
     initializer "jumpstart.setup" do |app|
       # Set ActiveJob from Jumpstart
       ActiveJob::Base.queue_adapter = Jumpstart.config.job_processor

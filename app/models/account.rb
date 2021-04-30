@@ -42,6 +42,7 @@ class Account < ApplicationRecord
 
   scope :personal, -> { where(personal: true) }
   scope :impersonal, -> { where(personal: false) }
+  scope :sorted, -> { order(personal: :desc, name: :asc) }
 
   has_noticed_notifications
   has_one_attached :avatar
