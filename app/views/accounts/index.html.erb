@@ -1,9 +1,9 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="w-full p-4 lg:w-1/4">
+  <div class="w-full lg:p-4 lg:w-1/4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="w-full p-4 lg:w-3/4">
+  <div class="w-full pt-4 lg:p-4 lg:w-3/4">
     <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
 
       <div class="sm:flex items-center justify-between mb-3">
@@ -16,62 +16,45 @@
         <% end %>
       </div>
 
-      <%# Skip display personal accounts to reduce confusion %>
-      <% if @accounts.impersonal.exists? %>
-        <table class="w-full">
-          <thead>
-            <tr>
-              <th class="p-3 text-xs text-left text-gray-700 uppercase"><%= Account.human_attribute_name(:name) %></th>
-              <th></th>
-              <th></th>
+      <table class="w-full">
+        <tbody>
+          <% @accounts.sorted.each do |account| %>
+            <tr class="border-t border-gray-100 group">
+              <td class="p-3">
+                <%= link_to account, class: "hidden sm:inline-block mr-4 align-middle" do %>
+                  <span class="flex items-center text-gray-700 appearance-none">
+                    <%= account_avatar account, class: "rounded-full h-10 w-10" %>
+                  </span>
+                <% end %>
+
+                <%= link_to account.name, account, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
+                <% if account.personal_account_for?(current_user) %>
+                  <div class="block sm:inline-block px-3 py-1 sm:ml-2 mr-2 text-xs leading-normal text-gray-600 uppercase bg-gray-300 rounded-full font-semibold">Personal</div>
+                <% end %>
+              </td>
+
+              <td class="text-sm text-center">
+                <% if current_account != account %>
+                  <%= switch_account_button account, label: t(".switch"), class: "btn btn-link no-underline" %>
+                <% else %>
+                  <span class="text-gray-600"><%= t(".current") %></span>
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to "View", account, class: "btn btn-link" %>
+              </td>
             </tr>
-          </thead>
+          <% end %>
+        </tbody>
+      </table>
 
-          <tbody>
-            <% @accounts.impersonal.each do |account| %>
-              <% next if account.personal? # Skip display personal accounts to reduce confusion %>
-
-              <tr class="border-t border-gray-400 group">
-                <td class="p-3">
-                  <%= link_to account, class: "inline-block mr-4 align-middle" do %>
-                    <span class="flex items-center text-gray-700 appearance-none">
-                      <%= account_avatar account, class: "rounded-full h-10 w-10" %>
-                    </span>
-                  <% end %>
-
-                  <%= link_to account.name, account, class: "text-gray-900 no-underline hover:text-primary" %>
-                  <% if account.personal_account_for?(current_user) %>
-                    <div class="inline-block px-3 py-1 ml-2 mr-2 text-xs leading-normal text-gray-600 uppercase bg-gray-300 rounded-full font-semibold">Personal</div>
-                  <% end %>
-                </td>
-
-                <td class="p-3 text-sm text-center">
-                  <% if current_account != account %>
-                    <%= switch_account_button account, label: t(".switch"), class: "btn btn-link no-underline" %>
-                  <% else %>
-                    <span class="text-gray-600"><%= t(".current") %></span>
-                  <% end %>
-                </td>
-
-                <td>
-                  <%= link_to "View", account, class: "btn btn-link" %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-        <% if @pagy.pages > 1 %>
-          <div class="my-6 text-center">
-            <%%== pagy_nav(@pagy) %>
-          </div>
-        <% end %>
-
-      <% else %>
-        <div class="p-8 text-center">
-          <%= image_tag "empty.svg", class: "w-1/3 mb-4 m-auto" %>
+      <% if @pagy.pages > 1 %>
+        <div class="my-6 text-center">
+          <%%== pagy_nav(@pagy) %>
         </div>
       <% end %>
+
     </div>
   </div>
 </div>

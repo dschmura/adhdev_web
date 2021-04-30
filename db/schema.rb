@@ -125,6 +125,15 @@ ActiveRecord::Schema.define(version: 2021_04_22_222152) do
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
   end
 
+  create_table "notification_tokens", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "token", null: false
+    t.string "platform", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_notification_tokens_on_user_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.string "recipient_type", null: false
