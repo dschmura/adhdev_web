@@ -46,7 +46,9 @@
     "webpack-dev-server": "^3.11.2"
   },
   "babel": {
-    "presets": ["./babel.config.js"]
+    "presets": [
+      "./babel.config.js"
+    ]
   },
   "browserslist": [
     "defaults"
