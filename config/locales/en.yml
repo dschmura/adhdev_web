@@ -335,6 +335,7 @@ en:
     two_factor:
       header: "Two-step authentication"
       submit: "Continue"
+      enabled: "Two-factor authentication was enabled successfully"
 
   layouts:
     mailer:

@@ -32,10 +32,17 @@
           <%= f.submit t(".update"), class: "btn btn-primary" %>
         </div>
       <% end %>
+    </div>
 
+    <div class="lg:p-10 mt-4 p-4 bg-white rounded-lg border border-gray-300">
       <h2 class="h3"><%= t('.two_factor_authentication') %></h2>
-      <%= render partial: "devise/registrations/two_factor" %>
+      <p class="mb-4">When you login, you will be required to enter a one-time code along to one of your devices.</p>
+      <% if current_user.otp_required_for_login? %>
+        <div><%= link_to "Disable", user_two_factor_path, method: :delete, class: "btn btn-danger outline", data: { confirm: "Are you sure?" } %></div>
 
+      <% else %>
+        <%= link_to "Enable two-factor authentication", backup_codes_user_two_factor_path, class: "btn btn-tertiary" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -77,15 +77,19 @@ Rails.application.routes.draw do
     patch :resume
   end
   resources :charges
+
   namespace :account do
     resource :password
   end
-
   resources :notifications, only: [:index, :show]
   namespace :users do
     resources :mentions, only: [:index]
   end
   namespace :user, module: :users do
+    resource :two_factor, controller: :two_factor do
+      get :backup_codes
+      get :verify
+    end
     resources :connected_accounts
   end
 
@@ -105,8 +109,6 @@ Rails.application.routes.draw do
   end
 
   post :sudo, to: "users/sudo#create"
-  post :two_factor, to: "users/two_factor#create"
-  delete :two_factor, to: "users/two_factor#destroy"
 
   match "/404", via: :all, to: "errors#not_found"
   match "/500", via: :all, to: "errors#internal_server_error"

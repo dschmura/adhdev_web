@@ -14,10 +14,13 @@ module TwoFactorAuthentication
     serialize :otp_backup_codes, Array
   end
 
+  def set_otp_secret!
+    return if otp_secret?
+    update(otp_secret: ROTP::Base32.random)
+  end
+
   def enable_two_factor!
-    args = {otp_required_for_login: true}
-    args[:otp_secret] = ROTP::Base32.random unless otp_secret?
-    update!(args)
+    update(otp_required_for_login: true)
   end
 
   def disable_two_factor!
@@ -45,7 +48,7 @@ module TwoFactorAuthentication
 
   def generate_otp_backup_codes!
     codes = []
-    number_of_codes = 5
+    number_of_codes = 16
     code_length = 10
 
     number_of_codes.times do

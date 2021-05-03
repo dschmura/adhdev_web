@@ -1,0 +1,37 @@
+<div class="max-w-xl mx-auto mt-12 p-8 bg-white rounded shadow">
+  <h3>Scan this barcode with your app.</h3>
+  <p class="mb-4 text-sm text-gray-700" >Scan the image above with the two-factor authentication app on your phone. </p>
+
+  <div class="mb-4">
+    <ol class="mt-5">
+      <li>
+        Install Google Authenticator:
+        <%= link_to "Android", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en", target: :blank %>
+        or
+        <%= link_to "iOS", "https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8", target: :blank %>
+      </li>
+      <li>In the app, select "Set up account" or the Plus (+) sign.</li>
+      <li>Choose "Scan barcode"</li>
+    </ol>
+  </div>
+
+  <div class="w-1/2 my-12 mx-auto">
+    <%= current_user.two_factor_otp_qr_code.html_safe %>
+  </div>
+
+  <h6 class="font-semibold">Enter the six-digit code from the application</h6>
+  <p class="mb-4 text-sm text-gray-700">After scanning the barcode image, the app will display a code that you can enter below.</p>
+
+  <%= form_with url: user_two_factor_path do |form| %>
+    <div class="form-group">
+      <%= form.number_field :code, placeholder: "123456", class: "form-control" %>
+    </div>
+
+    <div class="flex justify-between">
+      <%= link_to "Cancel", edit_account_password_path, class: "btn btn-white" %>
+      <%= form.submit "Enable", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>
+
