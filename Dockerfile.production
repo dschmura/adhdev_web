@@ -24,7 +24,7 @@ RUN gem update --system && \
     gem install "bundler:${BUNDLER_VERSION}" --no-document && \
     gem cleanup
 
-ARG NODE_VERSION=15.14.0
+ARG NODE_VERSION=14.16.1
 RUN curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
@@ -42,6 +42,7 @@ WORKDIR /app
 COPY ./Gemfile* /app/
 COPY ./config/jumpstart/Gemfile /app/config/jumpstart/
 RUN bundle config --local without "development test omit" && bundle install --jobs $(nproc) --retry 5
+COPY package.json yarn.lock /app/
 RUN yarn install
 COPY . /app
 
