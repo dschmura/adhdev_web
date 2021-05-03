@@ -47,7 +47,7 @@
               <% user = account_user.user %>
               <tr class="border-t border-gray-100 group hover:bg-gray-100">
                 <td class="p-3">
-                  <%= image_tag avatar_url_for(user), class: "h-4 h-6 inline-block rounded-full mr-2" %>
+                  <%= image_tag avatar_url_for(user), class: "h-6 inline-block rounded-full mr-2" %>
                   <%= user.name || user.email %>
                 </td>
                 <td class="p-3"><%= account_user_roles(@account, account_user).join(", ") %></td>
@@ -59,7 +59,7 @@
             <% @account.account_invitations.each do |account_invitation| %>
               <tr class="border-t border-gray-100 group hover:bg-gray-100">
                 <td class="p-3">
-                  <%= image_tag avatar_url_for(account_invitation), class: "h-4 h-6 inline-block rounded-full mr-2" %>
+                  <%= image_tag avatar_url_for(account_invitation), class: "h-6 inline-block rounded-full mr-2" %>
                   <%= account_invitation.name %>
 
                   <div class="inline-block px-4 py-1 ml-2 text-xs font-bold leading-normal text-gray-700 uppercase bg-gray-200 rounded-full">Awaiting response</div>
