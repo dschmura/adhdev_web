@@ -22,6 +22,7 @@
 #  invited_by_type        :string
 #  last_name              :string
 #  last_otp_timestep      :integer
+#  otp_backup_codes       :text
 #  otp_required_for_login :boolean
 #  otp_secret             :string
 #  preferred_language     :string
@@ -100,3 +101,21 @@ noaccount:
   accepted_privacy_at: <%= Time.current %>
   time_zone: "America/Chicago"
   confirmed_at: <%= Time.current %>
+
+twofactor:
+  email: twofactor@example.com
+  first_name: TwoFactor
+  last_name: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  accepted_terms_at: <%= Time.current %>
+  accepted_privacy_at: <%= Time.current %>
+  time_zone: "America/Chicago"
+  confirmed_at: <%= Time.current %>
+  otp_required_for_login: true
+  otp_secret: NJZNMRJFS6XBRMZ4NDEDAUIYIVTBJXOM
+  otp_backup_codes:
+    - "0000000001"
+    - "0000000002"
+    - "0000000003"
+    - "0000000004"
+    - "0000000005"

@@ -24,7 +24,7 @@ class Users::SessionsController < Devise::SessionsController
         sign_in(resource, event: :authentication)
         respond_with resource, location: after_sign_in_path_for(resource)
       else
-        flash.now[:alert] = "Incorrect verification code"
+        flash.now[:alert] = t(".incorrect_verification_code")
         render :otp, status: :unprocessable_entity
       end
     end
