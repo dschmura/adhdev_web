@@ -4,7 +4,7 @@ class Api::V1::PasswordsController < Api::BaseController
   def update
     if current_user.update_with_password(password_params)
       current_user.remember_me = true
-      sign_in(current_user, bypass: true)
+      bypass_sign_in current_user
       render json: {success: true}
     else
       render json: {
