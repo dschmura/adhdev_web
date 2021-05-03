@@ -32,6 +32,10 @@
           <%= f.submit t(".update"), class: "btn btn-primary" %>
         </div>
       <% end %>
+
+      <h2 class="h3"><%= t('.two_factor_authentication') %></h2>
+      <%= render partial: "devise/registrations/two_factor" %>
+
     </div>
   </div>
 </div>

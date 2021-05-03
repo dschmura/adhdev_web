@@ -50,8 +50,12 @@ Rails.application.routes.draw do
     controllers: {
       masquerades: "jumpstart/masquerades",
       omniauth_callbacks: "users/omniauth_callbacks",
-      registrations: "users/registrations"
+      registrations: "users/registrations",
+      sessions: "users/sessions"
     }
+  devise_scope :user do
+    get "session/otp", to: "sessions#otp"
+  end
 
   resources :announcements, only: [:index]
   resources :api_tokens
@@ -101,6 +105,8 @@ Rails.application.routes.draw do
   end
 
   post :sudo, to: "users/sudo#create"
+  post :two_factor, to: "users/two_factor#create"
+  delete :two_factor, to: "users/two_factor#destroy"
 
   match "/404", via: :all, to: "errors#not_found"
   match "/500", via: :all, to: "errors#internal_server_error"

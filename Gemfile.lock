@@ -130,6 +130,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     chronic (0.10.2)
+    chunky_png (1.4.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
@@ -316,6 +317,11 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rotp (6.2.0)
+    rqrcode (1.2.0)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 0.2)
+    rqrcode_core (0.2.0)
     rubocop (1.12.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -449,6 +455,8 @@ DEPENDENCIES
   rails (~> 6.1.3.1)
   receipts (~> 1.0.0)
   redis (~> 4.0)
+  rotp (~> 6.2)
+  rqrcode
   ruby-oembed (~> 0.14.0)
   sass-rails (~> 6.0)
   selenium-webdriver
