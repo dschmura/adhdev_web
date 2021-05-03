@@ -65,7 +65,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Set the default URL for ActionMailer in development.
-  config.action_mailer.default_url_options = {host: "localhost", port: ENV.fetch("PORT", 3000).to_i}
+  config.action_mailer.default_url_options = {host: "lvh.me", port: ENV.fetch("PORT", 3000).to_i}
   config.action_mailer.delivery_method = :letter_opener_web
 
   # Verifies that versions and hashed value of the package contents in the project's package.json
@@ -73,4 +73,7 @@ Rails.application.configure do
 
   # Allow accessing localhost on any domain. Important for testing multi-tenant apps
   config.hosts = nil
+
+  # You may need to set to include the correct URLs from Turbo, etc
+  # config.action_controller.default_url_options = {host: "lvh.me", port: ENV.fetch("PORT", 3000).to_i}
 end

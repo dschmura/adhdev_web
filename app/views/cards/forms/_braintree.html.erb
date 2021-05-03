@@ -1,5 +1,5 @@
 <%= form_with model: current_account,
-  url: card_url,
+  url: local_assigns.fetch(:url, card_path),
   class: "hidden mt-4",
   data: {
     controller: "braintree",

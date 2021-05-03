@@ -95,6 +95,11 @@ module Jumpstart
           password: ''
           domain: ''
 
+        ohmysmtp:
+          # https://app.ohmysmtp.com/ -> API Tokens
+          username: ''
+          password: ''
+
         postmark:
           # https://account.postmarkapp.com/servers -> Server -> API Tokens
           # Use token as both username and password

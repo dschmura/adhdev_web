@@ -99,9 +99,12 @@ module Jumpstart
       gems[:main] += [{name: "rollbar"}] if rollbar?
       gems[:main] += [{name: "scout_apm"}] if scout?
       gems[:main] += [{name: "bugsnag"}] if bugsnag?
-      gems[:main] += [{name: "sentry-ruby"}, {name: "sentry-rails"}, {name: "sentry-sidekiq"}] if sentry?
+      if sentry?
+        gems[:main] += [{name: "sentry-ruby"}, {name: "sentry-rails"}]
+        gems[:main] += [{name: "sentry-sidekiq"}] if job_processor == :sidekiq
+      end
       gems[:main] += [{name: "skylight"}] if skylight?
-      gems[:main] += [{name: "stripe"}, {name: "stripe_event"}] if stripe?
+      gems[:main] += [{name: "stripe"}] if stripe?
       gems[:main] << {name: "braintree"} if braintree? || paypal?
       gems[:main] << {name: "paddle_pay"} if paddle?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
@@ -185,16 +188,13 @@ module Jumpstart
     end
 
     def update_procfiles
-      write_file Rails.root.join("Procfile"), procfile_content
-      write_file Rails.root.join("Procfile.dev"), procfile_content(dev: true)
+      write_procfile Rails.root.join("Procfile"), procfile_content
+      write_procfile Rails.root.join("Procfile.dev"), procfile_content(dev: true)
     end
 
     def copy_configs
       if job_processor == :sidekiq
-        path = Rails.root.join("config", "sidekiq.yml")
-        unless File.exist?(path)
-          write_file path, JobProcessor.sidekiq_config
-        end
+        copy_template("config/sidekiq.yml")
       end
 
       if airbrake?
@@ -276,27 +276,38 @@ module Jumpstart
     private
 
     def procfile_content(dev: false)
-      content = ["web: bundle exec rails s"]
+      content = {web: "bundle exec rails s"}
 
       # Development should use the webpack-dev-server for convenience
-      content << "webpack: bin/webpack-dev-server" if dev
+      content[:webpack] = "bin/webpack-dev-server" if dev
 
       # Background workers
       if (worker_command = Jumpstart::JobProcessor.command(job_processor))
-        content << "worker: #{worker_command}"
+        content[:worker] = worker_command
       end
 
       # Add the Stripe CLI
-      content << "stripe: stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
+      content[:stripe] = "stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
 
       # Guard LiveReload
-      content << "guard: bundle exec guard" if dev && livereload?
+      content[:guard] = "bundle exec guard" if dev && livereload?
 
-      content.join("\n")
+      content
     end
 
-    def write_file(path, content)
-      File.open(path, "wb") { |file| file.write(content) }
+    def write_procfile(path, commands)
+      commands.each do |name, command|
+        new_line = "#{name}: #{command}"
+
+        if (matches = File.foreach(path).grep(/#{name}:/)) && matches.any?
+          # Warn only if lines don't match
+          if (old_line = matches.first.chomp) && old_line != new_line
+            Rails.logger.warn "\n'#{name}' already exists in #{path}, skipping. \nOld: `#{old_line}`\nNew: `#{new_line}`\n"
+          end
+        else
+          File.open(path, "a") { |f| f.write("#{name}: #{command}\n") }
+        end
+      end
     end
 
     def copy_template(filename)
@@ -307,7 +318,7 @@ module Jumpstart
     end
 
     def template_path(filename)
-      File.join(File.dirname(__FILE__), "../templates/", filename)
+      Rails.root.join("lib/templates", filename)
     end
   end
 end

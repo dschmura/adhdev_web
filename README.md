@@ -55,3 +55,23 @@ bin/webpack-dev-server
 # Stripe requires webhooks for SCA payments
 stripe listen --forward-to localhost:5000/webhooks/stripe
 ```
+
+#### Running with Docker Compose
+
+We include a sample Docker Compose configuration that runs Rails, Postgresql, and Redis for you.
+
+Simply run:
+```
+docker-compose up
+```
+
+Then open http://localhost:5000
+
+#### Running with Docker
+
+If you'd like to run Jumpstart Pro with Docker directly, you can run:
+
+```bash
+docker build --tag myapp .
+docker run myapp
+```

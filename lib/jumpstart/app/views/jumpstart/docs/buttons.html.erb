@@ -53,7 +53,13 @@
 
 <div class="mb-10">
   <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Default with Icon</h4>
+  <p class="mb-4">See the <%= link_to "Icons documentation", icons_docs_path %> for rendering SVGs inline.</p>
 
+  <pre class=""><code>&lt;%= form.button do %&gt;
+  &lt;%= render_svg "icons/download", styles: "fill-current icon-sm mr-2", title: "my icon" %&gt;
+  Primary
+&lt;% end %&gt;
+</code></pre>
   <%= render "jumpstart/docs/snippet" do %>
 <button class="btn btn-primary mr-2">
   <%= render_svg "icons/download", styles: "fill-current icon-sm mr-2" %> Primary

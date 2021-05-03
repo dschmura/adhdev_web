@@ -7,8 +7,8 @@
 # Jumpstart::Clients.convertkit.add_subscriber_to_tag(tag_id, email, options={})
 
 Convertkit.configure do |config|
-  config.api_key = Rails.application.credentials.convertkit[:api_key]
-  config.api_secret = Rails.application.credentials.convertkit[:api_secret]
+  config.api_key = Rails.application.credentials.dig(:convertkit, :api_key)
+  config.api_secret = Rails.application.credentials.dig(:convertkit, :api_secret)
 end
 
 Jumpstart::Clients.convertkit = Convertkit::Client.new

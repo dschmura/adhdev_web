@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
 class TurboFailureApp < Devise::FailureApp
+  include Turbo::Native::Navigation
+
   def respond
     if request_format == :turbo_stream
       redirect
+    elsif turbo_native_app?
+      store_location!
+      http_auth
     else
       super
     end

@@ -7,6 +7,7 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
+    around_action :without_tenant
 
     helper all_helpers_from_path "app/helpers"
 
@@ -29,5 +30,12 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+
+    # Allow the admin area to view all records
+    def without_tenant
+      ActsAsTenant.without_tenant do
+        yield
+      end
+    end
   end
 end

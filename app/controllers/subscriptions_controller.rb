@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
 
   def new
     if Jumpstart.config.stripe? && @plan.trial_period_days.to_i > 0
-      @setup_intent = current_account.create_setup_intent
+      @setup_intent = current_account.processor&.stripe? ? current_account.payment_processor.create_setup_intent : Stripe::SetupIntent.create
     end
   end
 
@@ -97,8 +97,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_plan
-    @plan = Plan.without_free.find_by(id: params[:plan])
-    redirect_to pricing_path if @plan.nil?
+    @plan = Plan.without_free.find(params[:plan])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to pricing_path
   end
 
   def set_subscription

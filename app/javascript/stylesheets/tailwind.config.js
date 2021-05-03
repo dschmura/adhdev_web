@@ -8,6 +8,9 @@ module.exports = {
   future: {
   },
 
+  // https://tailwindcss.com/docs/just-in-time-mode
+  mode: 'jit',
+
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),

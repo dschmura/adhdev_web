@@ -15,23 +15,6 @@ module ApplicationHelper
     end
   end
 
-  def nav_link_to(title, path, options = {})
-    options[:class] = Array.wrap(options[:class])
-    active_class = options.delete(:active_class) || "active"
-    inactive_class = options.delete(:inactive_class) || ""
-
-    active = if (paths = Array.wrap(options[:starts_with])) && paths.present?
-      paths.any? { |path| request.path.start_with?(path) }
-    else
-      request.path == path
-    end
-
-    classes = active ? active_class : inactive_class
-    options[:class] << classes
-
-    link_to title, path, options
-  end
-
   def disable_with(text)
     "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
@@ -49,16 +32,14 @@ module ApplicationHelper
   def fa_icon(name, options = {})
     weight = options.delete(:weight) || "far"
     options[:class] = [weight, "fa-#{name}", options.delete(:class)]
-    content_tag :i, nil, options
+    tag.i(nil, **options)
   end
 
   def badge(text, options = {})
     base = options.delete(:base) || "rounded-full py-1 px-4 text-xs inline-block font-bold leading-normal uppercase mr-2"
     color = options.delete(:color) || "bg-gray-400 text-gray-700"
-
     options[:class] = Array.wrap(options[:class]) + [base, color]
-
-    content_tag :div, text, options
+    tag.div(text, **options)
   end
 
   def title(page_title)

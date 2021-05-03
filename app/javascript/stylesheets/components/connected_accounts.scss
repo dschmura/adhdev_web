@@ -1,10 +1,12 @@
-.bg-twitter { background: #4099ff; }
-.bg-facebook { background: #3B5998; }
-.bg-google_oauth2 { background: #D34836; }
+@layer components {
+  .bg-twitter { background: #4099ff; }
+  .bg-facebook { background: #3B5998; }
+  .bg-google_oauth2 { background: #D34836; }
 
-.text-twitter { color: #4099ff; }
-.text-facebook { color: #3B5998; }
-.text-google_oauth2 { color: #D34836; }
+  .text-twitter { color: #4099ff; }
+  .text-facebook { color: #3B5998; }
+  .text-google_oauth2 { color: #D34836; }
+}
 
 .btn-twitter {
   @apply bg-twitter text-white;

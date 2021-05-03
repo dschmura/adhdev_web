@@ -6,6 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require "jumpstart"
+
 module JumpstartApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -32,3 +34,6 @@ module JumpstartApp
     config.i18n.fallbacks = true
   end
 end
+
+# Makes sure the TailwindCSS JIT doesn't run forever
+Webpacker::Compiler.env["TAILWIND_MODE"] = "build"

@@ -78,6 +78,7 @@ en:
       edit_account: "Edit Account"
       copy_link: "Copy link"
       switch: "Switch"
+      personal_team_description: "Your personal account is private. Create a new account to share with your team."
     new:
       breadcrumb: "New Account"
       title: "New Account"
@@ -115,6 +116,8 @@ en:
     updated: "Successfully updated API token"
     destroyed: "Your API token has been revoked"
     all: "All API Tokens"
+    default: "Default"
+    app: "App"
 
     index:
       title: "API Tokens"
@@ -289,14 +292,14 @@ en:
         note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
         button: "Pause Subscription"
         pausing: "Pausing..."
-      cancel:
-        title: "Cancel Your Subscription"
-        description: "You can cancel anytime, but you'll lose access to %{product}."
-        help_html: "Need to talk to someone? %{link} -- we'd love to help."
-        contact_us: "Contact us"
-        subject: "Question about %{product}"
-        button: "Cancel Subscription"
-        cancelling: "Cancelling..."
+    cancel:
+      title: "Cancel Your Subscription"
+      description: "You can cancel anytime, but you'll lose access to %{product}."
+      help_html: "Need to talk to someone? %{link} -- we'd love to help."
+      contact_us: "Contact us"
+      subject: "Question about %{product}"
+      button: "Cancel Subscription"
+      cancelling: "Cancelling..."
 
     forms:
       stripe:

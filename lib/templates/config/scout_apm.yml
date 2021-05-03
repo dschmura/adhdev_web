@@ -4,7 +4,7 @@ common: &defaults
 
   # key: Your Organization key for Scout APM. Found on the settings screen.
   # - Default: none
-  key: "<%= Rails.application.credentials.scout[:api_key] %>"
+  key: <%= Rails.application.credentials.dig(:scout, :api_key) %>
 
   # log_level: Verboseness of logs.
   # - Default: 'info'
@@ -13,7 +13,7 @@ common: &defaults
 
   # name: Application name in APM Web UI
   # - Default: the application names comes from the Rails or Sinatra class name
-  name: "<%= Jumpstart.config.application_name %>"
+  name: <%= Jumpstart.config.application_name %>
 
   # monitor: Enable Scout APM or not
   # - Default: none

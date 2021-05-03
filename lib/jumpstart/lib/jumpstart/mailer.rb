@@ -11,6 +11,7 @@ module Jumpstart
       return mailgun_settings if config.mailgun?
       return mailjet_settings if config.mailjet?
       return mandrill_settings if config.mandrill?
+      return ohmysmtp_settings if config.ohmysmtp?
       return postmark_settings if config.postmark?
       return sendgrid_settings if config.sendgrid?
       return sendinblue_settings if config.sendinblue?
@@ -62,6 +63,14 @@ module Jumpstart
         address: "smtp.mandrillapp.com",
         user_name: get_credential(:mandrill, :username),
         password: get_credential(:mandrill, :password)
+      }.merge(shared_settings)
+    end
+
+    def ohmysmtp_settings
+      {
+        address: "smtp.ohmysmtp.com",
+        user_name: get_credential(:ohmysmtp, :username),
+        password: get_credential(:ohmysmtp, :password)
       }.merge(shared_settings)
     end
 

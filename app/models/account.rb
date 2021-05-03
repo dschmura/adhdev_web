@@ -37,11 +37,14 @@ class Account < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :account_invitations, dependent: :destroy
   has_many :account_users, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_many :users, through: :account_users
 
   scope :personal, -> { where(personal: true) }
   scope :impersonal, -> { where(personal: false) }
+  scope :sorted, -> { order(personal: :desc, name: :asc) }
 
+  has_noticed_notifications
   has_one_attached :avatar
 
   validates :name, presence: true

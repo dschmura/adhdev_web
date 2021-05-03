@@ -20,14 +20,14 @@
             <%= link_to t(".change"), "#", class: "text-primary text-sm mt-6", data: { action: "click->toggle#toggle" } %>
           </div>
 
-          <%= form_with model: current_account, url: subscription_url, method: :post do |f| %>
+          <%= form_with model: current_account, url: subscription_path, method: :post do |f| %>
             <%= f.hidden_field :plan, value: @plan.id if @plan.present? %>
             <%= f.button t(".subscribe"), id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with(t(".processing")) } %>
           <% end %>
         </div>
       <% end %>
 
-      <%= content_tag :div, class: ("hidden" if current_account.card_last4?), data: { toggle_target: "toggleable" } do %>
+      <%= tag.div class: ("hidden" if current_account.card_last4?), data: { toggle_target: "toggleable" } do %>
         <%= render 'subscriptions/forms/stripe'    if Jumpstart.config.stripe? %>
         <%= render 'subscriptions/forms/braintree' if Jumpstart.config.braintree? %>
         <%= render 'subscriptions/forms/paypal'    if Jumpstart.config.paypal? %>

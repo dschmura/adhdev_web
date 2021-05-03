@@ -8,7 +8,7 @@ module SortHelper
       if matching_column
         caret = sort_direction == "asc" ? "up" : "down"
         concat " "
-        concat content_tag(:i, nil, class: "fas fa-caret-#{caret}")
+        concat tag.i(nil, class: "fas fa-caret-#{caret}")
       end
     end
   end

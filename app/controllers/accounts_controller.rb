@@ -79,7 +79,7 @@ class AccountsController < Accounts::BaseController
 
     else
       session[:account_id] = @account.id
-      redirect_to root_url(subdomain: nil)
+      redirect_to root_path
     end
   end
 

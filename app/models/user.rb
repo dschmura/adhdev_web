@@ -56,6 +56,7 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, andle :trackable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable, :masqueradable, :omniauthable
 
+  has_noticed_notifications
   has_person_name
 
   pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: {tsearch: {prefix: true}}
@@ -67,6 +68,7 @@ class User < ApplicationRecord
   has_many :api_tokens, dependent: :destroy
   has_many :connected_accounts, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :notification_tokens, dependent: :destroy
 
   # We don't need users to confirm their email address on create,
   # just when they change it
