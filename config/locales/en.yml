@@ -350,7 +350,7 @@ en:
         next: "Next"
       verify:
         header: "Scan this barcode with your app."
-        sub_header: "Scan the image above with the two-factor authentication app on your phone."
+        subheader: "Scan the image above with the two-factor authentication app on your phone."
         instructions_1_html: "Install Authy: %{ios} or %{android}"
         instructions_2: "In the app, select \"Add account\""
         instructions_3: "Choose \"Scan QR Code\""
