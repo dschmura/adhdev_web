@@ -311,6 +311,11 @@ en:
       edit:
         update_password: "Update Password"
         update: "Update"
+        two_factor:
+          header: "Two-factor Authentication"
+          description: "When you login, you will be required to enter a one-time code along to one of your devices."
+          enable: "Enable two-factor authentication"
+          disable: "Disable two-factor authentication"
 
   users:
     avatar:
@@ -333,9 +338,26 @@ en:
       forgot_password: "Forgot password?"
       invalid_password: "Invalid password"
     two_factor:
-      header: "Two-step authentication"
+      header: "Two-factor authentication"
       submit: "Continue"
       enabled: "Two-factor authentication was enabled successfully"
+      backup_codes:
+        header: "Backup Codes"
+        description: "Recovery codes are used to access your account in the event you cannot receive two-factor authentication codes."
+        warning: "Download, print, or copy your recovery codes before continuing."
+        save_codes: "Treat your recovery codes with the same level of attention as you would your password!"
+        cancel: "Cancel"
+        next: "Next"
+      verify:
+        header: "Scan this barcode with your app."
+        sub_header: "Scan the image above with the two-factor authentication app on your phone."
+        instructions_1_html: "Install Authy: %{ios} or %{android}"
+        instructions_2: "In the app, select \"Add account\""
+        instructions_3: "Choose \"Scan QR Code\""
+        verify_header: "Enter the six-digit code from the application"
+        verify_description: "After scanning the barcode image, the app will display a code that you can enter below."
+        cancel: "Cancel"
+        verify: "Verify"
 
   layouts:
     mailer:

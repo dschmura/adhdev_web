@@ -1,17 +1,17 @@
 <div class="max-w-xl mx-auto mt-12 p-8 bg-white rounded shadow">
-  <h3>Scan this barcode with your app.</h3>
-  <p class="mb-4 text-sm text-gray-700" >Scan the image above with the two-factor authentication app on your phone. </p>
+  <h3><%= t ".header" %></h3>
+  <p class="mb-4 text-sm text-gray-700"><%= t ".subhead" %></p>
 
   <div class="mb-4">
     <ol class="mt-5">
       <li>
-        Install Google Authenticator:
-        <%= link_to "Android", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en", target: :blank %>
-        or
-        <%= link_to "iOS", "https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8", target: :blank %>
+        <%= t ".instructions_1_html",
+          android: link_to("Android", "https://play.google.com/store/apps/details?id=com.authy.authy", target: :blank),
+          ios: link_to("iOS", "https://apps.apple.com/us/app/authy/id494168017", target: :blank)
+        %>
       </li>
-      <li>In the app, select "Set up account" or the Plus (+) sign.</li>
-      <li>Choose "Scan barcode"</li>
+      <li><%= t ".instructions_2" %></li>
+      <li><%= t ".instructions_3" %></li>
     </ol>
   </div>
 
@@ -19,19 +19,17 @@
     <%= current_user.two_factor_otp_qr_code.html_safe %>
   </div>
 
-  <h6 class="font-semibold">Enter the six-digit code from the application</h6>
-  <p class="mb-4 text-sm text-gray-700">After scanning the barcode image, the app will display a code that you can enter below.</p>
+  <h6 class="font-semibold"><%= t ".verify_header" %></h6>
+  <p class="mb-4 text-sm text-gray-700"><%= t ".verify_description" %></p>
 
   <%= form_with url: user_two_factor_path do |form| %>
     <div class="form-group">
-      <%= form.number_field :code, placeholder: "123456", class: "form-control" %>
+      <%= form.text_field :code, placeholder: "123456", class: "form-control" %>
     </div>
 
     <div class="flex justify-between">
-      <%= link_to "Cancel", edit_account_password_path, class: "btn btn-white" %>
-      <%= form.submit "Enable", class: "btn btn-primary" %>
+      <%= link_to t(".cancel"), edit_account_password_path, class: "btn btn-white" %>
+      <%= form.submit t(".verify"), class: "btn btn-primary" %>
     </div>
   <% end %>
-
 </div>
-

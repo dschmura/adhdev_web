@@ -35,13 +35,13 @@
     </div>
 
     <div class="lg:p-10 mt-4 p-4 bg-white rounded-lg border border-gray-300">
-      <h2 class="h3"><%= t('.two_factor_authentication') %></h2>
-      <p class="mb-4">When you login, you will be required to enter a one-time code along to one of your devices.</p>
+      <h2 class="h3"><%= t(".two_factor.header") %></h2>
+      <p class="mb-4"><%= t(".two_factor.description") %></p>
       <% if current_user.otp_required_for_login? %>
-        <div><%= link_to "Disable", user_two_factor_path, method: :delete, class: "btn btn-danger outline", data: { confirm: "Are you sure?" } %></div>
+        <div><%= link_to t(".two_factor.disable"), user_two_factor_path, method: :delete, class: "btn btn-danger outline", data: { confirm: t("are_you_sure") } %></div>
 
       <% else %>
-        <%= link_to "Enable two-factor authentication", backup_codes_user_two_factor_path, class: "btn btn-tertiary" %>
+        <%= link_to t(".two_factor.enable"), backup_codes_user_two_factor_path, class: "btn btn-tertiary" %>
       <% end %>
     </div>
   </div>
