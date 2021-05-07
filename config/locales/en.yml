@@ -212,6 +212,7 @@ en:
       apple: "Apple"
       facebook: "Facebook"
       github: "GitHub"
+      gitlab: "GitLab"
       google_oauth2: "Google"
       stripe: "Stripe"
       twitter: "Twitter"
