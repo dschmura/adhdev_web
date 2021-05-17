@@ -75,3 +75,8 @@ If you'd like to run Jumpstart Pro with Docker directly, you can run:
 docker build --tag myapp .
 docker run myapp
 ```
+
+#### Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jumpstart-pro/jumpstart-pro)
+
