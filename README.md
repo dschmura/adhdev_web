@@ -14,7 +14,7 @@ remote to merge in updates.
 
 You'll need the following installed to run the template successfully:
 
-* Ruby 2.6 or higher
+* Ruby 3.0 or higher
 * bundler - `gem install bundler`
 * Redis - For ActionCable support (and Sidekiq, caching, etc)
 * PostgreSQL - `brew install postgresql`
