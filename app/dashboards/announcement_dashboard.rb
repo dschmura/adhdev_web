@@ -11,7 +11,7 @@ class AnnouncementDashboard < Administrate::BaseDashboard
     id: Field::Number,
     kind: Field::Select.with_options(collection: Announcement::TYPES),
     title: Field::String,
-    description: Field::Text,
+    description: Field::RichText,
     published_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
