@@ -12,7 +12,7 @@ module UserAccounts
     after_create :create_default_account, unless: :skip_default_account?
     after_update :sync_personal_account_name, if: -> { Jumpstart.config.personal_accounts }
 
-    accepts_nested_attributes_for :owned_accounts
+    accepts_nested_attributes_for :owned_accounts, reject_if: :all_blank
 
     # Used for skipping a default account on create
     attribute :skip_default_account, :boolean, default: false

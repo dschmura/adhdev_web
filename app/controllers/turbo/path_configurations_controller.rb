@@ -4,6 +4,7 @@ class Turbo::PathConfigurationsController < ApplicationController
   def show
     render json: {
       settings: {
+        register_with_account: Jumpstart.config.register_with_account?,
         tabs: [
           {
             title: "What's New",
@@ -17,6 +18,12 @@ class Turbo::PathConfigurationsController < ApplicationController
           patterns: ["/new$", "/edit$"],
           properties: {
             presentation: "modal"
+          }
+        },
+        {
+          patterns: ["/users/sign_up"],
+          properties: {
+            flow: "registration"
           }
         },
         {
