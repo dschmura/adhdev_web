@@ -57,6 +57,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :name,
     :email,
     :accounts,
     :connected_accounts,
@@ -88,10 +89,7 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :email,
-    :password,
-    :password_confirmation,
-    :admin,
-    :terms_of_service
+    :admin
   ].freeze
 
   # Overwrite this method to customize how users are displayed
