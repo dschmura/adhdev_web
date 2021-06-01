@@ -3,6 +3,10 @@ class Users::TwoFactorController < ApplicationController
   before_action :ensure_backup_codes
   before_action :ensure_otp_secret
 
+  def show
+    redirect_to edit_user_password_path
+  end
+
   def backup_codes
   end
 
@@ -21,6 +25,7 @@ class Users::TwoFactorController < ApplicationController
 
   def destroy
     current_user.disable_two_factor!
+    redirect_to edit_account_password_path, notice: t(".disabled")
   end
 
   private

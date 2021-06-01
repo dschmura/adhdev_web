@@ -339,9 +339,10 @@ en:
       forgot_password: "Forgot password?"
       invalid_password: "Invalid password"
     two_factor:
+      disabled: "Two-factor authentication is now disabled"
+      enabled: "Two-factor authentication was enabled successfully"
       header: "Two-factor authentication"
       submit: "Continue"
-      enabled: "Two-factor authentication was enabled successfully"
       backup_codes:
         header: "Backup Codes"
         description: "Recovery codes are used to access your account in the event you cannot receive two-factor authentication codes."
