@@ -72,6 +72,7 @@ gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "noticed", "~> 1.3"
 gem "oj", "~> 3.8", ">= 3.8.1"
+gem "omniauth", "~> 1.9", ">= 1.9.1"
 gem "pagy", "~> 4.1"
 gem "pay", "~> 2.6.0"
 gem "pg_search", "~> 2.3"
@@ -80,9 +81,6 @@ gem "receipts", "~> 1.0.0"
 gem "rotp", "~> 6.2"
 gem "rqrcode"
 gem "ruby-oembed", "~> 0.14.0", require: "oembed"
-
-# We always want the latest versions of these gems, so no version numbers
-gem "omniauth", "~> 1.9", ">= 1.9.1"
 gem "strong_migrations", "~> 0.7.6"
 gem "whenever", require: false
 
