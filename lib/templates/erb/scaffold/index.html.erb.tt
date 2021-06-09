@@ -1,5 +1,5 @@
-<div class="container mx-auto my-8 px-4">
-  <div class="flex justify-between items-center mb-4">
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
     <h1 class="h3"><%= plural_table_name.titleize %></h1>
 
     <%% if @<%= plural_table_name %>.any? %>
@@ -12,19 +12,19 @@
       <table class="table">
         <thead>
           <tr>
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-            <th class="p-3 uppercase text-left text-xs"><%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, "<%= attribute.human_name %>", class: "text-gray-700" %></th>
-<% end -%>
-            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20"><%%= t("shared.scaffold.actions") %></th>
+<%- attributes.reject(&:password_digest?).each do |attribute| -%>
+            <th class="p-3 text-xs text-left uppercase"><%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, "<%= attribute.human_name %>", class: "text-gray-700" %></th>
+<%- end -%>
+            <th class="w-20 p-3 text-xs text-left text-gray-700 uppercase"><%%= t("shared.scaffold.actions") %></th>
           </tr>
         </thead>
 
         <tbody>
         <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
-          <tr class="group border-t border-gray-400 hover:bg-gray-100">
-          <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <tr class="border-t border-gray-400 group hover:bg-gray-100">
+          <%- attributes.reject(&:password_digest?).each do |attribute| -%>
             <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
-          <% end %>
+          <%- end %>
             <td>
               <%%= link_to t("shared.scaffold.view"), <%= singular_table_name %>, class: "btn btn-link no-underline" %>
             </td>
@@ -35,16 +35,16 @@
     </div>
 
     <%% if @pagy.pages > 1 %>
-      <div class="text-center my-6">
+      <div class="my-6 text-center">
         <%%== pagy_nav(@pagy) %>
       </div>
     <%% end %>
 
   <%% else %>
-    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+    <div class="flex flex-col items-center justify-between p-8 bg-white rounded shadow lg:flex-row">
       <%%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
       <div class="flex-1 text-center">
-        <p class="h3 mb-4">Create your first <%= singular_table_name.titleize %></p>
+        <p class="mb-4 h3">Create your first <%= singular_table_name.titleize %></p>
         <%%= link_to t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>"), new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
       </div>
     </div>
