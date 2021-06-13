@@ -16,4 +16,10 @@ class Announcement < ApplicationRecord
   has_rich_text :description
 
   validates :kind, :title, :description, :published_at, presence: true
+
+  after_initialize :set_defaults
+
+  def set_defaults
+    self.published_at ||= Time.current
+  end
 end
