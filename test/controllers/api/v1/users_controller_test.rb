@@ -11,9 +11,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "returns user and api token on success" do
     email = "api-user@example.com"
 
-    assert_difference "User.count" do
-      post api_v1_users_url, params: {user: {email: email, name: "API User", password: "password", password_confirmation: "password", terms_of_service: "1"}}
-      assert_response :success
+    Jumpstart.config.stub(:register_with_account?, false) do
+      assert_difference "User.count" do
+        post api_v1_users_url, params: {user: {email: email, name: "API User", password: "password", password_confirmation: "password", terms_of_service: "1"}}
+        assert_response :success
+      end
     end
 
     assert response.parsed_body["user"]
@@ -22,9 +24,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "turbo native registration" do
-    assert_difference "User.count" do
-      post api_v1_users_url, params: {user: {email: "api-user@example.com", name: "API User", password: "password", password_confirmation: "password", terms_of_service: "1"}}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
-      assert_response :success
+    Jumpstart.config.stub(:personal_accounts, true) do  #### HERE ####
+      Jumpstart.config.stub(:register_with_account?, false) do  #### HERE ####
+        assert_difference "User.count" do
+          post api_v1_users_url, params: {user: {email: "api-user@example.com", name: "API User", password: "password", password_confirmation: "password", terms_of_service: "1"}}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
+          assert_response :success
+        end
+      end
     end
 
     user = User.last
