@@ -16,5 +16,5 @@ export function findTimeZone() {
 }
 
 document.addEventListener("turbo:load", () => {
-  Cookies.set("browser_time_zone", findTimeZone(), { expires: 365, path: "/" })
+  Cookies.set("browser_time_zone", findTimeZone(), { expires: 365, path: "/", secure: true })
 })
