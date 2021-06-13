@@ -27,7 +27,7 @@ import "src/timezone"
 import LocalTime from "local-time"
 LocalTime.start()
 
-// ADD YOUR JAVACSRIPT HERE
+// ADD YOUR JAVASCRIPT HERE
 
 // Start Rails UJS
 Rails.start()
