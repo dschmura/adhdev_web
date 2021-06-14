@@ -24,8 +24,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "turbo native registration" do
-    Jumpstart.config.stub(:personal_accounts, true) do  #### HERE ####
-      Jumpstart.config.stub(:register_with_account?, false) do  #### HERE ####
+    Jumpstart.config.stub(:personal_accounts, true) do #### HERE ####
+      Jumpstart.config.stub(:register_with_account?, false) do #### HERE ####
         assert_difference "User.count" do
           post api_v1_users_url, params: {user: {email: "api-user@example.com", name: "API User", password: "password", password_confirmation: "password", terms_of_service: "1"}}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
           assert_response :success
