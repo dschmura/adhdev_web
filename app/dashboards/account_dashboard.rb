@@ -27,9 +27,7 @@ class AccountDashboard < Administrate::BaseDashboard
     card_exp_month: Field::String,
     card_exp_year: Field::String,
     extra_billing_info: Field::Text,
-    plan: Field::String,
     quantity: Field::Number,
-    card_token: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -67,9 +65,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :card_exp_month,
     :card_exp_year,
     :extra_billing_info,
-    :plan,
     :quantity,
-    :card_token
   ].freeze
 
   # FORM_ATTRIBUTES
