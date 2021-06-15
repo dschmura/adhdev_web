@@ -91,9 +91,9 @@ module Jumpstart
       gems[:main] += Array.wrap(omniauth_providers).map { |provider|
         case provider
         when "twitter"
-          {name: "omniauth-#{provider}", github: "excid3/omniauth-twitter" }
+          {name: "omniauth-#{provider}", github: "excid3/omniauth-twitter"}
         when "facebook"
-          {name: "omniauth-#{provider}", github: "excid3/omniauth-facebook" }
+          {name: "omniauth-#{provider}", github: "excid3/omniauth-facebook"}
         else
           {name: "omniauth-#{provider}"}
         end
