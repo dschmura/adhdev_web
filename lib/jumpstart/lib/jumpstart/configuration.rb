@@ -88,7 +88,16 @@ module Jumpstart
 
     def dependencies
       gems = {main: [], test: [], development: []}
-      gems[:main] += Array.wrap(omniauth_providers).map { |provider| {name: "omniauth-#{provider}"} }
+      gems[:main] += Array.wrap(omniauth_providers).map { |provider|
+        case provider
+        when "twitter"
+          {name: "omniauth-#{provider}", github: "excid3/omniauth-twitter" }
+        when "facebook"
+          {name: "omniauth-#{provider}", github: "excid3/omniauth-facebook" }
+        else
+          {name: "omniauth-#{provider}"}
+        end
+      }
       gems[:main] += [{name: "airbrake"}] if airbrake?
       gems[:main] += [{name: "appsignal"}] if appsignal?
       gems[:main] += [{name: "convertkit-ruby", github: "excid3/convertkit-ruby", require: "convertkit"}] if convertkit?
