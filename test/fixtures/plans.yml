@@ -63,3 +63,13 @@ personal_with_trial:
     braintree_id: personal-monthly-trial
     features:
       - Unlimited access
+
+hidden:
+  name: Hidden Plan
+  amount: 1000
+  interval: month
+  hidden: true
+  details:
+    stripe_id: hidden
+    braintree_id: hidden
+

@@ -48,6 +48,21 @@ class PlanTest < ActiveSupport::TestCase
     assert_equal annual, monthly.annual_version
   end
 
+  test "visible_plans" do
+    visible_count = Plan.visible.count
+    implicit_all_count = Plan.all.count
+    true_all_count = Plan.unscoped.all.count
+    assert_operator visible_count, :==, implicit_all_count
+    assert_operator visible_count, :<=, true_all_count
+  end
+
+  test "hidden_plans" do
+    hidden_count = Plan.unscoped.hidden.count
+    visible_count = Plan.all.count
+    true_all_count = Plan.unscoped.all.count
+    assert_operator hidden_count, :==, true_all_count-visible_count
+  end
+
   private
 
   def monthly

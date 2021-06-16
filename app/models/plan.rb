@@ -25,13 +25,14 @@ class Plan < ApplicationRecord
   validates :interval, inclusion: %w[month year]
   validates :trial_period_days, numericality: {only_integer: true}
 
+  default_scope { where(hidden: [nil, false]) }
   scope :monthly, -> { without_free.where(interval: :month) }
   scope :yearly, -> { without_free.where(interval: :year) }
   scope :sorted, -> { order(amount: :asc) }
   scope :without_free, -> { where.not("details @> ?", {fake_processor_id: :free}.to_json) }
-  scope :hidden, -> { where(hidden: true) }
-  scope :visible, -> { where(hidden: [nil, false]) }
-
+  scope :hidden, -> { where(hidden: true) } # you might prefer to use .unscoped in front of this scope
+  scope :visible, -> { where(hidden: [nil, false]) } # you might prefer to use .unscoped in front of this scope
+  
   def features
     Array.wrap(super)
   end
