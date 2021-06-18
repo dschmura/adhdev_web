@@ -17,15 +17,9 @@ module Admin
     #   Foo.find_by!(slug: param)
     # end
 
-    # Override this if you have certain roles that require a subset
-    # this will be used to set the records shown on the `index` action.
+    # Include hidden plans in admin
     def scoped_resource
-      # override the default_scope of Plan whilst in admin
-      if current_user.super_admin?
-        resource_class.unscoped
-      else
-        resource_class.unscoped
-      end
+      resource_class.unscoped
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
