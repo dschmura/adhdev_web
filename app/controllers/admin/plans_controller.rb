@@ -19,7 +19,7 @@ module Admin
 
     # Include hidden plans in admin
     def scoped_resource
-      resource_class.unscoped
+      resource_class.with_hidden
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
