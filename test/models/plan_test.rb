@@ -48,6 +48,21 @@ class PlanTest < ActiveSupport::TestCase
     assert_equal annual, monthly.annual_version
   end
 
+  test "default scope only has visible plans" do
+    assert_not_includes Plan.all, plans(:hidden)
+    assert_equal Plan.visible.count, Plan.count
+  end
+
+  test "visible doesn't include hidden plans" do
+    assert_includes Plan.visible, plans(:personal)
+    assert_not_includes Plan.visible, plans(:hidden)
+  end
+
+  test "hidden doesn't include visible plans" do
+    assert_includes Plan.hidden, plans(:hidden)
+    assert_not_includes Plan.hidden, plans(:personal)
+  end
+
   private
 
   def monthly

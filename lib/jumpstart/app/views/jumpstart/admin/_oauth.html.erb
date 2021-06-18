@@ -17,6 +17,10 @@
     <div class="mb-4">
       <div class="font-weight-semibold"><%= details[:name] %></div>
 
+      <% if gem_name == "facebook" %>
+        <p class="text-sm text-gray-700">Facebook requires HTTPS for OAuth so you will need to use a service like <%= link_to "ngrok", "https://ngrok.com/", target: :_blank %> for testing.
+      <% end %>
+
       <% if Jumpstart::Omniauth.has_credentials?(gem_name) %>
         <div class="custom-control custom-checkbox">
           <%= check_box_tag "configuration[omniauth_providers][]", gem_name, Jumpstart::Omniauth.enabled?(gem_name), disabled: !Jumpstart::Omniauth.has_credentials?(gem_name), id: gem_name, class: "form-checkbox" %>

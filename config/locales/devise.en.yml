@@ -102,6 +102,7 @@ en:
         sign_in: Log in
         sign_in_with_provider: Sign in with %{provider}
         sign_up: Sign up
+        redirecting: "Redirecting..."
       minimum_password_length:
         one: "(%{count} character minimum)"
         other: "(%{count} characters minimum)"
