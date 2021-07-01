@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       patch :switch
     end
 
+    resource :transfer, module: :accounts
     resources :account_users, path: :members
     resources :account_invitations, path: :invitations, module: :accounts
   end

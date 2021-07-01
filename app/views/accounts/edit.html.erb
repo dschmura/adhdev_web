@@ -12,10 +12,11 @@
       <%= t(".breadcrumb") %>
     </div>
 
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
+    <div class="p-4 bg-white rounded-lg border border-gray-300 lg:p-10">
       <h1 class="h2"><%= t(".title") %></h1>
-
       <%= render 'form', account: @account %>
     </div>
+
+    <%= render "accounts/transfers/form", account: @account if @account.can_transfer?(current_user) %>
   </div>
 </div>

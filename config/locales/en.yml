@@ -105,6 +105,16 @@ en:
         back: "Back"
         update: "Update invitation"
         destroy: "Cancel Invite"
+    transfers:
+      form:
+        title: "Transfer ownership"
+        description: "Transfer ownership of this account to another user."
+        transfer: "Transfer"
+        are_you_sure: "Are you sure you want to transfer this account?"
+      update:
+        not_allowed: "You are not allowed to do that."
+        invalid: "Please choose a member of the account to transfer ownership."
+        success: "Account transferred successfully."
 
   announcements:
     index:
@@ -374,6 +384,7 @@ en:
       title: "Notifications"
       empty_placeholder: "Nothing to see here — yet."
     invite_accepted: "%{user} accepted your invitation."
+    account_transferred: "%{previous_owner} made you owner of the %{account} account."
     empty: "Nothing to see here — yet."
     empty_description: "We'll let you know when you have new notifications."
 

@@ -74,6 +74,11 @@ form.inline {
     @apply bg-gray-200;
   }
 }
+[type='checkbox']:checked:hover, [type='checkbox']:checked:focus, [type='radio']:checked:hover, [type='radio']:checked:focus {
+  &[disabled] {
+    @apply bg-gray-200;
+  }
+}
 
 .input-file {
   height: auto;

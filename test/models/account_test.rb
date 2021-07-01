@@ -90,4 +90,37 @@ class AccountTest < ActiveSupport::TestCase
       assert_not user.accounts.first.personal?
     end
   end
+
+  test "owner?" do
+    account = accounts(:one)
+    assert account.owner?(users(:one))
+    refute account.owner?(users(:two))
+  end
+
+  test "can_transfer? false for personal accounts" do
+    refute accounts(:one).can_transfer?(users(:one))
+  end
+
+  test "can_transfer? true for owner" do
+    account = accounts(:company)
+    assert account.can_transfer?(account.owner)
+  end
+
+  test "can_transfer? false for non-owner" do
+    refute accounts(:company).can_transfer?(users(:two))
+  end
+
+  test "transfer ownership to a new owner" do
+    account = accounts(:company)
+    new_owner = users(:two)
+    assert accounts(:company).transfer_ownership(new_owner.id)
+    assert_equal new_owner, account.reload.owner
+  end
+
+  test "transfer ownership fails transferring to a user outside the account" do
+    account = accounts(:company)
+    owner = account.owner
+    refute account.transfer_ownership(users(:invited).id)
+    assert_equal owner, account.reload.owner
+  end
 end
