@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 6.1.3.1"
+gem "rails", "~> 6.1.4"
 # Use postgresql as the database for Active Record
 gem "pg"
 # Use Puma as the app server
@@ -80,10 +80,10 @@ gem "pagy", "~> 4.1"
 gem "pay", "~> 2.6.0"
 gem "pg_search", "~> 2.3"
 gem "prefixed_ids", "~> 1.2"
-gem "receipts", "~> 1.0.0"
+gem "receipts", "~> 1.1.0"
 gem "rotp", "~> 6.2"
 gem "rqrcode"
-gem "ruby-oembed", "~> 0.14.0", require: "oembed"
+gem "ruby-oembed", "~> 0.15.0", require: "oembed"
 gem "strong_migrations", "~> 0.7.6"
 gem "whenever", require: false
 
