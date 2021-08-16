@@ -24,6 +24,16 @@ You'll need the following installed to run the template successfully:
   processes in development
 * [Stripe CLI](https://stripe.com/docs/stripe-cli) for Stripe webhooks in development - `brew install stripe/stripe-cli/stripe`
 
+#### Windows Support
+
+If you'd like to run Jumpstart Pro on Windows, I recommend using WSL2. You can find instructions here: https://gorails.com/setup/windows
+
+Alternatively, if you'd like to use Docker on Windows, you'll need to make sure you clone the repository and preserve the Linux line endings.
+
+```bash
+git clone git@github.com:username/myrepo.git --config core.autocrlf=input
+```
+
 #### Initial Setup
 
 First, you'll want to tweak `config/database.yml` and change the
