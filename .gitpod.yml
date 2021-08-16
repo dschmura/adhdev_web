@@ -1,4 +1,4 @@
-# Example GitPod configuration. You will need to adjust this for the different processes you run 
+# Example GitPod configuration. You will need to adjust this for the different processes you run
 # during development
 
 image:
@@ -14,20 +14,20 @@ ports:
     onOpen: ignore
 
 # The tasks which run. Each "-" line is a new process, and there are different stages to them
-# The "gp sync-done" and "gp sync-await" allow all the independent processes to wait for the 
+# The "gp sync-done" and "gp sync-await" allow all the independent processes to wait for the
 # Initial Rails install to complete
 # See https://community.gitpod.io/t/gitpod-yml-and-making-sure-init-completes-before-command/2818/2
 
-# The "yarn add @rails/webpacker" fixes a problem with running webpacker. 
+# The "yarn add @rails/webpacker" fixes a problem with running webpacker.
 
-tasks: 
+tasks:
   - name: Install
     init: >
-      gem update bundler && 
+      gem update bundler &&
       bundle install &&
       yarn add @rails/webpacker &&
       yarn install --check-files &&
-      rails db:setup &&  
+      rails db:setup &&
       gp sync-done install
   - name: Rails
     init: gp sync-await install
@@ -40,6 +40,6 @@ tasks:
   - name: Sidekiq
     init: gp sync-await install
     command: sidekiq
-  - name: Stripe
-    init: gp sync-await install
-    command: stripe listen --forward-to localhost:5000/webhooks/stripe
+#  - name: Stripe
+#    init: gp sync-await install
+#    command: stripe listen --forward-to localhost:5000/webhooks/stripe

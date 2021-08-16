@@ -33,4 +33,3 @@ RUN bash -lc "rvm install ruby-3.0.1 && rvm use ruby-3.0.1 --default"
 RUN echo "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc
 
 # Install the Stripe CLI see https://stripe.com/docs/stripe-cli
-RUN brew install stripe/stripe-cli/stripe
