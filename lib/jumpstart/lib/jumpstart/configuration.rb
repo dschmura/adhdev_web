@@ -26,7 +26,7 @@ module Jumpstart
 
     def self.load!
       if File.exist?(config_path)
-        config = YAML.load_file(config_path)
+        config = Psych.safe_load_file(config_path, permitted_classes: [Hash, Jumpstart::Configuration])
         return config if config.is_a?(Jumpstart::Configuration)
         new(config)
       else
