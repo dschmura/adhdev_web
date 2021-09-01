@@ -1,5 +1,5 @@
 class Api::V1::AuthsController < Api::BaseController
-  skip_before_action :authenticate_api_token!
+  skip_before_action :authenticate_api_token!, only: [:create]
 
   # Requires email and password params
   # Turbo Native requests should sign in user with cookie for browser authentication
