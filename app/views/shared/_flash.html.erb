@@ -1,3 +1,12 @@
+<% if current_user != true_user %>
+  <div class="flex items-center justify-center px-2 py-1 text-sm text-blue-200 bg-blue-600 font-semibold" role="alert">
+    <span class="mr-2">Logged in as <b><%= link_to "User ##{current_user.id}", admin_user_path(current_user), class: "text-blue-200 underline hover:text-blue-100" %></b></span>
+    <%= button_to admin_user_impersonate_path(current_user), method: :delete, form_class: "inline-block", class: "btn btn-primary btn-small" do %>
+      Logout
+    <% end %>
+  </div>
+<% end %>
+
 <div id="flash">
   <% if notice %>
     <div class="notice notice-info" role="alert">

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       end
 
       resources :announcements
-      resources :users
+      resources :users do
+        resource :impersonate, module: :user
+      end
       namespace :user do
         resources :connected_accounts
       end

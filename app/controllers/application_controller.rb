@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   include DeviceFormat
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :masquerade_user!
+
+  impersonates :user
 
   protected
 

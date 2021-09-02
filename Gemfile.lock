@@ -15,15 +15,6 @@ GIT
       selectize-rails (~> 0.6)
 
 GIT
-  remote: https://github.com/excid3/devise_masquerade.git
-  revision: 7b76df52ae61c938cef48ec54dde5221e9cc8609
-  specs:
-    devise_masquerade (1.2.0)
-      devise (>= 4.7.0)
-      globalid (>= 0.3.6)
-      railties (>= 5.2.0)
-
-GIT
   remote: https://github.com/rubysec/bundler-audit.git
   revision: 05d7c4979e3ccdd17ae731b8ac29337dd747e653
   specs:
@@ -271,6 +262,8 @@ GEM
     prefixed_ids (1.2.2)
       hashids (>= 1.0.0, < 2.0.0)
       rails (>= 6.0.0)
+    pretender (0.3.4)
+      actionpack (>= 4.2)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -438,7 +431,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise (>= 4.7.1)
   devise-i18n (~> 1.9)
-  devise_masquerade!
   hotwire-rails (~> 0.1.2)
   image_processing (~> 1.9, >= 1.9.2)
   inline_svg (~> 1.6)
@@ -460,6 +452,7 @@ DEPENDENCIES
   pg
   pg_search (~> 2.3)
   prefixed_ids (~> 1.2)
+  pretender (~> 0.3.4)
   pry-rails
   puma (~> 5.0)
   rails (~> 6.1.4)

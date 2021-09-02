@@ -11,11 +11,13 @@ module Admin
 
     helper all_helpers_from_path "app/helpers"
 
+    impersonates :user
+
     # Uncomment this to scope the admin by the current account
     # include SetCurrentRequestDetails
 
     def authenticate_admin
-      redirect_to "/", alert: "Not authorized." unless user_signed_in? && current_user.admin?
+      redirect_to "/", alert: "Not authorized." unless user_signed_in? && true_user.admin?
     end
 
     def order
