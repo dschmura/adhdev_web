@@ -6,6 +6,10 @@ require_dependency "<%= namespaced_path %>/application_controller"
 class <%= controller_class_name %>Controller < ApplicationController
   before_action :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
 
+  # Uncomment to enforce Pundit authorization
+  # after_action :verify_authorized
+  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   # GET <%= route_url %>
   def index
     @pagy, @<%= plural_table_name %> = pagy(<%= class_name %>.sort_by_params(params[:sort], sort_direction))
@@ -13,6 +17,9 @@ class <%= controller_class_name %>Controller < ApplicationController
     # We explicitly load the records to avoid triggering multiple DB calls in the views when checking if records exist and iterating over them.
     # Calling @<%= plural_table_name %>.any? in the view will use the loaded records to check existence instead of making an extra DB call.
     @<%= plural_table_name %>.load
+
+    # Uncomment to authorize with Pundit
+    # authorize @<%= plural_table_name %>
   end
 
   # GET <%= route_url %>/1 or <%= route_url %>/1.json
@@ -22,6 +29,9 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>/new
   def new
     @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
+
+    # Uncomment to authorize with Pundit
+    # authorize @<%= singular_table_name %>
   end
 
   # GET <%= route_url %>/1/edit
@@ -31,6 +41,9 @@ class <%= controller_class_name %>Controller < ApplicationController
   # POST <%= route_url %> or <%= route_url %>.json
   def create
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
+
+    # Uncomment to authorize with Pundit
+    # authorize @<%= singular_table_name %>
 
     respond_to do |format|
       if @<%= orm_instance.save %>
@@ -70,6 +83,9 @@ class <%= controller_class_name %>Controller < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_<%= singular_table_name %>
     @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+
+    # Uncomment to authorize with Pundit
+    # authorize @<%= singular_table_name %>
   end
 
   # Only allow a list of trusted parameters through.
@@ -79,6 +95,9 @@ class <%= controller_class_name %>Controller < ApplicationController
     <%- else -%>
     params.require(<%= ":#{singular_table_name}" %>).permit(<%= permitted_params %>)
     <%- end -%>
+
+    # Uncomment to use Pundit permitted attributes
+    # params.require(:<%= singular_table_name %>).permit(policy(@<%= singular_table_name %>).permitted_attributes)
   end
 end
 <% end -%>
