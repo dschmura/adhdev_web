@@ -42,6 +42,7 @@ en:
   back: "Back"
   cancel: "Cancel"
   edit: "Edit"
+  unauthorized: "You are not authorized to perform this action."
 
   account_invitations_mailer:
     invite:

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   include CurrentHelper
   include Sortable
   include DeviceFormat
+  include Authorization
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
