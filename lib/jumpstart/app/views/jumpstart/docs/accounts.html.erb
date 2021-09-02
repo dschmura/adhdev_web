@@ -61,10 +61,9 @@ account_user.active_roles #=> [:admin]</code></pre>
 
   <pre><code>class Project
   acts_as_tenant :account
-  belongs_to :account
 end</code></pre>
 
-  <p class="mb-4 leading-normal">This will automatically scope all queries on the model to the current account. <code>Project.all</code> will produce the same results as <code>current_account.projects</code>.</p>
+  <p class="mb-4 leading-normal">This will automatically add a </code>belongs_to :account</code> association and scope all queries on the model to the current account. <code>Project.all</code> will produce the same results as <code>current_account.projects</code>.</p>
   <p class="mb-4 leading-normal">If current_account is <code>nil</code>, then all records will be returned. This can be changed to raise an exception if current account is nil by adding this initializer:</p>
 
   <pre><code># config/initializers/acts_as_tenant.rb
