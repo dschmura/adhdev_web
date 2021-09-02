@@ -51,4 +51,14 @@ class AuthsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil json_response["token"]
     assert_not_nil json_response["location"]
   end
+
+  test "destroys notification tokens on sign out" do
+    user = users(:one)
+    user.notification_tokens.create! platform: :ios, token: :test
+
+    assert_difference "NotificationToken.count", -1 do
+      delete api_v1_auth_url, params: {notification_token: :test}, headers: {Authorization: "token #{user.api_tokens.first.token}"}
+      assert_response :success
+    end
+  end
 end
