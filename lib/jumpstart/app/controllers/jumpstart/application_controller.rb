@@ -4,6 +4,8 @@ module Jumpstart
 
     include Users::TimeZone
 
+    impersonates :user
+
     # Used for sharing flash between main app and gem
     def current_account
     end

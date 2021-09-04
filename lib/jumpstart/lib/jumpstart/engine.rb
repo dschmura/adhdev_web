@@ -17,8 +17,7 @@ module Jumpstart
     end
 
     config.to_prepare do
-      Pay.subscription_model.include Jumpstart::SubscriptionExtensions
-
+      Pay::Subscription.include Jumpstart::SubscriptionExtensions
       Administrate::ApplicationController.helper Jumpstart::AdministrateHelpers
     end
 

@@ -36,8 +36,8 @@ module ApplicationHelper
   end
 
   def badge(text, options = {})
-    base = options.delete(:base) || "rounded-full py-1 px-4 text-xs inline-block font-bold leading-normal uppercase mr-2"
-    color = options.delete(:color) || "bg-gray-400 text-gray-700"
+    base = options.delete(:base) || "rounded py-0.5 px-2 text-xs inline-block font-semibold leading-normal mr-2"
+    color = options.delete(:color) || "bg-gray-100 text-gray-800"
     options[:class] = Array.wrap(options[:class]) + [base, color]
     tag.div(text, **options)
   end

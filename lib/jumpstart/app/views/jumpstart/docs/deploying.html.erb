@@ -6,18 +6,18 @@
 
 <p class="mb-4">You'll need a Redis and PostgreSQL database setup to deploy Jumpstart Pro.</p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400">Environments</h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Environments</h2>
     <p class="mb-4">Jumpstart Pro is preconfigured with two environments for deploying: staging and production.</p>
     <p class="mb-4">Background workers will be configured to run in all environments so you will have the same experience in development as you will in staging and production.</p>
     <p class="mb-4">Email providers will only be configured for production by Jumpstart Pro, so you don't accidentally send emails to real users in staging.</p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400">Credentials</h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Credentials</h2>
     <p class="mb-4">You will need to take the contents of <code>config/credentials/staging.key</code> or <code>config/credentials/production.key</code> (depending on what env you're deploying) and set the <code>RAILS_MASTER_KEY</code> environment variable to the contents of this file. This will allow staging or production to decrypt your credentials for the correct environment.</code> </p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400"><%= link_to "Hatchbox", "https://hatchbox.io", target: :blank, class: "text-gray-900" %></h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200"><%= link_to "Hatchbox", "https://hatchbox.io", target: :blank, class: "text-gray-900" %></h2>
     <p class="mb-4"><%= link_to "Hatchbox.io", "https://hatchbox.io", target: :blank %> is built by the makers of Jumpstart Pro and GoRails. It's a fantastically simple and cheap option for deploying apps to your own servers.</p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400">Heroku</h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Heroku</h2>
     <p class="mb-4">Deploying to Heroku is easy. Jumpstart Pro includes a Procfile to help automatically configure your Heroku processes.</p>
     <div class="mb-4 w-full xl:w-1/2">
       <div class="embed-container">
@@ -44,10 +44,10 @@ heroku addons:create heroku-redis:hobby-dev</code></pre>
     <pre><code>git push heroku master
 heroku run rails db:migrate</code></pre>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400">Docker</h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Docker</h2>
     <p class="mb-4">We provide a sample Dockerfile and docker-compose.yml for you in case you'd like to deploy your application using Docker.</p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400">Creating An Admin User</h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Creating An Admin User</h2>
     <p class="mb-4">To create an admin user in production, you can either generate one using <code>db/seeds.rb</code> or run the following code in the rails console in production.</p>
     <pre><code>User.create name: "Steve Jobs", email: "steve@apple.com", password: "password", password_confirmation: "password", admin: true, terms_of_service: true</code></pre>
   </div>

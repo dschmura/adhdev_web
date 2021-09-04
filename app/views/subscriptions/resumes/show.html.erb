@@ -1,0 +1,24 @@
+<div class="max-w-xl mx-auto mt-12 p-8 bg-white rounded shadow">
+  <h3><%= t ".title" %></h3>
+
+  <div class="my-8">
+    <h4><%= @subscription.plan.name %></h4>
+    <div class="mb-2 text-lg"><%= number_to_currency (@subscription.plan.dollar_amount * @subscription.quantity) %> per <%= @subscription.plan.interval %></div>
+
+    <% if @subscription.quantity > 1 %>
+      <div><%= t(".quantity", quantity: @subscription.quantity, price: number_to_currency(@subscription.plan.dollar_amount)) %></div>
+    <% end %>
+  </div>
+
+  <div class="flex-1 mt-2 mb-4 text-gray-700">
+    <div class="mt-4"><%= t(".resume") %></div>
+  </div>
+
+  <div class="mt-8 flex justify-between items-center">
+    <%= link_to t(".back"), subscriptions_path, class: "btn btn-light-gray" %>
+
+    <%= form_with url: subscription_resume_path(@subscription), method: :patch do |f| %>
+      <%= f.button t(".button"), class: "btn btn-primary", data: { confirm: t("are_you_sure"), disable_with: disable_with(t(".processing")) } %>
+    <% end %>
+  </div>
+</div>

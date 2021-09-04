@@ -20,7 +20,7 @@ const createConfirmModal = (element) => {
           <h4>${confirm}</h4>
 
           <div class="flex justify-end items-center flex-wrap mt-6">
-            <button data-behavior="cancel" class="btn btn-white primary mr-2">Cancel</button>
+            <button data-behavior="cancel" class="btn btn-light-gray mr-2">Cancel</button>
             <button data-behavior="commit" class="btn btn-danger focus:outline-none">Confirm</button>
           </div>
         </div>

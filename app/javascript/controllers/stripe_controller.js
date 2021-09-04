@@ -19,7 +19,15 @@ export default class extends Controller {
     this.payment_intent = this.data.get("payment-intent")
 
     // Setup regular payments
-    this.card = elements.create("card")
+    this.card = elements.create("card", {
+      style: {
+        base: {
+          fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
+          fontSize: '16px',
+          fontSmoothing: 'antialiased',
+        }
+      }
+    })
     this.card.mount(this.cardTarget)
     this.card.addEventListener("change", this.changed.bind(this))
   }
@@ -88,8 +96,8 @@ export default class extends Controller {
   }
 
   handlePaymentMethod(payment_method_id) {
-    this.addHiddenField("account[processor]", "stripe")
-    this.addHiddenField("account[card_token]", payment_method_id)
+    this.addHiddenField("processor", "stripe")
+    this.addHiddenField("payment_method_token", payment_method_id)
 
     Rails.fire(this.formTarget, "submit")
   }

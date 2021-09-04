@@ -4,9 +4,12 @@
 #
 #  id                :bigint           not null, primary key
 #  amount            :integer          default(0), not null
+#  currency          :string
+#  description       :string
 #  details           :jsonb            not null
 #  hidden            :boolean
 #  interval          :string           not null
+#  interval_count    :integer          default(1)
 #  name              :string           not null
 #  trial_period_days :integer          default(0)
 #  created_at        :datetime         not null

@@ -10,13 +10,17 @@ class PlanDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    description: Field::String,
     amount: Field::Number,
+    currency: Field::String,
     interval: Field::Select.with_options(collection: ["month", "year"]),
+    interval_count: Field::Number,
     trial_period_days: Field::Number,
     details: Field::String.with_options(searchable: false),
     stripe_id: Field::String.with_options(searchable: false),
     braintree_id: Field::String.with_options(searchable: false),
     paddle_id: Field::String.with_options(searchable: false),
+    fake_processor_id: Field::String.with_options(searchable: false),
     features: ArrayField,
     hidden: Field::Boolean,
     created_at: Field::DateTime,
@@ -33,7 +37,9 @@ class PlanDashboard < Administrate::BaseDashboard
     :name,
     :hidden,
     :amount,
+    :currency,
     :interval,
+    :interval_count,
     :trial_period_days
   ].freeze
 
@@ -42,13 +48,17 @@ class PlanDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
+    :description,
     :hidden,
     :amount,
+    :currency,
     :interval,
+    :interval_count,
     :trial_period_days,
     :stripe_id,
     :braintree_id,
     :paddle_id,
+    :fake_processor_id,
     :features,
     :created_at,
     :updated_at
@@ -59,13 +69,17 @@ class PlanDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :description,
     :hidden,
     :amount,
+    :currency,
     :interval,
+    :interval_count,
     :trial_period_days,
     :stripe_id,
     :braintree_id,
     :paddle_id,
+    :fake_processor_id,
     :features
   ].freeze
 

@@ -43,7 +43,7 @@ class Jumpstart::SubscriptionsTest < ActionDispatch::IntegrationTest
 
     test "cannot subscribe" do
       Jumpstart.config.stub(:payments_enabled?, true) do
-        post subscription_path, params: {}
+        post subscriptions_path, params: {}
         assert_redirected_to root_path
         assert_equal I18n.t("must_be_an_admin"), flash[:alert]
       end

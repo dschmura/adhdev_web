@@ -13,9 +13,20 @@ class ChargesController < ApplicationController
     end
   end
 
+  def invoice
+    respond_to do |format|
+      format.pdf {
+        send_data @charge.invoice,
+          filename: @charge.invoice_filename,
+          type: "application/pdf",
+          disposition: :inline
+      }
+    end
+  end
+
   private
 
   def set_charge
-    @charge = current_account.charges.find(params[:id])
+    @charge = current_account.charges.find_by_prefix_id(params[:id])
   end
 end

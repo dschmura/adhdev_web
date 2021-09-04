@@ -1,8 +1,8 @@
 <% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
 
-<%= form_with model: current_account,
-  url: local_assigns.fetch(:url, subscription_path),
+<%= form_with url: local_assigns.fetch(:url, subscriptions_path),
   method: local_assigns.fetch(:method, :post),
+  id: "stripe-subscribe-form",
   data: {
     controller: "stripe",
     stripe_target: "form",
@@ -22,9 +22,9 @@
     <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { stripe_target: "name" } %>
   </div>
 
-  <%= f.hidden_field :plan, value: @plan.try(:id) %>
-
   <div class="text-center">
-    <%= f.button local_assigns.fetch(:button, t("subscriptions.new.subscribe")), id: 'submit-button', class: "btn btn-primary", data: { action: "click->stripe#submit", disable_with: disable_with(t("subscriptions.new.processing")) } %>
+    <%= f.button local_assigns.fetch(:button, t("subscriptions.new.subscribe")), id: 'submit-button', class: "btn btn-primary btn-large btn-block", data: { action: "click->stripe#submit", disable_with: disable_with(t("subscriptions.new.processing")) } %>
   </div>
+
+  <%= f.hidden_field :plan, value: @plan.try(:id) %>
 <% end %>

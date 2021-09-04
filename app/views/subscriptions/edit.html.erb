@@ -9,31 +9,26 @@
   <div class="flex flex-wrap justify-center">
     <div class="text-center">
       <h1><%= t(".title") %></h1>
-      <p class="text-xl"><%= t(".description") %></p>
+      <p class="mt-2 text-xl text-gray-500"><%= t(".description") %></p>
     </div>
   </div>
 
-  <div data-controller="pricing" class="flex flex-wrap items-center justify-center">
-
-    <div data-pricing-target="toggle" class="inline-block rounded-full bg-tertiary-500 py-2 px-1 text-white my-8">
-      <a data-action="click->pricing#switch" data-pricing-target="frequency" data-frequency="monthly" class="cursor-pointer py-2 px-4 rounded-full">
-        <%= t(".monthly") %>
-      </a>
-      <a data-action="click->pricing#switch" data-pricing-target="frequency" data-frequency="yearly" class="cursor-pointer py-2 px-4 rounded-full">
-        <%= t(".yearly") %>
-      </a>
+  <div data-controller="pricing" class="sm:flex flex-wrap items-center justify-center">
+    <div data-pricing-target="toggle" class="relative self-center my-8 bg-gray-200 rounded-full p-0.5 flex sm:mt-8">
+      <button type="button" data-action="click->pricing#switch" data-pricing-target="frequency" data-frequency="monthly" class="relative w-1/2 bg-white border-gray-200 rounded-full py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-none focus:z-10 sm:w-auto sm:px-8">Monthly</button>
+      <button type="button" data-action="click->pricing#switch" data-pricing-target="frequency" data-frequency="yearly" class="ml-0.5 relative w-1/2 border border-transparent rounded-full py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-none focus:z-10 sm:w-auto sm:px-8">Yearly</button>
     </div>
 
     <div class="w-full lg:px-0 px-2">
       <div data-pricing-target="plans" data-frequency="monthly" class="flex flex-wrap items-center justify-center -mx-4">
-        <% Plan.monthly.each do |plan| %>
+        <% Plan.monthly.sorted.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
             <% if @subscription.plan == plan %>
-              <div class="btn btn-white"><%= t(".current_plan") %></div>
+              <div class="btn btn-light-gray btn-block"><%= t(".current_plan") %></div>
             <% else %>
-              <%= form_with model: current_account, url: subscription_url do |f| %>
+              <%= form_with url: subscription_url, method: :patch do |f| %>
                 <%= f.hidden_field :plan, value: plan.id %>
-                <%= f.button t(".change_plan"), class: "btn btn-tertiary", data: { disable_with: t(".processing") } %>
+                <%= f.button t(".change_plan"), class: "btn btn-tertiary btn-block", data: { disable_with: t(".processing") } %>
               <% end %>
             <% end %>
           <% end %>
@@ -41,14 +36,14 @@
       </div>
 
       <div data-pricing-target="plans" data-frequency="yearly" class="hidden flex-wrap items-center justify-center -mx-4">
-        <% Plan.yearly.each do |plan| %>
+        <% Plan.yearly.sorted.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
             <% if @subscription.plan == plan %>
               <div class="btn btn-white"><%= t(".current_plan") %></div>
             <% else %>
-              <%= form_with model: current_account, url: subscription_url do |f| %>
+              <%= form_with url: subscription_url, method: :patch do |f| %>
                 <%= f.hidden_field :plan, value: plan.id %>
-                <%= f.button t(".change_plan"), class: "btn btn-tertiary", data: { disable_with: t(".processing") } %>
+                <%= f.button t(".change_plan"), class: "btn btn-tertiary btn-block", data: { disable_with: t(".processing") } %>
               <% end %>
             <% end %>
           <% end %>

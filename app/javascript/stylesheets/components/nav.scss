@@ -5,6 +5,10 @@
   &.active {
     @apply font-semibold;
   }
+
+  &:focus {
+    @apply text-gray-900;
+  }
 }
 
 @media (min-width: 1024px) {

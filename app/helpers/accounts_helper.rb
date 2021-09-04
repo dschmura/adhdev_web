@@ -10,7 +10,7 @@ module AccountsHelper
         alt: account.name
       )
 
-    elsif account.avatar.attached?
+    elsif account.avatar.attached? && account.avatar.variable?
       image_tag(
         account.avatar.variant(thumbnail: "#{size}x#{size}^", gravity: "center", extent: "#{size}x#{size}"),
         class: classes,

@@ -76,4 +76,5 @@ class User < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+  validates :avatar, resizable_image: true
 end

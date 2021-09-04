@@ -7,12 +7,12 @@ module Accounts
       helper_method :not_subscribed?
     end
 
-    def subscribed?
-      user_signed_in? && current_account&.subscribed?
+    def subscribed?(name: Pay.default_product_name)
+      user_signed_in? && current_account.payment_processor&.subscribed?(name: name)
     end
 
-    def not_subscribed?
-      !subscribed?
+    def not_subscribed?(name: Pay.default_product_name)
+      !subscribed?(name: name)
     end
   end
 end

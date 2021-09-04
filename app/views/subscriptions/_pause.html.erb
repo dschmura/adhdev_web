@@ -1,6 +1,6 @@
 <%# Pause is only available with Paddle subscriptions %>
-<% if Jumpstart.config.paddle? && current_account.subscription && !current_account.subscription.paused? %>
-  <hr class="border-b my-8" />
+<% if !subscription.paused? %>
+  <hr class="border-b border-gray-200 my-8" />
   <h3><%= t ".pause.title" %></h3>
   <div class="flex">
     <div class="flex-1 mt-2 text-gray-700">

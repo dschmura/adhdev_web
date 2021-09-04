@@ -8,10 +8,9 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    owner: Field::Polymorphic,
     id: Field::Number,
+    customer: Field::BelongsTo.with_options(class_name: "Pay::Customer"),
     name: Field::String,
-    processor: Field::String,
     processor_id: Field::String,
     processor_plan: Field::String,
     quantity: Field::Number,
@@ -31,7 +30,7 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :owner,
+    :customer,
     :name,
     :active?,
     :cancelled?
@@ -41,10 +40,9 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :owner,
+    :customer,
     :active?,
     :name,
-    :processor,
     :processor_id,
     :processor_plan,
     :quantity,
@@ -59,9 +57,8 @@ class Pay::SubscriptionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :owner,
+    :customer,
     :name,
-    :processor,
     :processor_id,
     :processor_plan,
     :quantity,

@@ -17,7 +17,7 @@
     <% end %>
 
     <div data-dropdown-target="menu" class="lg:absolute lg:right-0 mt-2 hidden z-20">
-      <div data-notifications-target="list" class="bg-white shadow rounded border overflow-hidden sm:w-96">
+      <div data-notifications-target="list" class="bg-white shadow rounded border border-gray-200 overflow-hidden sm:w-96">
         <%= render partial: "notifications/notification", collection: @navbar_notifications, cached: true %>
 
         <% if current_user.notifications.count > 10 %>

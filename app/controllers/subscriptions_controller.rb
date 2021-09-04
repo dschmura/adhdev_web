@@ -3,23 +3,33 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user_with_sign_up!
   before_action :require_account
   before_action :require_current_account_admin, except: [:show]
-  before_action :set_plan, only: [:new]
-  before_action :set_subscription, only: [:edit, :update]
+  before_action :set_plan, only: [:new, :create, :update]
+  before_action :set_subscription, only: [:show, :edit, :update, :destroy]
+
+  layout "checkout", only: [:new, :create]
+
+  def index
+    @payment_processor = current_account.payment_processor
+    @subscriptions = current_account.subscriptions.active.order(created_at: :asc)
+  end
 
   def show
+    redirect_to edit_subscription_path(@subscription)
   end
 
   def new
-    if Jumpstart.config.stripe? && @plan.trial_period_days.to_i > 0
-      @setup_intent = current_account.processor&.stripe? ? current_account.payment_processor.create_setup_intent : Stripe::SetupIntent.create
+    if Jumpstart.config.stripe? && @plan.has_trial?
+      @setup_intent = current_account.payment_processor&.stripe? ? current_account.payment_processor.create_setup_intent : Stripe::SetupIntent.create
     end
   end
 
   def create
-    current_account.assign_attributes(subscription_params)
-    @plan = Plan.without_free.find(current_account.plan) # Get the Stripe or Braintree specific ID
-    processor_id = @plan.processor_id(current_account.processor)
-    current_account.subscribe(plan: processor_id, trial_period_days: @plan.trial_period_days)
+    payment_processor = params[:processor] ? current_account.set_payment_processor(params[:processor]) : current_account.payment_processor
+    payment_processor.payment_method_token = params[:payment_method_token]
+    payment_processor.subscribe(
+      plan: @plan.id_for_processor(payment_processor.processor),
+      trial_period_days: @plan.trial_period_days
+    )
     redirect_to root_path, notice: t(".created")
   rescue Pay::ActionRequired => e
     redirect_to pay.payment_path(e.payment.id)
@@ -32,58 +42,50 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    current_account.assign_attributes(subscription_params)
-
-    # Get the Stripe or Braintree specific ID
-    @plan = Plan.find(current_account.plan)
-    processor_id = @plan.processor_id(current_account.processor)
-
-    @subscription.swap(processor_id)
-    redirect_to subscription_path
+    @subscription.swap @plan.id_for_processor(current_account.payment_processor.processor)
+    redirect_to subscriptions_path, notice: t(".success")
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :edit, status: :unprocessable_entity
   end
 
   def resume
-    current_account.subscription.resume
-    redirect_to subscription_path, notice: t(".resumed")
+    current_account.payment_processor.subscription.resume
+    redirect_to subscriptions_path, notice: t(".resumed")
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :show, status: :unprocessable_entity
   end
 
   def pause
-    current_account.subscription.pause
-    redirect_to subscription_path
+    current_account.payment_processor.subscription.pause
+    redirect_to subscriptions_path
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :show
   end
 
   def destroy
-    current_account.subscription.cancel
-
-    current_account.update(card_type: nil, card_last4: nil, card_exp_month: nil, card_exp_year: nil) if current_account.subscription.paddle?
+    @subscription.cancel
 
     # Optionally, you can cancel immediately
-    # current_account.subscription.cancel_now!
+    # @subscription.cancel_now!
 
-    redirect_to subscription_path
+    redirect_to subscriptions_path
   rescue Pay::Error => e
     flash[:alert] = e.message
     render :show, status: :unprocessable_entity
   end
 
   def info
-    current_account.update(subscription_params)
-    redirect_to subscription_path, notice: t(".info_updated")
+    current_account.update(info_params)
+    redirect_to subscriptions_path, notice: t(".info_updated")
   end
 
   private
 
-  def subscription_params
-    params.require(:account).permit(:card_token, :plan, :processor, :extra_billing_info)
+  def info_params
+    params.require(:account).permit(:extra_billing_info)
   end
 
   def require_account
@@ -103,7 +105,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def set_subscription
-    @subscription = current_account.subscription
-    redirect_to subscription_path if @subscription.nil?
+    @subscription = current_account.subscriptions.find_by_prefix_id(params[:id])
+    redirect_to subscriptions_path if @subscription.nil?
   end
 end

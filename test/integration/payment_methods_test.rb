@@ -5,12 +5,12 @@ class PaymentMethodsTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
-  test "user can add a card without a processor set" do
+  test "user can add a payment method without a processor set" do
     sign_in @user
-    @user.personal_account.update(processor: nil)
+    @user.personal_account.pay_customers.destroy_all
 
     switch_account @user.personal_account
-    get edit_card_path
+    get new_payment_method_path
     assert_response :success
   end
 end

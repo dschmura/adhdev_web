@@ -1,5 +1,5 @@
-<%= form_with model: current_account,
-  url: local_assigns.fetch(:url, card_path),
+<%= form_with url: local_assigns.fetch(:url, payment_methods_path),
+  method: :post,
   class: "hidden mt-4",
   data: {
     controller: "braintree",
@@ -11,6 +11,7 @@
 
   <%= tag.div nil, data: { braintree_target: "dropin" } %>
 
-  <%= f.hidden_field :processor, value: :braintree %>
   <%= f.button t(".button"), class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with(t(".processing")) } %>
+
+  <%= f.hidden_field :processor, value: :braintree %>
 <% end %>

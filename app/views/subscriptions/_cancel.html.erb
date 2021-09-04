@@ -1,5 +1,5 @@
-<% if current_account.subscription && !current_account.subscription.cancelled? %>
-  <hr class="border-b my-8" />
+<% if (subscription = current_account.payment_processor&.subscription) && !subscription.cancelled? %>
+  <hr class="border-b border-gray-200 my-8" />
   <h3><%= t ".title" %></h3>
   <div class="flex">
     <div class="flex-1 mt-2 text-gray-700">

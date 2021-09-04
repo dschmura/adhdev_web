@@ -23,16 +23,10 @@
   <div class="form-group">
     <%= form.label :avatar %>
 
-    <div class="flex">
-      <%= account_avatar form.object, class: "rounded-full flex-shrink-0" %>
-
-      <div class="ml-4">
-        <div class="form-group">
-          <%= form.file_field :avatar, accept:'image/*', class: "input-file" %>
-          <label for="user_avatar" class="ml-4">
-            <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span><%= t("users.avatar.upload") %></span>
-          </label>
-        </div>
+    <div class="flex items-center gap-4">
+      <%= account_avatar form.object, class: "rounded-full" %>
+      <div>
+        <%= form.file_field :avatar, accept: "image/*" %>
       </div>
     </div>
   </div>

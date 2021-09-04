@@ -1,7 +1,7 @@
 module Jumpstart
   module AdministrateHelpers
     def charge_processor_url(charge)
-      case charge.processor
+      case charge.customer.processor
       when "stripe"
         "#{stripe_base_url}/payments/#{charge.processor_id}"
       when "braintree"
@@ -19,7 +19,7 @@ module Jumpstart
     end
 
     def subscription_processor_url(subscription)
-      case subscription.processor
+      case subscription.customer.processor
       when "stripe"
         "#{stripe_base_url}/subscriptions/#{subscription.processor_id}"
       when "braintree"

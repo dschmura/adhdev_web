@@ -43,9 +43,12 @@
     <p class="mb-4">Tailwind is processed using PostCSS. The Tailwind config is located <code>app/javascript/stylesheets/tailwind.config.js</code>. You can use this file to tweak colors, fonts and other defaults.</p>
     <p class="mb-4">The components are located in <code>app/javascript/stylesheets/components/</code>. You will find an organized set of files for each component in the app design there.</p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-400">PurgeCSS</h2>
-    <p class="mb-4">We have included PurgeCSS by default to automatically remove unused CSS when deploying to production. This greatly reduces the size of TailwindCSS in production to deliver a much faster experience in production.</p>
-    <p class="mb-4">PurgeCSS works by searching folders for exact matches of any CSS classes in your app. By default, we have configured PurgeCSS to look for CSS classes used in <code>app/views/**/*.html.erb</code> and <code>app/helpers/**/*.rb</code>. Any CSS classes referenced in these files will automatically be kept for production.</p>
-    <p class="mb-4">To add more search paths to PurgeCSS, add them to <code>postcss.config.js</code>.</p>
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Purging CSS for Production</h2>
+    <p class="mb-4">TailwindCSS includes PurgeCSS by default to automatically remove unused CSS when deploying to production. This greatly reduces the size of TailwindCSS in production to deliver a much faster experience in production.</p>
+    <p class="mb-4">PurgeCSS works by searching folders for exact matches of any CSS classes in your app. By default, we have configured PurgeCSS to look for CSS classes used in common application folders. Any CSS classes referenced in these files will automatically be kept for production.</p>
+    <p class="mb-4">To add more search paths to purge, add them to <code>tailwind.config.js</code>.</p>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-400">Tailwind UI</h2>
+    <p class="mb-4">If you're a Tailwind UI customer, you can use it with Jumpstart Pro. You'll need to remove the default classes that Jumpstart Pro comes with because TailwindUI expects a blank slate to work with. You can find these in the application stylesheet and remove them.</p>
   </div>
 </div>

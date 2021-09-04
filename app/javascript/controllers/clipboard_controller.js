@@ -14,10 +14,6 @@ export default class extends Controller {
     this.clipboard.on("error",   (e) => this.tooltip(this.errorMessage))
   }
 
-  disconnect() {
-    this.tippy.destroy();
-  }
-
   tooltip(message) {
     tippy(this.element, {
       content: message,

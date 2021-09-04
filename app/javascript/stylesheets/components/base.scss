@@ -10,11 +10,11 @@ body {
 }
 
 a {
-  @apply text-primary-500;
+  @apply text-blue-600;
 
   &:hover,
   &:focus {
-    @apply text-primary-600;
+    @apply text-blue-500;
 
     transform: none;
   }

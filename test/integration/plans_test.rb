@@ -34,7 +34,7 @@ class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
       sign_in users(:one)
       plan = plans(:personal)
 
-      get "/subscription/new?plan=#{plan.id}"
+      get new_subscription_path(plan: plan.id)
 
       assert response.body.include?(plan.name)
       plan.features.each do |feature|
@@ -49,7 +49,7 @@ class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
 
       sign_in user
       switch_account(account)
-      get "/subscription/new?plan=#{plan.id}"
+      get new_subscription_path(plan: plan.id)
 
       assert response.body.include?(account.name)
       assert response.body.include?(plan.name)

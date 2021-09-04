@@ -1,24 +1,24 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="w-full p-4 lg:w-1/4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="w-full p-4 lg:w-3/4">
-    <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
-      <h2 class="mb-4"><%= t('.title', resource: resource.model_name.human) %></h2>
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="p-4 bg-white border border-gray-200 rounded-lg lg:p-10">
+      <h1 class="h3 mb-4"><%= t('.title', resource: resource.model_name.human) %></h1>
 
-      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "mb-16") do |f| %>
+      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "mb-16") do |form| %>
         <%= render "shared/error_messages", resource: resource %>
         <div class="flex flex-wrap items-start justify-between">
           <div class="w-full lg:w-1/2">
             <div class="form-group">
-              <%= f.label :name, "Full name" %>
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
+              <%= form.label :name, "Full name" %>
+              <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :email %>
-              <%= f.email_field :email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
+              <%= form.label :email %>
+              <%= form.email_field :email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,37 +26,29 @@
             <% end %>
 
             <div class="form-group">
-              <%= f.label :time_zone %>
-              <%= f.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "select" } %>
+              <%= form.label :time_zone %>
+              <%= form.time_zone_select :time_zone, nil, { default: browser_time_zone.name }, { class: "select" } %>
             </div>
 
             <% if I18n.available_locales.length > 1 %>
               <div class="form-group">
-                <%= f.label :preferred_language %>
-                <%= f.select :preferred_language, language_options, {}, { class: "select" } %>
+                <%= form.label :preferred_language %>
+                <%= form.select :preferred_language, language_options, {}, { class: "select" } %>
               </div>
             <% end %>
           </div>
 
           <div class="w-full lg:pl-16 lg:w-1/2">
-            <div class="flex flex-wrap items-center justify-start">
-              <div class="form-group">
-                <%= image_tag avatar_url_for(f.object), class: "rounded-full ml-4 w-16" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.file_field :avatar, accept:'image/*', class: "input-file" %>
-
-                <label for="user_avatar" class="ml-4">
-                  <%= render_svg "icons/photo", styles: "fill-current icon-xs mr-2" %> <span><%= t("users.avatar.upload") %></span>
-                </label>
+            <div class="flex items-center gap-4">
+              <%= image_tag avatar_url_for(form.object), class: "rounded-full" %>
+              <div>
+                <%= form.file_field :avatar, accept: "image/*" %>
               </div>
             </div>
-
           </div>
         </div>
         <div class="mt-2 form-group">
-          <%= f.button t('.update'), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving")) } %>
+          <%= form.button t('.update'), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving")) } %>
         </div>
       <% end %>
 

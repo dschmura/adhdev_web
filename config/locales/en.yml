@@ -32,16 +32,15 @@
 # https://mikerogers.io/2016/01/10/i18n-rails-internationalisation-i18n-cheatsheet.html
 
 en:
-  hello: "Hello world"
-
-  something_went_wrong: "Something went wrong"
-  create_an_account_first: "Please create an account first."
-  must_be_an_admin: "You must be an admin to do that."
   are_you_sure: "Are you sure?"
-  delete: "Delete"
   back: "Back"
   cancel: "Cancel"
+  create_an_account_first: "Please create an account first."
+  delete: "Delete"
   edit: "Edit"
+  must_be_an_admin: "You must be an admin to do that."
+  processing: "Processing..."
+  something_went_wrong: "Something went wrong"
   unauthorized: "You are not authorized to perform this action."
 
   account_invitations_mailer:
@@ -81,11 +80,10 @@ en:
       switch: "Switch"
       personal_team_description: "Your personal account is private. Create a new account to share with your team."
     new:
-      breadcrumb: "New Account"
       title: "New Account"
+      description: "Collaborate and share with others by creating an account."
     edit:
-      breadcrumb: "Edit"
-      title: "Edit Account"
+      title: "Edit"
     created: "Account was successfully created."
     created_and_switch_html: "Account was successfully created. <a class=\"underline\" href=\"%{link}\">Switch account</a>"
     updated: "Account was successfully updated."
@@ -93,16 +91,17 @@ en:
     admin_required: "Only account admins are allowed to do that."
     personal:
       cannot_delete: "You cannot delete your personal account."
-    all: "All Accounts"
     users: "Users"
     roles: "Roles"
     account_invitations:
       new:
-        description: "Invite a user to your join account."
+        title: "Invite User"
+        description: "Invite a user to join your account."
         send: "Send invitation"
         cancel: "Cancel"
       edit:
-        description: "Edit or cancel account invitation."
+        title: "Edit Invitation"
+        description: "Edit or cancel invitation."
         back: "Back"
         update: "Update invitation"
         destroy: "Cancel Invite"
@@ -133,24 +132,26 @@ en:
     index:
       title: "API Tokens"
       create: "Create an API Token"
-      revoke: "Revoke"
+      view: "View"
     new:
-      breadcrumb: "New"
       title: "New API Token"
     edit:
-      breadcrumb: "Edit"
-      title: "Edit API Token"
+      title: "Edit"
     show:
       edit: "Edit Token"
+      click_to_copy: "Click to copy"
       revoke: "Revoke Token"
       confirm: "Are you sure you want to revoke this API token?"
       auth_header: "Authenticate using Header"
 
-  cards:
-    updated: "Your card was updated successfully."
-    edit:
+  payment_methods:
+    new:
       billing: "Billing"
       payment_details: "Payment Details"
+
+    create:
+      updated: "Your payment method was updated successfully."
+
     forms:
       braintree:
         button: "Update Card"
@@ -158,7 +159,6 @@ en:
       stripe:
         credit_or_debit_card: "Credit or Debit Card"
         button: "Update Card"
-        processing: "Processing..."
 
   dashboard:
     show:
@@ -179,11 +179,10 @@ en:
   static:
     no_plans: "There are no pricing plans configured."
     pricing:
-      heading: "Pricing"
+      heading: "Pricing Plans"
       subhead: "Simple, straightforward pricing to get your online business up and running"
       monthly: "Monthly"
       yearly: "Yearly"
-      get_started: "Get Started"
 
     about:
       title: "About Us"
@@ -207,7 +206,6 @@ en:
     flash:
       confirm_payment: "Confirm your latest payment"
     navbar:
-      signed_in_as_html: "Signed in as <strong>%{user}</strong>"
       profile: "Profile"
       password: "Password"
       connected_accounts: "Connected Accounts"
@@ -221,6 +219,7 @@ en:
       sign_up: "Sign Up"
     oauth:
       apple: "Apple"
+      developer: "Developer"
       facebook: "Facebook"
       github: "GitHub"
       gitlab: "GitLab"
@@ -243,6 +242,19 @@ en:
     resumed: "Your subscription has been resumed."
     info_updated: "Extra billing info saved sucessfully."
 
+    plan:
+      change_plan: "Change Plan"
+      current_plan: "Current plan"
+      get_started: "Get Started"
+      processing: "Processing..."
+
+    index:
+      title: "Billing"
+      contact_admin: "Contact an admin to change the %{account} subscription."
+      subscriptions: "Current plan"
+      not_subscribed: "You are not currently subscribed."
+      choose_plan: "Choose a plan"
+
     new:
       title: "Checkout"
       payment_method: "Payment Method"
@@ -254,7 +266,7 @@ en:
       renews_html: "Automatically renews<br/>after 1 %{interval}"
       contact_support: "contact support"
       contact_subject: "I have a question about %{product}"
-      testimonial: "I've never found anything easier to use than %{product}!"
+      testimonial: "%{product} has made my life so much easier. I can't recommend it enough."
 
     edit:
       trial_ends: "Your trial ends in %{days}."
@@ -263,55 +275,85 @@ en:
       monthly: "Monthly"
       yearly: "Yearly"
       current_plan: "Current Plan"
-      change_plan: "Change Plan"
       processing: "Processing..."
 
-    show:
-      title: "Billing"
-      contact_admin: "Contact an admin to change the %{account} subscription."
+    update:
+      success: "Your plan has been updated successfully."
 
-    current_plan:
+    subscription:
+      cancel_plan: "Cancel plan"
       title: "Current Plan"
-      trial_ends: "Your trial ends in %{days}."
-      subscription_ends_html: "Your subscription ends <strong>%{date}</strong>"
-      subscription_pauses_html: "Your subscription pauses <strong>%{date}</strong>"
-      subscription_paused_html: "Your subscription is <strong>paused</strong>"
-      resume: "Resume Subscription"
-      resuming: "Resuming..."
-      resubscribe_html: "Your subscription has ended. Would you like to %{link}?"
-      resubscribe: "resubscribe"
-      current_plan_html: "You are currently subscribed to the <strong>%{plan}</strong> plan."
-      change_plan: "Change my plan"
-      not_subscribed: "You are not currently subscribed."
-      choose_plan: "Choose a plan"
+      trial: "After your trial ends on %{date}, this plan will continue automatically."
+      quantity: "Quantity: %{quantity} at %{price} each"
+      resume: "Resume plan"
+      change_plan: "Change plan"
+      pause: "Pause plan"
+      canceled: "Canceled"
+      incomplete: "Incomplete"
+      confirm_payment: "Confirm payment"
+      ends_at: "Your plan will be canceled on %{date}."
+
+    payment_method:
       payment_method: "Payment Method"
-      no_card: "You have no card on file."
+      no_payment_method: "You have no payment method on file."
       update_payment_method: "Update payment method"
+
+    billing_info:
       extra_billing_info: "Extra Billing Information"
       additional_information: "Add any additional information to all of your receipts such as your VAT ID, full business name, and address."
       save_info: "Save information"
       saving: "Saving..."
       add_info: "Add information"
-      invoices: "Invoices"
-      invoices_description: "Your history of transactions and payments."
+
+    charges:
+      title: "Billing History"
       date: "Date"
       amount: "Amount"
+      payment_method: "Payment Method"
       receipt: "Receipt"
       view: "View"
-      pause:
-        title: "Pause Your Subscription"
+      empty: "No billing history."
+
+    pauses:
+      show:
+        title: "Pause your plan"
         description: "You can pause your subscription and resume at a later time."
         note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
-        button: "Pause Subscription"
-        pausing: "Pausing..."
-    cancel:
-      title: "Cancel Your Subscription"
-      description: "You can cancel anytime, but you'll lose access to %{product}."
-      help_html: "Need to talk to someone? %{link} -- we'd love to help."
-      contact_us: "Contact us"
-      subject: "Question about %{product}"
-      button: "Cancel Subscription"
-      cancelling: "Cancelling..."
+        back: "Back to Billing"
+        button: "Pause plan"
+        processing: "Pausing..."
+
+      update:
+        resumed: "Your subscription has been paused."
+
+    resumes:
+      show:
+        title: "Resume your plan"
+        resume: "This plan will no longer be canceled and will automatically renew."
+        quantity: "Quantity: %{quantity} at %{price} each"
+        back: "Back to Billing"
+        button: "Resume plan"
+        processing: "Resuming..."
+
+      update:
+        resumed: "Your subscription has been resumed."
+
+    cancels:
+      show:
+        title: "Cancel your plan"
+        description: "You can cancel anytime, but you'll lose access to %{product}."
+        help_html: "Need to talk to someone? %{link} -- we'd love to help."
+        contact_us: "Contact us"
+        subject: "Question about %{product}"
+        quantity: "Quantity: %{quantity} at %{price} each"
+        active_until: "Your plan will be canceled, but is still available until the end of your billing period."
+        resume: "If you change your mind, you can resume your subscription."
+        button: "Cancel plan"
+        back: "Back to Billing"
+        processing: "Cancelling..."
+
+      destroy:
+        resumed: "Your subscription has been canceled."
 
     forms:
       stripe:
@@ -415,8 +457,16 @@ en:
             admin:
               cannot_be_removed: "role cannot be removed for the account owner"
 
+  errors:
+    messages:
+      image_format_not_supported: "image format not supported"
+
   helpers:
+    label:
+      country: "Country or region"
+
     placeholder:
+      name_on_card: "Full name"
       account_invitation:
         name: "Full name"
         email: "example@domain.com"

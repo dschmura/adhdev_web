@@ -24,7 +24,7 @@ class ApiTokensController < ApplicationController
 
   def update
     if @api_token.update(api_token_params)
-      redirect_to api_tokens_path, notice: t(".updated")
+      redirect_to api_token_path(@api_token), notice: t(".updated")
     else
       render :edit, status: :unprocessable_entity
     end

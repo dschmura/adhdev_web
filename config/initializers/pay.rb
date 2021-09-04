@@ -10,6 +10,12 @@ end
 module SubscriptionExtensions
   extend ActiveSupport::Concern
 
+  included do
+    # Generates hash IDs with a friendly prefix so users can't guess hidden plan IDs on checkout
+    # https://github.com/excid3/prefixed_ids
+    has_prefix_id :sub
+  end
+
   def jumpstart_paused?
     false
   end
@@ -19,6 +25,17 @@ module SubscriptionExtensions
   end
 end
 
+module ChargeExtensions
+  extend ActiveSupport::Concern
+
+  included do
+    # Generates hash IDs with a friendly prefix so users can't guess hidden plan IDs on checkout
+    # https://github.com/excid3/prefixed_ids
+    has_prefix_id :ch
+  end
+end
+
 Rails.configuration.to_prepare do
-  Pay.subscription_model.include SubscriptionExtensions
+  Pay::Subscription.include SubscriptionExtensions
+  Pay::Charge.include ChargeExtensions
 end

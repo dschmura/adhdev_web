@@ -7,10 +7,12 @@ module Jumpstart
 
       if @user.save
         # Ensure Jumpstart free plan exists for admin users
-        Plan.create_with(name: "Free", hidden: true, interval: :month, trial_period_days: 0).find_or_create_by(details: {fake_processor_id: :free})
+        Plan.where(name: "Free").first_or_create(hidden: true, amount: 0, currency: :usd, interval: :month, trial_period_days: 0, fake_processor_id: :free)
 
         # Create a fake subscription for the admin user so they have access to everything by default
-        @user.accounts.first.subscriptions.create(subscription_params)
+        account = @user.accounts.first
+        account.set_payment_processor :fake_processor, allow_fake: true
+        account.payment_processor.subscribe
 
         @notice = "#{@user.name} (#{@user.email}) has been added as an admin. #{view_context.link_to("Login", main_app.new_user_session_path)}"
 
@@ -27,10 +29,6 @@ module Jumpstart
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :time_zone).merge(admin: true, terms_of_service: true)
-    end
-
-    def subscription_params
-      {name: "default", processor: :fake_processor, processor_id: :free, processor_plan: :free, quantity: 1, status: :active}
     end
   end
 end

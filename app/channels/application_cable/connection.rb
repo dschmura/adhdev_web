@@ -2,7 +2,9 @@ module ApplicationCable
   class Connection < ActionCable::Connection::Base
     include SetCurrentRequestDetails
 
-    identified_by :current_user, :current_account
+    identified_by :current_user, :current_account, :true_user
+    impersonates :user
+
     delegate :session, to: :request
 
     def connect

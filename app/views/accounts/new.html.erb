@@ -4,18 +4,15 @@
   </div>
 
   <div class="lg:w-3/4 w-full p-4">
-    <div class="text-sm text-gray-600 mb-5">
-      <%= link_to t("accounts.all"), accounts_path, class: "hover:text-black" %>
-      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
-      <%= t(".breadcrumb") %>
-    </div>
-
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
-      <h1><%= t(".title") %></h1>
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200">
+      <h1 class="h3">
+        <%= link_to t("accounts.index.title"), accounts_path, class: "hover:text-black" %>
+        <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
+        <%= t(".title") %>
+      </h1>
+      <div class="mb-8 text-gray-700"><%= t(".description") %></div>
 
       <%= render 'form', account: @account %>
-
-      <%= link_to t("back"), accounts_path %>
     </div>
   </div>
 </div>

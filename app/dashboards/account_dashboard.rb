@@ -9,6 +9,7 @@ class AccountDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     owner: Field::BelongsTo.with_options(class_name: "User"),
+    pay_customers: Field::HasMany.with_options(class_name: "Pay::Customer"),
     charges: Field::HasMany.with_options(class_name: "Pay::Charge"),
     subscriptions: Field::HasMany.with_options(class_name: "Pay::Subscription"),
     account_users: Field::HasMany,
@@ -19,15 +20,7 @@ class AccountDashboard < Administrate::BaseDashboard
     personal: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    processor: Field::String,
-    processor_id: Field::String,
-    trial_ends_at: Field::DateTime,
-    card_type: Field::String,
-    card_last4: Field::String,
-    card_exp_month: Field::String,
-    card_exp_year: Field::String,
-    extra_billing_info: Field::Text,
-    quantity: Field::Number
+    extra_billing_info: Field::Text
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -36,10 +29,10 @@ class AccountDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :owner,
     :name,
     :personal,
-    :processor,
     :account_users
   ].freeze
 
@@ -48,6 +41,7 @@ class AccountDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :owner,
+    :pay_customers,
     :charges,
     :subscriptions,
     :account_users,
@@ -57,15 +51,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :personal,
     :created_at,
     :updated_at,
-    :processor,
-    :processor_id,
-    :trial_ends_at,
-    :card_type,
-    :card_last4,
-    :card_exp_month,
-    :card_exp_year,
-    :extra_billing_info,
-    :quantity
+    :extra_billing_info
   ].freeze
 
   # FORM_ATTRIBUTES

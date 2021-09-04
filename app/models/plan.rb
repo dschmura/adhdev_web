@@ -4,9 +4,12 @@
 #
 #  id                :bigint           not null, primary key
 #  amount            :integer          default(0), not null
+#  currency          :string
+#  description       :string
 #  details           :jsonb            not null
 #  hidden            :boolean
 #  interval          :string           not null
+#  interval_count    :integer          default(1)
 #  name              :string           not null
 #  trial_period_days :integer          default(0)
 #  created_at        :datetime         not null
@@ -22,6 +25,7 @@ class Plan < ApplicationRecord
   attribute :features, :string, array: true
 
   validates :name, :amount, :interval, presence: true
+  validates :currency, presence: true, format: {with: /\A[a-zA-Z]{3}\z/, message: "must be a 3-letter ISO currency code"}
   validates :interval, inclusion: %w[month year]
   validates :trial_period_days, numericality: {only_integer: true}
 
@@ -36,8 +40,22 @@ class Plan < ApplicationRecord
   scope :without_free, -> { where.not("details @> ?", {fake_processor_id: :free}.to_json) }
   scope :yearly, -> { without_free.where(interval: :year) }
 
+  # Downcase
+  before_save { currency.downcase! }
+
+  # Default currency
+  after_initialize { self.currency ||= "usd" }
+
   def features
     Array.wrap(super)
+  end
+
+  def dollar_amount
+    amount / 100
+  end
+
+  def has_trial?
+    trial_period_days.to_i > 0
   end
 
   def monthly?
@@ -66,8 +84,9 @@ class Plan < ApplicationRecord
     self.class.monthly.where(name: name).first
   end
 
-  def processor_id(processor)
-    return if processor.nil?
-    send("#{processor}_id")
+  def id_for_processor(processor_name, currency: "usd")
+    return if processor_name.nil?
+    processor_name = :braintree if processor_name.to_s == "paypal"
+    send("#{processor_name}_id")
   end
 end

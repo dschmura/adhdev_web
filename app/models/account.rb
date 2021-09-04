@@ -3,21 +3,14 @@
 # Table name: accounts
 #
 #  id                 :bigint           not null, primary key
-#  card_exp_month     :string
-#  card_exp_year      :string
-#  card_last4         :string
-#  card_type          :string
 #  domain             :string
 #  extra_billing_info :text
 #  name               :string           not null
 #  personal           :boolean          default(FALSE)
-#  processor          :string
 #  subdomain          :string
-#  trial_ends_at      :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  owner_id           :bigint
-#  processor_id       :string
 #
 # Indexes
 #
@@ -29,8 +22,6 @@
 #
 
 class Account < ApplicationRecord
-  include Pay::Billable
-
   RESERVED_DOMAINS = [Jumpstart.config.domain]
   RESERVED_SUBDOMAINS = %w[app help support]
 
@@ -46,10 +37,12 @@ class Account < ApplicationRecord
 
   has_noticed_notifications
   has_one_attached :avatar
+  pay_customer
 
   validates :name, presence: true
   validates :domain, exclusion: {in: RESERVED_DOMAINS, message: :reserved}
   validates :subdomain, exclusion: {in: RESERVED_SUBDOMAINS, message: :reserved}, format: {with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\-_]*[a-zA-Z0-9]+\Z/, message: :format, allow_blank: true}
+  validates :avatar, resizable_image: true
 
   def email
     account_users.includes(:user).order(created_at: :asc).first.user.email
@@ -98,7 +91,9 @@ class Account < ApplicationRecord
   # Uncomment this to add generic trials (without a card or plan)
   #
   # before_create do
-  #   self.trial_ends_at = 14.days.from_now
+  #   trial_ends_at = 14.days.from_now
+  #   set_payment_processor :fake_processor, allow_fake: true
+  #   payment_processor.subscribe(trial_ends_at: trial_ends_at, ends_at: trial_ends_at)
   # end
 
   # If you need to create some associated records when an Account is created,

@@ -1,47 +1,44 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="lg:w-1/4 w-full p-4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="lg:w-3/4 w-full p-4">
-    <div class="text-sm text-gray-600 mb-5">
-      <%= link_to t("api_tokens.all"), api_tokens_path, class: "hover:text-black" %>
-      <%= render_svg "icons/cheveron-right", styles: "fill-current icon-sm text-gray-600 inline-block" %>
-      <%= link_to @api_token.name, @api_token, class: "hover:text-black" %>
-    </div>
-
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
-
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200">
       <div class="sm:flex justify-between items-center mb-5">
         <div class="flex items-center">
-          <h1 class="text-xl"><%= @api_token.name %></h1>
+          <h1 class="h3 mb-2"><%= @api_token.name %></h1>
         </div>
 
         <div class="flex-shrink-0">
-          <%= link_to t(".edit"), edit_api_token_path(@api_token), class: "btn btn-primary outline" %>
-          <%= link_to t(".revoke"), @api_token, method: :delete, class: "btn btn-danger outline", data: { confirm: t(".confirm") } %>
+          <%= link_to t(".edit"), edit_api_token_path(@api_token), class: "btn btn-light-gray" %>
+          <%= link_to t(".revoke"), @api_token, method: :delete, class: "btn btn-light-gray", data: { confirm: t(".confirm") } %>
         </div>
       </div>
 
-      <div class="mb-4 overflow-scroll">
-        <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:token) %></div>
-        <%= @api_token.token %>
+      <div class="mb-4">
+        <div class="mb-2 text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:token) %></div>
+        <%= tag.span @api_token.token, class: "font-mono cursor-pointer whitespace-pre-wrap", data: { controller: "clipboard tooltip", tooltip_content_value: t(".click_to_copy"), clipboard_text: @api_token.token } %>
       </div>
 
       <div class="mb-4">
-        <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:created_at) %></div>
+        <div class="mb-2 text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:created_at) %></div>
         <%= @api_token.created_at.strftime("%b %e, %Y") %>
       </div>
 
       <div class="mb-4">
-        <div class="text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:last_used_at) %></div>
+        <div class="mb-2 text-gray-600 text-xs uppercase font-bold"><%= ApiToken.human_attribute_name(:last_used_at) %></div>
         <%= @api_token.last_used_at? ? local_time_ago(@api_token.last_used_at) : "—" %>
       </div>
 
-      <div class="overflow-scroll">
-        <div class="text-gray-600 text-xs uppercase font-bold"><%= t(".auth_header") %></div>
-        <pre><code>GET /api/v1/me.json
+      <div>
+        <div class="mb-4 text-gray-600 text-xs uppercase font-bold"><%= t(".auth_header") %></div>
+        <pre class="whitespace-pre-wrap"><code>GET /api/v1/me.json
 Authorization: Bearer <%= @api_token.token %></code></pre>
+
+        <pre class="whitespace-pre-wrap"><code>curl <%= api_v1_me_url(format: :json) %>
+-H "Accept: application/json"
+-H "Authorization: Bearer <%= @api_token.token %>"</code></pre>
       </div>
 
     </div>

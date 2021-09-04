@@ -14,4 +14,8 @@ module CurrentHelper
   def current_account_admin?
     !!current_account_user&.admin?
   end
+
+  def other_accounts
+    @_other_accounts ||= current_user.accounts.order(name: :asc).where.not(id: current_account.id)
+  end
 end

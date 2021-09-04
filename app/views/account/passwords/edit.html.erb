@@ -1,11 +1,11 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="lg:w-1/4 w-full p-4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="lg:w-3/4 w-full p-4">
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300">
-      <h2 class="mb-4"><%= t(".update_password") %></h2>
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200">
+      <h1 class="h3 mb-4"><%= t(".update_password") %></h1>
       <%= form_with(model: current_user, url: account_password_path, local: true, html: { method: :put }, class: "max-w-lg") do |f| %>
         <%= render "shared/error_messages", resource: current_user %>
 
@@ -34,9 +34,9 @@
       <% end %>
     </div>
 
-    <div class="lg:p-10 mt-4 p-4 bg-white rounded-lg border border-gray-300">
+    <div class="lg:p-10 mt-4 p-4 bg-white rounded-lg border border-gray-200">
       <h2 class="h3"><%= t(".two_factor.header") %></h2>
-      <p class="mb-4"><%= t(".two_factor.description") %></p>
+      <p class="mb-4 text-gray-500"><%= t(".two_factor.description") %></p>
       <% if current_user.otp_required_for_login? %>
         <div><%= link_to t(".two_factor.disable"), user_two_factor_path, method: :delete, class: "btn btn-danger outline", data: { confirm: t("are_you_sure") } %></div>
 

@@ -1,13 +1,13 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="w-full lg:p-4 lg:w-1/4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="w-full pt-4 lg:p-4 lg:w-3/4">
-    <div class="p-4 bg-white border border-gray-300 rounded-lg lg:p-10">
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="p-4 bg-white border border-gray-200 rounded-lg lg:p-10">
 
       <div class="sm:flex items-center justify-between mb-3">
-        <h1 class="flex-1 h2"><%= t(".title") %></h1>
+        <h1 class="flex-1 h3"><%= t(".title") %></h1>
 
         <% if @accounts.exists? %>
           <div>
@@ -21,27 +21,23 @@
           <% @accounts.sorted.each do |account| %>
             <tr class="border-t border-gray-100 group">
               <td class="p-3">
-                <%= link_to account, class: "hidden sm:inline-block mr-4 align-middle" do %>
-                  <span class="flex items-center text-gray-700 appearance-none">
-                    <%= account_avatar account, class: "rounded-full h-10 w-10" %>
-                  </span>
+                <%= link_to account, class: "flex items-center" do %>
+                  <%= account_avatar account, class: "rounded-full h-8 w-8 mr-3" %>
+                  <%= tag.span account.name, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
+                  <%= badge "Personal", class: "ml-3" if account.personal_account_for?(current_user) %>
                 <% end %>
 
-                <%= link_to account.name, account, class: "text-gray-900 font-semibold text-sm no-underline hover:text-primary" %>
-                <% if account.personal_account_for?(current_user) %>
-                  <div class="block sm:inline-block px-3 py-1 sm:ml-2 mr-2 text-xs leading-normal text-gray-600 uppercase bg-gray-300 rounded-full font-semibold">Personal</div>
-                <% end %>
               </td>
 
-              <td class="text-sm text-center">
+              <td class="hidden sm:table-cell text-sm text-center">
                 <% if current_account != account %>
-                  <%= switch_account_button account, label: t(".switch"), class: "btn btn-link no-underline" %>
+                  <%= switch_account_button account, label: t(".switch"), class: "btn btn-light-gray" %>
                 <% else %>
-                  <span class="text-gray-600"><%= t(".current") %></span>
+                  <span class="font-medium text-gray-600"><%= t(".current") %></span>
                 <% end %>
               </td>
 
-              <td>
+              <td class="hidden sm:table-cell">
                 <%= link_to "View", account, class: "btn btn-link" %>
               </td>
             </tr>

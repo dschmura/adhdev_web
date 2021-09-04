@@ -1,13 +1,13 @@
 <div class="flex flex-wrap my-4 lg:px-4">
-  <div class="lg:w-1/4 w-full p-4">
+  <div class="w-full mb-4 lg:w-1/4 lg:p-4">
     <%= render partial: "shared/account_navbar" %>
   </div>
 
-  <div class="lg:w-3/4 w-full p-4">
-    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-300 overflow-x-auto">
+  <div class="w-full lg:w-3/4 lg:p-4">
+    <div class="lg:p-10 p-4 bg-white rounded-lg border border-gray-200 overflow-x-auto">
 
       <div class="sm:flex justify-between items-center mb-3">
-        <h1 class="h2 flex-1"><%= t(".title") %></h1>
+        <h1 class="h3 flex-1"><%= t(".title") %></h1>
 
         <div>
           <%= link_to t(".create"), new_api_token_path, class: "btn btn-primary" %>
@@ -15,22 +15,22 @@
       </div>
 
       <% if @api_tokens.exists? %>
-        <table class="table text-left">
-          <thead>
+        <table class="table text-left text-sm">
+          <thead class="bg-gray-100">
             <tr>
-              <th class="p-3 uppercase text-left text-xs text-gray-700"><%= ApiToken.human_attribute_name(:name) %></th>
-              <th class="p-3 uppercase text-left text-xs text-gray-700"><%= ApiToken.human_attribute_name(:last_used_at) %></th>
-              <th class="p-3 uppercase text-left text-xs text-gray-700"><%= ApiToken.human_attribute_name(:created_at) %></th>
-              <th class="p-3 uppercase text-left text-xs text-gray-700"></th>
+              <th class="p-3 uppercase text-left text-xs text-gray-500"><%= ApiToken.human_attribute_name(:name) %></th>
+              <th class="p-3 uppercase text-left text-xs text-gray-500"><%= ApiToken.human_attribute_name(:last_used_at) %></th>
+              <th class="hidden sm:table-cell p-3 uppercase text-left text-xs text-gray-500"><%= ApiToken.human_attribute_name(:created_at) %></th>
+              <th class="p-3 uppercase text-left text-xs text-gray-500"></th>
             </tr>
           </thead>
           <tbody>
             <% @api_tokens.each do |api_token| %>
-              <tr class="group border-t border-gray-400 hover:bg-gray-100">
-                <td class="p-3"><%= link_to api_token.name, api_token %></td>
+              <tr class="group border-t border-gray-200 hover:bg-gray-50">
+                <td class="p-3 font-medium"><%= link_to api_token.name, api_token %></td>
                 <td class="p-3"><%= api_token.last_used_at? ? local_time_ago(api_token.last_used_at) : "—" %></td>
-                <td class="p-3"><%= api_token.created_at.strftime("%b %e, %Y") %></td>
-                <td class="p-3 text-right"><%= link_to t(".revoke"), api_token, method: :delete, data: { confirm: t("are_you_sure") } %></td>
+                <td class="hidden sm:table-cell p-3"><%= api_token.created_at.strftime("%b %e, %Y") %></td>
+                <td class="p-3 font-medium text-sm text-right"><%= link_to t(".view"), api_token %></td>
               </tr>
             <% end %>
           </tbody>

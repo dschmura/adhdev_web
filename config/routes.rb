@@ -27,7 +27,9 @@ Rails.application.routes.draw do
       resources :account_users
       resources :plans
       namespace :pay do
+        resources :customers
         resources :charges
+        resources :payment_methods
         resources :subscriptions
       end
 
@@ -50,7 +52,6 @@ Rails.application.routes.draw do
   # User account
   devise_for :users,
     controllers: {
-      masquerades: "jumpstart/masquerades",
       omniauth_callbacks: "users/omniauth_callbacks",
       registrations: "users/registrations",
       sessions: "users/sessions"
@@ -73,13 +74,20 @@ Rails.application.routes.draw do
   resources :account_invitations
 
   # Payments
-  resource :card
-  resource :subscription do
-    patch :info
-    patch :pause
-    patch :resume
+  resources :payment_methods
+  resources :subscriptions do
+    resource :cancel, module: :subscriptions
+    resource :pause, module: :subscriptions
+    resource :resume, module: :subscriptions
+    collection do
+      patch :info
+    end
   end
-  resources :charges
+  resources :charges do
+    member do
+      get :invoice
+    end
+  end
 
   namespace :account do
     resource :password

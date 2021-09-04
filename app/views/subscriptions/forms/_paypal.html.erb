@@ -1,5 +1,4 @@
-<%= form_with model: current_account,
-  url: local_assigns.fetch(:url, subscription_path),
+<%= form_with url: local_assigns.fetch(:url, subscriptions_path),
   method: local_assigns.fetch(:method, :post),
   data: {
     controller: "paypal",

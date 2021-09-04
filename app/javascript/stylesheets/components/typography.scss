@@ -1,7 +1,7 @@
 .font-display {
   font-size: 4rem; // 64px
 
-  @apply font-black leading-tight tracking-tight;
+  @apply font-bold leading-tight tracking-tight;
 }
 
 
@@ -9,29 +9,29 @@ h1,
 .h1 {
   font-size: 2.5rem; // 48px
 
-  @apply font-black leading-tight tracking-tight;
+  @apply font-bold leading-tight tracking-tight;
 
 }
 
 h2,
 .h2 {
-  font-size: 2.25rem; // 36px
+  font-size: 2.0rem; // 36px
 
-  @apply font-black leading-tight;
+  @apply font-bold leading-tight;
 }
 
 h3,
 .h3 {
   font-size: 1.5rem; // 24px
 
-  @apply font-black leading-normal;
+  @apply font-bold leading-normal;
 }
 
 h4,
 .h4 {
   font-size: 1.125rem; // 18px
 
-  @apply font-black leading-normal;
+  @apply font-bold leading-normal;
 }
 
 h5,
@@ -40,10 +40,10 @@ h5,
 }
 
 .link {
-  @apply text-primary-500;
+  @apply text-blue-500;
 
   &:hover,
   &:focus {
-    @apply text-primary-600;
+    @apply text-blue-600;
   }
 }
