@@ -1,5 +1,5 @@
 <div class="p-4 lg:p-10" id="<%= dom_id(announcement) %>">
-  <%= link_to announcements_path(anchor: dom_id(announcement)), class: "text-gray-500 text-sm font-medium capitalize" do %>
+  <%= link_to announcements_path(anchor: dom_id(announcement)), class: "text-gray-400 text-sm font-medium capitalize" do %>
     <%= local_relative_time announcement.published_at, 'weekday-or-date' %>
   <% end %>
 

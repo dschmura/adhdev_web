@@ -119,6 +119,7 @@ en:
   announcements:
     index:
       title: "What's New"
+      description: "New updates and improvements to %{name}"
       empty_placeholder: "Exciting stuff coming very soon!"
 
   api_tokens:
