@@ -11,7 +11,7 @@
 
   <%= tag.div nil, data: { braintree_target: "dropin" } %>
 
-  <%= f.button t(".button"), class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with(t(".processing")) } %>
+  <%= f.button t(".button"), class: "btn btn-primary", data: { action: "click->braintree#submit", disable_with: disable_with(t("processing")) } %>
 
   <%= f.hidden_field :processor, value: :braintree %>
 <% end %>

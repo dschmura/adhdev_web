@@ -155,7 +155,6 @@ en:
     forms:
       braintree:
         button: "Update Card"
-        processing: "Processing..."
       stripe:
         credit_or_debit_card: "Credit or Debit Card"
         button: "Update Card"
