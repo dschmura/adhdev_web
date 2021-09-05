@@ -1,6 +1,6 @@
 <h5 class="text-gray-700 font-semibold my-4 border-b border-gray-200 pb-2"><%= t(".title") %></h5>
 
-<% if current_account.charges.any? %>
+<% if current_account.charges.sorted.any? %>
   <table class="w-full text-sm">
     <thead class="bg-gray-100">
       <tr>
@@ -12,7 +12,7 @@
     </thead>
 
     <tbody>
-      <% current_account.charges.each do |charge| %>
+      <% current_account.charges.sorted.each do |charge| %>
         <tr class="group border-t border-gray-200 hover:bg-gray-50">
           <td class="p-3 font-medium">
             <%= link_to invoice_charge_path(charge, format: :pdf), target: :_blank do %>
