@@ -55,17 +55,12 @@
   <p class="mb-4">For users who get free access to paid features, you can assign them a subscription to a free plan. Jumpstart Pro comes with a free plan that can be used for this purpose and is applied automatically to Admin users who are created in the Jumpstart Config area.</p>
 
   <pre class="lang-ruby"><code># Ensure Jumpstart free plan exists for admin users
-  Plan.create_with(name: "Free", hidden: true, interval: :month, trial_period_days: 0).find_or_create_by(details: {fake_processor_id: :free})
+Plan.where(name: "Free").first_or_create(hidden: true, amount: 0, currency: :usd, interval: :month, trial_period_days: 0, fake_processor_id: :free)
 
 # Create a fake subscription for the admin user so they have access to everything by default
-user.accounts.first.subscriptions.create(
-  name: "default",
-  processor: :fake_processor,
-  processor_id: :free,
-  processor_plan: :free,
-  quantity: 1,
-  status: :active
-)</code></pre>
+account = user.accounts.first
+account.set_payment_processor :fake_processor, allow_fake: true
+account.payment_processor.subscribe</code></pre>
 
   <h3 class="pb-3 mb-6 border-b border-gray-400">Trials</h3>
   <p class="mb-4">Generic trials are trials without a card or subscription plan. These can be configured in <code>app/models/account.rb</code> by uncommenting the <code>before_create</code> block. You can check if an account is on generic trial with <code>account.on_generic_trial?</code>.</p>
