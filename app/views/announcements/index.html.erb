@@ -2,7 +2,7 @@
   <h1 class="h2 mt-6 text-center"><%= t(".title") %></h1>
   <p class="mt-2 text-center text-xl text-gray-700"><%= t(".description", name: Jumpstart.config.application_name) %></p>
 
-  <div class="mt-6 flex flex-col gap-4 divide-y divide-gray-200 bg-white rounded-lg border border-gray-200">
+  <div class="mt-6 flex flex-col divide-y divide-gray-200 bg-white rounded-lg border border-gray-200">
     <%= render @announcements %>
 
     <% if @announcements.empty? %>
