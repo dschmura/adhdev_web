@@ -29,9 +29,6 @@ class Plan < ApplicationRecord
   validates :interval, inclusion: %w[month year]
   validates :trial_period_days, numericality: {only_integer: true}
 
-  # Prevent accidental leaks of hidden plans
-  default_scope { visible }
-
   scope :hidden, -> { unscope(where: :hidden).where(hidden: true) }
   scope :monthly, -> { without_free.where(interval: :month) }
   scope :sorted, -> { order(amount: :asc) }

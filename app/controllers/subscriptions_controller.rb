@@ -39,6 +39,12 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
+    # Include current plan even if hidden
+    @current_plan = @subscription.plan
+
+    plans = Plan.visible.sorted.or(Plan.where(id: @current_plan.id))
+    @monthly_plans = plans.select(&:monthly?)
+    @yearly_plans = plans.select(&:yearly?)
   end
 
   def update

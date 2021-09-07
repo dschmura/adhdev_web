@@ -16,12 +16,12 @@ module SubscriptionExtensions
     has_prefix_id :sub
   end
 
-  def jumpstart_paused?
-    false
+  def plan
+    @plan ||= Plan.where("details @> ?", {"#{customer.processor}_id": processor_plan}.to_json).first
   end
 
-  def jumpstart_on_grace_period?
-    false
+  def plan_interval
+    plan.interval
   end
 end
 
