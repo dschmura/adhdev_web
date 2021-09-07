@@ -52,7 +52,7 @@ class PlanTest < ActiveSupport::TestCase
   end
 
   test "default scope only has visible plans" do
-    assert_not_includes Plan.all, plans(:hidden)
+    assert_not_includes Plan.visible, plans(:hidden)
     assert_equal Plan.visible.count, Plan.count
   end
 

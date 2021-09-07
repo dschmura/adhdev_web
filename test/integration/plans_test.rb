@@ -24,7 +24,7 @@ class Jumpstart::PlansTest < ActionDispatch::IntegrationTest
   test "view pricing page when there are plans" do
     get "/pricing"
 
-    Plan.find_each do |plan|
+    Plan.visible.find_each do |plan|
       assert response.body.include?(plan.name)
     end
   end
