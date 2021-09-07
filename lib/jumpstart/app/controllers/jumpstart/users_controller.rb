@@ -12,7 +12,7 @@ module Jumpstart
         # Create a fake subscription for the admin user so they have access to everything by default
         account = @user.accounts.first
         account.set_payment_processor :fake_processor, allow_fake: true
-        account.payment_processor.subscribe
+        account.payment_processor.subscribe plan: :free
 
         @notice = "#{@user.name} (#{@user.email}) has been added as an admin. #{view_context.link_to("Login", main_app.new_user_session_path)}"
 

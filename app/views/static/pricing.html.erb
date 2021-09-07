@@ -14,7 +14,7 @@
 
     <div class="w-full lg:px-0 px-2">
       <div data-pricing-target="plans" data-frequency="monthly" class="flex flex-wrap items-center justify-center -mx-4">
-        <% Plan.monthly.sorted.each do |plan| %>
+        <% @monthly_plans.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
             <%= link_to t(".get_started"), new_subscription_path(plan: plan.id), class: "btn btn-tertiary btn-large btn-block" %>
           <% end %>
@@ -22,7 +22,7 @@
       </div>
 
       <div data-pricing-target="plans" data-frequency="yearly" class="hidden flex-wrap items-center justify-center -mx-4">
-        <% Plan.yearly.sorted.each do |plan| %>
+        <% @yearly_plans.each do |plan| %>
           <%= render layout: "subscriptions/plan", locals: { plan: plan } do %>
             <%= link_to t(".get_started"), new_subscription_path(plan: plan.id), class: "btn btn-tertiary btn-large btn-block" %>
           <% end %>
