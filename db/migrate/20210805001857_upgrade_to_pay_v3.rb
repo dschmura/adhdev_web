@@ -3,6 +3,8 @@ class UpgradeToPayV3 < ActiveRecord::Migration[6.0]
   MODELS = [Account]
 
   def self.up
+    Pay::Subscription.where(processor: "jumpstart").update_all(processor: "fake_processor")
+
     MODELS.each do |klass|
       klass.where.not(processor: nil).find_each do |record|
         # Use the fake processor from Pay instead of the jumpstart placeholder
@@ -39,8 +41,11 @@ class UpgradeToPayV3 < ActiveRecord::Migration[6.0]
     # Associate Pay::Charges with new Pay::Customer
     Pay::Charge.find_each do |charge|
       # Since customers can switch between payment processors, we have to find or create
-      owner = charge.owner_type.constantize.find_by(id: charge.owner_id)
-      next unless owner
+      owner = charge.owner_type&.constantize&.find_by(id: charge.owner_id)
+      unless owner
+        Rails.logger.info "Skipping orphaned Pay::Charge ##{charge.id}"
+        next
+      end
 
       customer = Pay::Customer.where(owner: owner, processor: charge.processor).first_or_create!
 
@@ -58,8 +63,11 @@ class UpgradeToPayV3 < ActiveRecord::Migration[6.0]
     # Associate Pay::Subscriptions with new Pay::Customer
     Pay::Subscription.find_each.each do |subscription|
       # Since customers can switch between payment processors, we have to find or create
-      owner = subscription.owner_type.constantize.find_by(id: subscription.owner_id)
-      next unless owner
+      owner = subscription.owner_type&.constantize&.find_by(id: subscription.owner_id)
+      unless owner
+        Rails.logger.info "Skipping orphaned Pay::Subscription ##{subscription.id}"
+        next
+      end
 
       # Use the fake processor from Pay instead of the jumpstart placeholder
       subscription.processor = "fake_processor" if subscription.processor == "jumpstart"
