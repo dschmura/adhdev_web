@@ -23,6 +23,11 @@ module SubscriptionExtensions
   def plan_interval
     plan.interval
   end
+
+  def amount_with_currency(**options)
+    total = plan.amount * quantity
+    Pay::Currency.format(total, **{currency: plan.currency}.merge(options))
+  end
 end
 
 module ChargeExtensions

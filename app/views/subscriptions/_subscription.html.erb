@@ -7,7 +7,7 @@
     <% end %>
 
     <h4><%= subscription.plan.name %></h4>
-    <div class="mb-2 text-lg"><%= Pay::Currency.format(subscription.plan.amount * subscription.quantity, currency: subscription.plan.currency) %> per <%= subscription.plan.interval %></div>
+    <div class="mb-2 text-lg"><%= subscription.amount_with_currency %> per <%= subscription.plan.interval %></div>
 
     <% if subscription.quantity > 1 %>
       <div><%= t(".quantity", quantity: subscription.quantity, price: subscription.plan.amount_with_currency) %></div>
