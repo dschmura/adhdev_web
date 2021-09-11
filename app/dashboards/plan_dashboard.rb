@@ -12,7 +12,7 @@ class PlanDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: Field::String,
     amount: Field::Number,
-    currency: Field::Select.with_options(collection: Pay::Currency.all.map{ |iso,v| ["#{iso.upcase} - #{v["name"]}", iso] }),
+    currency: Field::Select.with_options(collection: Pay::Currency.all.map { |iso, v| ["#{iso.upcase} - #{v["name"]}", iso] }),
     interval: Field::Select.with_options(collection: ["month", "year"]),
     interval_count: Field::Number,
     trial_period_days: Field::Number,
