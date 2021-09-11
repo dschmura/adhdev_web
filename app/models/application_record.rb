@@ -8,6 +8,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   # Override this method to add/remove sortable columns
   def self.sortable_columns
-    @@sortable_columns ||= columns.map(&:name)
+    @sortable_columns ||= columns.map(&:name)
   end
 end
