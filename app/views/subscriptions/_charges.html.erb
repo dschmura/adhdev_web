@@ -27,7 +27,7 @@
             <i class="fab fa-cc-<%= charge.brand.downcase %> text-gray-700"></i>
             <%= payment_method_details(charge) %>
           </td>
-          <td class="p-3"><%= number_to_currency charge.amount / 100.0 %></td>
+          <td class="p-3"><%= charge.amount_with_currency %></td>
           <td class="p-3 text-center text-sm">
             <% if charge.paddle_receipt_url %>
               <%= link_to t(".view"), charge.paddle_receipt_url, target: :_blank %>

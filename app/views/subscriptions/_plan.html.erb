@@ -2,7 +2,7 @@
   <h4 class="mb-4"><%= plan.name %></h4>
 
   <div class="mb-4">
-    <span class="text-5xl font-bold"><%= number_to_currency plan.amount / 100, precision: 0 %></span>
+    <span class="text-5xl font-bold"><%= plan.amount_with_currency(precision: 0) %></span>
     <span class="text-lg text-gray-500 font-medium">/ <%= plan.interval %></span>
   </div>
 

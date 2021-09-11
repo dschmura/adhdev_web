@@ -10,7 +10,7 @@
     <%= link_to t(".go_back"), root_path %>
 
   <% else %>
-    <h1 class="h3 mb-4"><%= t(".confirm", amount: number_to_currency(@payment.amount / 100.0)) %></h1>
+    <h1 class="h3 mb-4"><%= t(".confirm", amount: @payment.amount_with_currency) %></h1>
     <p class="text-gray-700 text-sm mb-4"></p>
 
     <%= render 'subscriptions/forms/stripe', button: t(".confirm_button") if Jumpstart.config.stripe? %>
