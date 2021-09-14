@@ -33,9 +33,9 @@
     })
 
     function updatePrices(data) {
-      if (data.eventData.checkout.recurring_prices) {
-        var recurringTotal = data.eventData.checkout.recurring_prices.customer.total;
-        document.getElementById("recurringTotal").innerHTML = recurringTotal
+      if (data.eventData.checkout.prices) {
+        let price = data.eventData.checkout.prices.customer
+        document.getElementById("recurringTotal").innerHTML = `${price.total} ${price.currency}`
       }
     }
   </script>

@@ -19,7 +19,7 @@
       <%= render 'payment_methods/forms/paypal' if show_payment_processor?(:paypal)  %>
 
       <%# Paddle can only update card when on a subscription %>
-      <%= render 'payment_methods/forms/paddle', subscription: @payment_processor.subscription if @payment_processor&.paddle? %>
+      <%= render 'payment_methods/forms/paddle', subscription: subscription if show_paddle_payment_method_form?(@payment_processor) %>
     </div>
   </div>
 </div>

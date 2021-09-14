@@ -11,6 +11,6 @@
   </div>
 
   <div>
-    <%= link_to t(".update_payment_method"), new_payment_method_path, class: "btn btn-light-gray" %>
+    <%= link_to t(".update_payment_method"), new_payment_method_path, class: "btn btn-light-gray" unless payment_processor.paddle? && !show_paddle_payment_method_form?(payment_processor) %>
   </div>
 </div>

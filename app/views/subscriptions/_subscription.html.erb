@@ -32,7 +32,8 @@
   </div>
 
   <div class="mt-2 flex flex-col gap-2 text-center">
-    <% if subscription.on_grace_period? %>
+    <% if subscription.on_grace_period? && !subscription.paddle? %>
+      <%# Cancelled paddle subscriptions cannot be resumed %>
       <%= link_to t(".resume"), subscription_resume_path(subscription), class: "btn btn-primary" %>
     <% elsif subscription.paused? %>
       <%= link_to t(".resume"), subscription_resume_path(subscription), class: "btn btn-primary" %>

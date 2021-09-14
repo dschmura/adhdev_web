@@ -27,4 +27,12 @@ module SubscriptionsHelper
       true
     end
   end
+
+  # Paddle can only update payment method when subscribed
+  # Only works with active or paused subscriptions.
+  # Cancelled subscriptions are permanent and cannot be updated.
+  def show_paddle_payment_method_form?(payment_processor)
+    return false unless payment_processor&.paddle?
+    (subscription = payment_processor.subscription) && (subscription.active? || subscription.paused?)
+  end
 end
