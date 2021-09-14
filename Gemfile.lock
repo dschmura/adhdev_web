@@ -15,6 +15,14 @@ GIT
       selectize-rails (~> 0.6)
 
 GIT
+  remote: https://github.com/heartcombo/responders.git
+  revision: cf72db400492bf19a2169bd7b6de68e7036df30e
+  specs:
+    responders (3.0.1)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
+
+GIT
   remote: https://github.com/rubysec/bundler-audit.git
   revision: ebfca35b2e47eae7aaba42f0e37d61bb3e26049e
   specs:
@@ -320,9 +328,6 @@ GEM
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
     rexml (3.2.5)
     rotp (6.2.0)
     rqrcode (2.1.0)
@@ -461,6 +466,7 @@ DEPENDENCIES
   rails (~> 6.1.4)
   receipts (~> 1.1.0)
   redis (~> 4.0)
+  responders!
   rotp (~> 6.2)
   rqrcode
   ruby-oembed (~> 0.15.0)
