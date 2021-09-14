@@ -292,6 +292,8 @@ en:
       incomplete: "Incomplete"
       confirm_payment: "Confirm payment"
       ends_at: "Your plan will be canceled on %{date}."
+      paused_at: "Your plan will be paused starting %{date}."
+      paused: "Your plan is paused."
 
     payment_method:
       payment_method: "Payment Method"
