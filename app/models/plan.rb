@@ -43,6 +43,12 @@ class Plan < ApplicationRecord
   # Default currency
   after_initialize { self.currency ||= "usd" }
 
+  def self.free
+    plan = where(name: "Free").first_or_initialize
+    plan.update(hidden: true, amount: 0, currency: :usd, interval: :month, trial_period_days: 0, fake_processor_id: :free)
+    plan
+  end
+
   def features
     Array.wrap(super)
   end

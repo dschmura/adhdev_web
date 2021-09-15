@@ -283,6 +283,8 @@ en:
     subscription:
       cancel_plan: "Cancel plan"
       title: "Current Plan"
+      free_trial: "Free Trial"
+      free_trial_ends: "Your trial ends on %{date}."
       trial: "After your trial ends on %{date}, this plan will continue automatically."
       quantity: "Quantity: %{quantity} at %{price} each"
       resume: "Resume plan"
