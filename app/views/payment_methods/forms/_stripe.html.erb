@@ -1,11 +1,11 @@
 <% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
 
 <%= form_with url: local_assigns.fetch(:url, payment_methods_path),
-  method: :post,
+  method: local_assigns.fetch(:method, :post),
   class: "mt-4",
   data: {
     controller: "stripe",
-    action: "keydown->stripe#keydown",
+    action: "submit->stripe#submit",
     stripe_setup_intent: setup_intent.client_secret,
     stripe_target: "form",
     toggle_target: "toggleable",

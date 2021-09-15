@@ -6,7 +6,7 @@
   data: {
     controller: "stripe",
     stripe_target: "form",
-    action: "keydown->stripe#keydown",
+    action: "submit->stripe#submit",
     stripe_setup_intent: @setup_intent.try(:client_secret),
     stripe_payment_intent: @payment.try(:client_secret)
   } do |f| %>

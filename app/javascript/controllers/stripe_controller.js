@@ -40,19 +40,12 @@ export default class extends Controller {
     }
   }
 
-  keydown(event) {
-    if (event.keyCode == 13) {
-      // Catch Enter key's form submission and process as submit
-      event.preventDefault()
-      this.submit(event)
-    }
-  }
-
   submit(event) {
     event.preventDefault()
+    Rails.disableElement(this.formTarget)
 
     if (this.nameTarget.value == "") {
-      this.errorTarget.textContent = "Name on card is required."
+      this.showError("Name on card is required.")
       return
     }
 
@@ -88,7 +81,7 @@ export default class extends Controller {
 
     this.stripe.confirmCardSetup(this.setup_intent, data).then((result) => {
       if (result.error) {
-        this.errorTarget.textContent = result.error.message
+        this.showError(result.error.message)
       } else {
         this.handlePaymentMethod(result.setupIntent.payment_method)
       }
@@ -98,8 +91,7 @@ export default class extends Controller {
   handlePaymentMethod(payment_method_id) {
     this.addHiddenField("processor", "stripe")
     this.addHiddenField("payment_method_token", payment_method_id)
-
-    Rails.fire(this.formTarget, "submit")
+    this.formTarget.submit()
   }
 
   addHiddenField(name, value) {
@@ -114,12 +106,18 @@ export default class extends Controller {
     // Handle an existing payment that needs confirmation
     this.stripe.confirmCardPayment(this.payment_intent).then((result) => {
       if (result.error) {
-        this.errorTarget.textContent = result.error.message
-
+        this.showError(result.error.message)
       } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
         Turbo.clearCache()
         Turbo.visit("/")
       }
     })
+  }
+
+  showError(message) {
+    this.errorTarget.textContent = message
+    setTimeout(() => {
+      Rails.enableElement(this.formTarget)
+    }, 100)
   }
 }
