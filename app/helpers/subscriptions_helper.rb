@@ -19,8 +19,9 @@ module SubscriptionsHelper
     return false if plan && !plan.id_for_processor(processor_name).present?
 
     # If a user has active subscriptions, only let them use that payment processor for new payments
+    # Also show if user is on the fake processor (for trial)
     if current_account.subscriptions.active.any?
-      processor_name.to_s == current_account.payment_processor.processor
+      ["fake_processor", processor_name.to_s].include?(current_account.payment_processor.processor)
 
     # Otherwise show all options
     else
