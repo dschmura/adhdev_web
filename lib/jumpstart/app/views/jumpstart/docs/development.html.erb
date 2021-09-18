@@ -6,10 +6,11 @@
 
     <h2 class="pb-3 mb-6 border-b border-gray-400">Processes</h2>
     <p class="mb-4">As usual, you'll need to run several processes in development.</p>
-    
+
     <ul class="mb-4 list-disc list-inside">
       <li><code>rails server</code> - duh. 😜</li>
-      <li><code>bin/webpack-dev-server</code> - optional, but provides automatic code reloading when editing Javascript</li>
+      <li><code>yarn run build</code> - bundles Javascript using esbuild</li>
+      <li><code>yarn run build:css</code> - bundles CSS using Tailwind CLI and PostCSS</li>
       <li><code>sidekiq</code> - or whatever background worker process you have configured</li>
     </ul>
 

@@ -287,9 +287,6 @@ module Jumpstart
     def procfile_content(dev: false)
       content = {web: "bundle exec rails s"}
 
-      # Development should use the webpack-dev-server for convenience
-      content[:webpack] = "bin/webpack-dev-server" if dev
-
       # Background workers
       if (worker_command = Jumpstart::JobProcessor.command(job_processor))
         content[:worker] = worker_command
