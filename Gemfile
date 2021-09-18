@@ -9,10 +9,6 @@ gem "rails", "~> 6.1.4"
 gem "pg"
 # Use Puma as the app server
 gem "puma", "~> 5.0"
-# Use SCSS for stylesheets
-gem "sass-rails", "~> 6.0"
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem "webpacker", "~> 6.0.0.rc.5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 # Use Redis adapter to run Action Cable in production
@@ -90,3 +86,6 @@ gem "whenever", require: false
 if File.exist?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
 end
+
+gem "cssbundling-rails", github: "rails/cssbundling-rails"
+gem "jsbundling-rails", github: "rails/jsbundling-rails"

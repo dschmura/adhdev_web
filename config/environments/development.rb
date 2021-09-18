@@ -68,9 +68,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {host: "lvh.me", port: ENV.fetch("PORT", 3000).to_i}
   config.action_mailer.delivery_method = :letter_opener_web
 
-  # Verifies that versions and hashed value of the package contents in the project's package.json
-  config.webpacker.check_yarn_integrity = true
-
   # Allow accessing localhost on any domain. Important for testing multi-tenant apps
   config.hosts = nil
 

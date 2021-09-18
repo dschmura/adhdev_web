@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  include BundleAssets
   include SetCurrentRequestDetails
   include SetLocale
   include Jumpstart::Controller

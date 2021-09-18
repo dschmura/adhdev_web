@@ -21,28 +21,21 @@
 /storage/*
 !/storage/.keep
 
-/node_modules
-/yarn-error.log
-
+# Ignore compiled assets files
 /public/assets
-.byebug_history
+/public/packs
+/public/packs-test
+/node_modules
+/app/assets/builds/*
+!/app/assets/builds/.keep
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/public/packs
-/public/packs-test
-/node_modules
+
+# Ignore other files
+.byebug_history
+yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
 .DS_Store
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-
-/config/credentials/development.key
-/config/credentials/production.key
 *~

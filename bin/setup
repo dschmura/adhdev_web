@@ -20,6 +20,10 @@ chdir APP_ROOT do
   # Install JavaScript dependencies if using Yarn
   system('bin/yarn')
 
+  puts "\n== Compiling CSS & JS =="
+  system! 'bin/yarn run build'
+  system! 'bin/yarn run build:css'
+
   system! 'gem install foreman'
 
   # puts "\n== Copying sample files =="

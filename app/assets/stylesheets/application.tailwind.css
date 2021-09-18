@@ -1,7 +1,10 @@
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
-// Jumpstart Pro default styles
-// Remove these if you'd like to use TailwindUI
+/*
+ * Jumpstart Pro default styles
+ * Remove these if you'd like to use TailwindUI which expects a clean slate
+*/
 @import "components/base";
 @import "components/actiontext";
 @import "components/alert";
@@ -22,3 +25,8 @@
 @import "components/trix";
 @import "components/typography";
 @import "components/util";
+
+@import "tailwindcss/utilities";
+
+@import "tippy.js/dist/tippy.css";
+@import "flatpickr/dist/flatpickr.css";

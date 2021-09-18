@@ -1,4 +1,4 @@
-// Light Jumpstart theme for Pagy's default renderer
+/* Light Jumpstart theme for Pagy's default renderer */
 
 .pagination {
   @apply inline-flex flex-wrap items-center justify-start;

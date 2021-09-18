@@ -1,6 +1,7 @@
-// We need to override trix.css’s image gallery styles to accommodate the
-// <action-text-attachment> element we wrap around attachments. Otherwise,
-// images in galleries will be squished by the max-width: 33%; rule.
+/* We need to override trix.css’s image gallery styles to accommodate the
+  <action-text-attachment> element we wrap around attachments. Otherwise,
+  images in galleries will be squished by the max-width: 33%; rule.
+*/
 
 .link_to_embed {
   font-size: 0.85rem;
@@ -45,14 +46,14 @@
   }
 }
 
-// Trix attachment formatting
+/* Trix attachment formatting */
 .attachment--preview {
   margin: 0.6em 0;
   text-align: center;
   width: 100%;
 }
 
-// Tribute styles
+/* Tribute styles */
 .tribute-container {
   border-radius: 4px;
   border: 1px solid rgba(0,0,0,0.1);
@@ -85,7 +86,7 @@ trix-toolbar .trix-button-row {
   flex-wrap: wrap !important;
 }
 
-// Tweet embeds
+/* Tweet embeds */
 blockquote.twitter-tweet {
     display: inline-block;
     font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
@@ -145,7 +146,7 @@ blockquote.twitter-tweet:before {
     top: 20px;
     right: 20px;
     padding: 5.5px 12px 6.5px 33px;
-    background: url(icons/twitter.svg) 9px center no-repeat;
+    background: url("data:image/svg+xml,%3Csvg height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m18.89 7.012c.808-.496 1.343-1.173 1.605-2.034-.786.417-1.569.703-2.351.861-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078-.715.717-1.076 1.588-1.076 2.605 0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388.549.676 1.254 1.107 2.115 1.291-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841.625.472 1.344.721 2.152.743-1.332 1.045-2.855 1.562-4.578 1.562-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974.784-1.564 1.172-3.192 1.172-4.892v-.468c.758-.57 1.371-1.212 1.84-1.921-.68.293-1.383.492-2.11.593z' fill='%23ccc'/%3E%3C/svg%3E") 9px center no-repeat;
     background-size: 21px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -166,7 +167,7 @@ blockquote.twitter-tweet:after {
     left: 20px;
     width: 36px;
     height: 36px;
-    background: #eee url(icons/person.svg) center center no-repeat;
+    background: #eee url("data:image/svg+xml,%3Csvg height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m12 12c2.21 0 4-1.795 4-4 0-2.21-1.79-4-4-4s-4 1.79-4 4c0 2.205 1.79 4 4 4zm0 2c-2.665 0-8 1.335-8 4v2h16v-2c0-2.665-5.335-4-8-4z' fill='%23444'/%3E%3C/svg%3E") center center no-repeat;
     border-radius: 4px
 }
 

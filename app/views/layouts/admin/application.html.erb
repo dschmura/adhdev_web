@@ -21,7 +21,8 @@ By default, it renders:
     <title>
       <%= content_for(:title) || 'Dashboard' %> - <%= Jumpstart.config.application_name %>
     </title>
-    <%= javascript_pack_tag 'administrate', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "administrate", "data-turbo-track": "reload", defer: true %>
     <%= render "stylesheet" %>
     <%= csrf_meta_tags %>
     <meta name="turbo-root" content="/admin">

@@ -92,7 +92,7 @@ form.inline {
   }
 }
 
-// Fix flatpickr
+/* Fix flatpickr */
 .flatpickr-current-month .flatpickr-monthDropdown-months {
   display: inline-block;
 }
@@ -121,7 +121,6 @@ form.inline {
 
     @extend .btn;
     @extend .btn-tertiary;
-    //@extend .outline;
 
     &:focus {
       outline: 1px dotted #000;

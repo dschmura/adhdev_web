@@ -3,11 +3,8 @@
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-module.exports = {
-  // Opt-in to TailwindCSS future changes
-  future: {
-  },
 
+module.exports = {
   // https://tailwindcss.com/docs/just-in-time-mode
   mode: 'jit',
 
@@ -18,17 +15,13 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
 
-  // Purge unused TailwindCSS styles
-  purge: {
-    enabled: ["production", "staging"].includes(process.env.NODE_ENV),
-    content: [
-      './app/helpers/**/*.rb',
-      './app/javascript/**/*.js',
-      './app/views/**/*.erb',
-      './lib/jumpstart/app/views/**/*.erb',
-      './lib/jumpstart/app/helpers/**/*.rb',
-    ],
-  },
+  purge: [
+    './app/helpers/**/*.rb',
+    './app/javascript/**/*.js',
+    './app/views/**/*.erb',
+    './lib/jumpstart/app/views/**/*.erb',
+    './lib/jumpstart/app/helpers/**/*.rb',
+  ],
 
   // All the default values will be compiled unless they are overridden below
   theme: {
@@ -49,7 +42,12 @@ module.exports = {
       },
     },
   },
+
   variants: {
     borderWidth: ['responsive', 'last', 'hover', 'focus'],
+  },
+
+  // Opt-in to TailwindCSS future changes
+  future: {
   },
 }
