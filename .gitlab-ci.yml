@@ -26,6 +26,7 @@ before_script:
   - bundle config path vendor
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
   - yarn install
+  - bundle exec rails test:prepare
   - bundle exec rails db:test:prepare
 
 test:
