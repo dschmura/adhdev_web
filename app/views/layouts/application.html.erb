@@ -12,10 +12,8 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%# All assets are defined in Webpacker app/javascripts now %>
-    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
 
     <%# Be sure to add your own custom favicons %>
     <%= render "shared/favicons" %>

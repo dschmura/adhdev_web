@@ -23,6 +23,22 @@ GIT
       railties (>= 5.2)
 
 GIT
+  remote: https://github.com/rails/cssbundling-rails.git
+  revision: 9ef387e8f345514f44e74f0d245d791239f7dbc4
+  specs:
+    cssbundling-rails (0.1.7)
+      railties (>= 6.0.0)
+      sprockets-rails (>= 2.0.0)
+
+GIT
+  remote: https://github.com/rails/jsbundling-rails.git
+  revision: 54b57b614ce1c202670ef8fb7320a8be444ec404
+  specs:
+    jsbundling-rails (0.1.5)
+      railties (>= 6.0.0)
+      sprockets-rails (>= 2.0.0)
+
+GIT
   remote: https://github.com/rubysec/bundler-audit.git
   revision: ebfca35b2e47eae7aaba42f0e37d61bb3e26049e
   specs:
@@ -98,7 +114,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts_as_tenant (0.5.0)
+    acts_as_tenant (0.5.1)
       rails (>= 5.2)
       request_store (>= 1.0.5)
     addressable (2.8.0)
@@ -159,11 +175,11 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    http (5.0.1)
-      addressable (~> 2.3)
+    http (5.0.2)
+      addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.3.0)
+      llhttp-ffi (~> 0.4.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
@@ -207,7 +223,7 @@ GEM
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp-ffi (0.3.1)
+    llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     local_time (2.1.0)
@@ -238,7 +254,7 @@ GEM
     noticed (1.4.1)
       http (>= 4.0.0)
       rails (>= 5.2.0)
-    oj (3.13.4)
+    oj (3.13.6)
     omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
@@ -255,7 +271,7 @@ GEM
       faraday (~> 1.0)
       json (~> 2.0)
     pagy (4.11.0)
-    parallel (1.20.1)
+    parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
     pay (3.0.19)
@@ -288,8 +304,6 @@ GEM
     racc (1.5.2)
     rack (2.2.3)
     rack-protection (2.1.0)
-      rack
-    rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -356,8 +370,6 @@ GEM
     ruby-vips (2.1.3)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -370,7 +382,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic_range (3.0.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -381,7 +392,7 @@ GEM
     standard (1.3.0)
       rubocop (= 1.20.0)
       rubocop-performance (= 1.11.5)
-    stimulus-rails (0.4.2)
+    stimulus-rails (0.5.2)
       rails (>= 6.0.0)
     strong_migrations (0.7.8)
       activerecord (>= 5)
@@ -396,7 +407,7 @@ GEM
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.7)
+    unf_ext (0.0.8)
     unicode-display_width (2.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -409,11 +420,6 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (6.0.0.rc.5)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -426,6 +432,7 @@ GEM
 PLATFORMS
   ruby
   x86_64-darwin-19
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -439,6 +446,7 @@ DEPENDENCIES
   bundler-audit!
   byebug
   capybara (>= 2.15)
+  cssbundling-rails!
   devise (>= 4.7.1)
   devise-i18n (~> 1.9)
   hotwire-rails (~> 0.1.2)
@@ -446,6 +454,7 @@ DEPENDENCIES
   inline_svg (~> 1.6)
   invisible_captcha (~> 2.0)
   jbuilder (~> 2.5)
+  jsbundling-rails!
   jumpstart!
   letter_opener_web (~> 1.3, >= 1.3.4)
   listen (~> 3.2, >= 3.2.1)
@@ -473,18 +482,16 @@ DEPENDENCIES
   rotp (~> 6.2)
   rqrcode
   ruby-oembed (~> 0.15.0)
-  sass-rails (~> 6.0)
   selenium-webdriver
   standard
   strong_migrations (~> 0.7.6)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 6.0.0.rc.5)
   whenever
 
 RUBY VERSION
-   ruby 3.0.1p64
+   ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.26
+   2.2.27

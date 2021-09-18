@@ -1,8 +1,6 @@
 # Jumpstart Pro Rails Template
 
-All your Rails apps should start off with a bunch of great defaults. It's like Laravel Spark, for Rails.
-
-**Note:** Requires Rails 5.2 or higher
+All your Rails apps should start off with a bunch of great defaults.
 
 ## Getting Started
 
@@ -24,46 +22,40 @@ You'll need the following installed to run the template successfully:
   processes in development
 * [Stripe CLI](https://stripe.com/docs/stripe-cli) for Stripe webhooks in development - `brew install stripe/stripe-cli/stripe`
 
+#### Initial Setup
+
+First, edit `config/database.yml` and change the database name.
+
+Next, run `bin/setup` to install Rubygem and Javascript dependencies. This will also install foreman system wide for you and setup your database.
+
+```bash
+bin/setup
+```
+
+Optionally, you can rename the application name in `config/application.rb`. This won't affect anything, so it's not too important.
+
+You can also rename the app in the Jumpstart config UI which updates the app name in the navbar, footer, etc.
+
+#### Running Jumpstart Pro
+
+To run your application, you'll use the `bin/dev` command:
+
+```bash
+bin/dev
+```
+
+This starts up Foreman running the Procfile.dev config.
+
+We've configured this to run the Rails server, CSS bundling, and JS bundling out of the box. You can add background workers like Sidekiq, the Stripe CLI, etc to have them run at the same time.
+
 #### Windows Support
 
-If you'd like to run Jumpstart Pro on Windows, I recommend using WSL2. You can find instructions here: https://gorails.com/setup/windows
+If you'd like to run Jumpstart Pro on Windows, we recommend using WSL2. You can find instructions here: https://gorails.com/setup/windows
 
 Alternatively, if you'd like to use Docker on Windows, you'll need to make sure you clone the repository and preserve the Linux line endings.
 
 ```bash
 git clone git@github.com:username/myrepo.git --config core.autocrlf=input
-```
-
-#### Initial Setup
-
-First, you'll want to tweak `config/database.yml` and change the
-database name. You can also rename the app in the Jumpstart admin UI
-which updates the app name in the navbar, footer, etc.
-
-Optionally, you can rename the application name in
-`config/application.rb`. This won't affect anything, so it's not too
-important.
-
-Next, you can run `bin/setup` to install Rubygem and Javascript dependencies. This will also install foreman system wide for you and setup your database.
-
-#### Running Jumpstart Pro
-
-If you're using foreman: `foreman start`
-
-Otherwise, you'll need to spin up several processes in different
-terminals:
-
-```bash
-rails server
-
-# Your background workers
-sidekiq # or whatever you're using
-
-# Optionally, the webpack dev server for automatically reloading JS and CSS changes
-bin/webpack-dev-server
-
-# Stripe requires webhooks for SCA payments
-stripe listen --forward-to localhost:5000/webhooks/stripe
 ```
 
 #### Running with Docker Compose
@@ -75,7 +67,7 @@ Simply run:
 docker-compose up
 ```
 
-Then open http://localhost:5000
+Then open http://localhost:3000
 
 #### Running with Docker
 

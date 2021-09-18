@@ -16,5 +16,11 @@ By default, the input is a text field that is augmented with [DateTimePicker].
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute, data: { controller: 'date-time-picker', date_time_picker_type_value: "datetime" }  %>
+  <%= f.text_field field.attribute, data: {
+    controller: "flatpickr",
+    flatpickr_enable_time: true,
+    flatpickr_alt_input: true,
+    flatpickr_alt_format: "F J (D), Y - h:i:S K",
+    flatpickr_date_format: "Z"
+  } %>
 </div>

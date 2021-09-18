@@ -8,15 +8,7 @@
   <h4 class="uppercase text-gray-700 tracking-wide font-semibold text-sm border-b border-gray-400 pb-3 mb-3">Default</h4>
 
   <%= render "jumpstart/docs/snippet" do %>
-<nav aria-label="Page navigation example">
-  <div class="inline-flex flex-wrap items-center justify-start">
-    <a class="bg-white rounded-tl rounded-bl border-l border-t border-b border-gray-400 py-2 px-4 link no-underline cursor-pointer hover:bg-gray-100" href="#">Previous</a>
-    <a class="text-white no-underline border border-primary py-2 px-4 bg-primary cursor-pointer hover:bg-primary-600" href="#">1</a>
-    <a class="bg-white link no-underline border-t border-b border-gray-400 p-2 px-4 cursor-pointer hover:bg-gray-200" href="#">2</a>
-    <a class="bg-white link no-underline border-l border-t border-b border-gray-400 py-2 px-4 cursor-pointer hover:bg-gray-200" href="#" >3</a>
-    <a class="bg-white rounded-tr rounded-br border border-gray-400 py-2 px-4 link no-underline cursor-pointer hover:bg-gray-200" href="#">Next</a>
-  </div>
-</nav>
+    <%== pagy_nav @pagy %>
   <% end %>
 </div>
 

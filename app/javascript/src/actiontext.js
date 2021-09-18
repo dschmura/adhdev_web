@@ -1,4 +1,5 @@
 import Trix from "trix"
+import { get } from "@rails/request.js"
 
 let lang = Trix.config.lang;
 
@@ -93,17 +94,14 @@ class EmbedController {
     }
   }
 
-  loadPatterns(value) {
-    Rails.ajax({
-      type: "get",
-      url: "/action_text/embeds/patterns.json",
-      success: (response) => {
-        this.patterns = response.map(pattern => new RegExp(pattern.source, pattern.options))
-        if (this.match(value)) {
-          this.fetch(value)
-        }
+  async loadPatterns(value) {
+    const response = await get("/action_text/embeds/patterns.json")
+    if (response.ok) {
+      this.patterns = response.map(pattern => new RegExp(pattern.source, pattern.options))
+      if (this.match(value)) {
+        this.fetch(value)
       }
-    })
+    }
   }
 
   // Checks if a url matches an embed code format

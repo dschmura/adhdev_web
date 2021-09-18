@@ -31,7 +31,6 @@ Jumpstart::Engine.routes.draw do
     get :scaffolds
     get :accounts
     get :users
-    get :webpacker
 
     get :alerts
     get :branding
