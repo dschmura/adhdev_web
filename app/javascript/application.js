@@ -9,7 +9,6 @@ window.Rails = Rails
 window.Turbo = Turbo
 
 require("@rails/activestorage").start()
-import "trix"
 import "@rails/actiontext"
 
 // ActionCable Channels

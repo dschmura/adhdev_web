@@ -1,7 +1,6 @@
 import Trix from "trix"
+import "@rails/actiontext"
 import { get } from "@rails/request.js"
-
-let lang = Trix.config.lang;
 
 Trix.config.textAttributes.inlineCode = {
   tagName: "code",
@@ -10,6 +9,7 @@ Trix.config.textAttributes.inlineCode = {
 
 Trix.config.toolbar = {
   getDefaultHTML: function() {
+    const lang = Trix.config.lang;
     return `
     <div class="trix-button-row">
       <span class="trix-button-group trix-button-group--text-tools" data-trix-button-group="text-tools">
@@ -41,7 +41,7 @@ Trix.config.toolbar = {
         <div class="trix-dialog__link-fields">
           <input type="url" name="href" class="trix-input trix-input--dialog" placeholder="${lang.urlPlaceholder}" aria-label="${lang.url}" required data-trix-input>
           <div class="flex">
-            <input type="button" class="btn btn-secondary btn-small mr-1" value="${lang.link}" data-trix-method="setAttribute">
+            <input type="button" class="btn btn-primary btn-small mr-1" value="${lang.link}" data-trix-method="setAttribute">
             <input type="button" class="btn btn-tertiary outline btn-small" value="${lang.unlink}" data-trix-method="removeAttribute">
           </div>
         </div>
@@ -95,9 +95,10 @@ class EmbedController {
   }
 
   async loadPatterns(value) {
-    const response = await get("/action_text/embeds/patterns.json")
+    const response = await get("/action_text/embeds/patterns.json", { responseKind: "json" })
     if (response.ok) {
-      this.patterns = response.map(pattern => new RegExp(pattern.source, pattern.options))
+      const patterns = await response.json
+      this.patterns = patterns.map(pattern => new RegExp(pattern.source, pattern.options))
       if (this.match(value)) {
         this.fetch(value)
       }
