@@ -2,7 +2,7 @@ class Users::MentionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = searchable_users.search_by_full_name(params[:query]).with_attached_avatar
+    @users = searchable_users.search_by_full_name(params[:query]).with_attached_avatar.limit(10)
 
     respond_to do |format|
       format.json

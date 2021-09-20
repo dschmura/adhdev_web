@@ -15,6 +15,7 @@ export default class extends Controller {
       allowSpaces: true,
       lookup: 'name',
       values: this.fetchUsers,
+      menuShowMinLength: 1,
     })
     this.tribute.attach(this.fieldTarget)
     this.fieldTarget.addEventListener('tribute-replaced', this.replaced)
