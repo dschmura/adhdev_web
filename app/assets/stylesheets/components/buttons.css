@@ -1,151 +1,153 @@
-.btn {
-  @apply inline-flex text-sm font-semibold text-center px-4 py-0 rounded no-underline items-center justify-between;
+@layer components {
+  .btn {
+    @apply inline-flex text-sm font-semibold text-center px-4 py-0 rounded no-underline items-center justify-between;
 
-  height: 40px;
-  line-height: 40px;
-  transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+    height: 40px;
+    line-height: 40px;
+    transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
-  &:hover,
-  &:focus {
-    @apply cursor-pointer;
+    &:hover,
+    &:focus {
+      @apply cursor-pointer;
+    }
+
+    &:disabled {
+      @apply bg-gray-200 text-white cursor-not-allowed;
+    }
   }
 
-  &:disabled {
-    @apply bg-gray-200 text-white cursor-not-allowed;
-  }
-}
+  .btn-small {
+    @apply px-3 text-sm;
 
-.btn-small {
-  @apply px-4;
-
-  height: 32px;
-  line-height: 32px;
-}
-
-.btn-large {
-  @apply text-base px-6;
-
-  height: 48px;
-  line-height: 48px;
-}
-
-.btn-primary {
-  @apply bg-blue-600 text-white;
-
-  &:hover,
-  &:focus {
-    @apply bg-blue-500 text-white;
+    height: 32px;
+    line-height: 32px;
   }
 
-  &.outline {
-    @apply bg-transparent border border-blue-500 text-blue-500 shadow-none;
+  .btn-large {
+    @apply text-base px-6;
+
+    height: 48px;
+    line-height: 48px;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white;
 
     &:hover,
     &:focus {
       @apply bg-blue-500 text-white;
     }
+
+    &.outline {
+      @apply bg-transparent border border-blue-500 text-blue-500 shadow-none;
+
+      &:hover,
+      &:focus {
+        @apply bg-blue-500 text-white;
+      }
+    }
   }
-}
 
-.btn-secondary {
-  @apply bg-green-700 text-white;
-
-  &:hover,
-  &:focus {
+  .btn-secondary {
     @apply bg-green-600 text-white;
-  }
-
-  &.outline {
-    @apply bg-transparent border border-green-700 text-green-700 shadow-none;
 
     &:hover,
     &:focus {
-      @apply bg-green-600 text-white;
+      @apply bg-green-500 text-white;
+    }
+
+    &.outline {
+      @apply bg-transparent border border-green-600 text-green-600 shadow-none;
+
+      &:hover,
+      &:focus {
+        @apply bg-green-500 text-white;
+      }
     }
   }
-}
 
-.btn-tertiary {
-  @apply bg-gray-800 text-white;
-
-  &:hover,
-  &:focus {
-    @apply bg-gray-500 text-white;
-  }
-
-  &.outline {
-    @apply bg-transparent border border-gray-500 text-gray-500 shadow-none;
+  .btn-tertiary {
+    @apply bg-gray-700 text-white;
 
     &:hover,
     &:focus {
-      @apply bg-gray-500 text-white;
+      @apply bg-gray-600 text-white;
+    }
+
+    &.outline {
+      @apply bg-transparent border border-gray-700 text-gray-700 shadow-none;
+
+      &:hover,
+      &:focus {
+        @apply bg-gray-600 text-white;
+      }
     }
   }
-}
 
-.btn-danger {
-  @apply bg-red-600 text-white;
-
-  &:hover,
-  &:focus {
-    @apply bg-red-500 text-white;
-  }
-
-  &.outline {
-    @apply bg-transparent border border-red-500 text-red-500 shadow-none;
+  .btn-danger {
+    @apply bg-red-600 text-white;
 
     &:hover,
     &:focus {
       @apply bg-red-500 text-white;
     }
-  }
-}
 
-.btn-white {
-  @apply bg-white;
+    &.outline {
+      @apply bg-transparent border border-red-500 text-red-500 shadow-none;
 
-  &:hover,
-  &:focus {
-    @apply bg-gray-100;
-  }
-
-  &.primary {
-    @apply text-blue-600;
+      &:hover,
+      &:focus {
+        @apply bg-red-500 text-white;
+      }
+    }
   }
 
-  &.secondary {
-    @apply text-green-600;
+  .btn-white {
+    @apply bg-white;
+
+    &:hover,
+    &:focus {
+      @apply bg-gray-100;
+    }
+
+    &.primary {
+      @apply text-blue-600;
+    }
+
+    &.secondary {
+      @apply text-green-600;
+    }
+
+    &.tertiary {
+      @apply text-gray-600;
+    }
+
+    &.gray {
+      @apply text-gray-700;
+    }
   }
 
-  &.tertiary {
-    @apply text-gray-600;
+  .btn-link {
+    @apply text-blue-500 bg-transparent;
+
+    &:hover,
+    &:focus {
+      @apply text-blue-600;
+
+      transform: none;
+    }
   }
 
-  &.gray {
-    @apply text-gray-700;
+  .btn-light-gray {
+    @apply text-gray-900 bg-gray-100;
+
+    &:hover,
+    &:focus {
+      @apply text-gray-900 bg-gray-200;
+    }
   }
-}
 
-.btn-link {
-  @apply text-blue-500 bg-transparent;
-
-  &:hover,
-  &:focus {
-    @apply text-blue-600;
-
-    transform: none;
+  .btn-expanded, .btn-block {
+    @apply block w-full;
   }
-}
-
-.btn-light-gray {
-  @apply text-gray-900 bg-gray-100;
-
-  &:hover,
-  &:focus {
-    @apply text-gray-900 bg-gray-200;
-  }
-}
-
-.btn-expanded, .btn-block {
-  @apply block w-full;
 }

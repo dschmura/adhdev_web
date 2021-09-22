@@ -4,8 +4,13 @@
 */
 
 .link_to_embed {
-  font-size: 0.85rem;
-  padding: 1rem 0 0 1rem;
+  white-space: normal;
+
+  @apply mt-4 md:ml-4;
+
+  [data-behavior='embed_url'] {
+    @apply block md:ml-3 md:inline-block;
+  }
 }
 
 .trix-content {
@@ -80,10 +85,6 @@
       font-weight: bold;
     }
   }
-}
-
-trix-toolbar .trix-button-row {
-  flex-wrap: wrap !important;
 }
 
 /* Tweet embeds */

@@ -29,7 +29,7 @@ class EmbedController {
         <div data-behavior="embed_container">
           <div class="link_to_embed link_to_embed--new">
             Would you like to embed media from this site?
-            <input class="btn btn-tertiary outline btn-small ml-3" type="button" data-behavior="embed_url" value="Yes, embed it">
+            <input class="btn btn-tertiary btn-small outline" type="button" data-behavior="embed_url" value="Yes, embed it">
           </div>
         </div>
     `)

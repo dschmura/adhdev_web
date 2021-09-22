@@ -23,15 +23,17 @@ div.form-control {
   line-height: 1.5rem;
 }
 
-.form-control {
-  @apply form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+@layer components {
+  .form-control {
+    @apply form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
 
-  &[disabled] {
-    @apply bg-gray-200;
-  }
+    &[disabled] {
+      @apply bg-gray-200;
+    }
 
-  &.error {
-    @apply border-red-300;
+    &.error {
+      @apply border-red-300;
+    }
   }
 }
 
@@ -51,14 +53,6 @@ select[multiple] {
   &[disabled] {
     @apply bg-gray-200;
   }
-}
-
-[type='checkbox'] {
-  @apply form-checkbox;
-}
-
-[type='radio'] {
-  @apply form-radio;
 }
 
 label,
@@ -127,4 +121,17 @@ form.inline {
       outline: -webkit-focus-ring-color auto 5px;
     }
   }
+}
+
+[type='checkbox'] {
+  @apply form-checkbox;
+  @apply rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+
+  &[disabled] {
+    @apply bg-gray-200;
+  }
+}
+
+[type='radio'] {
+  @apply form-radio;
 }
