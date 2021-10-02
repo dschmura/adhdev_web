@@ -34,8 +34,12 @@
     <h4>Deploy using Heroku CLI</h4>
     <p class="mb-4">First, you'll need to <%= link_to "install the Heroku CLI", "http://toolbelt.heroku.com/", target: :_blank %> and login with <code>heroku login</code></p>
     <p class="mb-4">Now you can create a Heroku app by running <code>heroku create myapp</code></p>
-    <p class="mb-4">You'll need to setup <%= link_to "PostgreSQL", "https://elements.heroku.com/addons/heroku-postgresql", target: :_blank %> and <%= link_to "Redis", "https://elements.heroku.com/addons/heroku-redis", target: :_blank %> addons to run your app.</p>
 
+    <p class="mb-4">We also need to tell Heroku which buildpacks to use:</p>
+    <pre><code>heroku buildpacks:set heroku/ruby
+heroku buildpacks:add --index 1 heroku/nodejs</code></pre>
+
+    <p class="mb-4">You'll need to setup <%= link_to "PostgreSQL", "https://elements.heroku.com/addons/heroku-postgresql", target: :_blank %> and <%= link_to "Redis", "https://elements.heroku.com/addons/heroku-redis", target: :_blank %> addons to run your app.</p>
     <pre><code>heroku addons:create heroku-postgresql:hobby-dev
 heroku addons:create heroku-redis:hobby-dev</code></pre>
 
