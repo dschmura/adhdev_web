@@ -2,7 +2,7 @@
 //
 // Use data-pricing-active="yearly" to select yearly by default
 
-import { Controller } from "stimulus"
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ "toggle", "frequency", "plans" ]

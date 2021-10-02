@@ -1,7 +1,7 @@
 // Example usage:
 // <div data-controller="tippy" data-tippy-content="Hello world"></div>
 
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus"
 import tippy from "tippy.js";
 
 export default class extends Controller {

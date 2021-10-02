@@ -9,7 +9,7 @@
 //   export default class extends BulkController {
 //   }
 
-import { Controller } from "stimulus"
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 	static targets = [ "checkbox", "selectAll" ]
