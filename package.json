@@ -2,7 +2,7 @@
   "name": "jumpstart-app",
   "private": true,
   "dependencies": {
-    "@hotwired/stimulus": "npm:@hotwired/stimulus",
+    "@hotwired/stimulus": "^3.0.0",
     "@hotwired/turbo-rails": "^7.0.0-beta.5",
     "@rails/actioncable": "^6.1.4",
     "@rails/actiontext": "^6.1.4",

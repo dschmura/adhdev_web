@@ -1,8 +1,7 @@
 // Load all the controllers within this directory and all subdirectories.
 // Controller files must be named *_controller.js.
 
-import { Application } from "@hotwired/stimulus"
-const application = Application.start()
+import { application } from "./application"
 
 // Register each controller with Stimulus
 import * as controllers from "./**/*_controller.js"
