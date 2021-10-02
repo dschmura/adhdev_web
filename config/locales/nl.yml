@@ -195,8 +195,8 @@ nl:
       title: Huidige plan
       trial_ends: Uw proefperiode loopt af over %{dagen}.
       subscription_ends_html: Uw abonnement eindigt op <strong>%{date}</strong>
-      subscription_pauses_html: "Your subscription pauses <strong>%{date}</strong>"
-      subscription_paused_html: "Your subscription is <strong>paused</strong>"
+      subscription_pauses_html: "Uw abonnement gaat in pauze op <strong>%{date}</strong>"
+      subscription_paused_html: "Uw abonnement is <strong>gepauzeerd</strong>"
       resume: Abonnement hervatten
       resuming: Hervatten ...
       resubscribe_html: Uw abonnement is beëindigd. Wil je %{link}?
@@ -221,11 +221,11 @@ nl:
       receipt: Factuur
       view: "Zien"
       pause:
-        title: "Pause Your Subscription"
-        description: "You can pause your subscription and resume at a later time."
-        note: "The pause takes effect on the first day of your next billing cycle. You will not be charged while your account is paused."
-        button: "Pause Subscription"
-        pausing: "Pausing..."
+        title: "Pauzeer uw abonnement"
+        description: "Je kan dit abonnement pauzeren en later terug hervatten."
+        note: "De pauze gaat in op de eerste dag van uw volgende betalingscyclus. Er worden geen kosten in rekening gebracht terwijl uw account gepauzeerd is."
+        button: "Abonnement pauzeren"
+        pausing: "Pauzeren..."
     cancel:
       title: Annuleer uw abonnement
       description: Je kunt op elk moment annuleren, maar je verliest de toegang
