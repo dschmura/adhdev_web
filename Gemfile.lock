@@ -24,23 +24,21 @@ GIT
 
 GIT
   remote: https://github.com/rails/cssbundling-rails.git
-  revision: 9ef387e8f345514f44e74f0d245d791239f7dbc4
+  revision: c8c3f607eb2e6996c44063106f32ca85966f95d6
   specs:
-    cssbundling-rails (0.1.7)
+    cssbundling-rails (0.2.4)
       railties (>= 6.0.0)
-      sprockets-rails (>= 2.0.0)
 
 GIT
   remote: https://github.com/rails/jsbundling-rails.git
-  revision: 54b57b614ce1c202670ef8fb7320a8be444ec404
+  revision: c3c4610c35b339dc703afbf29baa2485f5668941
   specs:
-    jsbundling-rails (0.1.5)
+    jsbundling-rails (0.1.9)
       railties (>= 6.0.0)
-      sprockets-rails (>= 2.0.0)
 
 GIT
   remote: https://github.com/rubysec/bundler-audit.git
-  revision: ebfca35b2e47eae7aaba42f0e37d61bb3e26049e
+  revision: f64883a878d172722164495668ff205c21eb55c3
   specs:
     bundler-audit (0.9.0.1)
       bundler (>= 1.2.0, < 3)
@@ -130,7 +128,7 @@ GEM
       encryptor (~> 3.0.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.8.1)
+    bootsnap (1.9.1)
       msgpack (~> 1.0)
     brakeman (5.1.1)
     builder (3.2.4)
@@ -232,7 +230,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.1)
@@ -244,17 +242,17 @@ GEM
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
+    nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    nokogiri (1.12.4-x86_64-darwin)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.12.4-x86_64-linux)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     noticed (1.4.1)
       http (>= 4.0.0)
       rails (>= 5.2.0)
-    oj (3.13.6)
+    oj (3.13.8)
     omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
@@ -267,14 +265,11 @@ GEM
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
       rexml (~> 3.2)
-    paddle_pay (0.1.0)
-      faraday (~> 1.0)
-      json (~> 2.0)
     pagy (4.11.0)
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
-    pay (3.0.19)
+    pay (3.0.22)
       rails (>= 6.0.0)
     pdf-core (0.9.0)
     pg (1.2.3)
@@ -297,7 +292,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
-    puma (5.4.0)
+    puma (5.5.0)
       nio4r (~> 2.0)
     pundit (2.1.1)
       activesupport (>= 3.0.0)
@@ -360,7 +355,7 @@ GEM
       rubocop-ast (>= 1.9.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.11.0)
+    rubocop-ast (1.12.0)
       parser (>= 3.0.1.1)
     rubocop-performance (1.11.5)
       rubocop (>= 1.7.0, < 2.0)
@@ -392,23 +387,23 @@ GEM
     standard (1.3.0)
       rubocop (= 1.20.0)
       rubocop-performance (= 1.11.5)
-    stimulus-rails (0.5.2)
+    stimulus-rails (0.6.0)
       rails (>= 6.0.0)
     strong_migrations (0.7.8)
       activerecord (>= 5)
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    turbo-rails (0.7.11)
+    turbo-rails (0.8.1)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2021.1)
+    tzinfo-data (1.2021.3)
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
-    unicode-display_width (2.0.0)
+    unicode-display_width (2.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
