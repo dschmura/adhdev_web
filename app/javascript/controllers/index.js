@@ -4,8 +4,8 @@
 import { application } from "./application"
 
 // Register each controller with Stimulus
-import * as controllers from "./**/*_controller.js"
-controllers.namesWithModule.forEach((controller) => {
+import controllers from "./**/*_controller.js"
+controllers.forEach((controller) => {
   application.register(controller.name, controller.module.default)
 })
 

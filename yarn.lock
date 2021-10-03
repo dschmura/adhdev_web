@@ -855,10 +855,10 @@ esbuild-openbsd-64@0.13.3:
   resolved "https://registry.yarnpkg.com/esbuild-openbsd-64/-/esbuild-openbsd-64-0.13.3.tgz#0cb15bd86d20eb19cb548b530f1a533197532cf9"
   integrity sha512-HVpkgpn4BQt4BPDAjTOpeMub6mzNWw6Y3gaLQJrpbO24pws6ZwYkY24OI3/Uo3LDCbH6856MM81JxECt92OWjA==
 
-esbuild-rails@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/esbuild-rails/-/esbuild-rails-1.0.2.tgz#5fd9a718142ecbd63ccd72899cfa36d3faaa058e"
-  integrity sha512-jDhFoWF+jvmExCm8y8JK49hLXLRM6vGhE1kUqFsgHT6//OAwdeYF7pE7euLeHSApqMHDpngnzmyRu0u+uiYQmA==
+esbuild-rails@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/esbuild-rails/-/esbuild-rails-1.0.3.tgz#5b963c4affd9cbac3c3d589141062c4deabd5a19"
+  integrity sha512-a/bD6R3/VBynPD/ftQ6OpYNpjdeG2W30jZ1eEHd2aTsZBdK8ppuox3pZBv1M3c7ZPf+RicYM8cpx9MV/mVs2BA==
   dependencies:
     glob "^7.2.0"
 
