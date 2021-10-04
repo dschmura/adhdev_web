@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
 
   def index
     @payment_processor = current_account.payment_processor
-    @subscriptions = current_account.subscriptions.active.order(created_at: :asc)
+    @subscriptions = current_account.subscriptions.active.order(created_at: :asc).includes([:customer])
   end
 
   def show
