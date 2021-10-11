@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_notification, only: [:show]
   after_action :mark_as_read, only: [:index]
 
   def index
@@ -7,12 +8,17 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = current_user.notifications.find(params[:id])
     @notification.mark_as_interacted!
     redirect_to @notification.to_notification.url
   end
 
   private
+
+  def set_notification
+    @notification = current_user.notifications.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to notifications_path
+  end
 
   def mark_as_read
     @notifications.mark_as_read!
