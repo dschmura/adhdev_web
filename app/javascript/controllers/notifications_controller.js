@@ -47,7 +47,7 @@ export default class extends Controller {
   // Called when the notifications view opens
   open() {
     this.hideUnreadBadge()
-    this.markAsRead()
+    this.markAllAsRead()
   }
 
   hasUnread() {
