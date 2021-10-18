@@ -19,13 +19,13 @@
     <%# Add any extra fields when creating an Account as part of registration %>
     <%= f.fields_for :owned_accounts do |a| %>
       <div class="form-group">
-        <%= a.label :name, "Account name" %>
+        <%= a.label :name %>
         <%= a.text_field :name, autofocus: true, placeholder: true, class: "form-control" %>
       </div>
     <% end %>
 
     <div class="form-group">
-      <%= f.label :name, "Full name" %>
+      <%= f.label :name %>
       <%= f.text_field :name, autocomplete: "name", placeholder: true, class: "form-control" %>
     </div>
 

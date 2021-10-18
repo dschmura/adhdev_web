@@ -468,6 +468,10 @@ en:
   helpers:
     label:
       country: "Country or region"
+      account:
+        name: "Account Name"
+      user:
+        name: "Full name"
 
     placeholder:
       name_on_card: "Full name"
