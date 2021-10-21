@@ -7,9 +7,14 @@ class Turbo::PathConfigurationsController < ApplicationController
         register_with_account: Jumpstart.config.register_with_account?,
         tabs: [
           {
+            title: "Home",
+            path: root_path,
+            ios_system_image_name: "house"
+          },
+          {
             title: "What's New",
-            path: "/announcements",
-            system_image_name: "megaphone"
+            path: announcements_path,
+            ios_system_image_name: "megaphone"
           }
         ]
       },
