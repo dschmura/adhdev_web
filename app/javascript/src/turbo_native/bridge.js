@@ -7,7 +7,11 @@ class Bridge {
 
   // Sends a message to the native app, if active.
   static postMessage(name, data = {}) {
+    // IOS 
     window.webkit?.messageHandlers?.nativeApp?.postMessage({name, ...data})
+
+    // Android    
+    window.nativeApp?.postMessage(JSON.stringify({name, ...data}))  
   }
 }
 
