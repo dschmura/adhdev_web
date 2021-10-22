@@ -41,8 +41,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # Set Devise cookies for Turbo Native apps
     assert_not_nil session["warden.user.user.key"]
 
-    # Returns a location and API token
-    assert_not_nil response.parsed_body["location"]
+    # Returns an API token
     assert_equal user.api_tokens.find_by(name: ApiToken::APP_NAME).token, response.parsed_body["token"]
   end
 

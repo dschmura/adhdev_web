@@ -16,7 +16,6 @@ class Api::V1::UsersController < Api::BaseController
         user.remember_me = true
         sign_in user
         render json: {
-          location: after_sign_in_path_for(user),
           token: user.api_tokens.first_or_create(name: ApiToken::APP_NAME).token
         }
       else

@@ -8,7 +8,7 @@ class Api::V1::AuthsController < Api::BaseController
     if user&.valid_password?(params[:password])
       if turbo_native_app?
         sign_in_user
-        render json: {location: after_sign_in_path_for(user), token: token_by_name(ApiToken::APP_NAME)}
+        render json: {token: token_by_name(ApiToken::APP_NAME)}
       else
         render json: {token: token_by_name(ApiToken::DEFAULT_NAME)}
       end

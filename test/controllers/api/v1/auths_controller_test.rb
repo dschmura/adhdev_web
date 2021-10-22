@@ -44,12 +44,11 @@ class AuthsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil session["warden.user.user.key"]
   end
 
-  test "returns token and location during turbo app login" do
+  test "returns token during turbo app login" do
     user = users(:one)
     post api_v1_auth_url, params: {email: user.email, password: "password"}, headers: {HTTP_USER_AGENT: "Turbo Native iOS"}
     assert_response :success
     assert_not_nil json_response["token"]
-    assert_not_nil json_response["location"]
   end
 
   test "destroys notification tokens on sign out" do

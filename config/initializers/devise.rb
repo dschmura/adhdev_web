@@ -7,7 +7,6 @@ class TurboFailureApp < Devise::FailureApp
     if request_format == :turbo_stream
       redirect
     elsif turbo_native_app?
-      store_location!
       http_auth
     else
       super
