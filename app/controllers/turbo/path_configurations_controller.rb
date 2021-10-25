@@ -5,6 +5,7 @@ class Turbo::PathConfigurationsController < ApplicationController
     render json: {
       settings: {
         register_with_account: Jumpstart.config.register_with_account?,
+        require_authentication: false,
         tabs: [
           {
             title: "Home",
