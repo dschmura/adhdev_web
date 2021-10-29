@@ -26,7 +26,7 @@
     "postcss-import": "^14.0.2",
     "slim-select": "^1.27.0",
     "stimulus-flatpickr": "^3.0.0-0",
-    "tailwindcss": "^2.2.18",
+    "tailwindcss": "^2.2.19",
     "tailwindcss-stimulus-components": "^3.0.1",
     "tippy.js": "^6.3.2",
     "tributejs": "^5.1.3",
