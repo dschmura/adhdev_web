@@ -6,7 +6,6 @@ module Jumpstart
       @config = config
     end
 
-    # rubocop: disable Metrics/AbcSize
     def settings
       return mailgun_settings if config.mailgun?
       return mailjet_settings if config.mailjet?
