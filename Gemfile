@@ -18,7 +18,7 @@ gem "redis", "~> 4.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 # Security update
-gem "nokogiri", ">= 1.10.8"
+gem "nokogiri", ">= 1.12.5"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

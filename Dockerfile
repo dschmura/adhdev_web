@@ -1,14 +1,13 @@
 FROM ruby:3
 
-ARG BUNDLER_VERSION=2.2.28
-RUN gem update --system && \
+RUN gem install "bundler:~>2.0" --no-document && \
+    gem update --system && \
     gem update --force --no-document && \
-    gem install "bundler:${BUNDLER_VERSION}" --no-document && \
     gem cleanup
 
 # NodeJS (https://github.com/nodejs/docker-node/blob/main/14/bullseye/Dockerfile)
 
-ARG NODE_VERSION=14.18.0
+ARG NODE_VERSION=16.13.0
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
@@ -48,7 +47,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && node --version \
   && npm --version
 
-ARG YARN_VERSION=1.22.15
+ARG YARN_VERSION=1.22.17
 RUN set -ex \
   && for key in \
     6A010C5166006599AA17F08146C2130DFD2497F5 \

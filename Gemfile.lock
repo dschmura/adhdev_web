@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/excid3/administrate.git
-  revision: 7c598e1224a7518237978f105db9f3a4f5c2e307
+  revision: b0f2ae27fd7ce76189e262e6842c82434b669bae
   branch: jumpstart
   specs:
     administrate (0.16.0)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/heartcombo/responders.git
-  revision: cf72db400492bf19a2169bd7b6de68e7036df30e
+  revision: d15834ec95546c529375d6497104941be79372f6
   specs:
     responders (3.0.1)
       actionpack (>= 5.2)
@@ -24,14 +24,14 @@ GIT
 
 GIT
   remote: https://github.com/rails/cssbundling-rails.git
-  revision: c8c3f607eb2e6996c44063106f32ca85966f95d6
+  revision: 15e5ccbb0473724d74783224c6d4471e122a2a50
   specs:
     cssbundling-rails (0.2.4)
       railties (>= 6.0.0)
 
 GIT
   remote: https://github.com/rails/jsbundling-rails.git
-  revision: c3c4610c35b339dc703afbf29baa2485f5668941
+  revision: 8b4d2a95bc4bf5c5d590813242ac8f0aee0567fc
   specs:
     jsbundling-rails (0.1.9)
       railties (>= 6.0.0)
@@ -130,18 +130,19 @@ GEM
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
-    brakeman (5.1.1)
+    brakeman (5.1.2)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.35.3)
+    capybara (3.36.0)
       addressable
+      matrix
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (3.0.0)
+    childprocess (4.1.0)
     chronic (0.10.2)
     chunky_png (1.4.0)
     coderay (1.1.3)
@@ -173,7 +174,7 @@ GEM
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
-    http (5.0.2)
+    http (5.0.4)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -214,7 +215,7 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    letter_opener_web (1.4.0)
+    letter_opener_web (1.4.1)
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
@@ -231,9 +232,10 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    matrix (0.4.2)
     method_source (1.0.0)
     mini_magick (4.11.0)
-    mini_mime (1.1.1)
+    mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     momentjs-rails (2.20.1)
@@ -252,7 +254,7 @@ GEM
     noticed (1.4.1)
       http (>= 4.0.0)
       rails (>= 5.2.0)
-    oj (3.13.8)
+    oj (3.13.9)
     omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
@@ -269,7 +271,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
-    pay (3.0.22)
+    pay (3.0.23)
       rails (>= 6.0.0)
     pdf-core (0.9.0)
     pg (1.2.3)
@@ -292,11 +294,11 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
-    puma (5.5.0)
+    puma (5.5.2)
       nio4r (~> 2.0)
     pundit (2.1.1)
       activesupport (>= 3.0.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
@@ -336,7 +338,7 @@ GEM
     receipts (1.1.2)
       prawn (>= 1.3.0, < 3.0.0)
       prawn-table (~> 0.2.1)
-    redis (4.4.0)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -346,13 +348,13 @@ GEM
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
-    rubocop (1.20.0)
+    rubocop (1.22.3)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.9.1, < 2.0)
+      rubocop-ast (>= 1.12.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.12.0)
@@ -374,8 +376,9 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.12.6)
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
+    selenium-webdriver (4.0.3)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -384,21 +387,21 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    standard (1.3.0)
-      rubocop (= 1.20.0)
+    standard (1.4.0)
+      rubocop (= 1.22.3)
       rubocop-performance (= 1.11.5)
-    stimulus-rails (0.6.0)
+    stimulus-rails (0.7.1)
       rails (>= 6.0.0)
     strong_migrations (0.7.8)
       activerecord (>= 5)
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    turbo-rails (0.8.1)
+    turbo-rails (7.1.1)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2021.3)
+    tzinfo-data (1.2021.5)
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
@@ -411,10 +414,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webdrivers (4.6.1)
+    webdrivers (5.0.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
-      selenium-webdriver (>= 3.0, < 4.0)
+      selenium-webdriver (~> 4.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -422,7 +425,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
@@ -455,7 +458,7 @@ DEPENDENCIES
   listen (~> 3.2, >= 3.2.1)
   local_time (~> 2.1)
   name_of_person (~> 1.0)
-  nokogiri (>= 1.10.8)
+  nokogiri (>= 1.12.5)
   noticed (~> 1.3)
   oj (~> 3.8, >= 3.8.1)
   omniauth (~> 2.0, >= 2.0.4)
@@ -489,4 +492,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.27
+   2.2.30
