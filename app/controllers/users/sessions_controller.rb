@@ -32,10 +32,10 @@ class Users::SessionsController < Devise::SessionsController
 
   def find_user
     if session[:otp_user_id]
-      User.find(session[:otp_user_id])
+      resource_class.find(session[:otp_user_id])
 
     elsif sign_in_params[:email]
-      User.find_by(email: sign_in_params[:email])
+      resource_class.find_by(email: sign_in_params[:email])
     end
   end
 end
