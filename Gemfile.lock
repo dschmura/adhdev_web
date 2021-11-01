@@ -156,7 +156,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.0)
+    devise-i18n (1.10.1)
       devise (>= 4.8.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -446,7 +446,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   cssbundling-rails!
   devise (>= 4.7.1)
-  devise-i18n (~> 1.9)
+  devise-i18n (~> 1.10)
   hotwire-rails (~> 0.1.2)
   image_processing (~> 1.9, >= 1.9.2)
   inline_svg (~> 1.6)
