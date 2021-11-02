@@ -64,4 +64,9 @@ class UserTest < ActiveSupport::TestCase
       users(:one).destroy
     end
   end
+
+  test "renders name with ActionText to_plain_text" do
+    user = users(:one)
+    assert_equal user.name, user.attachable_plain_text_representation
+  end
 end

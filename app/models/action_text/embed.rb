@@ -52,6 +52,10 @@ class ActionText::Embed < ApplicationRecord
     "action_text/embeds/trix_embed"
   end
 
+  def attachable_plain_text_representation(caption = nil)
+    "[#{caption || url}]"
+  end
+
   PATTERNS = [
     {source: "^http:\\/\\/([^\\.]+\\.)?flickr\\.com\\/(.*?)", options: ""},
     {source: "^https:\\/\\/([^\\.]+\\.)?flickr\\.com\\/(.*?)", options: ""},

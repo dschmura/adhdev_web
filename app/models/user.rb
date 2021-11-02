@@ -77,4 +77,9 @@ class User < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :avatar, resizable_image: true
+
+  # When ActionText rendering mentions in plain text
+  def attachable_plain_text_representation(caption = nil)
+    caption || name
+  end
 end
