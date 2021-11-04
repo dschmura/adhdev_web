@@ -21,7 +21,6 @@ ENV PATH $GEM_HOME/bin:$BUNDLE_PATH/gems/bin:/usr/lib/fullstaq-ruby/versions/${R
 
 RUN gem install "bundler:~>2.0" --no-document && \
     gem update --system && \
-    gem update --force --no-document && \
     gem cleanup
 
 ARG NODE_VERSION=16.13.0
