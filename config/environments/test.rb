@@ -56,4 +56,8 @@ Rails.application.configure do
   config.require_master_key = true
 
   config.i18n.raise_on_missing_translations = true
+
+  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
+  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
+  config.require_master_key = true
 end
