@@ -2,7 +2,6 @@ FROM ruby:3
 
 RUN gem install "bundler:~>2.0" --no-document && \
     gem update --system && \
-    gem update --force --no-document && \
     gem cleanup
 
 # NodeJS (https://github.com/nodejs/docker-node/blob/main/14/bullseye/Dockerfile)
