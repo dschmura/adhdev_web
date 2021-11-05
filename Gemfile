@@ -52,16 +52,18 @@ gem "tzinfo-data"
 # Jumpstart dependencies
 gem "jumpstart", path: "lib/jumpstart", group: :omit
 
-gem "acts_as_tenant"
+gem "acts_as_tenant", "~> 0.5.1"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
 gem "administrate-field-active_storage", "~> 0.3.0"
 gem "attr_encrypted", "~> 3.1"
+gem "cssbundling-rails", "~> 0.2.4"
 gem "devise", ">= 4.7.1"
 gem "devise-i18n", "~> 1.10"
 gem "hotwire-rails", "~> 0.1.2"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"
 gem "invisible_captcha", "~> 2.0"
+gem "jsbundling-rails", "~> 0.1.9"
 gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "noticed", "~> 1.3"
@@ -77,15 +79,13 @@ gem "pundit", "~> 2.1"
 gem "receipts", "~> 1.1.0"
 gem "responders", github: "heartcombo/responders"
 gem "rotp", "~> 6.2"
-gem "rqrcode"
+gem "rqrcode", "~> 2.1"
 gem "ruby-oembed", "~> 0.15.0", require: "oembed"
 gem "strong_migrations", "~> 0.7.6"
-gem "whenever", require: false
+gem "whenever", "~> 1.0", require: false
 
 # Jumpstart manages a few gems for us, so install them from the extra Gemfile
 if File.exist?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
 end
 
-gem "cssbundling-rails", github: "rails/cssbundling-rails"
-gem "jsbundling-rails", github: "rails/jsbundling-rails"
