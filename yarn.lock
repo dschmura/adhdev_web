@@ -2549,10 +2549,10 @@ tiny-emitter@^2.0.0:
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
   integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
-tippy.js@^6.3.3:
-  version "6.3.3"
-  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.3.3.tgz#04810e79fc217acacc4bd4acb5acf428d7c33974"
-  integrity sha512-Y3bLm4p33a8TJ49idtxfe6YYxcrmGKkOosry5clshy+wue622nhOxpf+KDfOQmif8etqsoIYFfVyVyXKQDqWVw==
+tippy.js@^6.3.5:
+  version "6.3.5"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.3.5.tgz#cbc99d34f87ccc127e6460032b86c8d47971d38f"
+  integrity sha512-B9hAQ5KNF+jDJRg6cRysV6Y3J+5fiNfD60GuXR5TP0sfrcltpgdzVc7f1wMtjQ3W0+Xsy80CDvk0Z+Vr0cM4sQ==
   dependencies:
     "@popperjs/core" "^2.9.0"
 
