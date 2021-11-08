@@ -14,6 +14,8 @@
 #  index_notification_tokens_on_user_id  (user_id)
 #
 class NotificationToken < ApplicationRecord
+  # Tokens for sending push notifications to mobile devices
+
   belongs_to :user
   validates :token, presence: true
   validates :platform, presence: true, inclusion: {in: %w[iOS Android]}

@@ -1,0 +1,9 @@
+ios:
+  user: one
+  platform: iOS
+  token: abcd
+
+android:
+  user: one
+  platform: Android
+  token: abcd
