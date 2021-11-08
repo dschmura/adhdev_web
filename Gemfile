@@ -88,4 +88,3 @@ gem "whenever", "~> 1.0", require: false
 if File.exist?("config/jumpstart/Gemfile")
   eval_gemfile "config/jumpstart/Gemfile"
 end
-
