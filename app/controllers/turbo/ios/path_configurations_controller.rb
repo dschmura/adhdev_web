@@ -1,4 +1,4 @@
-class Turbo::PathConfigurationsController < ApplicationController
+class Turbo::Ios::PathConfigurationsController < ApplicationController
   # Defines the tabs and rules for the mobile app views
   # To customize this, you can edit the JSON here
   def show
