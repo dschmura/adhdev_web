@@ -12,7 +12,7 @@ module AccountsHelper
 
     elsif account.avatar.attached? && account.avatar.variable?
       image_tag(
-        account.avatar.variant(thumbnail: "#{size}x#{size}^", gravity: "center", extent: "#{size}x#{size}"),
+        account.avatar.variant(resize_to_fit: [size, size]),
         class: classes,
         alt: account.name
       )
