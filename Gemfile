@@ -27,7 +27,7 @@ group :development, :test do
   gem "annotate"
   gem "brakeman"
   gem "bundler-audit", github: "rubysec/bundler-audit"
-  gem "letter_opener_web", "~> 1.3", ">= 1.3.4"
+  gem "letter_opener_web", "~> 2.0"
   gem "standard"
 end
 
@@ -63,7 +63,7 @@ gem "hotwire-rails", "~> 0.1.2"
 gem "image_processing", "~> 1.9", ">= 1.9.2"
 gem "inline_svg", "~> 1.6"
 gem "invisible_captcha", "~> 2.0"
-gem "jsbundling-rails", "~> 0.1.9"
+gem "jsbundling-rails", "~> 0.2.0"
 gem "local_time", "~> 2.1"
 gem "name_of_person", "~> 1.0"
 gem "noticed", "~> 1.5"
