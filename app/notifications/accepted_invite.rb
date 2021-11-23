@@ -1,6 +1,9 @@
 class AcceptedInvite < ApplicationNotification
   deliver_by :action_cable, format: :to_websocket, channel: "NotificationChannel"
 
+  param :account
+  param :user
+
   def to_websocket
     {
       account_id: record.account_id,

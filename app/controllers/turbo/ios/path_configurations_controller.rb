@@ -16,6 +16,12 @@ class Turbo::Ios::PathConfigurationsController < ApplicationController
             title: "What's New",
             path: announcements_path,
             ios_system_image_name: "megaphone"
+          },
+          {
+            title: "Notifications",
+            path: notifications_path,
+            ios_system_image_name: "bell",
+            show_notification_badge: true
           }
         ]
       },

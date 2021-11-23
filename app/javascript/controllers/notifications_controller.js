@@ -3,6 +3,11 @@ import consumer from "../channels/consumer"
 
 export default class extends Controller {
   static targets = ["badge", "list", "placeholder", "notification"]
+  static values = {
+    accountId: String, // Current account ID
+    accountUnread: Number, // Unread count for the current account
+    totalUnread: Number, // Unread count across all the user's accounts
+  }
 
   connect() {
     this.subscription = consumer.subscriptions.create({ channel: "NotificationChannel" }, {
@@ -12,7 +17,6 @@ export default class extends Controller {
     })
 
     if (this.hasUnread()) this.showUnreadBadge()
-    if (this.empty()) this.showPlaceholder()
   }
 
   disconnect() {
@@ -26,14 +30,19 @@ export default class extends Controller {
   }
 
   _received(data) {
+    this.totalUnreadValue += 1
+
+    if (data.account_id && data.account_id == this.accountIdValue) {
+      this.accountUnreadValue += 1
+    }
+
     // Ignore if user is signed in to a different account
-    if (data.account_id && data.account_id != this.data.get("accountId")) {
+    if (data.account_id && data.account_id != this.accountIdValue) {
       return
     }
 
     // Regular notifications get added to the navbar
     if (data.html) {
-      this.hidePlaceholder()
       this.listTarget.insertAdjacentHTML('afterbegin', data.html)
       this.showUnreadBadge()
     }
@@ -51,29 +60,25 @@ export default class extends Controller {
   }
 
   hasUnread() {
-    return this.notificationTargets.some((target) => target.dataset.readAt == undefined)
+    return !!this.accountUnreadValue
   }
 
   showUnreadBadge() {
+    if (this.hasBadgeTarget == false) { return }
     this.badgeTarget.classList.remove("hidden")
   }
 
   hideUnreadBadge() {
+    if (this.hasBadgeTarget == false) { return }
     this.badgeTarget.classList.add("hidden")
   }
 
   markAllAsRead() {
     let ids = this.notificationTargets.map((target) => target.dataset.id)
     this.subscription.perform("mark_as_read", {ids: ids})
-  }
 
-  markAsRead(event) {
-    let id = event.currentTarget.dataset.id
-    if (id == null) return
-    this.subscription.perform("mark_as_read", {ids: [id]})
-
-    // Uncomment to visual mark notification read
-    // event.currentTarget.dataset.readAt= new Date()
+    this.accountUnreadValue = 0
+    this.totalUnreadValue -= ids.length
   }
 
   markAsInteracted(event) {
@@ -83,18 +88,6 @@ export default class extends Controller {
 
     // Uncomment to visually mark notification as interacted
     // event.currentTarget.dataset.interactedAt = new Date()
-  }
-
-  empty() {
-    return this.notificationTargets.length == 0
-  }
-
-  showPlaceholder() {
-    if (this.hasPlaceholderTarget) this.placeholderTarget.classList.remove("hidden")
-  }
-
-  hidePlaceholder() {
-    if (this.hasPlaceholderTarget) this.placeholderTarget.classList.add("hidden")
   }
 
   // Browser notifications
@@ -117,5 +110,19 @@ export default class extends Controller {
   browserNotification(data) {
     new Notification(data.title, data.options)
   }
-}
 
+  // Automatically sync count to Native apps
+  totalUnreadValueChanged() {
+    this.syncCountToNative()
+  }
+
+  // Automatically sync count to Native apps
+  accountUnreadValueChanged() {
+    this.syncCountToNative()
+  }
+
+  // Update the mobile device with the current unread count
+  syncCountToNative() {
+    window.TurboNativeBridge.setNotificationCount(this.totalUnreadValue, this.accountUnreadValue)
+  }
+}
