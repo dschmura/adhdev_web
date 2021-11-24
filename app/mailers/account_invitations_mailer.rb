@@ -9,12 +9,9 @@ class AccountInvitationsMailer < ApplicationMailer
     @account = @account_invitation.account
     @invited_by = @account_invitation.invited_by
 
-    name = @account_invitation.name
-    email = @account_invitation.email
-
     mail(
-      to: "#{name} <#{email}>",
-      from: "#{@invited_by.name} <#{Jumpstart.config.support_email}>",
+      to: email_address_with_name(@account_invitation.email, @account_invitation.name),
+      from: email_address_with_name(Jumpstart.config.support_email, @invited_by.name),
       subject: t(".subject", inviter: @invited_by.name, account: @account.name)
     )
   end
