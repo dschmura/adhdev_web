@@ -1,20 +1,6 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def avatar_url_for(user, opts = {})
-    size = opts[:size] || 48
-
-    if user.respond_to?(:avatar) && user.avatar.attached? && user.avatar.variable?
-      user.avatar.variant(
-        thumbnail: "#{size}x#{size}^",
-        gravity: "center",
-        extent: "#{size}x#{size}"
-      )
-    else
-      gravatar_url_for(user.email, size: size)
-    end
-  end
-
   def disable_with(text)
     "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
