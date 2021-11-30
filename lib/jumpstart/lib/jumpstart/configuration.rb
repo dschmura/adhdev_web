@@ -118,7 +118,7 @@ module Jumpstart
       gems[:main] << {name: "paddle_pay"} if paddle?
       gems[:main] << {name: job_processor.to_s} unless job_processor.to_s == "async"
       gems[:development] += [{name: "guard"}, {name: "guard-livereload", version: "~> 2.5", require: false}, {name: "rack-livereload"}] if livereload?
-      gems[:development] += [{name: "solargraph-rails", version: "0.2.0.pre"}] if solargraph?
+      gems[:development] += [{name: "solargraph-rails", version: "~> 0.2.0.pre"}] if solargraph?
       gems
     end
 
