@@ -4,8 +4,8 @@ class NotificationsController < ApplicationController
   after_action :mark_as_read, only: [:index]
 
   def index
-    @pagy, @notifications = pagy(current_user.notifications.where(account: current_account).newest_first, items: (turbo_frame? ? 10 : 25))
-    render :nav if turbo_frame?
+    @pagy, @notifications = pagy(current_user.notifications.where(account: current_account).newest_first, items: (turbo_frame_request? ? 10 : 25))
+    render :nav if turbo_frame_request?
   end
 
   def show

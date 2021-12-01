@@ -47,8 +47,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: t("must_be_an_admin")
     end
   end
-
-  def turbo_frame?
-    !!request.headers["Turbo-Frame"]
-  end
 end
