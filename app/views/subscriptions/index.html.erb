@@ -18,7 +18,7 @@
           </div>
         <% end %>
 
-        <% if @payment_processor && @payment_processor.fake_processor? %>
+        <% if @payment_processor %>
           <%= render "subscriptions/payment_method", payment_processor: @payment_processor %>
         <% end %>
 
