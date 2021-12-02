@@ -156,6 +156,8 @@ en:
     forms:
       braintree:
         button: "Update Card"
+      fake_processor:
+        message: "You have free access and don't need to add a payment method."
       stripe:
         credit_or_debit_card: "Credit or Debit Card"
         button: "Update Card"
