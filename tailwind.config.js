@@ -15,7 +15,7 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
 
-  purge: [
+  content: [
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.erb',

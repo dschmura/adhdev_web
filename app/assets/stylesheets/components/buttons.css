@@ -39,7 +39,7 @@
     }
 
     &.outline {
-      @apply bg-transparent border border-blue-500 text-blue-500 shadow-none;
+      @apply bg-transparent outline-1 text-blue-500 shadow-none;
 
       &:hover,
       &:focus {
@@ -57,7 +57,7 @@
     }
 
     &.outline {
-      @apply bg-transparent border border-green-600 text-green-600 shadow-none;
+      @apply bg-transparent outline-1 text-green-600 shadow-none;
 
       &:hover,
       &:focus {
@@ -75,7 +75,7 @@
     }
 
     &.outline {
-      @apply bg-transparent border border-gray-700 text-gray-700 shadow-none;
+      @apply bg-transparent outline-1 text-gray-700 shadow-none;
 
       &:hover,
       &:focus {
@@ -93,7 +93,7 @@
     }
 
     &.outline {
-      @apply bg-transparent border border-red-500 text-red-500 shadow-none;
+      @apply bg-transparent outline-1 text-red-500 shadow-none;
 
       &:hover,
       &:focus {
