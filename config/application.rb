@@ -32,5 +32,9 @@ module JumpstartApp
 
     # Use default language as fallback if translation is missing
     config.i18n.fallbacks = true
+
+    # Prevent sassc-rails from setting sass as the compressor
+    # Libsass is deprecated and doesn't support modern CSS syntax used by TailwindCSS
+    config.assets.css_compressor = nil
   end
 end
