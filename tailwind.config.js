@@ -3,11 +3,7 @@
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-
 module.exports = {
-  // https://tailwindcss.com/docs/just-in-time-mode
-  mode: 'jit',
-
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms')({ strategy: 'class' }),
@@ -15,7 +11,7 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
 
-  purge: [
+  content: [
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.erb',
@@ -30,7 +26,6 @@ module.exports = {
     extend: {
       // Create your own at: https://javisperez.github.io/tailwindcolorshades
       colors: {
-        //orange: colors.orange,
         primary: colors.blue,
         secondary: colors.emerald,
         tertiary: colors.gray,
@@ -42,10 +37,6 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
     },
-  },
-
-  variants: {
-    borderWidth: ['responsive', 'last', 'hover', 'focus'],
   },
 
   // Opt-in to TailwindCSS future changes
