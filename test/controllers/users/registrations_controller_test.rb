@@ -6,7 +6,6 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user_params = {user:
                         {name: "Test User",
-                         username: "new_testuser",
                          email: "user@test.com",
                          password: "TestPassword",
                          terms_of_service: "1"}}
