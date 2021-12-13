@@ -16,6 +16,9 @@
     <p class="text-gray-700 font-brand-semibold mb-4">You're all set!</p>
 
     <h2 class="pb-3 mb-6 border-b border-gray-200">Merging Updates</h2>
+    <p class="mb-4 text-gray-700">First, we need to add a remote for the Jumpstart Pro repository.</p>
+    <pre><code>git remote add jumpstart git@github.com:jumpstart-pro/jumpstart-pro.git</code></pre>
+
     <p class="mb-4 text-gray-700">To merge updates, use git merge from the <code>jumpstart</code> origin.</p>
     <pre><code>git fetch jumpstart
 git merge jumpstart/master --allow-unrelated-histories</code></pre>
