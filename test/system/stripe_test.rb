@@ -1,6 +1,6 @@
 begin
   require "stripe"
-rescue
+rescue LoadError
   puts "Skipping Stripe system tests because Stripe is not enabled."
   return
 end
