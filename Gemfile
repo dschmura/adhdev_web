@@ -87,7 +87,7 @@ gem "acts_as_tenant", "~> 0.5.1"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
 gem "administrate-field-active_storage", "~> 0.3.0"
 gem "cssbundling-rails", "~> 1.0.0"
-gem "devise", github: "heartcombo/devise", branch: "main" # ">= 4.7.1"
+gem "devise", "~> 4.8", ">= 4.8.1"
 gem "devise-i18n", "~> 1.10"
 gem "inline_svg", "~> 1.6"
 gem "invisible_captcha", "~> 2.0"
