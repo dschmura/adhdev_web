@@ -71,4 +71,7 @@ Rails.application.configure do
 
   # Reduce key stretching for performance in tests
   config.stretches = 1
+
+  # Encrypts fixtures with Rails encryption
+  config.active_record.encryption.encrypt_fixtures = true
 end
