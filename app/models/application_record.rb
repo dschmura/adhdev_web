@@ -1,5 +1,5 @@
 class ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+  primary_abstract_class
 
   # Orders results by column and direction
   def self.sort_by_params(column, direction)

@@ -78,29 +78,27 @@ class UpgradeToPayV3 < ActiveRecord::Migration[6.0]
       subscription.update!(customer: customer)
     end
 
-    safety_assured do
-      # Drop unneeded columns
-      remove_column :pay_charges, :owner_type
-      remove_column :pay_charges, :owner_id
-      remove_column :pay_charges, :processor
-      remove_column :pay_charges, :card_type
-      remove_column :pay_charges, :card_last4
-      remove_column :pay_charges, :card_exp_month
-      remove_column :pay_charges, :card_exp_year
-      remove_column :pay_subscriptions, :owner_type
-      remove_column :pay_subscriptions, :owner_id
-      remove_column :pay_subscriptions, :processor
+    # Drop unneeded columns
+    remove_column :pay_charges, :owner_type
+    remove_column :pay_charges, :owner_id
+    remove_column :pay_charges, :processor
+    remove_column :pay_charges, :card_type
+    remove_column :pay_charges, :card_last4
+    remove_column :pay_charges, :card_exp_month
+    remove_column :pay_charges, :card_exp_year
+    remove_column :pay_subscriptions, :owner_type
+    remove_column :pay_subscriptions, :owner_id
+    remove_column :pay_subscriptions, :processor
 
-      MODELS.each do |klass|
-        remove_column klass.table_name, :processor
-        remove_column klass.table_name, :processor_id
-        remove_column klass.table_name, :pay_data, if_exists: true
-        remove_column klass.table_name, :card_type
-        remove_column klass.table_name, :card_last4
-        remove_column klass.table_name, :card_exp_month
-        remove_column klass.table_name, :card_exp_year
-        remove_column klass.table_name, :trial_ends_at
-      end
+    MODELS.each do |klass|
+      remove_column klass.table_name, :processor
+      remove_column klass.table_name, :processor_id
+      remove_column klass.table_name, :pay_data, if_exists: true
+      remove_column klass.table_name, :card_type
+      remove_column klass.table_name, :card_last4
+      remove_column klass.table_name, :card_exp_month
+      remove_column klass.table_name, :card_exp_year
+      remove_column klass.table_name, :trial_ends_at
     end
   end
 

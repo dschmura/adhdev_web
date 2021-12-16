@@ -28,6 +28,11 @@ module Jumpstart
         # Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
         secret_key_base: #{SecureRandom.hex(64)}
 
+        active_record_encryption:
+          primary_key: #{SecureRandom.alphanumeric(32)}
+          deterministic_key: #{SecureRandom.alphanumeric(32)}
+          key_derivation_salt: #{SecureRandom.alphanumeric(32)}
+
         # aws:
         #   access_key_id: 123
         #   secret_access_key: 345

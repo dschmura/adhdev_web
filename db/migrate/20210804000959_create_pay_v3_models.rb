@@ -60,11 +60,9 @@ class CreatePayV3Models < ActiveRecord::Migration[6.0]
     remove_index :pay_charges, [:processor, :processor_id] if index_exists?(:pay_charges, [:processor, :processor_id])
     remove_index :pay_subscriptions, [:processor, :processor_id] if index_exists?(:pay_subscriptions, [:processor, :processor_id])
 
-    safety_assured do
-      add_reference :pay_charges, :customer, foreign_key: {to_table: :pay_customers}, index: false
-      add_reference :pay_subscriptions, :customer, foreign_key: {to_table: :pay_customers}, index: false
-      add_index :pay_charges, [:customer_id, :processor_id], unique: true
-      add_index :pay_subscriptions, [:customer_id, :processor_id], unique: true
-    end
+    add_reference :pay_charges, :customer, foreign_key: {to_table: :pay_customers}, index: false
+    add_reference :pay_subscriptions, :customer, foreign_key: {to_table: :pay_customers}, index: false
+    add_index :pay_charges, [:customer_id, :processor_id], unique: true
+    add_index :pay_subscriptions, [:customer_id, :processor_id], unique: true
   end
 end
