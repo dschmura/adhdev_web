@@ -6,10 +6,9 @@ class AddDataToPayModels < ActiveRecord::Migration[4.2]
   end
 
   def data_column_type
-    default_hash = ActiveRecord::Base.configurations.default_hash
-    adapter = default_hash.dig(:adapter) || default_hash.dig("adapter")
+    config = ActiveRecord::Base.configurations.configs_for(env_name: 'default', name: 'primary')
 
-    case adapter
+    case config.adapter
     when "mysql2"
       :json
     when "postgresql"
