@@ -6,7 +6,7 @@ class AddDataToPayModels < ActiveRecord::Migration[4.2]
   end
 
   def data_column_type
-    config = ActiveRecord::Base.configurations.configs_for(env_name: 'default', name: 'primary')
+    config = ActiveRecord::Base.configurations.configs_for(env_name: "default", name: "primary")
 
     case config.adapter
     when "mysql2"
