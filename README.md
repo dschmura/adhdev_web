@@ -16,7 +16,7 @@ You'll need the following installed to run the template successfully:
 * bundler - `gem install bundler`
 * Redis - For ActionCable support (and Sidekiq, caching, etc)
 * PostgreSQL - `brew install postgresql`
-* Imagemagick - `brew install imagemagick`
+* Libvips or Imagemagick - `brew install vips imagemagick`
 * Yarn - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
 * Foreman (optional) - `gem install foreman` - helps run all your
   processes in development
