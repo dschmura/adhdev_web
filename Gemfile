@@ -22,7 +22,7 @@ gem "turbo-rails", ">= 0.9.0"
 gem "stimulus-rails", ">= 0.7.3"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder", "~> 2.11"
+gem "jbuilder", github: "excid3/jbuilder", branch: "partial-paths" #"~> 2.11"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"

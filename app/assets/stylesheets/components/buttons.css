@@ -1,6 +1,12 @@
+/* Hotwire's version of data-disable-with */
+button                  .when-disabled { display: none; }
+button[disabled]        .when-disabled { display: initial; }
+button                  .when-enabled { display: initial; }
+button[disabled]        .when-enabled { display: none; }
+
 @layer components {
   .btn {
-    @apply inline-flex text-sm font-semibold text-center px-4 py-0 rounded no-underline items-center justify-between;
+    @apply inline-flex text-sm font-semibold text-center px-4 py-0 rounded no-underline items-center justify-between shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2;
 
     height: 40px;
     line-height: 40px;
@@ -12,7 +18,7 @@
     }
 
     &:disabled {
-      @apply bg-gray-200 text-white cursor-not-allowed;
+      @apply opacity-75 cursor-not-allowed;
     }
   }
 
@@ -31,7 +37,7 @@
   }
 
   .btn-primary {
-    @apply bg-blue-600 text-white;
+    @apply bg-blue-600 text-white focus:ring-blue-500;
 
     &:hover,
     &:focus {
@@ -49,7 +55,7 @@
   }
 
   .btn-secondary {
-    @apply bg-green-600 text-white;
+    @apply bg-green-600 text-white focus:ring-green-500;
 
     &:hover,
     &:focus {
@@ -67,7 +73,7 @@
   }
 
   .btn-tertiary {
-    @apply bg-gray-700 text-white;
+    @apply bg-gray-700 text-white focus:ring-gray-600;
 
     &:hover,
     &:focus {
@@ -85,7 +91,7 @@
   }
 
   .btn-danger {
-    @apply bg-red-600 text-white;
+    @apply bg-red-600 text-white focus:ring-red-500;
 
     &:hover,
     &:focus {
@@ -102,13 +108,12 @@
     }
   }
 
-  .btn-white {
-    @apply bg-white;
+  .btn-gray {
+    @apply bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-600;
+  }
 
-    &:hover,
-    &:focus {
-      @apply bg-gray-100;
-    }
+  .btn-white {
+    @apply bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-700 focus:ring-blue-500;
 
     &.primary {
       @apply text-blue-600;
@@ -128,7 +133,7 @@
   }
 
   .btn-link {
-    @apply text-blue-500 bg-transparent;
+    @apply text-blue-500 bg-transparent shadow-none;
 
     &:hover,
     &:focus {
@@ -138,13 +143,16 @@
     }
   }
 
-  .btn-light-gray {
-    @apply text-gray-900 bg-gray-100;
+  .btn-light-blue {
+    @apply text-blue-700 bg-blue-100 focus:ring-blue-700;
+  }
 
-    &:hover,
-    &:focus {
-      @apply text-gray-900 bg-gray-200;
-    }
+  .btn-light-green {
+    @apply text-green-700 bg-green-100 focus:ring-green-700;
+  }
+
+  .btn-light-red {
+    @apply text-red-700 bg-red-100 focus:ring-red-700;
   }
 
   .btn-expanded, .btn-block {

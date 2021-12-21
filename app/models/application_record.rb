@@ -1,4 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
+  include ActionView::RecordIdentifier
+
   primary_abstract_class
 
   # Orders results by column and direction

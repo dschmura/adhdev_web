@@ -1,52 +1,37 @@
+<%%= content_for :title, "<%= plural_table_name.titleize %>" %>
+<%%= turbo_stream_from :<%= plural_table_name %> %>
+
 <div class="container px-4 mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
-    <h1 class="h3"><%= plural_table_name.titleize %></h1>
+    <div>
+      <h1 class="h3"><%= plural_table_name.titleize %></h1>
 
-    <%% if @<%= plural_table_name %>.any? %>
-      <%%= link_to t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>"), new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
-    <%% end %>
-  </div>
-
-  <%% if @<%= plural_table_name %>.any? %>
-    <div class="bg-white rounded shadow table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
+      <div class="text-sm font-medium">
+        <span class="text-gray-500">Sort by:</span>
 <%- attributes.reject(&:password_digest?).each do |attribute| -%>
-            <th class="p-3 text-xs text-left uppercase"><%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, "<%= attribute.human_name %>", class: "text-gray-700" %></th>
+        <%%= sortable @<%= plural_table_name %>, :<%= attribute.column_name %>, "<%= attribute.human_name %>", class: "text-gray-700 mr-1" %>
 <%- end -%>
-            <th class="w-20 p-3 text-xs text-left text-gray-700 uppercase"><%%= t("shared.scaffold.actions") %></th>
-          </tr>
-        </thead>
-
-        <tbody>
-        <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
-          <tr class="border-t border-gray-400 group hover:bg-gray-100">
-          <%- attributes.reject(&:password_digest?).each do |attribute| -%>
-            <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
-          <%- end %>
-            <td>
-              <%%= link_to t("shared.scaffold.view"), <%= singular_table_name %>, class: "btn btn-link no-underline" %>
-            </td>
-          </tr>
-        <%% end %>
-        </tbody>
-      </table>
+      </div>
     </div>
 
-    <%% if @pagy.pages > 1 %>
-      <div class="my-6 text-center">
-        <%%== pagy_nav(@pagy) %>
-      </div>
-    <%% end %>
+    <%%= link_to t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>"), new_<%= singular_route_name %>_path, class: "btn btn-white" %>
+  </div>
 
-  <%% else %>
-    <div class="flex flex-col items-center justify-between p-8 bg-white rounded shadow lg:flex-row">
+  <%%= tag.div id: ("<%= plural_table_name %>" if first_page?), class: "bg-white rounded-md shadow p-6 space-y-8" do %>
+    <%%= render partial: "<%= controller_file_path %>/index", collection: @<%= plural_table_name %>, as: :<%= singular_name %>, cached: true %>
+
+    <div class="hidden only:flex flex-col items-center justify-between lg:flex-row">
       <%%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
       <div class="flex-1 text-center">
         <p class="mb-4 h3">Create your first <%= singular_table_name.titleize %></p>
         <%%= link_to t("shared.scaffold.new.title", model: "<%= singular_table_name.titleize %>"), new_<%= singular_route_name %>_path, class: "btn btn-primary" %>
       </div>
+    </div>
+  <%% end %>
+
+  <%% if @pagy.pages > 1 %>
+    <div class="my-6 text-center">
+      <%%== pagy_nav(@pagy) %>
     </div>
   <%% end %>
 </div>

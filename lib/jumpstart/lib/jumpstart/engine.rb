@@ -7,7 +7,7 @@ module Jumpstart
     engine_name "jumpstart"
 
     config.app_generators do |g|
-      g.templates.unshift File.expand_path("../../templates", __FILE__)
+      g.templates.unshift File.expand_path("../templates", __dir__)
       g.scaffold_stylesheet false
     end
 

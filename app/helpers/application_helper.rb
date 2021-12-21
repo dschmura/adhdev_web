@@ -1,8 +1,13 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def disable_with(text)
-    "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
+  # Generates button tags for Turbo disable with
+  # Preserve opacity-25 opacity-75 during purge
+  def button_text(text, disable_with: t("processing"))
+    tag.span(text, class: "when-enabled") +
+      tag.span(class: "when-disabled") do
+        render_svg("icons/spinner", styles: "animate-spin inline-block h-4 w-4 mr-2") + disable_with
+      end
   end
 
   def render_svg(name, options = {})
@@ -35,5 +40,9 @@ module ApplicationHelper
   def viewport_meta_tag(content: "width=device-width, initial-scale=1", turbo_native: "maximum-scale=1.0, user-scalable=0")
     full_content = [content, (turbo_native if turbo_native_app?)].compact.join(", ")
     tag.meta name: "viewport", content: full_content
+  end
+
+  def first_page?
+    @pagy.page == 1
   end
 end

@@ -38,6 +38,7 @@ en:
   create_an_account_first: "Please create an account first."
   delete: "Delete"
   edit: "Edit"
+  view: "View"
   must_be_an_admin: "You must be an admin to do that."
   processing: "Processing..."
   something_went_wrong: "Something went wrong"

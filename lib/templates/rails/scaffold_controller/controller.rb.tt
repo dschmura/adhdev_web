@@ -14,10 +14,6 @@ class <%= controller_class_name %>Controller < ApplicationController
   def index
     @pagy, @<%= plural_table_name %> = pagy(<%= class_name %>.sort_by_params(params[:sort], sort_direction))
 
-    # We explicitly load the records to avoid triggering multiple DB calls in the views when checking if records exist and iterating over them.
-    # Calling @<%= plural_table_name %>.any? in the view will use the loaded records to check existence instead of making an extra DB call.
-    @<%= plural_table_name %>.load
-
     # Uncomment to authorize with Pundit
     # authorize @<%= plural_table_name %>
   end
@@ -86,6 +82,8 @@ class <%= controller_class_name %>Controller < ApplicationController
 
     # Uncomment to authorize with Pundit
     # authorize @<%= singular_table_name %>
+  rescue ActiveRecord::RecordNotFound
+    redirect_to <%= index_helper type: :path %>
   end
 
   # Only allow a list of trusted parameters through.
