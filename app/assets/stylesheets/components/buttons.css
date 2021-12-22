@@ -109,11 +109,11 @@ button[disabled]        .when-enabled { display: none; }
   }
 
   .btn-gray {
-    @apply bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-600;
+    @apply bg-gray-100 text-gray-800 hover:bg-gray-200 hover:text-gray-800 focus:ring-gray-600;
   }
 
   .btn-light-gray {
-    @apply bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-600;
+    @apply bg-gray-100 text-gray-800 hover:bg-gray-200 hover:text-gray-800 focus:ring-gray-600;
   }
 
   .btn-white {
