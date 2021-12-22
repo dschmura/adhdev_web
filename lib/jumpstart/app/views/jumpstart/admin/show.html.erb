@@ -20,7 +20,14 @@
       </div>
 
       <div class="mt-4">
-        <%= f.button "Save Changes", class: "btn btn-block btn-primary", data: { disable_with: "Configuring..." } %>
+        <%= f.button class: "btn btn-block btn-primary" do %>
+          <%= tag.span "Save changes", class: "when-enabled" %>
+          <%= tag.span class: "when-disabled" do %>
+            <%= inline_svg_tag "icons/spinner.svg", class: "animate-spin inline-block h-4 w-4 mr-2" %>
+            Processing...
+          <% end %>
+        <% end %>
+
         <p class="text-gray-600 text-xs mt-2">Jumpstart Pro will install any new dependencies after saving and automatically restart your app.</p>
       </div>
     </div>
@@ -28,7 +35,7 @@
     <div class="flex flex-col w-full h-full bg-white border-l border-gray-200 md:w-4/5 docs-main">
       <div class="px-4 pt-4 md:px-20 lg:px-40 xl:px-56">
         <div class="mb-4">
-        <%= render "shared/flash" %>
+          <%= render "shared/flash" %>
         </div>
 
         <% %w{ application development multitenancy workers integrations oauth payments email users }.each do |name| %>
