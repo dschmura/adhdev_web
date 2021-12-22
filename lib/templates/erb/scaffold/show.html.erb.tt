@@ -1,5 +1,5 @@
 <%%= content_for :title, "<%= plural_table_name.titleize %> ##{@<%= singular_table_name %>.id}" %>
-<%%= turbo_stream_from @<%= singular_table_name %>.id %>
+<%%= turbo_stream_from @<%= singular_table_name %> %>
 
 <div class="container px-4 mx-auto my-8">
   <div class="flex items-center justify-between mb-4">
