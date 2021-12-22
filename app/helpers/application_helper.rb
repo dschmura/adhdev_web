@@ -4,7 +4,7 @@ module ApplicationHelper
   # Generates button tags for Turbo disable with
   # Preserve opacity-25 opacity-75 during purge
   def button_text(text = nil, disable_with: t("processing"), &block)
-    text = capture(&block) if block_given?
+    text = capture(&block) if block
 
     tag.span(text, class: "when-enabled") +
       tag.span(class: "when-disabled") do
