@@ -3,11 +3,17 @@ module ApplicationHelper
 
   # Generates button tags for Turbo disable with
   # Preserve opacity-25 opacity-75 during purge
-  def button_text(text, disable_with: t("processing"))
+  def button_text(text = nil, disable_with: t("processing"), &block)
+    text = capture(&block) if block_given?
+
     tag.span(text, class: "when-enabled") +
       tag.span(class: "when-disabled") do
         render_svg("icons/spinner", styles: "animate-spin inline-block h-4 w-4 mr-2") + disable_with
       end
+  end
+
+  def disable_with(text)
+    "<i class=\"far fa-spinner-third fa-spin\"></i> #{text}".html_safe
   end
 
   def render_svg(name, options = {})
