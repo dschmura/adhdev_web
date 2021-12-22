@@ -17,8 +17,8 @@
   <div class="mt-8 flex justify-between items-center">
     <%= link_to t(".back"), subscriptions_path, class: "btn btn-light-gray" %>
 
-    <%= form_with url: subscription_resume_path(@subscription), method: :patch do |f| %>
-      <%= f.button t(".button"), class: "btn btn-primary", data: { confirm: t("are_you_sure"), disable_with: disable_with(t(".processing")) } %>
+    <%= button_to subscription_resume_path(@subscription), method: :patch, class: "btn btn-primary", form: { data: { turbo_confirm: t("are_you_sure") } } do %>
+      <%= button_text t(".button"), disable_with: t(".processing") %>
     <% end %>
   </div>
 </div>

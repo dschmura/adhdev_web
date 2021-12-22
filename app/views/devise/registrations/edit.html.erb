@@ -7,7 +7,7 @@
     <div class="p-4 bg-white border border-gray-200 rounded-lg lg:p-10">
       <h1 class="h3 mb-4"><%= t('.title', resource: resource.model_name.human) %></h1>
 
-      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "mb-16") do |form| %>
+      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, class: "mb-16") do |form| %>
         <%= render "shared/error_messages", resource: resource %>
         <div class="flex flex-wrap items-start justify-between">
           <div class="w-full lg:w-1/2">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="mt-2 form-group">
-          <%= form.button t('.update'), class: "btn btn-primary", data: { disable_with: disable_with(t(".saving")) } %>
+          <%= form.button button_text(t('.update'), disable_with: t(".saving")), class: "btn btn-primary" %>
         </div>
       <% end %>
 
