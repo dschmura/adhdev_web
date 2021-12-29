@@ -29,7 +29,7 @@ class Turbo::Android::PathConfigurationsController < ApplicationController
       },
       rules: [
         {
-          patterns: [ ".*" ],
+          patterns: [".*"],
           properties: {
             context: "default",
             uri: "turbo://fragment/web",
