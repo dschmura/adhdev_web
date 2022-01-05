@@ -1,5 +1,5 @@
 web: bin/rails server -p 3000
 css: yarn build:css --watch
-js: yarn build --watch
+js: yarn build --reload
 
 # docker: docker-compose up
