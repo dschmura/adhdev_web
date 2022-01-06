@@ -293,7 +293,7 @@ module Jumpstart
       end
 
       # Add the Stripe CLI
-      content[:stripe] = "stripe listen --forward-to localhost:5000/webhooks/stripe" if dev && stripe?
+      content[:stripe] = "stripe listen --forward-to localhost:3000/webhooks/stripe" if dev && stripe?
 
       # Guard LiveReload
       content[:guard] = "bundle exec guard" if dev && livereload?
