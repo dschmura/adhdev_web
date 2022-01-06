@@ -38,9 +38,5 @@
     </div>
 
     <%= render partial: "shared/footer" unless turbo_native_app? %>
-
-    <% if turbo_native_app? && user_signed_in? %>
-      <div data-controller="turbo-native--push-notifications"></div>
-    <% end %>
   </body>
 </html>
