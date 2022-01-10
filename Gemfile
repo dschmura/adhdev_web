@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 3.0"
+ruby "~> 3.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.0"
@@ -108,7 +108,7 @@ gem "receipts", "~> 1.1.0"
 gem "responders", github: "heartcombo/responders"
 gem "rotp", "~> 6.2"
 gem "rqrcode", "~> 2.1"
-gem "ruby-oembed", "~> 0.15.0", require: "oembed"
+gem "ruby-oembed", "~> 0.16.0", require: "oembed"
 gem "whenever", "~> 1.0", require: false
 
 # Jumpstart manages a few gems for us, so install them from the extra Gemfile

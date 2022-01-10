@@ -5,7 +5,7 @@ RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends imagemagick libvips libvips-dev libvips-tools libpq-dev && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt
 
-ARG RUBY_VERSION=3.0.2-jemalloc
+ARG RUBY_VERSION=3.1.0-jemalloc
 RUN curl -SLf https://raw.githubusercontent.com/fullstaq-labs/fullstaq-ruby-server-edition/main/fullstaq-ruby.asc | apt-key add - && \
     echo "deb https://apt.fullstaqruby.org ubuntu-20.04 main" > /etc/apt/sources.list.d/fullstaq-ruby.list && \
     apt-get update -q && \
@@ -23,7 +23,7 @@ RUN gem install "bundler:~>2.0" --no-document && \
     gem update --system && \
     gem cleanup
 
-ARG NODE_VERSION=16.13.0
+ARG NODE_VERSION=16.13.1
 RUN curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" \

@@ -1,4 +1,4 @@
-FROM ruby:3
+FROM ruby:3.1
 
 RUN gem install "bundler:~>2.0" --no-document && \
     gem update --system && \
@@ -6,7 +6,7 @@ RUN gem install "bundler:~>2.0" --no-document && \
 
 # NodeJS (https://github.com/nodejs/docker-node/blob/main/14/bullseye/Dockerfile)
 
-ARG NODE_VERSION=16.13.0
+ARG NODE_VERSION=16.13.1
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
