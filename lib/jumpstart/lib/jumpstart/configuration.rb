@@ -24,8 +24,6 @@ module Jumpstart
     attr_accessor :default_from_email
     attr_accessor :support_email
     attr_accessor :multitenancy
-    attr_accessor :apns
-    attr_accessor :fcm
     attr_writer :omniauth_providers
 
     def self.load!
