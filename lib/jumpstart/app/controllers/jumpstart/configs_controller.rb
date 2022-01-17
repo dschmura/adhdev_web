@@ -31,6 +31,8 @@ module Jumpstart
           :livereload,
           :solargraph,
           :register_with_account,
+          :apns,
+          :fcm,
           integrations: [],
           omniauth_providers: [],
           payment_processors: [],

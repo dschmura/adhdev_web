@@ -15,7 +15,7 @@ module Jumpstart
         "Rollbar" => "rollbar",
         "Scout" => "scout",
         "Sentry" => "sentry",
-        "Skylight" => "skylight"
+        "Skylight" => "skylight",
       }.freeze
 
       attr_writer :integrations

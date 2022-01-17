@@ -16,7 +16,8 @@
         <a class="block py-1 text-gray-700 no-underline hover:text-primary" data-tabs-target="tab" data-action="click->tabs#change" href="#" id="oauth">Login & OAuth</a>
         <a class="block py-1 text-gray-700 no-underline hover:text-primary" data-tabs-target="tab" data-action="click->tabs#change" href="#" id="payments">Payments</a>
         <a class="block py-1 text-gray-700 no-underline hover:text-primary" data-tabs-target="tab" data-action="click->tabs#change" href="#" id="email">Transactional Email</a>
-        <a class="block py-1 text-gray-700 no-underline hover:text-primary" data-tabs-target="tab" data-action="click->tabs#change" href="#" id="users">Users</a>
+        <a class="block py-1 text-gray-700 no-underline hover:text-primary" data-tabs-target="tab" data-action="click->tabs#change" href="#" id="turbo-native">Turbo Native</a>
+        <a class="block py-1 text-gray-700 no-underline hover:text-primary" data-tabs-target="tab" data-action="click->tabs#change" href="#" id="users">Admin Users</a>
       </div>
 
       <div class="mt-4">
@@ -38,7 +39,7 @@
           <%= render "shared/flash" %>
         </div>
 
-        <% %w{ application development multitenancy workers integrations oauth payments email users }.each do |name| %>
+        <% %w{ application development multitenancy workers integrations oauth payments email turbo_native users }.each do |name| %>
           <div data-tabs-target="panel" class="hidden">
             <%= render name, f: f %>
           </div>
