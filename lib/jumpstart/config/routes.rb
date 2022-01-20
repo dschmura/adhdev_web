@@ -44,6 +44,7 @@ Jumpstart::Engine.routes.draw do
     get :typography
     get :wells
 
+    get :existing_apps
     get :integrations
   end
 
