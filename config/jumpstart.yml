@@ -1,0 +1,17 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: ADHDev
+business_name: Humble Daisy, Inc
+domain: example.com
+support_email: support@humbledaisy.com
+default_from_email: Jumpstart <support@example.com>
+business_address: |-
+  1342 Arella Boulevard
+  Ann Arbor, MI 48103
+background_job_processor: sidekiq
+email_provider: ''
+personal_accounts: true
+livereload: false
+solargraph: false
+register_with_account: false
+apns: false
+fcm: false

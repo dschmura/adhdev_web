@@ -14,7 +14,10 @@
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
+    <link href="https://fonts.googleapis.com/css2?family=K2D&family=Mystery+Quest&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    
     <%# Be sure to add your own custom favicons %>
     <%= render "shared/favicons" %>
     <%= render "shared/payments_dependencies" %>
