@@ -1,0 +1,14 @@
+<% if (subscription = current_account.payment_processor&.subscription) && !subscription.cancelled? %>
+  <hr class="border-b border-gray-200 my-8" />
+  <h3><%= t ".title" %></h3>
+  <div class="flex">
+    <div class="flex-1 mt-2 text-gray-700">
+      <div class="font-bold"><%= t ".description", product: Jumpstart.config.application_name %></div>
+      <div><%= t ".help_html", link: mail_to(Jumpstart.config.support_email, t(".contact_us"), subject: t(".subject", product: Jumpstart.config.application_name), class: "underline text-blue-600") %></div>
+    </div>
+
+    <div>
+      <%= link_to t(".button"), subscription_url, method: :delete, class: "btn btn-link text-gray-700", data: { confirm: t("are_you_sure"), disable_with: disable_with(t(".cancelling")) } %>
+    </div>
+  </div>
+<% end %>

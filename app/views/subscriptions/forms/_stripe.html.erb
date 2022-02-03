@@ -1,0 +1,30 @@
+<% content_for :head, tag(:meta, name: "stripe-key", content: Pay::Stripe.public_key) %>
+
+<%= form_with url: local_assigns.fetch(:url, subscriptions_path),
+  method: local_assigns.fetch(:method, :post),
+  id: "stripe-subscribe-form",
+  data: {
+    controller: "stripe",
+    stripe_target: "form",
+    action: "submit->stripe#submit",
+    stripe_setup_intent: @setup_intent.try(:client_secret),
+    stripe_payment_intent: @payment.try(:client_secret)
+  } do |f| %>
+
+  <div class="form-group">
+    <label for="card-element"><%= t(".credit_or_debit_card") %></label>
+    <div data-stripe-target="card" class="form-control"></div>
+    <div data-stripe-target="error" role="alert" class="text-red-600 text-sm mt-2"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name_on_card %>
+    <%= f.text_field :name_on_card, name: nil, class: "form-control", placeholder: true, required: true, data: { stripe_target: "name" } %>
+  </div>
+
+  <div class="text-center">
+    <%= f.button local_assigns.fetch(:button, t("subscriptions.new.subscribe")), id: 'submit-button', class: "btn btn-primary btn-large btn-block", data: { action: "click->stripe#submit", disable_with: disable_with(t("subscriptions.new.processing")) } %>
+  </div>
+
+  <%= f.hidden_field :plan, value: @plan.try(:id) %>
+<% end %>

@@ -1,0 +1,31 @@
+.announcement-new {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.announcement-fix {
+  @apply bg-red-100 text-red-600;
+}
+
+.announcement-update {
+  @apply bg-green-100 text-green-600;
+}
+
+.announcement-improvement {
+  @apply bg-purple-100 text-purple-600;
+}
+
+.unread-announcements span:before {
+  @apply bg-red-600;
+
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  content: '';
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  margin-right: 6px;
+}
