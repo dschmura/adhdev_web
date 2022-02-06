@@ -1,0 +1,11 @@
+.md:flex.min-h-screen.bg-primary-50
+  .w-full.flex.items-center.justify-center{class: "md:w-1/2 -mt-56"}
+    .max-w-sm.m-8
+      .text-primary-700.text-5xl.md:text-15xl.font-black 404
+      .w-16.h-1.bg-primary-500.my-3.md:my-6
+      %p.text-tertiary-700.text-2xl.md:text-3xl.font-light.mb-8.leading-normal Sorry, the page you are looking for could not be found.
+      = link_to "Go Home", root_path, class: "bg-transparent text-gray-700 font-bold uppercase tracking-wide py-3 px-6 border-2 border-gray-400 hover:border-gray-500 rounded-lg"
+  .relative.pb-full.md:flex.md:pb-0.md:min-h-screen.w-full{class: "md:w-1/2"}
+    .absolute.pin.bg-cover.bg-no-repeat.md:bg-left.lg:bg-center
+.absolute.bottom-0 
+  = render_svg 'mst3k_footer', styles: "w-screen min-w-screen text-red-400 fill-current ", alt: "Silhoette of MST3K characters pointing to 404 error.", class: "text-red-500 fill-current"
