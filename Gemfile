@@ -119,3 +119,5 @@ end
 
 # We recommend using strong migrations when your app is in production
 # gem "strong_migrations", "~> 0.7.6"
+gem "haml", "~> 5.2"
+gem "erb2haml", "~> 0.1.5", :group => :development
