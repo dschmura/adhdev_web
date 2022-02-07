@@ -52,7 +52,7 @@ group :development, :test do
 
   gem "annotate", github: "excid3/annotate_models", branch: "rails7"
   gem "letter_opener_web", "~> 2.0"
-  gem "standard"
+  gem "standard", require: false
 
   # Security tooling to
   # gem "brakeman"
@@ -64,7 +64,7 @@ group :development do
   gem "web-console", ">= 4.1.0"
 
   # A fully configurable and extendable Git hook manager
-  gem "overcommit"
+  gem "overcommit", require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler", ">= 2.3.3"
