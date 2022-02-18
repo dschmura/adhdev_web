@@ -285,6 +285,7 @@ en:
 
     subscription:
       cancel_plan: "Cancel plan"
+      canceled_on_trial: "After your trial ends on %{date}, this plan will be canceled automatically."
       title: "Current Plan"
       free_trial: "Free Trial"
       free_trial_ends: "Your trial ends on %{date}."
