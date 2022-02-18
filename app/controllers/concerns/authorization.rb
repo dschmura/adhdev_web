@@ -2,7 +2,7 @@ module Authorization
   # Adds authorization with Pundit to controllers
 
   extend ActiveSupport::Concern
-  include Pundit
+  include Pundit::Authorization
 
   # Use AccountUser since it determines the roles for the current Account
   def pundit_user
