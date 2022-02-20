@@ -1,5 +1,5 @@
 // Example usage:
-// <div data-controller="tippy" data-tippy-content="Hello world"></div>
+// <div data-controller="tooltip" data-tippy-content="Hello world"></div>
 
 import { Controller } from "@hotwired/stimulus"
 import tippy from "tippy.js";
