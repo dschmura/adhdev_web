@@ -36,6 +36,9 @@ async function buildAndReload() {
   const chokidar = require('chokidar')
   const http = require('http')
 
+  // Foreman & Overmind assign a separate PORT for each process
+  const port = parseInt(process.env.PORT)
+
   // Reload uses an HTTP server as an even stream to reload the browser
   http.createServer((req, res) => {
     return clients.push(
@@ -46,13 +49,13 @@ async function buildAndReload() {
         Connection: "keep-alive",
       }),
     );
-  }).listen(8082);
+  }).listen(port);
 
   let result = await esbuild.build({
     ...config,
     incremental: true,
     banner: {
-      js: ' (() => new EventSource("http://localhost:8082").onmessage = () => location.reload())();',
+      js: ` (() => new EventSource("http://localhost:${port}").onmessage = () => location.reload())();`,
     },
   })
 
