@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/heartcombo/responders.git
-  revision: 47d31b43a3c3d3a5bc56ca862226dd3ec77bb59e
+  revision: 56d00ac8894b38de9eff177cb50dda110ff79440
   specs:
     responders (3.0.1)
       actionpack (>= 5.2)
@@ -296,7 +296,7 @@ GEM
     pay (3.0.24)
       rails (>= 6.0.0)
     pdf-core (0.9.0)
-    pg (1.3.2)
+    pg (1.3.3)
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
