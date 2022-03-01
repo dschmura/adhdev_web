@@ -1,4 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
+  include Devise::Controllers::Rememberable
+
   prepend_before_action :authenticate_with_two_factor, only: [:create]
 
   # We need to intercept the create action for processing OTP.
@@ -13,6 +15,7 @@ class Users::SessionsController < Devise::SessionsController
 
     # Submitted email and password, save user ID and send along to OTP
     if sign_in_params[:password] && resource.valid_password?(sign_in_params[:password])
+      session[:remember_me] = Devise::TRUE_VALUES.include?(sign_in_params[:remember_me])
       session[:otp_user_id] = resource.id
       render :otp, status: :unprocessable_entity
 
@@ -20,6 +23,7 @@ class Users::SessionsController < Devise::SessionsController
     elsif session[:otp_user_id] && params[:otp_attempt]
       if resource.verify_and_consume_otp!(params[:otp_attempt])
         session.delete(:otp_user_id)
+        remember_me(resource) if session.delete(:remember_me)
         set_flash_message!(:notice, :signed_in)
         sign_in(resource, event: :authentication)
         respond_with resource, location: after_sign_in_path_for(resource)
