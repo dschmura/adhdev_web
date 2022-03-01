@@ -17,6 +17,10 @@
   - default
   - <%= `hostname`.strip %>
   - mailers
+  - action_mailbox_incineration
+  - action_mailbox_routing
+  - active_storage_analysis
+  - active_storage_purge
   - low
 
 # you can override concurrency based on environment

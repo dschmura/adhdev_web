@@ -28,7 +28,7 @@ module Jumpstart
 
     initializer "jumpstart.setup" do |app|
       # Set ActiveJob from Jumpstart
-      ActiveJob::Base.queue_adapter = Jumpstart.config.job_processor
+      ActiveJob::Base.queue_adapter = Jumpstart::JobProcessor.queue_adapter(Jumpstart.config.job_processor)
 
       if Rails.env.development?
         # This makes sure we can load the Jumpstart assets in development

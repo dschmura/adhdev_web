@@ -7,7 +7,7 @@ module Jumpstart
 
       # Install the new gem dependencies
       Jumpstart.bundle
-      Jumpstart.run_command("solargraph bundle") if Jumpstart.config.solargraph?
+      Jumpstart.post_install
       Jumpstart.restart
 
       redirect_to root_path(reload: true), notice: "Your app is restarting with the new configuration..."
