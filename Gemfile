@@ -37,7 +37,7 @@ gem "tzinfo-data"
 gem "bootsnap", ">= 1.4.2", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.9", ">= 1.9.2"
+gem "image_processing", "~> 1.12"
 
 # Security update
 gem "nokogiri", ">= 1.12.5"
