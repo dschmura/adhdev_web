@@ -44,7 +44,7 @@ class ApiToken < ApplicationRecord
   end
 
   def data(key, default: nil)
-    metadata.fetch(key, default)
+    (metadata || {}).fetch(key, default)
   end
 
   def expired?
