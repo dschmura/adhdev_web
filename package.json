@@ -16,7 +16,7 @@
     "autoprefixer": "^10.4.0",
     "chokidar": "^3.5.2",
     "clipboard": "^2.0.8",
-    "esbuild": "^0.14.0",
+    "esbuild": "^0.14.25",
     "esbuild-rails": "^1.0.3",
     "flatpickr": "^4.6.10",
     "glob": "^7.2.0",
