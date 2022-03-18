@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class AccountTest < ApplicationSystemTestCase
+class AccountSystemTest < ApplicationSystemTestCase
   setup do
     @user = users(:one)
     login_as @user, scope: :user
