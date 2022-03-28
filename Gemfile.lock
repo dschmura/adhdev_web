@@ -33,8 +33,9 @@ GIT
       activesupport (>= 5.0.0)
 
 GIT
-  remote: https://github.com/heartcombo/responders.git
-  revision: ea1eeb3ad4e5a81ef6190ce10b5c0cb0b3e5a837
+  remote: https://github.com/excid3/responders.git
+  revision: 1288c5391e474cad507d473b1050d0f3573e8aa6
+  branch: fix-redirect-status-config
   specs:
     responders (3.0.1)
       actionpack (>= 5.2)
