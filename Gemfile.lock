@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/heartcombo/responders.git
-  revision: 56d00ac8894b38de9eff177cb50dda110ff79440
+  revision: ea1eeb3ad4e5a81ef6190ce10b5c0cb0b3e5a837
   specs:
     responders (3.0.1)
       actionpack (>= 5.2)
@@ -128,9 +128,9 @@ GEM
       request_store (>= 1.0.5)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    administrate-field-active_storage (0.3.8)
+    administrate-field-active_storage (0.4.0)
       administrate (>= 0.2.2)
-      rails (>= 6.0)
+      rails (>= 7.0)
     ast (2.4.2)
     bcrypt (3.1.17)
     bindex (0.8.1)
@@ -149,7 +149,7 @@ GEM
     childprocess (4.1.0)
     chronic (0.10.2)
     chunky_png (1.4.0)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     cssbundling-rails (1.1.0)
       railties (>= 6.0.0)
@@ -290,7 +290,7 @@ GEM
       rexml (~> 3.2)
     pagy (5.10.1)
       activesupport
-    parallel (1.22.0)
+    parallel (1.22.1)
     parser (3.1.1.0)
       ast (~> 2.4.1)
     pay (3.0.24)
@@ -400,7 +400,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    standard (1.8.0)
+    standard (1.9.0)
       rubocop (= 1.26.0)
       rubocop-performance (= 1.13.3)
     stimulus-rails (1.0.4)
@@ -451,7 +451,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_tenant (~> 0.5.1)
   administrate!
-  administrate-field-active_storage (~> 0.3.0)
+  administrate-field-active_storage (~> 0.4.0)
   annotate!
   bootsnap (>= 1.4.2)
   capybara (>= 3.26)
