@@ -72,7 +72,7 @@ class AccountsController < Accounts::BaseController
     #  redirect_to @account.domain
 
     if Jumpstart::Multitenancy.subdomain? && @account.subdomain?
-      redirect_to root_url(subdomain: @account.subdomain)
+      redirect_to root_url(subdomain: @account.subdomain), allow_other_host: true
 
     elsif Jumpstart::Multitenancy.path?
       redirect_to root_url(script_name: "/#{@account.id}")
