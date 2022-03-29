@@ -26,6 +26,8 @@
 @import "components/typography";
 @import "components/util";
 
+@import "components/adhdev";
+
 @import "tailwindcss/utilities";
 
 @import "tippy.js/dist/tippy.css";
