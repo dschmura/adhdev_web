@@ -5,7 +5,7 @@ RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends imagemagick libvips libvips-dev libvips-tools libpq-dev && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt
 
-ARG RUBY_VERSION=3.1.0-jemalloc
+ARG RUBY_VERSION=3.1.1-jemalloc
 RUN curl -SLf https://raw.githubusercontent.com/fullstaq-labs/fullstaq-ruby-server-edition/main/fullstaq-ruby.asc | apt-key add - && \
     echo "deb https://apt.fullstaqruby.org ubuntu-20.04 main" > /etc/apt/sources.list.d/fullstaq-ruby.list && \
     apt-get update -q && \

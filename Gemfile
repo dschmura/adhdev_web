@@ -16,10 +16,10 @@ gem "pg"
 gem "puma", "~> 5.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", ">= 0.9.0"
+gem "turbo-rails", "~> 1.0", ">= 1.0.1"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails", ">= 0.7.3"
+gem "stimulus-rails", "~> 1.0", ">= 1.0.2"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder", github: "excid3/jbuilder", branch: "partial-paths" # "~> 2.11"
@@ -37,7 +37,7 @@ gem "tzinfo-data"
 gem "bootsnap", ">= 1.4.2", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.9", ">= 1.9.2"
+gem "image_processing", "~> 1.12"
 
 # Security update
 gem "nokogiri", ">= 1.12.5"
@@ -85,8 +85,8 @@ gem "jumpstart", path: "lib/jumpstart", group: :omit
 
 gem "acts_as_tenant", "~> 0.5.1"
 gem "administrate", github: "excid3/administrate", branch: "jumpstart" # '~> 0.10.0'
-gem "administrate-field-active_storage", "~> 0.3.0"
-gem "cssbundling-rails", "~> 1.0.0"
+gem "administrate-field-active_storage", "~> 0.4.0"
+gem "cssbundling-rails", "~> 1.1.0"
 gem "devise", "~> 4.8", ">= 4.8.1"
 gem "devise-i18n", "~> 1.10"
 gem "inline_svg", "~> 1.6"
@@ -106,7 +106,7 @@ gem "prefixed_ids", "~> 1.2"
 gem "pretender", "~> 0.4.0"
 gem "pundit", "~> 2.1"
 gem "receipts", "~> 1.1.0"
-gem "responders", github: "heartcombo/responders"
+gem "responders", github: "excid3/responders", branch: "fix-redirect-status-config"
 gem "rotp", "~> 6.2"
 gem "rqrcode", "~> 2.1"
 gem "ruby-oembed", "~> 0.16.0", require: "oembed"
@@ -119,5 +119,3 @@ end
 
 # We recommend using strong migrations when your app is in production
 # gem "strong_migrations", "~> 0.7.6"
-gem "haml", "~> 5.2"
-gem "erb2haml", "~> 0.1.5", :group => :development

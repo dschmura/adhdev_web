@@ -20,7 +20,9 @@
         <div><%= t(".quantity", quantity: subscription.quantity, price: subscription.plan.amount_with_currency) %></div>
       <% end %>
 
-      <% if subscription.on_trial? %>
+      <% if subscription.on_trial? && subscription.canceled? %>
+        <div><%= t(".canceled_on_trial", date: l(subscription.trial_ends_at.to_date, format: :long)) %></div>
+      <% elsif subscription.on_trial? %>
         <div><%= t(".trial", date: l(subscription.trial_ends_at.to_date, format: :long)) %></div>
       <% elsif subscription.on_grace_period? %>
         <div class="flex items-center">

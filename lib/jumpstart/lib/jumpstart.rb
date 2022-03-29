@@ -44,4 +44,14 @@ module Jumpstart
   def self.credentials
     Rails.application.credentials
   end
+
+  # Commands to be run after bundle install
+  def self.post_install
+    run_command("solargraph bundle") if config.solargraph?
+
+    if JobProcessor.delayed_job? && !File.exist?("bin/delayed_job")
+      run_command("rails g delayed_job:active_record")
+      run_command("rails db:migrate")
+    end
+  end
 end

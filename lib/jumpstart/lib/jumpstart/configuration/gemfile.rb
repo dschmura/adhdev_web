@@ -51,7 +51,17 @@ module Jumpstart
         gems[:main] += [{name: "stripe"}] if stripe?
         gems[:main] += [{name: "braintree"}] if braintree? || paypal?
         gems[:main] += [{name: "paddle_pay"}] if paddle?
-        gems[:main] += [{name: job_processor.to_s}] unless job_processor.to_s == "async"
+
+        # Add background job processor
+        case job_processor.to_s
+        when "async"
+          # Skip
+        when "delayed_job"
+          gems[:main] += [{name: "delayed_job_active_record"}]
+        else
+          gems[:main] += [{name: job_processor.to_s}]
+        end
+
         gems[:development] += [{name: "guard"}, {name: "guard-livereload", github: "guard/guard-livereload", require: false}, {name: "rack-livereload", github: "jaredmdobson/rack-livereload"}, {name: "eventmachine", github: "eventmachine/eventmachine"}] if livereload?
         gems[:development] += [{name: "solargraph-rails", version: "~> 0.2.0.pre"}] if solargraph?
 
