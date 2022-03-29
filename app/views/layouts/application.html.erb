@@ -18,6 +18,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=K2D&family=Mystery+Quest&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Moon+Dance&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
     <%# Be sure to add your own custom favicons %>
     <%= render "shared/favicons" %>
     <%= render "shared/payments_dependencies" %>
@@ -30,7 +33,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="h-full font-sans antialiased font-normal leading-normal bg-gray-50">
+  <body class="h-full font-sans antialiased font-normal leading-normal ">
     <div class="main flex flex-col">
       <%= render partial: "shared/flash" %>
       <%= render partial: "shared/navbar" %>
