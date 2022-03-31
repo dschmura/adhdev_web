@@ -40,6 +40,6 @@ module JumpstartApp
     # Rails 7 defaults to libvips as the variant processor
     # libvips is up to 10x faster and consumes 1/10th the memory of imagemagick
     # If you need to use imagemagick, uncomment this to switch
-    # config.active_storage_variant_processor = :mini_magick
+    # config.active_storage.variant_processor = :mini_magick
   end
 end
