@@ -10,7 +10,9 @@
   <p class="mb-4 leading-normal">If you'd like a resource to be shared across a Account, you can scope your controllers to the current account so the resources are shared between users in the associated account.</p>
   <p class="mb-4 leading-normal">Every user has a personal account that's only usable by themselves, so you can easily associate resources to accounts and still have private resources to a user.</p>
   <p class="mb-4 leading-normal">Make sure to add <code>account:references</code> when generating your models.</p>
-  <p class="mb-4 leading-normal">You should also add <code>acts_as_tenant :account</code> to your model if you would like to have acts_as_tenant enforce multitenancy on the model. This is optional and you can read the <%= link_to "Multitancy docs", accounts_docs_path %> for more information on this.</p>
+  <p class="mb-4 leading-normal">You should also add <code>acts_as_tenant :account</code> to your model if you would like to have acts_as_tenant enforce multitenancy on the model. This is optional and you can read the <%= link_to "Multitenancy docs", accounts_docs_path %> for more information on this.</p>
+  <p class="mb-4 leading-normal">You should also ensure your model's Turbo Streams broadcast methods are scoped to the account so only users associated to your account receive the broadcast. You can scope the broadcast methods by passing account in the method <code>broadcast_prepend_later_to account, :my_new_model</code>. In your views, you will also need ensure Turbo Streams is subscribed to the correct stream scoped to the account <code>turbo_stream_from current_account, :my_new_model</code> </p> 
+    
 </div>
 
 <div class="mb-10 pb-10 border-b border-gray-300">
