@@ -450,7 +450,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_tenant (~> 0.5.1)
   administrate!
-  administrate-field-active_storage (~> 0.4.0)
+  administrate-field-active_storage (~> 0.4.1)
   annotate!
   bootsnap (>= 1.4.2)
   capybara (>= 3.26)
