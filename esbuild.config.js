@@ -74,8 +74,6 @@ async function buildAndReload() {
       start = true
     })
     .on("all", async (event, path) => {
-      console.log(event)
-      console.log(path)
       if (start === false) {
         return
       }
