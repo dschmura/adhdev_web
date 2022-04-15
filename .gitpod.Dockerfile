@@ -29,7 +29,7 @@ COPY --chown=gitpod:gitpod .ruby-version /tmp
 RUN echo "rvm_gems_path=/home/gitpod/.rvm" > ~/.rvmrc
 # TODO - maybe we can just install a specific version here, and update as needed
 #RUN bash -lc "rvm install ruby-$(cat /tmp/.ruby-version) && rvm use ruby-$(cat /tmp/.ruby-version) --default"
-RUN bash -lc "rvm install ruby-3.1.0 && rvm use ruby-3.1.0 --default"
+RUN bash -lc "rvm install ruby-3.1 && rvm use ruby-3.1 --default"
 RUN echo "rvm_gems_path=/workspace/.rvm" > ~/.rvmrc
 
 # Install the Stripe CLI see https://stripe.com/docs/stripe-cli
