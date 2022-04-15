@@ -6,7 +6,7 @@ brew "tmux"
 brew "overmind"
 
 # Imagemagick or libvips - for processing images (avatars, file uploads, etc)
-brew "imagemagick"
+brew "vips"
 
 # Yarn - for installing Javascript dependencies
 brew "yarn"
