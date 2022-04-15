@@ -15,5 +15,5 @@
 }
 
 .unread-announcements span:before {
-  @apply inline-block w-2 h-2 mr-1.5 rounded-full bg-red-600 content-[''];
+  @apply inline-block w-2 h-2 mr-1.5 rounded-full bg-red-500 content-[''];
 }
