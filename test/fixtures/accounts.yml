@@ -10,7 +10,7 @@
 #  subdomain          :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  owner_id           :bigint
+#  owner_id           :integer
 #
 # Indexes
 #
