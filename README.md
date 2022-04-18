@@ -103,5 +103,11 @@ If you'd like to run Jumpstart Pro with Docker directly, you can run:
 
 ```bash
 docker build --tag myapp .
-docker run myapp
+docker run -p 3000:3000 myapp
+```
+
+If you'd like to use the fullstaq-ruby or other Dockerfile you can specify them as:
+
+```bash
+docker build -f ./Dockerfile.fullstaq-ruby .
 ```
