@@ -2,6 +2,7 @@
   "name": "jumpstart-app",
   "private": true,
   "dependencies": {
+    "@gorails/ninja-keys": "^1.1.12",
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.0",
     "@rails/actioncable": "^7.0.0",
