@@ -27,9 +27,10 @@
     "scheduler:standard"
   ],
   "buildpacks": [
-    { "url": "heroku/nodejs" },
-    { "url": "heroku/ruby" },
+    { "url": "https://github.com/heroku/heroku-buildpack-apt.git" },
     { "url": "https://github.com/brandoncc/heroku-buildpack-vips" }
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/ruby" }
   ],
   "environments": {
     "test": {
