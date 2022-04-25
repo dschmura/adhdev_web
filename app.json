@@ -26,7 +26,11 @@
     "heroku-redis:hobby-dev",
     "scheduler:standard"
   ],
-  "buildpacks": [{ "url": "heroku/nodejs" }, { "url": "heroku/ruby" }],
+  "buildpacks": [
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/ruby" },
+    { "url": "https://github.com/brandoncc/heroku-buildpack-vips" }
+  ],
   "environments": {
     "test": {
       "scripts": {
