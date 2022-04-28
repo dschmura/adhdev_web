@@ -14,10 +14,10 @@
       </h1>
 
       <%# Show form if current processor exists or show all if no processor set %>
-      <%= render 'payment_methods/forms/fake_processor' if @payment_processor&.fake_processor?  %>
+      <%= render 'payment_methods/forms/fake_processor' if @payment_processor&.fake_processor? %>
       <%= render 'payment_methods/forms/stripe', setup_intent: @setup_intent if show_payment_processor?(:stripe) %>
-      <%= render 'payment_methods/forms/braintree' if show_payment_processor?(:braintree)  %>
-      <%= render 'payment_methods/forms/paypal' if show_payment_processor?(:paypal)  %>
+      <%= render 'payment_methods/forms/braintree' if show_payment_processor?(:braintree) %>
+      <%= render 'payment_methods/forms/paypal' if show_payment_processor?(:paypal) %>
 
       <%# Paddle can only update card when on a subscription %>
       <%= render 'payment_methods/forms/paddle', subscription: @payment_processor.subscription if show_paddle_payment_method_form?(@payment_processor) %>
