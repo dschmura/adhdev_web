@@ -28,7 +28,6 @@ module Jumpstart
           :cancel_immediately,
           :email_provider,
           :personal_accounts,
-          :livereload,
           :solargraph,
           :register_with_account,
           :apns,

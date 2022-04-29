@@ -88,14 +88,6 @@ module Jumpstart
       @register_with_account.nil? ? false : ActiveModel::Type::Boolean.new.cast(@register_with_account)
     end
 
-    def livereload=(value)
-      @livereload = ActiveModel::Type::Boolean.new.cast(value)
-    end
-
-    def livereload?
-      @livereload.nil? ? false : ActiveModel::Type::Boolean.new.cast(@livereload)
-    end
-
     def solargraph=(value)
       @solargraph = ActiveModel::Type::Boolean.new.cast(value)
     end
@@ -225,9 +217,6 @@ module Jumpstart
 
       # Add the Stripe CLI
       content[:stripe] = "stripe listen --forward-to localhost:3000/webhooks/stripe" if dev && stripe?
-
-      # Guard LiveReload
-      content[:guard] = "bundle exec guard" if dev && livereload?
 
       content
     end
