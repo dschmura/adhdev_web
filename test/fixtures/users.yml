@@ -58,7 +58,7 @@ one:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
-  time_zone: "America/Chicago"
+  time_zone: "Central Time (US & Canada)"
   confirmed_at: <%= Time.current %>
 
 two:
@@ -68,7 +68,7 @@ two:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
-  time_zone: "America/Chicago"
+  time_zone: "Central Time (US & Canada)"
   confirmed_at: <%= Time.current %>
 
 admin:
@@ -78,7 +78,7 @@ admin:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
-  time_zone: "America/Chicago"
+  time_zone: "Central Time (US & Canada)"
   confirmed_at: <%= Time.current %>
   admin: true
 
@@ -89,7 +89,7 @@ invited:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
-  time_zone: "America/Chicago"
+  time_zone: "Central Time (US & Canada)"
   confirmed_at: <%= Time.current %>
 
 noaccount:
@@ -99,7 +99,7 @@ noaccount:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
-  time_zone: "America/Chicago"
+  time_zone: "Central Time (US & Canada)"
   confirmed_at: <%= Time.current %>
 
 twofactor:
@@ -109,7 +109,7 @@ twofactor:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   accepted_terms_at: <%= Time.current %>
   accepted_privacy_at: <%= Time.current %>
-  time_zone: "America/Chicago"
+  time_zone: "Central Time (US & Canada)"
   confirmed_at: <%= Time.current %>
   otp_required_for_login: true
   otp_secret: NJZNMRJFS6XBRMZ4NDEDAUIYIVTBJXOM
