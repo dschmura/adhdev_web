@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@gorails/ninja-keys@^1.1.12":
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/@gorails/ninja-keys/-/ninja-keys-1.1.12.tgz#16a6e1bddac87233bc20a5530c156902f09a49d3"
-  integrity sha512-NXcq5XDCUNzLB3IGxaOQxmhaqljMqC/H6swzHLnsbdw5If2n5fzX6frPhK/u1/FK2tHgmlZK0zIR9OCMJIfl+A==
+"@gorails/ninja-keys@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@gorails/ninja-keys/-/ninja-keys-1.2.1.tgz#47bcf7b30b74d3e7a9e3cd77b4fb229013228b3b"
+  integrity sha512-EZMB3jYaN+dvQi1UZQBkoFwk2S8pLqBLWGOq6EDKqPdjzg9BsJTANFwmnHb4I6AITx+He6ms1AVsTCECDep79g==
   dependencies:
     "@material/mwc-icon" "0.25.3"
     hotkeys-js "3.8.9"
