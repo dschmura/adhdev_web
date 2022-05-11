@@ -51,7 +51,7 @@ module AccountsHelper
   #   * options[:label]
   #   * Ruby block
   def switch_account_button(account, **options, &block)
-    if block_given?
+    if block
       # if Jumpstart::Multitenancy.domain? && account.domain?
       #   link_to options.fetch(:label, account.name), account.domain, options, &block
       if Jumpstart::Multitenancy.subdomain? && account.subdomain?
