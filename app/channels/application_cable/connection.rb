@@ -5,7 +5,7 @@ module ApplicationCable
     identified_by :current_user, :current_account, :true_user
     impersonates :user
 
-    delegate :session, to: :request
+    delegate :params, :session, to: :request
 
     def connect
       self.current_user = find_verified_user
