@@ -20,7 +20,7 @@
     "esbuild": "^0.14.34",
     "esbuild-rails": "^1.0.3",
     "flatpickr": "^4.6.10",
-    "glob": "^8.0.1",
+    "glob": "^8.0.3",
     "js-cookie": "^3.0.1",
     "jstz": "^2.1.1",
     "local-time": "^2.1.0",
