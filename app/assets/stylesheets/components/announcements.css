@@ -15,17 +15,5 @@
 }
 
 .unread-announcements span:before {
-  @apply bg-red-600;
-
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  -moz-background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  content: '';
-  display: inline-block;
-  height: 8px;
-  width: 8px;
-  margin-right: 6px;
+  @apply inline-block w-2 h-2 mr-1.5 rounded-full bg-red-500 content-[''];
 }

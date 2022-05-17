@@ -29,11 +29,18 @@ All Homebrew dependencies are listed in `Brewfile`, so you can install them all 
 brew bundle install --no-upgrade
 ```
 
+Then you can start the database servers:
+
+```bash
+brew services start postgresql
+brew services start redis
+```
+
 #### Initial Setup
 
 First, edit `config/database.yml` and change the database name.
 
-Next, run `bin/setup` to install Rubygem and Javascript dependencies. This will also install foreman system wide for you and setup your database.
+Run `bin/setup` to install Rubygem and Javascript dependencies. This will also install `foreman` system wide for you and setup your database.
 
 ```bash
 bin/setup
@@ -96,5 +103,11 @@ If you'd like to run Jumpstart Pro with Docker directly, you can run:
 
 ```bash
 docker build --tag myapp .
-docker run myapp
+docker run -p 3000:3000 myapp
+```
+
+If you'd like to use the fullstaq-ruby or other Dockerfile you can specify them as:
+
+```bash
+docker build -f ./Dockerfile.fullstaq-ruby .
 ```

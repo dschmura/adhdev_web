@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-full antialiased">
   <head>
-    <title>Jumpstart Docs</title>
+    <title>Jumpstart Docs | <%= yield :section_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,6 @@
 
     <%= yield :head %>
   </head>
-
 
   <body class="h-full overflow-x-hidden font-sans font-normal leading-normal bg-offwhite">
     <%= render partial: "shared/flash" %>

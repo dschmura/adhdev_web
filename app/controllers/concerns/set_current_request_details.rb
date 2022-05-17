@@ -15,7 +15,7 @@ module SetCurrentRequestDetails
     Current.user = current_user
 
     # Account may already be set by the AccountMiddleware
-    Current.account ||= account_from_domain || account_from_subdomain || account_from_session || fallback_account
+    Current.account ||= account_from_domain || account_from_subdomain || account_from_param || account_from_session || fallback_account
 
     set_current_tenant(Current.account)
   end
@@ -31,8 +31,13 @@ module SetCurrentRequestDetails
   end
 
   def account_from_session
-    return unless Jumpstart::Multitenancy.session? && user_signed_in?
-    current_user.accounts.find_by(id: session[:account_id])
+    return unless Jumpstart::Multitenancy.session? && user_signed_in? && (account_id = session[:account_id])
+    current_user.accounts.find_by(id: account_id)
+  end
+
+  def account_from_param
+    return unless (account_id = params[:account_id].presence)
+    current_user.accounts.find_by(id: account_id)
   end
 
   def fallback_account

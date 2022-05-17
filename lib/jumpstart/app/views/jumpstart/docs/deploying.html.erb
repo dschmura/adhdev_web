@@ -14,10 +14,15 @@
     <h2 class="pb-3 mb-6 border-b border-gray-200">Credentials</h2>
     <p class="mb-4">You will need to take the contents of <code>config/credentials/staging.key</code> or <code>config/credentials/production.key</code> (depending on what env you're deploying) and set the <code>RAILS_MASTER_KEY</code> environment variable to the contents of this file. This will allow staging or production to decrypt your credentials for the correct environment.</code> </p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-200"><%= link_to "Hatchbox", "https://hatchbox.io", target: :blank, class: "text-gray-900" %></h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Deploy to <%= link_to "Hatchbox", "https://hatchbox.io", target: :blank, class: "text-gray-900" %></h2>
     <p class="mb-4"><%= link_to "Hatchbox.io", "https://hatchbox.io", target: :blank %> is built by the makers of Jumpstart Pro and GoRails. It's a fantastically simple and cheap option for deploying apps to your own servers.</p>
 
-    <h2 class="pb-3 mb-6 border-b border-gray-200">Heroku</h2>
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Deploy to Render.com</h2>
+    <p class="mb-4">Jumpstart Pro comes with a render.yaml file that helps Render pre-configure your application.</p>
+    <p class="mb-4">Simply copy this URL and paste it into your browser, then change the GitHub URL to point to your private repository.</p>
+    <pre><code>https://render.com/deploy?repo=https://github.com/excid3/jumpstart-pro</code></pre>
+
+    <h2 class="pb-3 mb-6 border-b border-gray-200">Deploy to Heroku</h2>
     <p class="mb-4">Deploying to Heroku is easy. Jumpstart Pro includes a Procfile to help automatically configure your Heroku processes.</p>
     <div class="mb-4 w-full xl:w-1/2">
       <div class="embed-container">

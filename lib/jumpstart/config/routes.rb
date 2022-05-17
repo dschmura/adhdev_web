@@ -41,6 +41,7 @@ Jumpstart::Engine.routes.draw do
     get :javascript
     get :pagination
     get :pills
+    get :tailwind
     get :typography
     get :wells
 

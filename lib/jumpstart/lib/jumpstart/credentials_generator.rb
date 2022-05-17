@@ -39,15 +39,6 @@ module Jumpstart
 
         # Jumpstart config
         # ----------------
-        # Here you can define global credentials which will be available for all environments.
-        # You can override for an environment by nesting them under the environment keys
-        # For example:
-        #
-        # stripe_key: 'xxx'
-        # production:
-        #   stripe_key: 'yyy'
-        #
-        # This will use 'yyy' in production, but 'xxx' in any other environment.
 
         # Used for encrypting OAuth access tokens
         access_token_encryption_key: '#{Base64.encode64(SecureRandom.random_bytes(32)).strip}'

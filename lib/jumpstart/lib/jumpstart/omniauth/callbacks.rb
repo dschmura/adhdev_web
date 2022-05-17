@@ -49,10 +49,10 @@ module Jumpstart
       def create_user
         user = User.new(
           email: auth.info.email,
-          password: ::Devise.friendly_token[0, 20],
           terms_of_service: true,
           name: auth.info.name
         )
+        user.password = ::Devise.friendly_token[0, 20] if user.respond_to?(:password=)
         user.skip_confirmation!
         user.connected_accounts.new(connected_account_params)
 

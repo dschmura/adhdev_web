@@ -62,7 +62,6 @@ module Jumpstart
           gems[:main] += [{name: job_processor.to_s}]
         end
 
-        gems[:development] += [{name: "guard"}, {name: "guard-livereload", github: "guard/guard-livereload", require: false}, {name: "rack-livereload", github: "jaredmdobson/rack-livereload"}, {name: "eventmachine", github: "eventmachine/eventmachine"}] if livereload?
         gems[:development] += [{name: "solargraph-rails", version: "~> 0.2.0.pre"}] if solargraph?
 
         # Turbo Native dependencies

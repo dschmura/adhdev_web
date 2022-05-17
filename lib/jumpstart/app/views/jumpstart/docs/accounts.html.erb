@@ -9,6 +9,22 @@
 
   <p class="mb-4 leading-normal">Every user has a personal account they are an admin of. A personal account does not allow other users on it. This allows our code to work exactly the same whether we're adding resources privately for a user or a account of users.</p>
   <p class="mb-4 leading-normal">GitHub is a great example of this case. Repositories can be personal or on an organization (their name for accounts) and by setting them up this way, we can have our code treat them exactly the same.</p>
+  <p class="mb-4 leading-normal">
+    There is a configuration option that can be found at <%= link_to "http://localhost:3000/jumpstart#accounts", accounts_docs_path %> if you have the server running. In the first section labeled Accounts, there is a checkbox for enabling/disabling personal accounts. If checked, every new user that signs up for your application will be given a personal account by default. This happens via an <code>after_create</code> callback that comes from the <code>UserAccounts</code> concern which is included in the <code>User.rb</code> class:
+  </p>
+  <pre class="mb-0">
+    <code>
+      # app/models/concerns/user_accounts.rb
+      after_create :create_default_account, unless: :skip_default_account?
+    </code>
+  </pre>
+  <p class="mb-4 leading-normal">
+    After a new user record has been successfully created, this callback will be called and a personal account will be created for the new user unless you have disabled this feature in the Jumpstart configuration for your application via the checkbox mentioned previously at <%= link_to "http://localhost:3000/jumpstart#accounts", accounts_docs_path %>
+  </p>
+  <p class="mb-4 leading-normal">
+    With this in place, when an existing user creates a new account it will use the default setting of <code>personal: false</code>, which is setup in the migration for the <code>accounts</code> table:
+  </p>
+  <pre><code>t.boolean "personal", default: false</code></pre>
 </div>
 
 <div class="pb-10 mb-10 border-b border-gray-300">

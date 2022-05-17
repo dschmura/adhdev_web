@@ -1,12 +1,12 @@
 FROM ruby:3.1
 
-RUN gem install "bundler:~>2.0" --no-document && \
+RUN gem install "bundler:~>2" --no-document && \
     gem update --system && \
     gem cleanup
 
 # NodeJS (https://github.com/nodejs/docker-node/blob/main/14/bullseye/Dockerfile)
 
-ARG NODE_VERSION=16.13.1
+ARG NODE_VERSION=16.14.2
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
@@ -46,7 +46,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && node --version \
   && npm --version
 
-ARG YARN_VERSION=1.22.17
+ARG YARN_VERSION=1.22.18
 RUN set -ex \
   && for key in \
     6A010C5166006599AA17F08146C2130DFD2497F5 \
@@ -76,6 +76,7 @@ RUN apt-get update -qq && \
 WORKDIR /app
 COPY ./Gemfile* /app/
 COPY ./config/jumpstart/Gemfile /app/config/jumpstart/
+COPY ./lib/jumpstart/ /app/lib/jumpstart/
 RUN bundle config --local without "staging production omit" && bundle install --jobs $(nproc) --retry 5
 COPY package.json yarn.lock /app/
 RUN yarn install
