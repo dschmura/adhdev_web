@@ -9,8 +9,8 @@
 #  token         :string           not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  account_id    :integer          not null
-#  invited_by_id :integer
+#  account_id    :bigint           not null
+#  invited_by_id :bigint
 #
 # Indexes
 #

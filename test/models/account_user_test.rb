@@ -6,8 +6,8 @@
 #  roles      :jsonb            not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  account_id :integer
-#  user_id    :integer
+#  account_id :bigint
+#  user_id    :bigint
 #
 # Indexes
 #

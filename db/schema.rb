@@ -16,11 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "status", ["draft", "published", "archived", "trashed"]
+  create_enum "status", ["draft", "published", "archived"]
 
   create_table "account_invitations", force: :cascade do |t|
-    t.integer "account_id", null: false
-    t.integer "invited_by_id"
+    t.bigint "account_id", null: false
+    t.bigint "invited_by_id"
     t.string "token", null: false
     t.string "name", null: false
     t.string "email", null: false
@@ -33,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
   end
 
   create_table "account_users", force: :cascade do |t|
-    t.integer "account_id"
-    t.integer "user_id"
+    t.bigint "account_id"
+    t.bigint "user_id"
     t.jsonb "roles", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.boolean "personal", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.integer "record_id", null: false
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -108,7 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
   end
 
   create_table "api_tokens", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "token"
     t.string "name"
     t.jsonb "metadata", default: {}
@@ -131,9 +131,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "account_id", null: false
+    t.bigint "account_id", null: false
     t.string "recipient_type", null: false
-    t.integer "recipient_id", null: false
+    t.bigint "recipient_id", null: false
     t.string "type"
     t.jsonb "params"
     t.datetime "read_at", precision: nil
@@ -161,7 +161,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
 
   create_table "pay_customers", force: :cascade do |t|
     t.string "owner_type"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.string "processor"
     t.string "processor_id"
     t.boolean "default"
@@ -175,7 +175,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
 
   create_table "pay_merchants", force: :cascade do |t|
     t.string "owner_type"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.string "processor"
     t.string "processor_id"
     t.boolean "default"
@@ -186,7 +186,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
   end
 
   create_table "pay_payment_methods", force: :cascade do |t|
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.string "processor_id"
     t.boolean "default"
     t.string "type"
@@ -237,11 +237,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.enum "post_status", default: "draft", null: false, enum_type: "status"
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["account_id"], name: "index_posts_on_account_id"
   end
 
   create_table "user_connected_accounts", force: :cascade do |t|
@@ -294,7 +294,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -308,6 +308,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_222010) do
   add_foreign_key "pay_charges", "pay_customers", column: "customer_id"
   add_foreign_key "pay_payment_methods", "pay_customers", column: "customer_id"
   add_foreign_key "pay_subscriptions", "pay_customers", column: "customer_id"
-  add_foreign_key "posts", "users"
+  add_foreign_key "posts", "accounts"
   add_foreign_key "user_connected_accounts", "users"
 end
