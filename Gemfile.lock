@@ -250,7 +250,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     local_time (2.1.0)
-    loofah (2.17.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -310,7 +310,7 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
-    pay (3.0.24)
+    pay (4.0.1)
       rails (>= 6.0.0)
     pdf-core (0.9.0)
     pg (1.3.5)
@@ -330,7 +330,7 @@ GEM
     pundit (2.2.0)
       activesupport (>= 3.0.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-protection (2.2.0)
       rack
     rack-test (1.1.0)
@@ -352,7 +352,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (7.0.3)
       actionpack (= 7.0.3)
@@ -430,7 +430,7 @@ GEM
     strscan (3.0.3)
     thor (1.2.1)
     tilt (2.0.10)
-    timeout (0.2.0)
+    timeout (0.3.0)
     ttfunk (1.7.0)
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
@@ -498,7 +498,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0)
   overcommit
   pagy (~> 5.1)
-  pay (~> 3.0.0)
+  pay (~> 4.0.1)
   pg
   pg_search (~> 2.3)
   prawn!
